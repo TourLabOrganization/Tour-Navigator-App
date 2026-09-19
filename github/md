@@ -1,0 +1,25 @@
+repo: mw48795472-ai/Tour-Navigator-App
+branch: main
+
+## Last sync
+date: 2026-09-19T16:38:22Z
+
+### Updated in this project
+- 업스트림에 README.md 한 개뿐 — 가져올 화면·자산 없음, 재빌드한 화면 없음
+- 투어 플래너 마커 번호 제거, 도시 검색 토글 추가 (프로젝트 자체 작업)
+- 제주 세계자연유산 5곳에 유네스코 아이콘 추가 (프로젝트 자체 작업)
+
+## Screen map
+| 화면 | 파일 | 저장소 출처 |
+| --- | --- | --- |
+| 홈 | Tour Navigator Home.dc.html | — |
+| 투어 플래너 | Tour Planner.dc.html | — |
+| RESCENE Route | RESCENE Route.dc.html | — |
+| 왕과 사는 남자 · 영월 | Kings Warden Route.dc.html | — |
+| 케이팝 데몬 헌터스 · 서울 | KPop Demon Hunters Route.dc.html | — |
+| 제주 K-Drama | Jeju K-Drama Route.dc.html | — |
+| 부산 영화 기행 | Busan Cinema Route.dc.html | — |
+| 단일 파일 배포본 | Tour Navigator (standalone).html | — |
+
+## Sync history
+- 2026-09-20 — 최초 기록 작성 (저장소 연결)
