@@ -8,18 +8,14 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="_ds/modernist-c3769e85-f6cb-43ef-9ada-8fa20372761c/styles.css">
-<script src="_ds/modernist-c3769e85-f6cb-43ef-9ada-8fa20372761c/_ds_bundle.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
 <style>
-html,body{margin:0;padding:0;background:#cdc4b0;font-family:"Archivo","Gowun Dodum",system-ui,sans-serif;color:#153b3d;-webkit-font-smoothing:antialiased}
-*,*::before,*::after{box-sizing:border-box}
-a{color:#b8431c;text-underline-offset:3px}a:hover{color:#8f3413}
+/* Home 고유 애니메이션 (스플래시 · 배너) */
 @keyframes rsFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
 @keyframes rsHour{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-      @keyframes rsMin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
- }
+@keyframes rsMin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @keyframes rsSplashOut { 0%,86% { opacity:1 } 100% { opacity:0 } }
 @keyframes rsProgress { from { width:0% } to { width:100% } }
 </style>

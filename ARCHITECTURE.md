@@ -13,6 +13,7 @@ KPop Demon Hunters Route.dc.html
 Jeju K-Drama Route.dc.html
 Busan Cinema Route.dc.html
 support.js                      런타임 (템플릿 + 로직 클래스 실행)
+shared.css                      7개 화면 공통 스타일 (리셋 · 스크롤바 · Leaflet · 공용 애니메이션)
 image-slot.js                   이미지 슬롯 웹 컴포넌트
 assets/                         원본 데이터 · 이미지
 Tour Navigator (standalone).html  전체를 한 파일로 인라인한 배포본
@@ -21,7 +22,7 @@ Tour Navigator (standalone).html  전체를 한 파일로 인라인한 배포본
 ## 한 화면의 내부
 
 ```
-<helmet>        폰트 · @font-face · body 리셋 · 외부 스크립트(Google Maps)
+<helmet>        폰트 · shared.css 링크 · 화면 고유 @keyframes · 외부 스크립트(Google Maps)
 템플릿           인라인 스타일 마크업, {{ }} 값 홀, <sc-for> / <sc-if>
 class Component extends DCLogic
   state         선택 도시 · 날짜 · 언어 · 필터 · 경로 결과

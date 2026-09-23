@@ -20,40 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Archivo+Black&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<style>
-/* 기본 */
-html,body{margin:0;padding:0;background:#cdc4b0;font-family:"Archivo","Gowun Dodum",system-ui,sans-serif;color:#153b3d;-webkit-font-smoothing:antialiased}
-*,*::before,*::after{box-sizing:border-box}
-a{color:#b8431c;text-underline-offset:3px}a:hover{color:#8f3413}
-button{font-family:inherit}
-:focus-visible{outline:2px solid #b8431c;outline-offset:2px}
-::selection{background:rgba(184,67,28,.3)}
-/* 이모지 렌더링 */
-button, span, div { font-variant-emoji: normal; }
-
-/* Leaflet 지도 */
-.leaflet-container{background:#e3dccb;font-family:"Archivo","Gowun Dodum",system-ui,sans-serif}
-.leaflet-control-attribution{font-size:8px;background:rgba(242,236,224,.8);border-radius:0}
-.leaflet-control-zoom{display:none}
-
-/* 수평 스크롤 (카테고리 칩) */
-.rs-xbar{overflow-x:auto;scrollbar-width:thin;scrollbar-color:#b8431c #e2e0e0}
-.rs-xbar::-webkit-scrollbar{height:7px}
-.rs-xbar::-webkit-scrollbar-track{background:#e2e0e0}
-.rs-xbar::-webkit-scrollbar-thumb{background:#b8431c}
-
-/* 수직 스크롤 (목록/영상) */
-.rs-scroll{overflow-y:auto;scrollbar-width:thin;scrollbar-color:#b8431c #e2e0e0}
-.rs-scroll::-webkit-scrollbar{width:7px}
-.rs-scroll::-webkit-scrollbar-track{background:#e2e0e0}
-.rs-scroll::-webkit-scrollbar-thumb{background:#b8431c}
-
-/* 애니메이션 */
-@keyframes rsUp{from{transform:translateY(14px);opacity:0}to{transform:translateY(0);opacity:1}}
-.rs-bkw{position:relative}
-.rs-bk{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:40;flex-wrap:wrap;gap:4px;width:210px;padding:6px;background:#f2ece0;border:2px solid #153b3d;box-shadow:0 6px 18px rgba(21,59,61,.25)}
-.rs-bkw:hover .rs-bk,.rs-bk-open{display:flex}
-</style>
+<link rel="stylesheet" href="shared.css">
 </helmet>
 <div style="min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;background:#cdc4b0">
 <div style="width:390px;height:844px;background:#f2ece0;border:2px solid #153b3d;display:flex;flex-direction:column;overflow:hidden;position:relative;box-shadow:0 12px 32px rgba(45,43,43,.22)">
