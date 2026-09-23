@@ -11,6 +11,7 @@ python3 -m http.server 8000
 
 - 화면은 `*.dc.html` 한 파일. 템플릿과 로직 클래스가 같이 들어 있습니다.
 - 6개 화면이 함께 쓰는 상수·순수 함수는 `shared.js` 에 둡니다. 화면별로 값이 다른 것(`DATA` · `I18N` · `ORIGINS` · `STAYS` · `TRANSIT`)은 각 화면에 남깁니다.
+- 두 화면 이상에서 쓰는 CSS 규칙은 `shared.css` 에 둡니다. 한 화면에서만 쓰는 `@keyframes` 는 그 화면 `<helmet>` 의 `<style>` 에 남깁니다. 자세한 내용은 [STYLES.md](STYLES.md).
 - 키는 `config.js` 에서만 읽습니다. 화면 파일에 키 문자열을 적지 마세요.
 - 새 전역 상수는 대문자 스네이크(`REGION_HUB`), 함수는 카멜(`stayPrice`).
 

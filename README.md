@@ -62,3 +62,5 @@
 ## 디자인
 
 Modernist 디자인 시스템 기반. 실크스크린 팔레트(잉크 `#153b3d` / 주황 `#b8431c` / 크림 `#f2ece0`), Archivo + Gowun Dodum, 0px 라운드, 2px 괘선.
+
+공통 CSS는 `shared.css` 한 파일이고, 각 화면이 `<helmet>` 에서 링크합니다. 구성은 [STYLES.md](STYLES.md) 참고.

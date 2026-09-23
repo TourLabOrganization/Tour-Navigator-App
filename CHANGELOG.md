@@ -2,6 +2,14 @@
 
 날짜는 작업 시점 기준입니다.
 
+## 2026-09-23
+
+### 스타일
+- 7개 화면에 중복돼 있던 `<style>` 블록을 `shared.css` 로 추출, 각 화면은 `<link rel="stylesheet" href="shared.css">` 로 링크
+- 화면 고유 `@keyframes` (홈 5개 · 플래너 3개)만 각 화면 `<style>` 에 유지
+- 홈 화면의 짝이 맞지 않던 `}` 제거, 저장소에 없는 `_ds/…/styles.css` · `_ds_bundle.js` 참조(404) 제거
+- `STYLES.md` 추가, ARCHITECTURE · CONTRIBUTING · README 에 반영
+
 ## 2026-09-21
 
 ### 저장소 정리
