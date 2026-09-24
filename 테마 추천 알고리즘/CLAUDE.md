@@ -11,7 +11,7 @@ Tour Navigator 앱의 테마 추천(선호 문항 → 군집 → 추천 테마 �
 - `docs/`의 .docx·`data/`의 .xlsx는 사람이 검토하는 산출물. 코드 결과와 숫자가 달라지면 README "남은 일"에 적어 둠.
 - 가중치 `W`(src/calc2.py): C1~C6은 가설값, C7~C10은 외래관광객조사 원자료로 산출. 가설값을 바꿀 때는 근거를 커밋 메시지에 적음.
 
-## GitHub에 올리기 (mw48795472/Tour-Navigator-App)
+## GitHub에 올리기 (TourLabOrganization/Tour-Navigator-App)
 이 폴더를 레포 루트에 `테마 추천 알고리즘/`으로 둔 상태에서:
 
 ```bash
