@@ -16,6 +16,7 @@ support.js                      런타임 (템플릿 + 로직 클래스 실행)
 shared.css                      7개 화면 공통 스타일 (리셋 · 스크롤바 · Leaflet · 공용 애니메이션)
 image-slot.js                   이미지 슬롯 웹 컴포넌트
 assets/                         원본 데이터 · 이미지
+테마 추천 알고리즘/              선호 문항 → 군집 → 추천 테마 계산 코드 · 근거 데이터 · 설계 문서 (Python)
 Tour Navigator (standalone).html  전체를 한 파일로 인라인한 배포본
 ```
 
