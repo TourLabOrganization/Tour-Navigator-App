@@ -4,6 +4,12 @@
 
 ## 2026-09-24
 
+### 정리
+- `Mobile app design.zip`(17.6MB · 저장소 파일과 중복) · `github/md`(옛 소유자 동기화 메모) 삭제
+- 플래너 + 테마 5종 화면에 각각 복제돼 있던 `shared.js` 상수 · 함수 16개를 화면에서 제거하고, 각 화면 `<head>` 에서 `config.js` → `shared.js` 를 읽도록 연결 (화면당 약 120줄 감소)
+- 화면에 하드코딩돼 있던 API 키(Google · Kakao · 공공데이터포털 · 한국도로공사)를 `config.js` 로 이동, `config.example.js` 를 코드가 읽는 항목만 남김, 쓰지 않던 `KRIC` 상수 삭제, 루트 `.gitignore` 추가
+- README 의 데이터 · 구조 · 디자인 절(각 문서와 중복)을 문서 목록으로 대체, STYLES 이력 절(CHANGELOG 와 중복) 제거, APIS 키 설정 안내를 `config.js` 기준으로 교체, `docs/` 경로 · 옛 파일명 참조 수정, I18N-TODO 줄 번호 재기준
+
 ### 문서
 - 9-22 에 삭제된 `Tour Navigator (standalone).html` 참조를 README · ARCHITECTURE 에서 제거
 

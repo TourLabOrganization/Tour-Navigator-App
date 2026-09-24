@@ -13,6 +13,8 @@ KPop Demon Hunters Route.dc.html
 Jeju K-Drama Route.dc.html
 Busan Cinema Route.dc.html
 support.js                      런타임 (템플릿 + 로직 클래스 실행)
+config.js                       API 키 (config.example.js 를 복사해 만듦 · git 제외)
+shared.js                       플래너 + 테마 5종 공용 상수 · 순수 함수 · 키 읽기
 shared.css                      7개 화면 공통 스타일 (리셋 · 스크롤바 · Leaflet · 공용 애니메이션)
 image-slot.js                   이미지 슬롯 웹 컴포넌트
 assets/                         원본 데이터 · 이미지

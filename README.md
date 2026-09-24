@@ -20,7 +20,7 @@
 
 **하단 탭** — HOME / ALERT / ME. 선택된 탭만 주황으로 채워집니다.
 
-색·타이포·괘선은 아래 [디자인](#디자인) 절의 Modernist 시스템을 그대로 따릅니다. 화면 전환은 페이지 이동 없이 같은 문서 안에서 일어납니다.
+색·타이포·괘선은 [DESIGN.md](DESIGN.md) 의 Modernist 시스템을 그대로 따릅니다. 화면 전환은 페이지 이동 없이 같은 문서 안에서 일어납니다.
 
 ## 화면
 
@@ -43,22 +43,14 @@
 - **다국어** — 한국어·English·中文·日本語·Español
 - **유네스코** — 세계유산 등재 장소에 아이콘 표시
 
-## 데이터
+## 문서
 
-장소 좌표는 WGS84. 주소 기반 지오코딩과 위키백과 등재 좌표를 사용했고, 근거를 장소별 `srcKo`/`srcEn`에 기록했습니다. 사진은 위키미디어 커먼즈의 자유 이용 이미지입니다.
-
-## 구조
-
-각 화면은 Design Component(`.dc.html`) 한 파일입니다. 파일 안에 템플릿과 로직 클래스가 함께 들어 있고, 빌드 과정 없이 브라우저에서 바로 실행됩니다.
-
-- `DATA` — 지역별 장소 배열
-- `REGION_HUB` / `ORIGINS` / `TRANSIT` — 광역 교통 관문
-- `STAYS` — 숙소 후보
-- `I18N` — 중국어·일본어 레이어
-- `class Component extends DCLogic` — 상태와 렌더 값
-
-## 디자인
-
-Modernist 디자인 시스템 기반. 실크스크린 팔레트(잉크 `#153b3d` / 주황 `#b8431c` / 크림 `#f2ece0`), Archivo + Gowun Dodum, 0px 라운드, 2px 괘선.
-
-공통 CSS는 `shared.css` 한 파일이고, 각 화면이 `<helmet>` 에서 링크합니다. 구성은 [STYLES.md](STYLES.md) 참고.
+| 문서 | 내용 |
+| --- | --- |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | 파일 구성, 화면 내부 구조, 플래너 데이터 모델, 코스 계산 흐름 |
+| [DATA.md](DATA.md) | 장소 데이터 규모 · 원본 파일 · 레코드 형식 · 배지 기준 |
+| [APIS.md](APIS.md) | 외부 API 목록, 키 설정, CORS 제약 |
+| [DESIGN.md](DESIGN.md) · [STYLES.md](STYLES.md) | Modernist 디자인 규칙과 CSS 구성 |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | 실행 방법, 키 설정, 코드 규칙 |
+| [ROADMAP.md](ROADMAP.md) · [CHANGELOG.md](CHANGELOG.md) | 남은 일과 변경 기록 |
+| [테마 추천 알고리즘/README.md](테마%20추천%20알고리즘/README.md) | 선호 문항 → 군집 → 추천 테마 계산 (Python) |

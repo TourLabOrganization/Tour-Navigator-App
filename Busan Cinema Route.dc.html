@@ -3,6 +3,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="support.js"></script>
+<script src="config.js"></script>
+<script src="shared.js"></script>
 </head>
 <body>
 <x-dc>
@@ -763,8 +765,6 @@ const haversineKm=(a,b,c,d)=>{
 const HUMETRO_KEY='';
 // 부산관광공사(공공데이터포털) 관광지 정보 서비스 키
 const BUSAN_TOUR_KEY='';
-const KRIC={key:'$2a$10$/33fd2QMOzITeiEpHgApYe5Yn8NtTEQftxBVBGz4Sb.q4lQq679cG',
-  url:'https://openapi.kric.go.kr/openapi/convenientInfo/stationTimetable'};
 const CATS = {
   stay:{ko:'숙박·로컬체험',en:'Stay & Local'},
   channel:{ko:'여행 정보',en:'Travel Info',zh:'旅行信息',ja:'旅行情報'},
@@ -776,48 +776,6 @@ const CATS = {
   station:{ko:'역',en:'Station',zh:'车站',ja:'駅'},
   terminal:{ko:'터미널',en:'Terminal',zh:'汽车站',ja:'ターミナル'}
 };
-// 지도 스킨 (Tweaks: mapSkin)
-const MAP_SKINS={
-  paper:[
-    {elementType:'geometry',stylers:[{color:'#f2ece0'}]},
-    {elementType:'labels.text.fill',stylers:[{color:'#153b3d'}]},
-    {elementType:'labels.text.stroke',stylers:[{color:'#f2ece0'},{weight:3}]},
-    {featureType:'water',elementType:'geometry',stylers:[{color:'#dfe6e8'}]},
-    {featureType:'landscape.natural',elementType:'geometry',stylers:[{color:'#eceae6'}]},
-    {featureType:'poi',elementType:'labels',stylers:[{visibility:'off'}]},
-    {featureType:'road',elementType:'geometry',stylers:[{color:'#ffffff'}]},
-    {featureType:'road.highway',elementType:'geometry',stylers:[{color:'#e8ded9'}]},
-    {featureType:'transit',stylers:[{visibility:'off'}]}
-  ],
-  ink:[
-    {elementType:'geometry',stylers:[{color:'#153b3d'}]},
-    {elementType:'labels.text.fill',stylers:[{color:'#bdb8b4'}]},
-    {elementType:'labels.text.stroke',stylers:[{color:'#153b3d'},{weight:3}]},
-    {featureType:'water',elementType:'geometry',stylers:[{color:'#14201f'}]},
-    {featureType:'landscape.natural',elementType:'geometry',stylers:[{color:'#2a2726'}]},
-    {featureType:'poi',elementType:'labels',stylers:[{visibility:'off'}]},
-    {featureType:'road',elementType:'geometry',stylers:[{color:'#3a3634'}]},
-    {featureType:'road.highway',elementType:'geometry',stylers:[{color:'#5a4b44'}]},
-    {featureType:'transit',stylers:[{visibility:'off'}]}
-  ],
-  plain:null
-};
-// 카테고리 색 팔레트 (Tweaks: catPalette)
-const PALETTE={
-  pastel:null,
-  vivid:{sea:{bg:'#6fd3e7',fg:'#06323d'},heal:{bg:'#7fd97a',fg:'#0d3b0a'},herit:{bg:'#f5c944',fg:'#3d2c00'},activity:{bg:'#b18cf0',fg:'#231046'},stay:{bg:'#f383ae',fg:'#450f26'},food:{bg:'#f2795c',fg:'#3f1005'}},
-  mono:{sea:{bg:'#e6e4e1',fg:'#153b3d'},heal:{bg:'#d2cfcb',fg:'#153b3d'},herit:{bg:'#f2ece0',fg:'#153b3d'},activity:{bg:'#bcb8b3',fg:'#153b3d'},stay:{bg:'#a8a39e',fg:'#f2ece0'},food:{bg:'#153b3d',fg:'#f2ece0'}}
-};
-const CAT_COLORS={
-  sea:{bg:'#e0f7f4',fg:'#0d7377'},
-  heal:{bg:'#e8f5e9',fg:'#2e7d32'},
-  activity:{bg:'#f3e5f5',fg:'#7b1fa2'},
-  herit:{bg:'#fffde7',fg:'#f57f17'},
-  stay:{bg:'#fce4ec',fg:'#c2185b'},
-  food:{bg:'#ffebee',fg:'#c62828'},
-  station:{bg:'#f3e5f5',fg:'#7b1fa2'},
-  terminal:{bg:'#f3e5f5',fg:'#7b1fa2'}
-};
 // 숙소 샘플 데이터셋 (임의 구성 — 실제 예약 정보 아님)
 const STAYS={
   busan:[
@@ -828,31 +786,8 @@ const STAYS={
     {id:'bs5',lat:35.1533,lng:129.1183,ko:'광안리 오션뷰 스테이',en:'Gwangalli ocean-view stays',qKo:'광안리 숙소',qEn:'stay Gwangalli Busan',areaKo:'수영구 광안동',areaEn:'Gwangan-dong, Suyeong-gu',band:[10,30],typeKo:'오션뷰 스테이',typeEn:'Ocean-view stay'}
   ]
 };
-// 숙소 요금: 고정 문구 대신 비수기 주중~주말 성수기 상한의 1박 추정 구간으로 표기한다.
-// band:[min,max] (만원). band가 없는 항목은 기존 price 문구를 그대로 쓴다.
-function stayPrice(s,lang){
-  if(!s||!s.band)return (s&&s.price)||'';
-  const [a,b]=s.band;
-  if(lang==='ko')return a+'~'+b+'\ub9cc\uc6d0 \ucd94\uc815';
-  if(lang==='ja')return a+'\uff5e'+b+'\u4e07\u30a6\u30a9\u30f3\u76ee\u5b89';
-  if(lang==='zh')return '\u7ea6'+(a*10)+'\uff5e'+(b*10)+'\u5343\u97e9\u5143';
-  if(lang==='es')return '\u20a9'+(a*10)+'\u2013'+(b*10)+'k aprox.';
-  return '\u20a9'+(a*10)+'k\u2013'+(b*10)+'k est.';
-}
-// 지도/예약 검색 키워드: 실제 검색 결과가 나오는 지역+숙소유형 키워드를 우선 사용한다.
-function stayQuery(s,lang){
-  if(!s)return '';
-  if(lang==='ko')return s.qKo||((s.ko||'')+' '+(s.areaKo||'')).trim();
-  return s.qEn||((s.en||s.ko||'')+' '+(s.areaEn||'')).trim();
-}
 const REGION_HUB={
   '부산':{lat:35.1151,lng:129.0415,busLat:35.2841,busLng:129.0940,ko:'부산역 (KTX·SRT)',en:'Busan Stn (KTX/SRT)',busKo:'부산종합버스터미널',busEn:'Busan Central Bus Terminal',airLat:35.1795,airLng:128.9382,airKo:'김해국제공항',airEn:'Gimhae Intl Airport',modes:['ktx','srt','bus','air']}
-};
-// 출발지(귀가지) 선택 — 광역 관문
-// 자가용 모드 표시용 — 역·터미널 수식을 떼어 도시명만 남긴다.
-const cityName=(o,lang)=>{
-  const s=(lang==='ko'?o.ko:(o.en||o.ko))||'';
-  return s.replace(/\s*\([^)]*\)\s*$/,'').replace(/(역|터미널|Stn|Station|Terminal|Bus)\s*$/,'').trim()||s;
 };
 const ORIGINS={
   // 수도권 — 철도
@@ -1054,28 +989,6 @@ const T = {
   noVideoCta:{ko:'연결 영상 미기재',en:'No linked video'},
   styleNames:[{ko:'레드',en:'RED'},{ko:'잉크',en:'INK'},{ko:'반전',en:'INV'}]
 };
-const ACCENTS = [
-  {base:'#b8431c',on:'#f2ece0'},
-  {base:'#153b3d',on:'#f2ece0'},
-  {base:'#f2ece0',on:'#153b3d'}
-];
-const KAKAO_KEY='edebe2c3eab88d994d0b404e7b0c0e53';
-const getWeather=async(lat,lng)=>{
-  try{
-    const res=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weather_code&timezone=Asia/Seoul&past_days=1&forecast_days=3`);
-    const data=await res.json();
-    if(data.daily){
-      const today=1;
-      const getIcon=(code)=>code===0?'☀️':code===1||code===2?'☁️':code===3?'☁️':code===45||code===48?'🌫️':code>=51&&code<=67?'🌧️':code>=71&&code<=77?'❄️':code===80||code===81||code===82?'⛈️':'🌡️';
-      return {
-        yesterday:{tmp:Math.round(data.daily.temperature_2m_max[0])+'°C',rn1:(data.daily.precipitation_sum[0]||0).toFixed(1),icon:getIcon(data.daily.weather_code[0])},
-        today:{tmp:Math.round(data.daily.temperature_2m_max[today])+'°C',rn1:(data.daily.precipitation_sum[today]||0).toFixed(1),icon:getIcon(data.daily.weather_code[today])},
-        tomorrow:{tmp:Math.round(data.daily.temperature_2m_max[2])+'°C',rn1:(data.daily.precipitation_sum[2]||0).toFixed(1),icon:getIcon(data.daily.weather_code[2])}
-      };
-    }
-  }catch(e){console.log('weather error',e);}
-  return {yesterday:{tmp:'?',rn1:'0',icon:'?'},today:{tmp:'?',rn1:'0',icon:'?'},tomorrow:{tmp:'?',rn1:'0',icon:'?'}};
-};
 const getKakaoTaxiFare=async(lat,lng)=>{
   try{
     const res=await fetch('https://apis.map.kakao.com/v1/directions/car?origin=35.1151,129.0415&destination='+lat+','+lng,
@@ -1105,7 +1018,6 @@ const TICON={
   bus:'<svg viewBox="0 0 24 24" fill="none" stroke="#f2ece0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11"/><path d="M4 11h16"/><path d="M8 19l-1.5 2"/><path d="M16 19l1.5 2"/><circle cx="7.5" cy="16.5" r="0.6" fill="#f2ece0"/><circle cx="16.5" cy="16.5" r="0.6" fill="#f2ece0"/></svg>'
 };
 const noSrt=ms=>Array.from(new Set((ms||[]).map(m=>m==='srt'?'ktx':m)));
-function hav(a,b){const R=6371,r=Math.PI/180;const dl=(b.lat-a.lat)*r,dg=(b.lng-a.lng)*r;const s=Math.sin(dl/2)**2+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dg/2)**2;return 2*R*Math.asin(Math.sqrt(s));}
 
 // 영상 메타 (조회수·게시일은 예시값 — 실제 통계로 교체 필요)
 // 영상 메타 — 화면에 그대로 출력되는 문자열. 여기 텍스트만 고치면 카드 표시가 바뀐다.
@@ -1126,40 +1038,10 @@ const VMETA={
   'bf11':{views:'장면 11',date:'청사포 철길',q:'청사포 미포 해안열차'},
   'bf12':{views:'장면 12',date:'태종대',q:'태종대 영화 촬영지'}
 };
-// 마커 상단 카테고리 약어 (D안 듀오톤)
-const CAT_SHORT={
-  ko:{sea:'해양',heal:'힐링',herit:'역사',activity:'테마',stay:'숙박',food:'상권'},
-  en:{sea:'SEA',heal:'ECO',herit:'HER',activity:'FUN',stay:'STAY',food:'EAT'},
-  zh:{sea:'海洋',heal:'疗愈',herit:'历史',activity:'主题',stay:'住宿',food:'商圈'},
-  ja:{sea:'海洋',heal:'癒し',herit:'歴史',activity:'テーマ',stay:'宿泊',food:'商圏'},
-  es:{sea:'MAR',heal:'ECO',herit:'HIS',activity:'OCIO',stay:'HOTEL',food:'COMER'}
-};
-// 장소목록 외 버튼 라벨
-const OFFL={ko:'장소목록 외',en:'Off-list',zh:'名单外地点',ja:'リスト外',es:'Fuera de lista'};
 // Google Maps 라벨 언어 코드
 const GMAP_LANG={ko:'ko',en:'en',zh:'zh-CN',ja:'ja',es:'es'};
-// 캘린더 다국어 — 요일 머리글과 '연·월' 표기
-const CAL_WD={
-  ko:['일','월','화','수','목','금','토'],
-  en:['Su','Mo','Tu','We','Th','Fr','Sa'],
-  zh:['日','一','二','三','四','五','六'],
-  ja:['日','月','火','水','木','金','土'],
-  es:['D','L','M','X','J','V','S']
-};
-const CAL_MONTH={
-  ko:(m,y)=>y+'년 '+(m+1)+'월',
-  en:(m,y)=>['January','February','March','April','May','June','July','August','September','October','November','December'][m]+' '+y,
-  zh:(m,y)=>y+'年'+(m+1)+'月',
-  ja:(m,y)=>y+'年'+(m+1)+'月',
-  es:(m,y)=>['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'][m]+' '+y
-};
-// YouTube Data API v3 키. 조회수·게시일을 하루 1회 실제 값으로 갱신하는 데 쓴다.
-// 지도 키와 같은 키를 쓰려면 콘솔에서 해당 키의 'API 제한'에 YouTube Data API v3를 추가해야 한다.
-const YT_KEY='AIzaSyCZVT0ICydcnLGQmqoX4lSL1-FGa_wfCVc';
 const updateViewCounts=()=>{};
 updateViewCounts();
-const vNum=s=>Number(String(s||'').replace(/[^\d]/g,''))||0;
-const vDate=s=>String(s||'').replace(/[^\d]/g,'');
 
 const LANGS=[
   {id:'ko',label:'한국어'},{id:'en',label:'ENGLISH'},{id:'zh',label:'简体中文'},{id:'ja',label:'日本語'},{id:'es',label:'ESPAÑOL'}
@@ -1326,7 +1208,6 @@ const ES={
 Object.keys(ES).forEach(k=>{if(T[k])T[k].es=ES[k];});
 const TABS_ES={map:'Mapa',course:'Ruta',videos:'Película',stamp:'Sellos',saved:'Guardado',channel:'Información'};
 Object.keys(TABS_ES).forEach(k=>{if(T.tabs[k])T.tabs[k].es=TABS_ES[k];});
-const CATS_ES={stay:'Alojamiento y experiencias',sea:'Paisaje costero',heal:'Naturaleza y ecoturismo',herit:'Patrimonio histórico',food:'Comercio y gastronomía',activity:'Parques y actividades',station:'Estación',terminal:'Terminal'};
 Object.keys(CATS_ES).forEach(k=>{if(CATS[k])CATS[k].es=CATS_ES[k];});
 T.drive.es=' min en coche';
 T.styleNames.forEach(s=>{s.es=s.en;});
@@ -1406,7 +1287,7 @@ class Component extends DCLogic {
     window.__gmapsInjected=true;window.__gmapsLang=gl;
     const s=document.createElement('script');
     s.id='gmaps-sdk';
-    s.src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCZVT0ICydcnLGQmqoX4lSL1-FGa_wfCVc&libraries=marker&language='+gl+'&region=KR';
+    s.src='https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(GMAPS_KEY)+'&libraries=marker&language='+gl+'&region=KR';
     s.async=true;
     document.head.appendChild(s);
   }
@@ -1417,7 +1298,7 @@ class Component extends DCLogic {
     this.map=null;this.markers=[];this.lines=[];
     const s=document.createElement('script');
     s.id='gmaps-sdk';
-    s.src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCZVT0ICydcnLGQmqoX4lSL1-FGa_wfCVc&libraries=marker&language='+gl+'&region=KR';
+    s.src='https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(GMAPS_KEY)+'&libraries=marker&language='+gl+'&region=KR';
     s.async=true;
     s.onload=()=>{clearTimeout(this._t);this.boot();};
     document.head.appendChild(s);
@@ -1981,9 +1862,9 @@ class Component extends DCLogic {
   }
   // 한국도로공사 휴게소 목록(장거리 구간 휴게 안내용). 실패해도 일정 계산에는 영향 없음.
   loadRests(){
-    if(this._rests||this._restLoading)return;
+    if(this._rests||this._restLoading||!EXROAD_KEY)return;
     this._restLoading=true;
-    fetch('https://data.ex.co.kr/openapi/restinfo/restBestfoodList?key=5174201859&type=json&numOfRows=300&pageNo=1')
+    fetch('https://data.ex.co.kr/openapi/restinfo/restBestfoodList?key='+encodeURIComponent(EXROAD_KEY)+'&type=json&numOfRows=300&pageNo=1')
       .then(r=>r.json())
       .then(j=>{
         const seen={};

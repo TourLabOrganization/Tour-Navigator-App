@@ -1,0 +1,9 @@
+# API 키 (config.example.js 를 복사해 만든다)
+config.js
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store

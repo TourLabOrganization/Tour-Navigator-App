@@ -15,15 +15,17 @@
 
 ## 키 설정
 
-키는 각 `.dc.html` 상단 상수에 들어갑니다. 저장소에 올릴 때는 본인 키로 교체하세요.
+키는 `config.js` 한 파일에서만 읽습니다. `config.example.js` 를 복사해 만들고, `.gitignore` 에 올라 있어 커밋되지 않습니다.
 
-```js
-const GOOGLE_MAPS_KEY = "...";
-const KTO_KEY         = "...";   // 한국관광공사 (5개 언어 서비스 공통)
-const ROAD_KEY        = "...";   // 한국도로공사
-```
+| `config.js` 항목 | 쓰는 곳 |
+| --- | --- |
+| `googleMaps` | Google Maps JavaScript API 로더 |
+| `youtube` | YouTube Data API v3 (영상 조회수 · 게시일) |
+| `kakao` | Kakao REST (로컬 검색) |
+| `dataGoKr` | 공공데이터포털 서비스키 — 한국관광공사 TourAPI · 한국공항공사 공용 |
+| `exRoad` | 한국도로공사 공공데이터 (휴게소 목록) |
 
-키가 비어 있으면 해당 기능만 조용히 비활성화되고 나머지는 정상 동작합니다.
+`shared.js` 가 이 값을 `GMAPS_KEY` · `YT_KEY` · `KAKAO_KEY` · `DATA_GO_KR_KEY` · `EXROAD_KEY` 로 읽어 각 화면에 넘깁니다. 키가 비어 있으면 해당 기능만 조용히 비활성화되고 나머지는 정상 동작합니다.
 
 ## CORS 제약
 
@@ -47,7 +49,7 @@ export default {
 };
 ```
 
-앱에서는 `PROXY` 상수에 워커 주소를 넣으면 됩니다.
+프록시 주소를 읽는 코드는 아직 없습니다 (ROADMAP 참고). 배치 후 `config.js` 에 항목을 추가하고 두 호출을 프록시 경유로 바꾸면 됩니다.
 
 ## 호출량 관리
 

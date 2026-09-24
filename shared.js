@@ -3,8 +3,19 @@
 // config.js 다음, 화면 파일보다 먼저 로드된다.
 // 화면별로 값이 다른 것(DATA · I18N · ORIGINS · STAYS · TRANSIT)은 각 화면 파일에 남아 있다.
 
-// Kakao REST 키 (config.js)
-const KAKAO_KEY=(window.APP_CONFIG||{}).kakao||'';
+// API 키 — 전부 config.js(window.APP_CONFIG)에서 읽는다. 비어 있으면 해당 기능만 비활성화된다.
+const _CFG=window.APP_CONFIG||{};
+// Google Maps JavaScript API (지도 로더 URL에 들어간다)
+const GMAPS_KEY=_CFG.googleMaps||'';
+// YouTube Data API v3 키. 조회수·게시일을 하루 1회 실제 값으로 갱신하는 데 쓴다.
+// 지도 키와 같은 키를 쓰려면 콘솔에서 해당 키의 'API 제한'에 YouTube Data API v3를 추가해야 한다.
+const YT_KEY=_CFG.youtube||'';
+// Kakao REST 키 (날씨·로컬)
+const KAKAO_KEY=_CFG.kakao||'';
+// 공공데이터포털 서비스키 — 한국관광공사 TourAPI · 한국공항공사 공용
+const DATA_GO_KR_KEY=_CFG.dataGoKr||'';
+// 한국도로공사 공공데이터 (휴게소 목록)
+const EXROAD_KEY=_CFG.exRoad||'';
 
 // 실크스크린 팔레트 — 잉크·주황·크림
 const PALETTE={
