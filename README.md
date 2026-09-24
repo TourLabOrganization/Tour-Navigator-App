@@ -34,8 +34,6 @@
 | 제주 K-Drama | `Jeju K-Drama Route.dc.html` | 제주 |
 | 부산 영화 기행 | `Busan Cinema Route.dc.html` | 부산 |
 
-`Tour Navigator (standalone).html` 은 위 전부를 한 파일로 묶은 배포본입니다. 더블클릭하면 브라우저에서 바로 열립니다 (지도·사진은 인터넷 연결 필요).
-
 ## 기능
 
 - **지도** — Google Maps, 카테고리 필터, 도시 단위 클러스터, 장소 상세(좌표 근거·운영시간·요금·사진)
