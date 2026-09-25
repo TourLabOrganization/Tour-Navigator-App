@@ -524,6 +524,11 @@
 </div>
 </div>
 </div>
+<div style="display:{{ d_airShow }};align-items:center;justify-content:space-between;gap:6px;margin:0 0 6px;padding:3px 6px;font-size:9px;background:{{ d_airBg }};border:1px solid rgba(21,59,61,.25)">
+<span style="font-weight:800">{{ d_airLabel }}</span>
+<span style="font-variant-numeric:tabular-nums">{{ d_airText }}</span>
+<span style="font-weight:800">{{ d_airGrade }}</span>
+</div>
 </div>
 </div>
 <div style="padding:12px;display:flex;flex-direction:column;gap:8px">
@@ -1108,7 +1113,7 @@ Object.keys(DATA).forEach(c=>{
 
 class Component extends DCLogic {
   state = {city:'nation', lang:'ko', tab:'map', cat:'ALL', detail:null, sheet:true, style:0, travelMode:'transit', legs:{}, transit:{}, regions:[], origin:'seoul', originEnd:'', depTime:'08:00', retTime:'19:00', currentMonth:new Date().getMonth(), currentYear:new Date().getFullYear(),
-    course:{gyeongju:[],geoje:[],nation:[]}, saved:[], stamps:[], vsort:'pop', basemap:'map', showOff:false, ytq:'', taxiFare:0, taxiDist:'', weather:{}, showBooking:false, activeTab:'map'};
+    course:{gyeongju:[],geoje:[],nation:[]}, saved:[], stamps:[], vsort:'pop', basemap:'map', showOff:false, ytq:'', taxiFare:0, taxiDist:'', weather:{}, air:{}, works:{}, fest:{}, showBooking:false, activeTab:'map'};
 
   tr(k){const o=T[k];return o[this.state.lang]||o.ko;}
   accent(){return ACCENTS[this.state.style%3];}
@@ -1917,6 +1922,13 @@ class Component extends DCLogic {
         this.setState(s=>({weather:{...s.weather,[dp.id]:w}}));
       });
     }
+    if(dp&&!st.air[dp.id]){
+      this._airReq=this._airReq||{};
+      if(!this._airReq[dp.id]){
+        this._airReq[dp.id]=1;
+        getAirQuality(dp.lat,dp.lng).then(a=>{this.setState(s=>({air:{...s.air,[dp.id]:a||{none:true}}}));}).catch(()=>{});
+      }
+    }
 
     const tabDefs=[['map','tabs'],['course','tabs'],['videos','tabs'],['stamp','tabs'],['channel','tabs']];
     const tabs=tabDefs.map(([k])=>({key:k,label:T.tabs[k][lang]||T.tabs[k].ko,
@@ -2630,6 +2642,11 @@ class Component extends DCLogic {
       d_directions:dp?'https://www.google.com/maps/search/?api=1&query='+dp.lat+','+dp.lng:'#',
       d_transitLabel:this.tr('transit'),
       d_weather:st.weather[dp?.id]||{yesterday:{tmp:'?',rn1:'0',icon:'?'},today:{tmp:'?',rn1:'0',icon:'?'},tomorrow:{tmp:'?',rn1:'0',icon:'?'}},
+      d_airShow:(a=>a&&!a.none?'flex':'none')(st.air[dp?.id]),
+      d_airLabel:(AIR_LABEL[lang]||AIR_LABEL.en).title,
+      d_airText:(a=>a&&!a.none?('PM10 '+(a.pm10??'–')+' · PM2.5 '+(a.pm25??'–')):'')(st.air[dp?.id]),
+      d_airGrade:(a=>a&&!a.none?(AIR_LABEL[lang]||AIR_LABEL.en).g[a.grade]||'':'')(st.air[dp?.id]),
+      d_airBg:(a=>a&&!a.none?AIR_COLOR[a.grade]:'transparent')(st.air[dp?.id]),
       d_loadWeather:async()=>{
         if(!dp)return;
         const w=await getWeather(dp.lat,dp.lng);

@@ -267,6 +267,18 @@
 <div style="display:{{ planBasisShow }};font-size:10px;font-weight:700;line-height:1.5;color:#153b3d;background:rgba(184,67,28,.08);border-left:2px solid #b8431c;padding:6px 8px;margin:0 0 6px">{{ planBasis }}</div>
 <div style="font-size:9px;line-height:1.5;color:rgba(21,59,61,.7);padding:0 0 8px">{{ routeNote }}</div>
 </div>
+<div style="display:{{ festShow }};flex-direction:column;border-bottom:2px solid rgba(21,59,61,.4)">
+<div style="padding:10px 12px 6px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#b8431c">{{ festTitle }}</div>
+<sc-for list="{{ festivals }}" as="f" hint-placeholder-count="2">
+<button sc-camel-on-click="{{ f.open }}" style="display:flex;gap:10px;align-items:center;width:100%;text-align:left;border:0;border-top:1px solid rgba(21,59,61,.2);background:transparent;padding:8px 12px;cursor:pointer;color:#153b3d;font-family:inherit">
+<div style="width:44px;height:44px;flex:none;background:#e6e4e1 url('{{ f.img }}') center/cover"></div>
+<div style="flex:1;min-width:0">
+<div style="font-size:12px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ f.title }}</div>
+<div style="font-size:9px;color:rgba(21,59,61,.75)">{{ f.when }} · {{ f.where }} · {{ f.km }}</div>
+</div>
+</button>
+</sc-for>
+</div>
 <div style="display:{{ dayPlanDisplay }};flex-direction:column">
 <sc-for list="{{ dayPlan }}" as="d" hint-placeholder-count="2">
 <div style="border-bottom:2px solid rgba(21,59,61,.4)">
@@ -732,6 +744,11 @@
 </div>
 </div>
 </div>
+</div>
+<div style="display:{{ d_airShow }};align-items:center;justify-content:space-between;gap:6px;margin:0 0 6px;padding:3px 6px;font-size:9px;background:{{ d_airBg }};border:1px solid rgba(21,59,61,.25)">
+<span style="font-weight:800">{{ d_airLabel }}</span>
+<span style="font-variant-numeric:tabular-nums">{{ d_airText }}</span>
+<span style="font-weight:800">{{ d_airGrade }}</span>
 </div>
 </div>
 </div>
@@ -2999,6 +3016,7 @@ const T = {
   ytSearchGo:{ko:'검색',en:'Search',zh:'搜索',ja:'検索'},
   transit:{ko:'대중교통',en:'Transit',zh:'公共交通',ja:'公共交通'},
   taxi:{ko:'택시 요금',en:'Taxi Fare',zh:'出租车费用',ja:'タクシー料金'},
+  festTitle:{ko:'여행 기간 행사 · 축제',en:'Events during your trip',zh:'旅行期间的活动',ja:'旅行期間中のイベント'},
   ktx:{ko:'KTX 예매',en:'KTX Booking',zh:'KTX预订',ja:'KTX予約'},
   bus:{ko:'버스 예매',en:'Bus Booking',zh:'巴士预订',ja:'バス予約'},
   booking:{ko:'숙박 예매',en:'Accommodation Booking',zh:'住宿预订',ja:'宿泊予約'},
@@ -3359,7 +3377,7 @@ const ES={
   directions:'Abrir en mapas', lat:'Latitud', lng:'Longitud',
   srcRow:'Fuente de coordenadas', hoursRow:'Horario', feeRow:'Entrada', telRow:'Teléfono', stayRow:'Estancia sugerida', chanRow:'Canal',
   ytSearch:'Buscar RESCENE en YouTube', ytSearchGo:'Buscar',
-  transit:'Transporte público', taxi:'Tarifa de taxi', ktx:'Reserva KTX', bus:'Reserva de autobús',
+  transit:'Transporte público', taxi:'Tarifa de taxi', festTitle:'Eventos durante el viaje', ktx:'Reserva KTX', bus:'Reserva de autobús',
   booking:'Reserva de alojamiento', bmMap:'Mapa', bmSat:'Satélite',
   sortPop:'Populares', sortNew:'Recientes', views:' visualizaciones',
   note:'Las coordenadas son WGS84 y el mapa base es real. Los enlaces abren el canal original.',
@@ -3388,7 +3406,7 @@ Object.keys(DATA).forEach(c=>{
 
 class Component extends DCLogic {
   state = {photos:{}, city:'nation', lang:'ko', tab:'map', cat:'ALL', detail:null, sheet:true, style:0, travelMode:'transit', legs:{}, transit:{}, regions:[], origin:'seoul', originEnd:'', depTime:'08:00', retTime:'19:00', currentMonth:new Date().getMonth(), currentYear:new Date().getFullYear(),
-    subArr:{}, course:{gyeongju:[],geoje:[],nation:[],seoul:[],busan:[],jeju:[],yeongwol:[]}, saved:[], stamps:[], vsort:'pop', basemap:'map', showOff:false, cityPick:false, cityQuery:'', focusLoc:null, scopeLoc:null, scopeMacro:null, ytq:'', taxiFare:0, taxiDist:'', weather:{}, showBooking:false, activeTab:'map'};
+    subArr:{}, course:{gyeongju:[],geoje:[],nation:[],seoul:[],busan:[],jeju:[],yeongwol:[]}, saved:[], stamps:[], vsort:'pop', basemap:'map', showOff:false, cityPick:false, cityQuery:'', focusLoc:null, scopeLoc:null, scopeMacro:null, ytq:'', taxiFare:0, taxiDist:'', weather:{}, air:{}, works:{}, fest:{}, showBooking:false, activeTab:'map'};
 
   tr(k){const o=T[k];const L=this.state.lang;return o[L]||(L==='fr'?o.en:null)||o.ko;}
   accent(){return ACCENTS[0];}
@@ -4549,6 +4567,15 @@ class Component extends DCLogic {
       if(pv.markerStyle!==this.props.markerStyle||pv.catPalette!==this.props.catPalette)this.draw();
     }
   }
+  // 여행 기간 행사 (한국관광공사 축제·행사) — 캐시 키와 기준 좌표
+  _festKey(){const st=this.state;if(!st.tripFrom)return null;return [st.city,st.tripFrom,st.tripTo||st.tripFrom,st.lang].join('|');}
+  _festRef(){
+    const st=this.state, ids=st.course[st.city]||[];
+    const pts=ids.map(id=>this.find(id)).filter(Boolean).map(o=>o.p).filter(p=>p&&p.lat);
+    if(pts.length)return {lat:pts.reduce((s,p)=>s+p.lat,0)/pts.length,lng:pts.reduce((s,p)=>s+p.lng,0)/pts.length};
+    const c=(DATA[st.city]&&DATA[st.city].center)||[36.5,127.8];
+    return {lat:c[0],lng:c[1]};
+  }
   renderVals(){
     this.sync();
     const st=this.state, lang=st.lang, a=this.accent(), on=a.base==='#f2ece0'?'#153b3d':'#f2ece0';
@@ -4695,6 +4722,24 @@ class Component extends DCLogic {
       getWeather(dp.lat,dp.lng).then(w=>{
         this.setState(s=>({weather:{...s.weather,[dp.id]:w}}));
       });
+    }
+    if(dp&&!st.air[dp.id]){
+      this._airReq=this._airReq||{};
+      if(!this._airReq[dp.id]){
+        this._airReq[dp.id]=1;
+        getAirQuality(dp.lat,dp.lng).then(a=>{this.setState(s=>({air:{...s.air,[dp.id]:a||{none:true}}}));}).catch(()=>{});
+      }
+    }
+    const festKey=this._festKey();
+    if(festKey&&!st.fest[festKey]){
+      this._festReq=this._festReq||{};
+      if(!this._festReq[festKey]){
+        this._festReq[festKey]=1;
+        const ref=this._festRef(), lo=st.tripFrom<(st.tripTo||st.tripFrom)?st.tripFrom:(st.tripTo||st.tripFrom), hi=st.tripFrom<(st.tripTo||st.tripFrom)?(st.tripTo||st.tripFrom):st.tripFrom;
+        getFestivals(ref.lat,ref.lng,lo.replace(/-/g,''),hi.replace(/-/g,''),TOUR_SVC[lang]||'KorService2')
+          .then(v=>this.setState(s=>({fest:{...s.fest,[festKey]:v}})))
+          .catch(()=>this.setState(s=>({fest:{...s.fest,[festKey]:[]}})));
+      }
     }
 
     const tabDefs=[['map','tabs'],['course','tabs'],['channel','tabs']];
@@ -5041,6 +5086,13 @@ class Component extends DCLogic {
       courseItems,
       // ── 여러 날 일정 ───────────────────────────────────────────────
       regionMoveLabel:{ko:'지역 이동',en:'Transfer',zh:'区域移动',ja:'地域移動',es:'Traslado',fr:'Transfer'}[lang]||'Transfer',
+      festTitle:this.tr('festTitle'),
+      festShow:(st.fest[this._festKey()]||[]).length?'flex':'none',
+      festivals:(st.fest[this._festKey()]||[]).map(f=>{
+        const md=s=>s.slice(4,6)+'.'+s.slice(6,8);
+        return {key:f.id,title:f.title,when:md(f.start)+'–'+md(f.end),where:f.addr.replace(/^\S+\s+/,'').slice(0,26),km:f.km+'km',img:f.img,
+          open:()=>window.open('https://map.kakao.com/link/search/'+encodeURIComponent(f.title),'_blank')};
+      }),
       dayPlanDisplay:st.tripFrom&&cItems.length?'flex':'none',
       flatDisplay:st.tripFrom&&cItems.length?'none':'flex',
       tripBarDisplay:st.tripFrom?'flex':'none',
@@ -5731,6 +5783,11 @@ class Component extends DCLogic {
       })(),
       d_transitLabel:this.tr('transit'),
       d_weather:st.weather[dp?.id]||{yesterday:{tmp:'?',rn1:'0',icon:'?'},today:{tmp:'?',rn1:'0',icon:'?'},tomorrow:{tmp:'?',rn1:'0',icon:'?'}},
+      d_airShow:(a=>a&&!a.none?'flex':'none')(st.air[dp?.id]),
+      d_airLabel:(AIR_LABEL[lang]||AIR_LABEL.en).title,
+      d_airText:(a=>a&&!a.none?('PM10 '+(a.pm10??'–')+' · PM2.5 '+(a.pm25??'–')):'')(st.air[dp?.id]),
+      d_airGrade:(a=>a&&!a.none?(AIR_LABEL[lang]||AIR_LABEL.en).g[a.grade]||'':'')(st.air[dp?.id]),
+      d_airBg:(a=>a&&!a.none?AIR_COLOR[a.grade]:'transparent')(st.air[dp?.id]),
       d_loadWeather:async()=>{
         if(!dp)return;
         const w=await getWeather(dp.lat,dp.lng);

@@ -5,5 +5,6 @@ window.APP_CONFIG = {
   youtube:    '',   // YouTube Data API v3 (영상 조회수·게시일)
   kakao:      '',   // Kakao REST (로컬 검색)
   dataGoKr:   '',   // 공공데이터포털 서비스키 — 한국관광공사 TourAPI · 한국공항공사 공용
-  exRoad:     ''    // 한국도로공사 공공데이터 (휴게소 목록)
+  exRoad:     '',   // 한국도로공사 공공데이터 (휴게소 목록)
+  tmdb:       ''    // TMDB API 키 v3 (테마 화면 작품 정보 카드) — https://www.themoviedb.org/settings/api
 };

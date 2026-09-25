@@ -526,6 +526,11 @@
 </div>
 </div>
 </div>
+<div style="display:{{ d_airShow }};align-items:center;justify-content:space-between;gap:6px;margin:0 0 6px;padding:3px 6px;font-size:9px;background:{{ d_airBg }};border:1px solid rgba(21,59,61,.25)">
+<span style="font-weight:800">{{ d_airLabel }}</span>
+<span style="font-variant-numeric:tabular-nums">{{ d_airText }}</span>
+<span style="font-weight:800">{{ d_airGrade }}</span>
+</div>
 </div>
 </div>
 <div style="padding:12px;display:flex;flex-direction:column;gap:8px">
@@ -547,6 +552,18 @@
 
 <section style="display:{{ channelDisplay }};flex-direction:column;flex:1;background:#f2ece0;color:#153b3d;padding:12px;gap:12px;overflow-y:auto">
 <div style="font-size:18px;font-weight:800;letter-spacing:-.02em;line-height:1.2">여행 정보</div>
+<div style="display:{{ worksShow }};flex-direction:column;gap:8px">
+<sc-for list="{{ works }}" as="wk" hint-placeholder-count="1">
+<button sc-camel-on-click="{{ wk.open }}" style="display:flex;gap:12px;align-items:flex-start;text-align:left;border:2px solid #153b3d;background:#fff;padding:10px;cursor:pointer;color:#153b3d;font-family:inherit">
+<div style="width:56px;height:84px;flex:none;background:#e6e4e1 url('{{ wk.poster }}') center/cover"></div>
+<div style="flex:1;min-width:0">
+<div style="font-size:13px;font-weight:800;line-height:1.3">{{ wk.title }}</div>
+<div style="font-size:10px;color:#b8431c;font-weight:800;margin:2px 0 4px">{{ wk.sub }}</div>
+<div style="font-size:11px;line-height:1.45;opacity:.85">{{ wk.overview }}</div>
+</div>
+</button>
+</sc-for>
+</div>
 <div style="background:#fff;border:2px solid #153b3d;padding:12px">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
 <button sc-camel-on-click="{{ prevMonth }}" style="width:30px;height:30px;border:1px solid #153b3d;background:#f2ece0;font-weight:800;cursor:pointer">◀</button>
@@ -765,6 +782,8 @@ const DATA = {
     {id:'jdx75',off:true,n:'·',ko:'성판악 탐방로',en:'Seongpanak Trail',un:1,cat:'heal',lat:33.385,lng:126.619,srcKo:'제주시 조천읍 516로 1865 주소 기반 좌표',srcEn:'Address-based: 제주시 조천읍 516로 1865',img:'https://upload.wikimedia.org/wikipedia/commons/e/eb/KOCIS_Halla_Mountain_in_Jeju-do_%286387785543%29.jpg',imgCredit:'Wikimedia Commons',yt:'',min:480,hrs:'입산 통제 시간 엄격 · 예약제 · 무료',bKo:'백록담까지 오르는 유일한 완주 코스 중 하나. 왕복 아홉 시간을 잡는다.',bEn:'One of the two routes that reach the summit crater; allow nine hours round trip.'}
   ]}
 };
+// 작품 정보 (TMDB) — 채널 탭 상단 카드. type: 'movie' | 'tv'
+const WORKS=[{q:'폭싹 속았수다',type:'tv'},{q:'우리들의 블루스',type:'tv'}];
 const T = {
   sub:{ko:'폭싹 속았수다 · 우리들의 블루스 · 제주 촬영지',en:'When Life Gives You Tangerines · Our Blues · Jeju'},
   spots:{ko:'개 장소',en:'spots'},
@@ -1065,7 +1084,7 @@ Object.keys(DATA).forEach(c=>{
 
 class Component extends DCLogic {
   state = {city:'jeju', lang:'ko', tab:'map', cat:'ALL', detail:null, sheet:true, style:0, travelMode:'transit', legs:{}, transit:{}, regions:[], origin:'gimpoAir', originEnd:'', depTime:'08:00', retTime:'19:00', currentMonth:new Date().getMonth(), currentYear:new Date().getFullYear(),
-    course:{jeju:[]}, saved:[], stamps:[], vsort:'pop', basemap:'map', showOff:false, ytq:'', taxiFare:0, taxiDist:'', weather:{}, showBooking:false, activeTab:'map'};
+    course:{jeju:[]}, saved:[], stamps:[], vsort:'pop', basemap:'map', showOff:false, ytq:'', taxiFare:0, taxiDist:'', weather:{}, air:{}, works:{}, fest:{}, showBooking:false, activeTab:'map'};
 
   tr(k){const o=T[k];return o[this.state.lang]||o.ko;}
   accent(){return ACCENTS[this.state.style%3];}
@@ -1858,6 +1877,18 @@ class Component extends DCLogic {
         this.setState(s=>({weather:{...s.weather,[dp.id]:w}}));
       });
     }
+    if(dp&&!st.air[dp.id]){
+      this._airReq=this._airReq||{};
+      if(!this._airReq[dp.id]){
+        this._airReq[dp.id]=1;
+        getAirQuality(dp.lat,dp.lng).then(a=>{this.setState(s=>({air:{...s.air,[dp.id]:a||{none:true}}}));}).catch(()=>{});
+      }
+    }
+    if(TMDB_KEY&&st.activeTab==='channel'){
+      this._worksReq=this._worksReq||{};
+      WORKS.forEach(w=>{const k=w.q+'|'+lang;if(!st.works[k]&&!this._worksReq[k]){this._worksReq[k]=1;
+        getTitleMeta(w.q,w.type,lang).then(v=>this.setState(s=>({works:{...s.works,[k]:v||{none:true}}}))).catch(()=>{});}});
+    }
 
     const tabDefs=[['map','tabs'],['course','tabs'],['videos','tabs'],['stamp','tabs'],['channel','tabs']];
     const tabs=tabDefs.map(([k])=>({key:k,label:T.tabs[k][lang]||T.tabs[k].ko,
@@ -1890,6 +1921,11 @@ class Component extends DCLogic {
       chips, visiblePlaces,
       mapDisplay:st.activeTab==='map'?'flex':'none',
       channelDisplay:st.activeTab==='channel'?'flex':'none',
+      worksShow:WORKS.some(w=>{const v=st.works[w.q+'|'+lang];return v&&!v.none;})?'flex':'none',
+      works:WORKS.map(w=>st.works[w.q+'|'+lang]).filter(v=>v&&!v.none).map(v=>({key:v.id,
+        title:v.title+(v.year?' ('+v.year+')':''),
+        sub:(v.orig&&v.orig!==v.title?v.orig+' · ':'')+(v.rating?'★ '+v.rating:'')+' · TMDB',
+        overview:v.overview.slice(0,140)+(v.overview.length>140?'…':''),poster:v.poster,open:()=>window.open(v.url,'_blank')})),
       videoDisplay:st.activeTab==='videos'?'flex':'none',
       stampDisplay:st.activeTab==='stamp'?'flex':'none',
       sheetHeight:st.sheet?'46%':'30px',
@@ -2573,6 +2609,11 @@ class Component extends DCLogic {
       d_directions:dp?'https://www.google.com/maps/search/?api=1&query='+dp.lat+','+dp.lng:'#',
       d_transitLabel:this.tr('transit'),
       d_weather:st.weather[dp?.id]||{yesterday:{tmp:'?',rn1:'0',icon:'?'},today:{tmp:'?',rn1:'0',icon:'?'},tomorrow:{tmp:'?',rn1:'0',icon:'?'}},
+      d_airShow:(a=>a&&!a.none?'flex':'none')(st.air[dp?.id]),
+      d_airLabel:(AIR_LABEL[lang]||AIR_LABEL.en).title,
+      d_airText:(a=>a&&!a.none?('PM10 '+(a.pm10??'–')+' · PM2.5 '+(a.pm25??'–')):'')(st.air[dp?.id]),
+      d_airGrade:(a=>a&&!a.none?(AIR_LABEL[lang]||AIR_LABEL.en).g[a.grade]||'':'')(st.air[dp?.id]),
+      d_airBg:(a=>a&&!a.none?AIR_COLOR[a.grade]:'transparent')(st.air[dp?.id]),
       d_loadWeather:async()=>{
         if(!dp)return;
         const w=await getWeather(dp.lat,dp.lng);
