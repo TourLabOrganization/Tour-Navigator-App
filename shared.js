@@ -74,7 +74,7 @@ const CAT_COLORS={
 
 // 카테고리 축약 라벨
 const CAT_SHORT={
-  ko:{sea:'해양',heal:'힐링',herit:'역사',activity:'테마',stay:'숙박',food:'상권'},
+  ko:{sea:'해양',heal:'힐링',herit:'유산',activity:'테마',stay:'숙박',food:'상권'},
   en:{sea:'SEA',heal:'ECO',herit:'HER',activity:'FUN',stay:'STAY',food:'EAT'},
   zh:{sea:'海洋',heal:'疗愈',herit:'历史',activity:'主题',stay:'住宿',food:'商圈'},
   ja:{sea:'海洋',heal:'癒し',herit:'歴史',activity:'テーマ',stay:'宿泊',food:'商圏'},
@@ -82,7 +82,7 @@ const CAT_SHORT={
 };
 
 // 카테고리 스페인어 라벨
-const CATS_ES={stay:'Alojamiento y experiencias',sea:'Paisaje costero',heal:'Naturaleza y ecoturismo',herit:'Patrimonio histórico',food:'Comercio y gastronomía',activity:'Parques y actividades',station:'Estación',terminal:'Terminal'};
+const CATS_ES={stay:'Alojamiento',sea:'Paisaje costero',heal:'Naturaleza y ecoturismo',herit:'Patrimonio y tradición',food:'Comercio y gastronomía',activity:'Parques y actividades',station:'Estación',terminal:'Terminal'};
 
 // 달력 월 이름 (언어별)
 const CAL_MONTH={
@@ -173,6 +173,7 @@ const _kst=()=>new Date(Date.now()+9*3600e3);
 const _pad2=n=>String(n).padStart(2,'0');
 const _ymdU=d=>d.getUTCFullYear()+_pad2(d.getUTCMonth()+1)+_pad2(d.getUTCDate());
 // 가장 최근 발표분 (02·05·08·11·14·17·20·23시, 발표 10분 뒤 제공)
+const _kmaCache={};
 function kmaBase(){
   const t=new Date(_kst().getTime()-10*60000);
   let pick=null;for(const b of [2,5,8,11,14,17,20,23]){if(b<=t.getUTCHours())pick=b;}
@@ -182,30 +183,39 @@ function kmaBase(){
 // 오늘·내일의 최고기온 · 강수량 합 · 아이콘. 키가 없거나 실패하면 null
 async function getKmaForecast(lat,lng){
   if(!DATA_GO_KR_KEY)return null;
-  const {nx,ny}=kmaGrid(lat,lng), b=kmaBase();
+  const {nx,ny}=kmaGrid(lat,lng), ck=nx+','+ny;
+  if(_kmaCache[ck]&&Date.now()-_kmaCache[ck].t<60*60000)return _kmaCache[ck].v;
+  const b=kmaBase();
   const u='https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey='+encodeURIComponent(DATA_GO_KR_KEY)
     +'&pageNo=1&numOfRows=1000&dataType=JSON&base_date='+b.base_date+'&base_time='+b.base_time+'&nx='+nx+'&ny='+ny;
   const j=await fetch(u).then(r=>r.json());
   const items=(((j.response||{}).body||{}).items||{}).item||[];
+  if(!items.length)return null;
   const days={};
   items.forEach(it=>{
-    const d=days[it.fcstDate]||(days[it.fcstDate]={tmp:[],tmx:null,rain:0,pty:0,sky:0});
-    const v=it.fcstValue;
+    const d=days[it.fcstDate]||(days[it.fcstDate]={tmp:[],tmx:null,rain:0,pty:0,sky:{}});
+    const v=it.fcstValue, h=Number(String(it.fcstTime).slice(0,2));
     if(it.category==='TMX')d.tmx=Number(v);
     else if(it.category==='TMP')d.tmp.push(Number(v));
-    else if(it.category==='PCP'){const m=String(v).match(/[\d.]+/);if(m)d.rain+=Number(m[0]);}
-    else if(it.category==='PTY'){const p=Number(v);if(p>d.pty)d.pty=p;}
-    else if(it.category==='SKY'&&(it.fcstTime==='1200'||!d.sky))d.sky=Number(v);
+    else if(it.category==='PCP'){if(/미만/.test(v))d.rain+=0.5;else{const m=String(v).match(/[\d.]+/);if(m)d.rain+=Number(m[0]);}}
+    else if(it.category==='PTY'&&h>=6&&h<=21){const p=Number(v);if(p===3||p===7)d.pty=3;else if(p&&d.pty!==3)d.pty=p;}
+    else if(it.category==='SKY'&&h>=6&&h<=21)d.sky[v]=(d.sky[v]||0)+1;
   });
-  const icon=d=>d.pty===3?'❄️':d.pty===4?'⛈️':d.pty>0?'🌧️':(d.sky>=3?'☁️':'☀️');
+  // 주간(06–21시) 강수형태·하늘만 본다. 하늘은 가장 많이 나온 값
+  const icon=d=>{
+    if(d.pty===3)return '❄️'; if(d.pty===2||d.pty===6)return '🌨️'; if(d.pty===4)return '⛈️'; if(d.pty)return '🌧️';
+    const sk=Object.keys(d.sky).sort((a,b)=>d.sky[b]-d.sky[a])[0]; return sk==='1'?'☀️':sk==='3'?'⛅':'☁️';
+  };
   const t=_kst(), today=_ymdU(t); t.setUTCDate(t.getUTCDate()+1); const tomorrow=_ymdU(t);
   const out={};
   for(const [k,key] of [[today,'today'],[tomorrow,'tomorrow']]){
     const d=days[k]; if(!d)continue;
     const tmp=d.tmx!=null?d.tmx:(d.tmp.length?Math.max(...d.tmp):null); if(tmp===null)continue;
-    out[key]={tmp:Math.round(tmp)+'°C',rn1:d.rain.toFixed(1),icon:icon(d)};
+    out[key]={tmp:Math.round(tmp)+'°C',rn1:d.rain.toFixed(1),icon:icon(d),src:'기상청'};
   }
-  return Object.keys(out).length?out:null;
+  const v=Object.keys(out).length?out:null;
+  _kmaCache[ck]={t:Date.now(),v};
+  return v;
 }
 
 // ── 에어코리아 미세먼지 (공공데이터포털 · DATA_GO_KR_KEY) ──────────────────────
