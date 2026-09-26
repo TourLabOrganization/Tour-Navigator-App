@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-c3769e85-f6cb-43ef-9ada-8fa20372761c/styles.css">
+<script src="_ds/modernist-c3769e85-f6cb-43ef-9ada-8fa20372761c/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#d7d3d3;font-family:"Archivo","Noto Sans KR",system-ui,sans-serif;color:#201e1d;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#ec3013;text-underline-offset:3px}a:hover{color:#ae1800}
+@keyframes rsFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+@keyframes rsDrain { from { transform: scaleY(1) } to { transform: scaleY(0) } }
+@keyframes rsFill { from { transform: scaleY(0) } to { transform: scaleY(1) } }
+@keyframes rsStream { 0%,100% { opacity:0.25 } 50% { opacity:1 } }
+@keyframes rsSplashOut { 0%,86% { opacity:1 } 100% { opacity:0 } }
+@keyframes rsProgress { from { width:0% } to { width:100% } }
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;background:#d7d3d3">
+<div style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden;position:relative;box-shadow:0 12px 32px rgba(45,43,43,.22)">
+
+  <header style="flex:none;border-bottom:2px solid rgba(32,30,29,.4)">
+    <div style="display:flex;align-items:stretch;height:46px">
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 12px;min-width:0">
+        <div style="font-size:14px;font-weight:800;letter-spacing:-.02em;line-height:1">TOUR NAVIGATOR</div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(32,30,29,.55);margin-top:3px">Theme Library</div>
+      </div>
+      <button style="width:44px;border:0;border-left:2px solid rgba(32,30,29,.4);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#201e1d" style-hover="background:rgba(236,48,19,.12)" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+      </button>
+      <button style="width:44px;border:0;border-left:2px solid rgba(32,30,29,.4);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#201e1d;position:relative" style-hover="background:rgba(236,48,19,.12)" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"><path d="M6 10a6 6 0 0 1 12 0v6h2H4h2z"></path><path d="M10 19h4"></path></svg>
+        <span style="position:absolute;top:8px;right:6px;min-width:14px;height:14px;background:#ec3013;color:#f3f2f2;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 3px">3</span>
+      </button>
+    </div>
+    <div style="display:flex;border-top:2px solid rgba(32,30,29,.4)">
+      <button style="flex:1;height:36px;border:0;border-right:2px solid rgba(32,30,29,.4);cursor:pointer;text-align:left;padding:0 9px;font-size:11.5px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;background:#ec3013;color:#f3f2f2" type="button">내 테마</button>
+      <button style="flex:1;height:36px;border:0;border-right:2px solid rgba(32,30,29,.4);cursor:pointer;text-align:left;padding:0 9px;font-size:11.5px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;background:transparent;color:#201e1d" style-hover="background:rgba(236,48,19,.12)" type="button">전체 테마</button>
+      <div style="flex:none;width:74px;display:flex;align-items:center;padding:0 10px;font-size:9.5px;font-weight:600;color:rgba(32,30,29,.55);letter-spacing:.02em;white-space:nowrap">3 / 6</div>
+    </div>
+  </header>
+
+  <div style="flex:1;overflow-y:auto">
+
+    <div style="background:#ec3013;color:#f3f2f2;border-bottom:2px solid #201e1d;overflow:hidden;position:relative">
+      <div style="display:flex;width:100%;transform:{{ bannerShift }};transition:transform .55s cubic-bezier(.4,0,.2,1)">
+      <div style="flex:0 0 100%;box-sizing:border-box;padding:18px 12px 26px;position:relative">
+        <span style="display:inline-block;background:#f3f2f2;color:#ec3013;font-size:9px;font-weight:800;letter-spacing:.14em;padding:4px 7px">THEME · RESCENE ROUTE</span>
+        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">영상 속 그 길을<br>그대로 걷다</h2>
+        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">촬영지와 이동 경로를 한 번에 계획해 보세요</p>
+        <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:11px;font-weight:800;border:2px solid rgba(243,242,242,.7);padding:3px 8px;letter-spacing:.06em">1 / 3</span>
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(243,242,242,.55)" stroke-width="1" stroke-linecap="square" style="margin:-22px -2px -8px 0"><path d="M3 11.5 21 4l-7.5 17-2-7.5z"></path><path d="M11.5 13.5 21 4"></path></svg>
+        </div>
+      </div>
+      <div style="flex:0 0 100%;box-sizing:border-box;padding:18px 12px 26px;position:relative">
+        <span style="display:inline-block;background:#f3f2f2;color:#ec3013;font-size:9px;font-weight:800;letter-spacing:.14em;padding:4px 7px">NEW · 왕과 사는 남자</span>
+        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">단종이 걸은 길을<br>영월에서 만나다</h2>
+        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">청령포에서 장릉까지, 유배의 동선을 따라</p>
+        <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:11px;font-weight:800;border:2px solid rgba(243,242,242,.7);padding:3px 8px;letter-spacing:.06em">2 / 3</span>
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(243,242,242,.55)" stroke-width="1" stroke-linecap="square" style="margin:-22px -2px -8px 0"><path d="M3 11.5 21 4l-7.5 17-2-7.5z"></path><path d="M11.5 13.5 21 4"></path></svg>
+        </div>
+      </div>
+      <div style="flex:0 0 100%;box-sizing:border-box;padding:18px 12px 26px;position:relative">
+        <span style="display:inline-block;background:#f3f2f2;color:#ec3013;font-size:9px;font-weight:800;letter-spacing:.14em;padding:4px 7px">NEW · 케이팝 데몬 헌터스</span>
+        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">헌트릭스의 서울을<br>발로 따라가다</h2>
+        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">낙산공원 성곽길에서 잠실 최종 무대까지</p>
+        <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:11px;font-weight:800;border:2px solid rgba(243,242,242,.7);padding:3px 8px;letter-spacing:.06em">3 / 3</span>
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(243,242,242,.55)" stroke-width="1" stroke-linecap="square" style="margin:-22px -2px -8px 0"><path d="M3 11.5 21 4l-7.5 17-2-7.5z"></path><path d="M11.5 13.5 21 4"></path></svg>
+        </div>
+      </div>
+      </div>
+      <div style="position:absolute;left:12px;bottom:12px;display:flex;gap:5px">
+        <button sc-camel-on-click="{{ goto0 }}" aria-label="1번 배너" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot0 }}" type="button"></button>
+        <button sc-camel-on-click="{{ goto1 }}" aria-label="2번 배너" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot1 }}" type="button"></button>
+        <button sc-camel-on-click="{{ goto2 }}" aria-label="3번 배너" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot2 }}" type="button"></button>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;height:40px;border-bottom:2px solid rgba(32,30,29,.4);padding:0 0 0 12px">
+      <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#ec3013">나의 테마</span>
+      <button style="width:44px;height:40px;border:0;border-left:2px solid rgba(32,30,29,.4);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#201e1d" style-hover="background:rgba(236,48,19,.12)" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 4v16M4 12h16"></path></svg>
+      </button>
+    </div>
+
+    <div style="padding:14px 12px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px 12px;border-bottom:2px solid rgba(32,30,29,.4)">
+
+      <a href="RESCENE Route.dc.html" style="display:flex;flex-direction:column;gap:7px;text-decoration:none;color:#201e1d" style-hover="color:#ec3013">
+        <span style="position:relative;display:block;width:100%;aspect-ratio:1;border:2px solid #201e1d;overflow:hidden">
+          <img src="uploads/images (18).jpg" alt="RESCENE" style="width:100%;height:100%;object-fit:cover;display:block">
+          <span style="position:absolute;top:0;left:0;background:#201e1d;color:#f3f2f2;font-size:8px;font-weight:800;letter-spacing:.1em;padding:2px 5px">OPEN</span>
+        </span>
+        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em">RESCENE<br>Route</span>
+      </a>
+
+      <a href="Kings Warden Route.dc.html" style="display:flex;flex-direction:column;gap:7px;text-decoration:none;color:#201e1d" style-hover="color:#ec3013">
+        <span style="position:relative;display:block;width:100%;aspect-ratio:1;border:2px solid #201e1d;overflow:hidden">
+          <img src="uploads/images (17).jpg" alt="왕과 사는 남자" style="width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block">
+          <span style="position:absolute;top:0;left:0;background:#ec3013;color:#f3f2f2;font-size:8px;font-weight:800;letter-spacing:.1em;padding:2px 5px">NEW</span>
+        </span>
+        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em">왕과 사는<br>남자</span>
+      </a>
+
+      <a href="KPop Demon Hunters Route.dc.html" style="display:flex;flex-direction:column;gap:7px;text-decoration:none;color:#201e1d" style-hover="color:#ec3013">
+        <span style="position:relative;display:block;width:100%;aspect-ratio:1;border:2px solid #201e1d;overflow:hidden">
+          <img src="uploads/images (19).jpg" alt="케이팝 데몬 헌터스" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:172%;max-width:none;height:auto;display:block">
+          <span style="position:absolute;top:0;left:0;background:#201e1d;color:#f3f2f2;font-size:8px;font-weight:800;letter-spacing:.1em;padding:2px 5px">NEW</span>
+        </span>
+        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em">케데헌<br>서울</span>
+      </a>
+
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div style="width:100%;aspect-ratio:1;border:2px dashed rgba(32,30,29,.35);background:#eae9e9"></div>
+        <span style="font-size:11px;font-weight:600;color:rgba(32,30,29,.5)">준비 중</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div style="width:100%;aspect-ratio:1;border:2px dashed rgba(32,30,29,.35);background:#eae9e9"></div>
+        <span style="font-size:11px;font-weight:600;color:rgba(32,30,29,.5)">준비 중</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div style="width:100%;aspect-ratio:1;border:2px solid #201e1d;background:#f3f2f2;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:rgba(236,48,19,.12)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ec3013" stroke-width="2" stroke-linecap="square"><path d="M12 4v16M4 12h16"></path></svg>
+        </div>
+        <span style="font-size:11px;font-weight:800">테마 추가</span>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;height:40px;border-bottom:2px solid rgba(32,30,29,.4);padding:0 12px;gap:8px">
+      <span style="flex:none;display:block;width:8px;height:8px;background:#ec3013"></span>
+      <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">지금 인기 코스</span>
+    </div>
+
+    <div style="display:flex;gap:10px;padding:12px">
+      <div style="flex:1;border:2px solid rgba(32,30,29,.4);padding:10px;background:#fff">
+        <div style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#ae1800">UNESCO</div>
+        <div style="margin-top:6px;font-size:13px;font-weight:800;letter-spacing:-.01em">경주 2박 3일</div>
+        <div style="margin-top:4px;font-size:10.5px;font-weight:600;color:rgba(32,30,29,.55)">촬영지 9곳 · KTX</div>
+      </div>
+      <div style="flex:1;border:2px solid rgba(32,30,29,.4);padding:10px;background:#fff">
+        <div style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#ae1800">COAST</div>
+        <div style="margin-top:6px;font-size:13px;font-weight:800;letter-spacing:-.01em">거제 1박 2일</div>
+        <div style="margin-top:4px;font-size:10.5px;font-weight:600;color:rgba(32,30,29,.55)">촬영지 6곳 · 자가용</div>
+      </div>
+    </div>
+  </div>
+
+  <nav style="flex:none;display:flex;border-top:2px solid #201e1d;background:#f3f2f2">
+    <button style="flex:1;height:56px;border:0;border-right:1px solid rgba(32,30,29,.25);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:0 10px;background:#ec3013;color:#f3f2f2" type="button">
+      <span style="display:block;width:14px;height:14px;border:2px solid currentColor;background:currentColor"></span>
+      <span style="font-size:8.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;line-height:1">Home</span>
+    </button>
+    <button style="flex:1;height:56px;border:0;border-right:1px solid rgba(32,30,29,.25);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:0 10px;background:transparent;color:#201e1d" style-hover="background:rgba(236,48,19,.12)" type="button">
+      <span style="display:block;width:14px;height:14px;border:2px solid currentColor;background:transparent"></span>
+      <span style="font-size:8.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;line-height:1">Alert</span>
+    </button>
+    <button style="flex:1;height:56px;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:0 10px;background:transparent;color:#201e1d" style-hover="background:rgba(236,48,19,.12)" type="button">
+      <span style="display:block;width:14px;height:14px;border:2px solid currentColor;background:transparent"></span>
+      <span style="font-size:8.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;line-height:1">Me</span>
+    </button>
+  </nav>
+
+  <sc-if value="{{ splash }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;background:#ec3013;animation:rsSplashOut 3700ms ease forwards;z-index:900">
+      <div style="position:absolute;left:0;right:0;top:82px;height:2px;background:rgba(243,242,242,.35)"></div>
+
+      <div style="position:absolute;top:142px;left:0;right:0;display:flex;justify-content:center">
+        <div style="width:228px;height:228px;background:#f3f2f2;display:flex;align-items:center;justify-content:center;animation:rsFloat 4.5s ease-in-out infinite">
+          <svg width="124" height="124" viewBox="0 0 24 24" fill="none" stroke="#ec3013" stroke-width="1.4" stroke-linecap="square" stroke-linejoin="miter">
+            <path d="M3 11.5 21 4l-7.5 17-2-7.5z"></path>
+            <path d="M11.5 13.5 21 4"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div style="position:absolute;top:404px;left:0;right:0;display:flex;justify-content:center">
+        <svg width="46" height="68" viewBox="0 0 46 68" fill="none">
+          <defs>
+            <clipPath id="rsTop"><path d="M9 8h28L23 32z"></path></clipPath>
+            <clipPath id="rsBot"><path d="M23 36 37 60H9z"></path></clipPath>
+          </defs>
+          <g clip-path="url(#rsTop)">
+            <rect x="7" y="6" width="32" height="28" fill="#f3f2f2" style="transform-origin:center bottom;animation:rsDrain 3200ms linear forwards"></rect>
+          </g>
+          <g clip-path="url(#rsBot)">
+            <rect x="7" y="34" width="32" height="28" fill="#f3f2f2" style="transform-origin:center bottom;animation:rsFill 3200ms linear forwards"></rect>
+          </g>
+          <path d="M23 33.2v1.6" stroke="#f3f2f2" stroke-width="1.6" style="animation:rsStream 700ms linear infinite"></path>
+          <path d="M9 8h28L23 34 37 60H9L23 34z" stroke="rgba(243,242,242,.9)" stroke-width="2" stroke-linejoin="miter"></path>
+          <path d="M6 6h34M6 62h34" stroke="#f3f2f2" stroke-width="2.4" stroke-linecap="square"></path>
+        </svg>
+      </div>
+
+      <div style="position:absolute;left:12px;right:12px;bottom:104px;color:#f3f2f2">
+        <div style="font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase">Tour Navigator</div>
+        <div style="height:2px;background:rgba(243,242,242,.6);margin:12px 0 20px"></div>
+        <h1 style="margin:0;font-size:36px;line-height:1.1;font-weight:800;letter-spacing:-.03em">우리 이제<br>같이 떠나는 사이!</h1>
+        <p style="margin:16px 0 0;font-size:15px;line-height:1.5;font-weight:500;opacity:.92">영상 속 그 장면으로,<br>테마별 여행을 시작해 보세요!</p>
+      </div>
+
+      <div style="position:absolute;left:12px;right:12px;bottom:56px">
+        <div style="height:4px;background:rgba(243,242,242,.35)">
+          <div style="height:4px;background:#f3f2f2;width:100%;animation:rsProgress 3200ms linear forwards"></div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+<button onClick="{{ replay }}" style="position:fixed;right:14px;top:14px;z-index:950;height:24px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:0 8px;cursor:pointer" style-hover="background:rgba(236,48,19,.12)" type="button">Replay</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { splash: true, slide: 0 };
+
+  componentDidMount() {
+    this.timer = setTimeout(() => this.setState({ splash: false }), 3700);
+    this.startRotate();
+  }
+
+  startRotate = () => {
+    clearInterval(this.rotate);
+    this.rotate = setInterval(() => this.setState(s => ({ slide: (s.slide + 1) % 3 })), 5000);
+  };
+
+  goto = n => () => { this.setState({ slide: n }); this.startRotate(); };
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+    clearTimeout(this.remount);
+    clearInterval(this.rotate);
+  }
+
+  replay = () => {
+    clearTimeout(this.timer);
+    clearTimeout(this.remount);
+    this.setState({ splash: false });
+    this.remount = setTimeout(() => {
+      this.setState({ splash: true });
+      this.timer = setTimeout(() => this.setState({ splash: false }), 3700);
+    }, 60);
+  };
+
+  renderVals() {
+    const i = this.state.slide;
+    const dot = n => (n === i ? '#f3f2f2' : 'rgba(243,242,242,.35)');
+    return {
+      splash: this.state.splash, replay: this.replay,
+      bannerShift: 'translateX(-' + (i * 100) + '%)',
+      goto0: this.goto(0), goto1: this.goto(1), goto2: this.goto(2),
+      dot0: dot(0), dot1: dot(1), dot2: dot(2)
+    };
+  }
+}
+</script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#ec3013"/><g transform="translate(30,30)"><text x="20" y="18" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#f3f2f2" text-anchor="middle">TN</text></g></svg></template>
+</body>
+</html>

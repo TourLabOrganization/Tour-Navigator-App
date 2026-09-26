@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_da913c7ae90c79b7be49bc808f82389c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+<div style="
+position:fixed;top:18px;left:50px;z-index:9999;
+background:rgba(255,255,255,.94);padding:14px 20px;
+border-radius:18px;box-shadow:0 4px 18px rgba(60,30,70,.18);
+font-family:Arial,'Malgun Gothic',sans-serif;">
+<div style="font-size:22px;font-weight:900;color:#7B3FBF;">
+RESCENE × 거제 관광
+</div>
+<div style="font-size:13px;font-weight:700;color:#FF4F9A;margin-top:3px;">
+실제 WGS84 좌표 기반 인터랙티브 관광 테마맵
+</div>
+<div style="font-size:11px;color:#777;margin-top:5px;">
+지형·해안선·도로는 베이스맵 원본을 그대로 사용
+</div>
+</div>
+    
+            <div class="folium-map" id="map_da913c7ae90c79b7be49bc808f82389c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_da913c7ae90c79b7be49bc808f82389c = L.map(
+                "map_da913c7ae90c79b7be49bc808f82389c",
+                {
+                    center: [34.84, 128.64],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_da913c7ae90c79b7be49bc808f82389c);
+
+            
+
+        
+    
+            var tile_layer_e773f9d765012a11933c0c469ca07a27 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e773f9d765012a11933c0c469ca07a27.addTo(map_da913c7ae90c79b7be49bc808f82389c);
+        
+    
+            var tile_layer_d49aa3c3bef7a071bb832637a8aa704f = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri World Imagery",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d49aa3c3bef7a071bb832637a8aa704f.addTo(map_da913c7ae90c79b7be49bc808f82389c);
+        
+    
+            var feature_group_ff15c0bd7f898bf50df412667ae45ffe = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_2c58448734c98ced0615927b21ade02b = L.marker(
+                [34.9110910787, 128.7104315142],
+                {
+}
+            ).addTo(feature_group_ff15c0bd7f898bf50df412667ae45ffe);
+        
+    
+            var div_icon_eb5a3aad0d8aa2a7f8a85ab3a484a11c = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#FF4F9A;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          1\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_b65752d9fdf564de0484fae25b6ebea1 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_b3374b963048f4929d43728e0e869f3a = $(`<div id="html_b3374b963048f4929d43728e0e869f3a" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#FF4F9A;font-weight:800;">         해양·자연경관       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         1. 덕포해수욕장       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.9110911<br>         <b>경도</b> 128.7104315<br>         <b>좌표 기준</b> 한국관광공사 좌표       </div>       <div style="margin-top:10px;"><a href="https://youtu.be/SF29doLuBfc" target="_blank" style="color:#FF4F9A;font-weight:800;text-decoration:none;">▶ YouTube 영상 보기</a></div>     </div>     </div>`)[0];
+                popup_b65752d9fdf564de0484fae25b6ebea1.setContent(html_b3374b963048f4929d43728e0e869f3a);
+            
+        
+
+        marker_2c58448734c98ced0615927b21ade02b.bindPopup(popup_b65752d9fdf564de0484fae25b6ebea1)
+        ;
+
+        
+    
+    
+            marker_2c58448734c98ced0615927b21ade02b.bindTooltip(
+                `<div>
+                     1. 덕포해수욕장
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2c58448734c98ced0615927b21ade02b.setIcon(div_icon_eb5a3aad0d8aa2a7f8a85ab3a484a11c);
+            
+    
+            var marker_b3b997e32f62abf83b07df4e27e58247 = L.marker(
+                [34.9682512568, 128.7051193387],
+                {
+}
+            ).addTo(feature_group_ff15c0bd7f898bf50df412667ae45ffe);
+        
+    
+            var div_icon_0c12c50144ba1c68d8198fda3e17b86f = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#FF4F9A;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          2\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_f99e6d369a03eef2b5da1971c163a29e = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_934e0abc869b80cbdf83ea2925466358 = $(`<div id="html_934e0abc869b80cbdf83ea2925466358" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#FF4F9A;font-weight:800;">         해양·자연경관       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         2. 매미성       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.9682513<br>         <b>경도</b> 128.7051193<br>         <b>좌표 기준</b> 한국관광공사 좌표       </div>       <div style="margin-top:10px;"><a href="https://youtu.be/_GKSineBozo" target="_blank" style="color:#FF4F9A;font-weight:800;text-decoration:none;">▶ YouTube 영상 보기</a></div>     </div>     </div>`)[0];
+                popup_f99e6d369a03eef2b5da1971c163a29e.setContent(html_934e0abc869b80cbdf83ea2925466358);
+            
+        
+
+        marker_b3b997e32f62abf83b07df4e27e58247.bindPopup(popup_f99e6d369a03eef2b5da1971c163a29e)
+        ;
+
+        
+    
+    
+            marker_b3b997e32f62abf83b07df4e27e58247.bindTooltip(
+                `<div>
+                     2. 매미성
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b3b997e32f62abf83b07df4e27e58247.setIcon(div_icon_0c12c50144ba1c68d8198fda3e17b86f);
+            
+    
+            var marker_66f196c7ba5e9422e643c1fee49697c3 = L.marker(
+                [34.7333354513, 128.6839246455],
+                {
+}
+            ).addTo(feature_group_ff15c0bd7f898bf50df412667ae45ffe);
+        
+    
+            var div_icon_b44287634ae2c961a2a2c5a94bab64f9 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#FF4F9A;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          3\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_383c0a37770c19b8c91f8b76e27801bf = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_2e4b3bc9ee43014208fd37eb78653d8e = $(`<div id="html_2e4b3bc9ee43014208fd37eb78653d8e" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#FF4F9A;font-weight:800;">         해양·자연경관       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         3. 해금강       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.7333355<br>         <b>경도</b> 128.6839246<br>         <b>좌표 기준</b> 한국관광공사 좌표       </div>       <div style="margin-top:10px;"><a href="https://youtu.be/Gdez_IKDK-I" target="_blank" style="color:#FF4F9A;font-weight:800;text-decoration:none;">▶ YouTube 영상 보기</a></div>     </div>     </div>`)[0];
+                popup_383c0a37770c19b8c91f8b76e27801bf.setContent(html_2e4b3bc9ee43014208fd37eb78653d8e);
+            
+        
+
+        marker_66f196c7ba5e9422e643c1fee49697c3.bindPopup(popup_383c0a37770c19b8c91f8b76e27801bf)
+        ;
+
+        
+    
+    
+            marker_66f196c7ba5e9422e643c1fee49697c3.bindTooltip(
+                `<div>
+                     3. 해금강
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_66f196c7ba5e9422e643c1fee49697c3.setIcon(div_icon_b44287634ae2c961a2a2c5a94bab64f9);
+            
+    
+            var marker_428b02269fbe09a0d0fee121ef04398f = L.marker(
+                [34.7440838814, 128.6633372606],
+                {
+}
+            ).addTo(feature_group_ff15c0bd7f898bf50df412667ae45ffe);
+        
+    
+            var div_icon_328ece3696e8df73bc92102d19279b6f = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#FF4F9A;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          4\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_b2415bdbd6d3e69cb3a60d4cd2326963 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_90d781bcf154fc251a676cb3157b324d = $(`<div id="html_90d781bcf154fc251a676cb3157b324d" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#FF4F9A;font-weight:800;">         해양·자연경관       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         4. 바람의 언덕       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.7440839<br>         <b>경도</b> 128.6633373<br>         <b>좌표 기준</b> 한국관광공사 좌표       </div>       <div style="margin-top:10px;"><a href="https://youtu.be/YV9Q9fBNzLs" target="_blank" style="color:#FF4F9A;font-weight:800;text-decoration:none;">▶ YouTube 영상 보기</a></div>     </div>     </div>`)[0];
+                popup_b2415bdbd6d3e69cb3a60d4cd2326963.setContent(html_90d781bcf154fc251a676cb3157b324d);
+            
+        
+
+        marker_428b02269fbe09a0d0fee121ef04398f.bindPopup(popup_b2415bdbd6d3e69cb3a60d4cd2326963)
+        ;
+
+        
+    
+    
+            marker_428b02269fbe09a0d0fee121ef04398f.bindTooltip(
+                `<div>
+                     4. 바람의 언덕
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_428b02269fbe09a0d0fee121ef04398f.setIcon(div_icon_328ece3696e8df73bc92102d19279b6f);
+            
+    
+            feature_group_ff15c0bd7f898bf50df412667ae45ffe.addTo(map_da913c7ae90c79b7be49bc808f82389c);
+        
+    
+            var feature_group_60a3d8ab0d696f5f7fbea7f1a27b4a14 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_a40bbb23cb99c26a121b13cc0d82403b = L.marker(
+                [34.8566, 128.5782],
+                {
+}
+            ).addTo(feature_group_60a3d8ab0d696f5f7fbea7f1a27b4a14);
+        
+    
+            var div_icon_9b2c568ff4aa6b686d771a0a0bc5d5c5 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#7B3FBF;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          5\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_1e7bcd884586bf16929cd8a603b80667 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_b2e40da02e39d25368ffbf3f21cfe8ad = $(`<div id="html_b2e40da02e39d25368ffbf3f21cfe8ad" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#7B3FBF;font-weight:800;">         힐링·생태·체험       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         5. 오션뷰 카페 씨야드       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.8566000<br>         <b>경도</b> 128.5782000<br>         <b>좌표 기준</b> 주소 기반 분석용 좌표       </div>       <div style="margin-top:10px;">연결 영상 URL 미기재</div>     </div>     </div>`)[0];
+                popup_1e7bcd884586bf16929cd8a603b80667.setContent(html_b2e40da02e39d25368ffbf3f21cfe8ad);
+            
+        
+
+        marker_a40bbb23cb99c26a121b13cc0d82403b.bindPopup(popup_1e7bcd884586bf16929cd8a603b80667)
+        ;
+
+        
+    
+    
+            marker_a40bbb23cb99c26a121b13cc0d82403b.bindTooltip(
+                `<div>
+                     5. 오션뷰 카페 씨야드
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a40bbb23cb99c26a121b13cc0d82403b.setIcon(div_icon_9b2c568ff4aa6b686d771a0a0bc5d5c5);
+            
+    
+            var marker_4efe711ed50f45ac0f8bef390e5f1bd0 = L.marker(
+                [34.8568253143, 128.5781500188],
+                {
+}
+            ).addTo(feature_group_60a3d8ab0d696f5f7fbea7f1a27b4a14);
+        
+    
+            var div_icon_5984f4bc3c1d7224d2f53da620611bc2 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#7B3FBF;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          6\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_c967d9f9845ba035647bf3a7a9a5e107 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_ec1a782c6cc2321a4bfcc93a94b17774 = $(`<div id="html_ec1a782c6cc2321a4bfcc93a94b17774" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#7B3FBF;font-weight:800;">         힐링·생태·체험       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         6. 거제식물원       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.8568253<br>         <b>경도</b> 128.5781500<br>         <b>좌표 기준</b> 관광정보 좌표       </div>       <div style="margin-top:10px;"><a href="https://youtu.be/Gdez_IKDK-I" target="_blank" style="color:#FF4F9A;font-weight:800;text-decoration:none;">▶ YouTube 영상 보기</a></div>     </div>     </div>`)[0];
+                popup_c967d9f9845ba035647bf3a7a9a5e107.setContent(html_ec1a782c6cc2321a4bfcc93a94b17774);
+            
+        
+
+        marker_4efe711ed50f45ac0f8bef390e5f1bd0.bindPopup(popup_c967d9f9845ba035647bf3a7a9a5e107)
+        ;
+
+        
+    
+    
+            marker_4efe711ed50f45ac0f8bef390e5f1bd0.bindTooltip(
+                `<div>
+                     6. 거제식물원
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4efe711ed50f45ac0f8bef390e5f1bd0.setIcon(div_icon_5984f4bc3c1d7224d2f53da620611bc2);
+            
+    
+            var marker_a33fcb736192bc56e2134dc8f2319c83 = L.marker(
+                [34.78581627, 128.6331635],
+                {
+}
+            ).addTo(feature_group_60a3d8ab0d696f5f7fbea7f1a27b4a14);
+        
+    
+            var div_icon_1d333ac1c400a937e2d66c3447aff2d8 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#7B3FBF;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          7\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_66e8acc538524888b7328128b42883e4 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_44aa65f1fb8f338ca1b257e78e0f28d8 = $(`<div id="html_44aa65f1fb8f338ca1b257e78e0f28d8" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#7B3FBF;font-weight:800;">         힐링·생태·체험       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         7. 거제 파노라마 케이블카       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.7858163<br>         <b>경도</b> 128.6331635<br>         <b>좌표 기준</b> 상부역사 기준 분석용 좌표       </div>       <div style="margin-top:10px;"><a href="https://youtu.be/Gdez_IKDK-I" target="_blank" style="color:#FF4F9A;font-weight:800;text-decoration:none;">▶ YouTube 영상 보기</a></div>     </div>     </div>`)[0];
+                popup_66e8acc538524888b7328128b42883e4.setContent(html_44aa65f1fb8f338ca1b257e78e0f28d8);
+            
+        
+
+        marker_a33fcb736192bc56e2134dc8f2319c83.bindPopup(popup_66e8acc538524888b7328128b42883e4)
+        ;
+
+        
+    
+    
+            marker_a33fcb736192bc56e2134dc8f2319c83.bindTooltip(
+                `<div>
+                     7. 거제 파노라마 케이블카
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a33fcb736192bc56e2134dc8f2319c83.setIcon(div_icon_1d333ac1c400a937e2d66c3447aff2d8);
+            
+    
+            var marker_e677555377cbbc840d0a653887ee63e5 = L.marker(
+                [34.8110673523, 128.6234195139],
+                {
+}
+            ).addTo(feature_group_60a3d8ab0d696f5f7fbea7f1a27b4a14);
+        
+    
+            var div_icon_139e98931b247b9ac7ae7eced1f3f44a = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#7B3FBF;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          8\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_150af6cb2fb92e2c4ffa6a176ce10323 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_f623bbe5b062dc9700c9809656c08bde = $(`<div id="html_f623bbe5b062dc9700c9809656c08bde" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#7B3FBF;font-weight:800;">         힐링·생태·체험       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         8. 동부저수지       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.8110674<br>         <b>경도</b> 128.6234195<br>         <b>좌표 기준</b> 관광정보 좌표       </div>       <div style="margin-top:10px;"><a href="https://youtu.be/_GKSineBozo" target="_blank" style="color:#FF4F9A;font-weight:800;text-decoration:none;">▶ YouTube 영상 보기</a></div>     </div>     </div>`)[0];
+                popup_150af6cb2fb92e2c4ffa6a176ce10323.setContent(html_f623bbe5b062dc9700c9809656c08bde);
+            
+        
+
+        marker_e677555377cbbc840d0a653887ee63e5.bindPopup(popup_150af6cb2fb92e2c4ffa6a176ce10323)
+        ;
+
+        
+    
+    
+            marker_e677555377cbbc840d0a653887ee63e5.bindTooltip(
+                `<div>
+                     8. 동부저수지
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e677555377cbbc840d0a653887ee63e5.setIcon(div_icon_139e98931b247b9ac7ae7eced1f3f44a);
+            
+    
+            feature_group_60a3d8ab0d696f5f7fbea7f1a27b4a14.addTo(map_da913c7ae90c79b7be49bc808f82389c);
+        
+    
+            var feature_group_176d3c00f1982b92e7f5462d94f85212 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_8c02e56b74f0f7df1006e778e112bfbf = L.marker(
+                [34.8854673826, 128.6240397115],
+                {
+}
+            ).addTo(feature_group_176d3c00f1982b92e7f5462d94f85212);
+        
+    
+            var div_icon_bc2f0e249806a9932767fdf16ac32bc4 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#FF8A3D;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          9\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_d6c233c439de97eea0505c05d01fd029 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_c95d00011bd83e9c11ca07721a2e740e = $(`<div id="html_c95d00011bd83e9c11ca07721a2e740e" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#FF8A3D;font-weight:800;">         로컬상권·먹거리       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         9. 고현동 상권       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.8854674<br>         <b>경도</b> 128.6240397<br>         <b>좌표 기준</b> 고현시장 대표점 기준 분석점       </div>       <div style="margin-top:10px;">연결 영상 URL 미기재</div>     </div>     </div>`)[0];
+                popup_d6c233c439de97eea0505c05d01fd029.setContent(html_c95d00011bd83e9c11ca07721a2e740e);
+            
+        
+
+        marker_8c02e56b74f0f7df1006e778e112bfbf.bindPopup(popup_d6c233c439de97eea0505c05d01fd029)
+        ;
+
+        
+    
+    
+            marker_8c02e56b74f0f7df1006e778e112bfbf.bindTooltip(
+                `<div>
+                     9. 고현동 상권
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8c02e56b74f0f7df1006e778e112bfbf.setIcon(div_icon_bc2f0e249806a9932767fdf16ac32bc4);
+            
+    
+            var marker_2085330ee242891bd9735e64b5c516a8 = L.marker(
+                [34.8854673826, 128.6240397115],
+                {
+}
+            ).addTo(feature_group_176d3c00f1982b92e7f5462d94f85212);
+        
+    
+            var div_icon_a5bd0826de76acbcf0bcebd3fa426eca = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#FF8A3D;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          10\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_e61a8bb5cb2f328b2f33c956dd76555a = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_2adce09607494098b43657d5eea7a53b = $(`<div id="html_2adce09607494098b43657d5eea7a53b" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#FF8A3D;font-weight:800;">         로컬상권·먹거리       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         10. 거제 고현시장       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.8854674<br>         <b>경도</b> 128.6240397<br>         <b>좌표 기준</b> 시장 대표 좌표       </div>       <div style="margin-top:10px;">연결 영상 URL 미기재</div>     </div>     </div>`)[0];
+                popup_e61a8bb5cb2f328b2f33c956dd76555a.setContent(html_2adce09607494098b43657d5eea7a53b);
+            
+        
+
+        marker_2085330ee242891bd9735e64b5c516a8.bindPopup(popup_e61a8bb5cb2f328b2f33c956dd76555a)
+        ;
+
+        
+    
+    
+            marker_2085330ee242891bd9735e64b5c516a8.bindTooltip(
+                `<div>
+                     10. 거제 고현시장
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2085330ee242891bd9735e64b5c516a8.setIcon(div_icon_a5bd0826de76acbcf0bcebd3fa426eca);
+            
+    
+            var marker_888a4ae3acc027c5b55ef05170bf0903 = L.marker(
+                [34.8555, 128.5798],
+                {
+}
+            ).addTo(feature_group_176d3c00f1982b92e7f5462d94f85212);
+        
+    
+            var div_icon_562b62d14339d3c342413a2d0dc33423 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#FF8A3D;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          11\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_728e207c5eee9bd8cc3bd00c7dc2250f = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_550cfbd47951efcf4ba878dc34d8e10b = $(`<div id="html_550cfbd47951efcf4ba878dc34d8e10b" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#FF8A3D;font-weight:800;">         로컬상권·먹거리       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         11. 진짜 원조 거제 굴구이       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.8555000<br>         <b>경도</b> 128.5798000<br>         <b>좌표 기준</b> 주소 기반 분석용 좌표       </div>       <div style="margin-top:10px;">연결 영상 URL 미기재</div>     </div>     </div>`)[0];
+                popup_728e207c5eee9bd8cc3bd00c7dc2250f.setContent(html_550cfbd47951efcf4ba878dc34d8e10b);
+            
+        
+
+        marker_888a4ae3acc027c5b55ef05170bf0903.bindPopup(popup_728e207c5eee9bd8cc3bd00c7dc2250f)
+        ;
+
+        
+    
+    
+            marker_888a4ae3acc027c5b55ef05170bf0903.bindTooltip(
+                `<div>
+                     11. 진짜 원조 거제 굴구이
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_888a4ae3acc027c5b55ef05170bf0903.setIcon(div_icon_562b62d14339d3c342413a2d0dc33423);
+            
+    
+            var marker_02fc8e1875685e903bf76b69a77d747a = L.marker(
+                [34.8927674774, 128.6264101982],
+                {
+}
+            ).addTo(feature_group_176d3c00f1982b92e7f5462d94f85212);
+        
+    
+            var div_icon_ede85370aa047a6c26180632e0d4732e = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#FF8A3D;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          12\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_ada058bda9142cd4982263cb3e04bf2f = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_6f6fbd74c15a6793301421f8dafee8d9 = $(`<div id="html_6f6fbd74c15a6793301421f8dafee8d9" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#FF8A3D;font-weight:800;">         로컬상권·먹거리       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         12. 거제 전통 양곱창 전골       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.8927675<br>         <b>경도</b> 128.6264102<br>         <b>좌표 기준</b> 주소 기반 좌표       </div>       <div style="margin-top:10px;"><a href="https://youtu.be/_GKSineBozo" target="_blank" style="color:#FF4F9A;font-weight:800;text-decoration:none;">▶ YouTube 영상 보기</a></div>     </div>     </div>`)[0];
+                popup_ada058bda9142cd4982263cb3e04bf2f.setContent(html_6f6fbd74c15a6793301421f8dafee8d9);
+            
+        
+
+        marker_02fc8e1875685e903bf76b69a77d747a.bindPopup(popup_ada058bda9142cd4982263cb3e04bf2f)
+        ;
+
+        
+    
+    
+            marker_02fc8e1875685e903bf76b69a77d747a.bindTooltip(
+                `<div>
+                     12. 거제 전통 양곱창 전골
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_02fc8e1875685e903bf76b69a77d747a.setIcon(div_icon_ede85370aa047a6c26180632e0d4732e);
+            
+    
+            var marker_8f26376f11be6e473f94e1ce1184d264 = L.marker(
+                [34.889512, 128.6921771],
+                {
+}
+            ).addTo(feature_group_176d3c00f1982b92e7f5462d94f85212);
+        
+    
+            var div_icon_e6d32256645a30772c44523924c8c3b8 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"\n          width:34px;height:34px;border-radius:50%;\n          background:#FF8A3D;\n          border:4px solid white;\n          box-shadow:0 2px 8px rgba(50,20,60,.35);\n          color:white;text-align:center;line-height:27px;\n          font-family:Arial,sans-serif;font-weight:900;font-size:15px;\"\u003e\n          13\n        \u003c/div\u003e\n        ",
+  "iconSize": [34, 34],
+  "iconAnchor": [17, 17],
+  "className": "empty",
+});
+        
+    
+        var popup_1af430c562d0bc1c7f3b4385ef845166 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_3529fc2e5b795cc56d5543acb94d65b6 = $(`<div id="html_3529fc2e5b795cc56d5543acb94d65b6" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:250px;">       <div style="font-size:12px;color:#FF8A3D;font-weight:800;">         로컬상권·먹거리       </div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px;">         13. 금농갈비       </div>       <div style="line-height:1.65;font-size:13px;">         <b>위도</b> 34.8895120<br>         <b>경도</b> 128.6921771<br>         <b>좌표 기준</b> 주소 기반 좌표       </div>       <div style="margin-top:10px;"><a href="https://youtu.be/YV9Q9fBNzLs" target="_blank" style="color:#FF4F9A;font-weight:800;text-decoration:none;">▶ YouTube 영상 보기</a></div>     </div>     </div>`)[0];
+                popup_1af430c562d0bc1c7f3b4385ef845166.setContent(html_3529fc2e5b795cc56d5543acb94d65b6);
+            
+        
+
+        marker_8f26376f11be6e473f94e1ce1184d264.bindPopup(popup_1af430c562d0bc1c7f3b4385ef845166)
+        ;
+
+        
+    
+    
+            marker_8f26376f11be6e473f94e1ce1184d264.bindTooltip(
+                `<div>
+                     13. 금농갈비
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8f26376f11be6e473f94e1ce1184d264.setIcon(div_icon_e6d32256645a30772c44523924c8c3b8);
+            
+    
+            var circle_dd6c75fb3c408f23392686fb2864221e = L.circle(
+                [34.8854673826, 128.6240397115],
+                {"bubblingMouseEvents": true, "color": "#FF8A3D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF8A3D", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 500, "stroke": true, "weight": 2}
+            ).addTo(feature_group_176d3c00f1982b92e7f5462d94f85212);
+        
+    
+        var popup_b44a7a5ae16b53d01aebfc2ef8388b13 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_239208e652b121fb48b5fc47116e1d96 = $(`<div id="html_239208e652b121fb48b5fc47116e1d96" style="width: 100.0%; height: 100.0%;">고현동 상권: 분석 대표점 기준 500m 범위</div>`)[0];
+                popup_b44a7a5ae16b53d01aebfc2ef8388b13.setContent(html_239208e652b121fb48b5fc47116e1d96);
+            
+        
+
+        circle_dd6c75fb3c408f23392686fb2864221e.bindPopup(popup_b44a7a5ae16b53d01aebfc2ef8388b13)
+        ;
+
+        
+    
+    
+            feature_group_176d3c00f1982b92e7f5462d94f85212.addTo(map_da913c7ae90c79b7be49bc808f82389c);
+        
+    
+            map_da913c7ae90c79b7be49bc808f82389c.fitBounds(
+                [[34.68, 128.45], [35.03, 128.76]],
+                {}
+            );
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topright",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_da913c7ae90c79b7be49bc808f82389c);
+        
+    
+            var layer_control_1098a4204a0ecb64ec914c16ad249da0_layers = {
+                base_layers : {
+                    "\ud83d\uddfa\ufe0f \uc2e4\uc81c \ub3c4\ub85c\u00b7\uc9c0\ud615 \uc9c0\ub3c4" : tile_layer_e773f9d765012a11933c0c469ca07a27,
+                    "\ud83d\udef0\ufe0f \uc704\uc131\uc9c0\ub3c4" : tile_layer_d49aa3c3bef7a071bb832637a8aa704f,
+                },
+                overlays :  {
+                    "\ud83d\udc97 \ud574\uc591\u00b7\uc790\uc5f0\uacbd\uad00" : feature_group_ff15c0bd7f898bf50df412667ae45ffe,
+                    "\ud83d\udc97 \ud790\ub9c1\u00b7\uc0dd\ud0dc\u00b7\uccb4\ud5d8" : feature_group_60a3d8ab0d696f5f7fbea7f1a27b4a14,
+                    "\ud83d\udc97 \ub85c\uceec\uc0c1\uad8c\u00b7\uba39\uac70\ub9ac" : feature_group_176d3c00f1982b92e7f5462d94f85212,
+                },
+            };
+            let layer_control_1098a4204a0ecb64ec914c16ad249da0 = L.control.layers(
+                layer_control_1098a4204a0ecb64ec914c16ad249da0_layers.base_layers,
+                layer_control_1098a4204a0ecb64ec914c16ad249da0_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_da913c7ae90c79b7be49bc808f82389c);
+
+        
+</script>
+</html>
