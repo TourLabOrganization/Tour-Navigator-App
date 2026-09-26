@@ -225,7 +225,7 @@ async function getAirQuality(lat,lng){
   if(!DATA_GO_KR_KEY)return null;
   const sido=nearestSido(lat,lng), c=_airCache[sido];
   if(c&&Date.now()-c.t<30*60000)return c.v;
-  const u='https://apis.data.go.kr/B552584/ArpltnInfrInqireSvc/getCtprvnRltmMesureDnsty?serviceKey='+encodeURIComponent(DATA_GO_KR_KEY)
+  const u='https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey='+encodeURIComponent(DATA_GO_KR_KEY)
     +'&returnType=json&numOfRows=200&pageNo=1&sidoName='+encodeURIComponent(sido)+'&ver=1.3';
   const j=await fetch(u).then(r=>r.json());
   const items=((j.response||{}).body||{}).items||[];
@@ -282,3 +282,60 @@ async function getTitleMeta(query,type,lang){
   return v;
 }
 
+// ── 한국관광공사 연관 관광지 (TarRlteTarService1 · DATA_GO_KR_KEY) ─────────────
+// 장소 이름 + 시군구 코드로 "함께 많이 가는 관광지" 를 찾는다. 시군구 코드는 Kakao 좌표→행정구역(KAKAO_KEY) 으로 얻고,
+// 없으면 SIGNGU_FALLBACK 표(지역명 부분일치) → 가장 가까운 시도 순으로 대체한다. 2→3→4개월 전 기준월을 차례로 시도
+const RLTE_KEY=DATA_GO_KR_KEY;
+const SIDO_AREA_CD={'서울':'11','부산':'26','대구':'27','인천':'28','광주':'29','대전':'30','울산':'31','세종':'36','경기':'41','강원':'51','충북':'43','충남':'44','전북':'52','전남':'46','경북':'47','경남':'48','제주':'50'};
+const _rlteCache={};
+// 시군구 코드(signguCd, 5자리 법정동) — 카카오 좌표→행정구역(B) 코드 앞 5자리, 실패 시 지역명 표
+const SIGNGU_FALLBACK={'서울':'11110','종로':'11110','부산':'26350','해운대':'26350','부산 중구':'26110','영도':'26200','기장':'26710','인천':'28125','강화':'28710','대구':'27110','광주':'12210','대전':'30110','울산':'31110','세종':'36110','수원':'41115','가평':'41820','양평':'41830','남양주':'41360','강릉':'51150','속초':'51210','춘천':'51110','평창':'51760','정선':'51770','영월':'51750','양양':'51830','전주':'52111','군산':'52130','여수':'12130','순천':'12150','목포':'12110','경주':'47130','안동':'47170','포항':'47111','울릉':'47940','통영':'48220','거제':'48310','남해':'48840','제주':'50110','서귀포':'50130','공주':'44150','부여':'44760','단양':'43800'};
+const _sgCache={};
+async function getSignguCd(lat,lng,loc){
+  const ck=lat.toFixed(3)+','+lng.toFixed(3);
+  if(_sgCache[ck])return _sgCache[ck];
+  let code='';
+  const kk=(typeof KAKAO_KEY!=='undefined'&&KAKAO_KEY)||(window.APP_CONFIG||{}).kakao||'';
+  if(kk){try{const j=await fetch('https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x='+lng+'&y='+lat,{headers:{Authorization:'KakaoAK '+kk}}).then(r=>r.json());
+    const b=(j.documents||[]).find(d=>d.region_type==='B')||(j.documents||[])[0];
+    if(b&&b.code)code=String(b.code).slice(0,5);}catch(e){}}
+  // 옛 강원(42)·전북(45) 코드는 특별자치도 코드(51·52)로 바꾼다
+  if(/^42/.test(code))code='51'+code.slice(2); if(/^45/.test(code))code='52'+code.slice(2);
+  if(!code&&loc){const k=Object.keys(SIGNGU_FALLBACK).sort((a,b)=>b.length-a.length).find(n=>String(loc).indexOf(n)>-1);if(k)code=SIGNGU_FALLBACK[k];}
+  if(!code){const s=nearestSido(lat,lng);code=SIGNGU_FALLBACK[s]||'';}
+  _sgCache[ck]=code;
+  return code;
+}
+async function getRelatedSpots(name,lat,lng,loc){
+  if(!RLTE_KEY||!name)return [];
+  const kw=String(name).replace(/\s*\(.*?\)\s*/g,'').trim();
+  const sg=await getSignguCd(lat,lng,loc);
+  if(!sg)return [];
+  const areaCd=sg.slice(0,2), signguCd=sg;
+  const ck=signguCd+'|'+kw; if(_rlteCache[ck])return _rlteCache[ck];
+  // 이름 비교는 느슨하게 — 공백·괄호·'/부제'·가운뎃점 무시, 앞부분이 겹치면 같은 곳으로 본다
+  const nz=s=>String(s||'').replace(/\/.*$/,'').replace(/\(.*?\)/g,'').replace(/[\s·\-_.,'"]/g,'').toLowerCase();
+  const me=nz(kw);
+  const score=t=>{const n=nz(t);if(!n||!me)return 0;if(n===me)return 3;if(me.length>=3&&n.length>=3&&(n.indexOf(me)===0||me.indexOf(n)===0))return 2;if(me.length>=3&&n.length>=3&&(n.indexOf(me)>-1||me.indexOf(n)>-1))return 1;return 0;};
+  const pick=arr=>{const g={};arr.forEach(x=>{(g[x.tAtsNm]=g[x.tAtsNm]||[]).push(x);});let best=null,bs=0;Object.keys(g).forEach(t=>{const s=score(t);if(s>bs||(s===bs&&best&&g[t].length>g[best].length)){bs=s;best=t;}});return bs?g[best]:[];};
+  const get=async(op,ym,extra)=>{const u='https://apis.data.go.kr/B551011/TarRlteTarService1/'+op+'?serviceKey='+encodeURIComponent(RLTE_KEY)+'&MobileOS=ETC&MobileApp=TourNavigator&_type=json&numOfRows='+(op==='areaBasedList1'?2000:100)+'&pageNo=1&baseYm='+ym+'&areaCd='+areaCd+'&signguCd='+signguCd+(extra||'');
+    const j=await fetch(u).then(r=>r.json());const rc=String(((j.response||{}).header||{}).resultCode||'');if(rc&&rc!=='0000'&&rc!=='00')throw new Error(rc);
+    const it=(((j.response||{}).body||{}).items||{}).item;return Array.isArray(it)?it:(it?[it]:[]);};
+  // 검색어 후보: 전체 이름 → 첫 단어 → 앞 3글자
+  const kws=[...new Set([kw,kw.split(/\s+/)[0],nz(kw).slice(0,3)].filter(k=>k&&k.length>=2))];
+  const now=new Date(); let rows=[], ymHit='';
+  try{
+    for(const back of [2,3,4]){
+      const d=new Date(now.getFullYear(),now.getMonth()-back,1);
+      const ym=d.getFullYear()+String(d.getMonth()+1).padStart(2,'0');
+      for(const k of kws){rows=pick(await get('searchKeyword1',ym,'&keyword='+encodeURIComponent(k)));if(rows.length)break;}
+      if(!rows.length){const ak='a|'+signguCd+'|'+ym;_rlteCache[ak]=_rlteCache[ak]||await get('areaBasedList1',ym);rows=pick(_rlteCache[ak]);}
+      if(rows.length){ymHit=ym;break;}
+    }
+  }catch(e){}
+  const out=[],seen={};
+  rows.sort((a,b)=>Number(a.rlteRank||99)-Number(b.rlteRank||99)).forEach(x=>{const n=String(x.rlteTatsNm||'');if(!n||seen[n]||score(n)===3)return;seen[n]=1;
+    out.push({name:n,cat:String(x.rlteCtgrySclsNm||x.rlteCtgryMclsNm||x.rlteCtgryLclsNm||''),region:[x.rlteRegnNm,x.rlteSignguNm].filter(Boolean).join(' '),rank:Number(x.rlteRank)||out.length+1,ym:ymHit,matched:rows[0]?rows[0].tAtsNm:''});});
+  if(out.length)_rlteCache[ck]=out.slice(0,8);
+  return out.slice(0,8);
+}

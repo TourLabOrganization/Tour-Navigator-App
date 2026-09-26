@@ -17,7 +17,6 @@
 </svg>
 </template>
 
-
 <helmet data-dc-atomics="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -536,8 +535,6 @@
 </section>
 </sc-if>
 
-
-
 <sc-if value="{{ hasDetail }}" hint-placeholder-val="{{ false }}">
 <section class="rs-scroll" style="position:absolute;inset:0;background:#f2ece0;overflow-y:auto;z-index:900;animation:rsUp .18s ease-out">
 <div style="display:flex;align-items:center;justify-content:space-between;height:40px;border-bottom:2px solid rgba(21,59,61,.4);padding:0 0 0 12px;position:sticky;top:0;background:#f2ece0;z-index:2">
@@ -569,37 +566,51 @@
 </div>
 </sc-for>
 </div>
-<div style="display:{{ d_airShow }};padding:12px 12px 0">
-<div style="flex:1;display:flex;align-items:center;justify-content:space-between;gap:6px;padding:3px 6px;font-size:9px;background:{{ d_airBg }};border:1px solid rgba(21,59,61,.25)">
-<span style="font-weight:800">{{ d_airLabel }}</span>
-<span style="font-variant-numeric:tabular-nums">{{ d_airText }}</span>
-<span style="font-weight:800">{{ d_airGrade }}</span>
+<div style="display:{{ d_rlteShow }};flex-direction:column;margin:12px 12px 0;border:2px solid #153b3d">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:7px 10px;background:#153b3d;color:#f2ece0">
+<span style="font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase">{{ d_rlteTitle }}</span>
+<span style="font-size:9px;font-weight:700;opacity:.8">{{ d_rlteMeta }}</span>
+</div>
+<sc-for list="{{ d_rlte }}" as="rt" hint-placeholder-count="3">
+<button sc-camel-on-click="{{ rt.open }}" style="display:grid;grid-template-columns:22px minmax(0,1fr) auto;align-items:baseline;column-gap:8px;padding:8px 10px;border:0;border-top:1px solid rgba(21,59,61,.2);background:#f2ece0;color:#153b3d;text-align:left;cursor:pointer;font-family:inherit" style-hover="background:rgba(184,67,28,.08)" type="button">
+<span style="font-size:10px;font-weight:800;color:#b8431c;font-variant-numeric:tabular-nums">{{ rt.rank }}</span>
+<span style="font-size:12px;font-weight:800;letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ rt.name }}</span>
+<span style="font-size:9.5px;font-weight:700;color:rgba(21,59,61,.66)">{{ rt.sub }}</span>
+</button>
+</sc-for>
+</div>
+<div style="padding:12px">
+<div style="display:flex;flex-direction:column;border:2px solid #153b3d;background:#f2ece0;color:#153b3d">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:6px 10px;border-bottom:1px solid rgba(21,59,61,.25)">
+<span style="font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase">{{ d_wxTitle }}</span>
+<span style="font-size:9px;font-weight:700;color:rgba(21,59,61,.62)">{{ d_weather.today.src }}</span>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:stretch">
+<div style="display:flex;align-items:center;gap:10px;padding:10px;border-right:1px solid rgba(21,59,61,.25)">
+<span style="font-size:30px;line-height:1">{{ d_weather.today.icon }}</span>
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font-size:9px;font-weight:800;letter-spacing:.08em;color:#b8431c">{{ d_wxToday }}</span>
+<span style="font-size:18px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums">{{ d_weather.today.tmp }}</span>
+<span style="font-size:9.5px;font-weight:700;font-variant-numeric:tabular-nums">{{ d_weather.today.rn1 }}mm</span>
 </div>
 </div>
-<div style="padding:12px;display:flex;gap:8px">
-<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:0 12px;font-weight:800;border:2px solid #153b3d;background:#f2ece0">
-<div style="display:flex;align-items:center;gap:8px;height:auto">
-<div style="display:flex;flex-direction:column;align-items:center;gap:2px;flex:1">
-<span style="font-size:28px">{{ d_weather.today.icon }}</span>
-<div style="font-size:12px;font-weight:800">{{ d_weather.today.tmp }}</div>
-<div style="font-size:9px">{{ d_weather.today.rn1 }}mm</div>
+<div style="display:flex;flex-direction:column">
+<div style="flex:1;display:flex;align-items:center;gap:6px;padding:6px 10px;border-bottom:1px solid rgba(21,59,61,.25)">
+<span style="font-size:15px">{{ d_weather.yesterday.icon }}</span>
+<span style="font-size:9px;font-weight:800;min-width:24px">{{ d_wxYest }}</span>
+<span style="font-size:10px;font-weight:700;font-variant-numeric:tabular-nums">{{ d_weather.yesterday.tmp }} · {{ d_weather.yesterday.rn1 }}mm</span>
 </div>
-<div style="display:flex;flex-direction:column;gap:3px;flex:1">
-<div style="display:flex;align-items:center;gap:4px;padding:3px;background:rgba(184,67,28,.05);border-radius:2px">
-<span style="font-size:16px">{{ d_weather.yesterday.icon }}</span>
-<div style="display:flex;flex-direction:column;gap:1px">
-<div style="font-size:8px;font-weight:800">어제</div>
-<div style="font-size:9px">{{ d_weather.yesterday.tmp }} {{ d_weather.yesterday.rn1 }}mm</div>
-</div>
-</div>
-<div style="display:flex;align-items:center;gap:4px;padding:3px;background:rgba(184,67,28,.05);border-radius:2px">
-<span style="font-size:16px">{{ d_weather.tomorrow.icon }}</span>
-<div style="display:flex;flex-direction:column;gap:1px">
-<div style="font-size:8px;font-weight:800">내일</div>
-<div style="font-size:9px">{{ d_weather.tomorrow.tmp }} {{ d_weather.tomorrow.rn1 }}mm</div>
+<div style="flex:1;display:flex;align-items:center;gap:6px;padding:6px 10px">
+<span style="font-size:15px">{{ d_weather.tomorrow.icon }}</span>
+<span style="font-size:9px;font-weight:800;min-width:24px">{{ d_wxTmrw }}</span>
+<span style="font-size:10px;font-weight:700;font-variant-numeric:tabular-nums">{{ d_weather.tomorrow.tmp }} · {{ d_weather.tomorrow.rn1 }}mm</span>
 </div>
 </div>
 </div>
+<div style="display:{{ d_airShow }};align-items:center;gap:8px;padding:7px 10px;border-top:1px solid rgba(21,59,61,.25);background:{{ d_airBg }}">
+<span style="flex:none;font-size:9px;font-weight:800;letter-spacing:.08em">{{ d_airLabel }}</span>
+<span style="flex:1;min-width:0;font-size:10px;font-weight:700;font-variant-numeric:tabular-nums">{{ d_airText }}</span>
+<span style="flex:none;font-size:10px;font-weight:800;padding:2px 6px;border:2px solid #153b3d;background:#f2ece0">{{ d_airGrade }}</span>
 </div>
 </div>
 </div>
@@ -867,6 +878,25 @@ const T = {
   videoCta:{ko:'▶ 이 장소가 나오는 영상',en:'▶ Watch the clip'},
   noVideoCta:{ko:'연결 영상 미기재',en:'No linked video'},
   styleNames:[{ko:'레드',en:'RED'},{ko:'잉크',en:'INK'},{ko:'반전',en:'INV'}]
+};
+// ── 기상청 단기예보(VilageFcstInfoService_2.0) — 오늘·내일은 기상청 값으로 덮어쓴다, 어제는 Open-Meteo 유지 ──
+const KMA_KEY=DATA_GO_KR_KEY;
+const _kmaCache={};
+const getWeatherOM=async(lat,lng)=>{
+  try{
+    const res=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weather_code&timezone=Asia/Seoul&past_days=1&forecast_days=3`);
+    const data=await res.json();
+    if(data.daily){
+      const today=1;
+      const getIcon=(code)=>code===0?'☀️':code===1||code===2?'☁️':code===3?'☁️':code===45||code===48?'🌫️':code>=51&&code<=67?'🌧️':code>=71&&code<=77?'❄️':code===80||code===81||code===82?'⛈️':'🌡️';
+      return {
+        yesterday:{tmp:Math.round(data.daily.temperature_2m_max[0])+'°C',rn1:(data.daily.precipitation_sum[0]||0).toFixed(1),icon:getIcon(data.daily.weather_code[0])},
+        today:{tmp:Math.round(data.daily.temperature_2m_max[today])+'°C',rn1:(data.daily.precipitation_sum[today]||0).toFixed(1),icon:getIcon(data.daily.weather_code[today])},
+        tomorrow:{tmp:Math.round(data.daily.temperature_2m_max[2])+'°C',rn1:(data.daily.precipitation_sum[2]||0).toFixed(1),icon:getIcon(data.daily.weather_code[2])}
+      };
+    }
+  }catch(e){console.log('weather error',e);}
+  return {yesterday:{tmp:'?',rn1:'0',icon:'?'},today:{tmp:'?',rn1:'0',icon:'?'},tomorrow:{tmp:'?',rn1:'0',icon:'?'}};
 };
 const getKakaoTaxiFare=async(lat,lng)=>{
   try{
@@ -1165,7 +1195,7 @@ class Component extends DCLogic {
     // 하루 1회만 호출 — 같은 날 다시 열면 캐시된 실제 조회수를 그대로 쓴다.
     const today=new Date().toISOString().slice(0,10);
     try{
-      const c=JSON.parse(localStorage.getItem('rs_ytstats')||'null');
+      const c=JSON.parse(localStorage.getItem(PLAN_NS+':ytstats')||'null');
       if(c&&c.day===today&&c.map){apply(c.map);return;}
     }catch(e){}
     const ids=Object.keys(VMETA);
@@ -2741,6 +2771,22 @@ class Component extends DCLogic {
           sub:[(TY[v.type]||{})[_L]||v.type,v.year,v.rating?'★ '+v.rating:''].filter(Boolean).join(' · '),
           overview:v.overview.length>140?v.overview.slice(0,140)+'…':v.overview,open:()=>window.open(v.url,'_blank')}))};
       })(),
+      ...(()=>{
+        const _L=this.state.lang||'ko', ko=_L==='ko', r=dp?(this.state.rlte||{})[dp.id]:null;
+        // 빈 결과는 60초 뒤 다시 시도 (이전 실패가 상세 화면에 남지 않게)
+        if(dp&&RLTE_KEY&&(!r||(!r.length&&Date.now()-((this._rlReq||{})[dp.id]||0)>60000))){this._rlReq=this._rlReq||{};if(!this._rlReq[dp.id]||Date.now()-this._rlReq[dp.id]>60000){this._rlReq[dp.id]=Date.now();const id=dp.id;getRelatedSpots(dp.ko||dp.name||dp.en,dp.lat,dp.lng,[dp.locKo,dp.loc,dp.addr,dp.srcKo].filter(Boolean).join(' ')).then(v=>this.setState(s=>({rlte:{...(s.rlte||{}),[id]:v}}))).catch(()=>this.setState(s=>({rlte:{...(s.rlte||{}),[id]:[]}})));}}
+        const list=r||[];
+        const ym=list[0]?list[0].ym:'';
+        return {d_rlteShow:list.length?'flex':'none',
+          d_rlteTitle:ko?'함께 많이 가는 관광지':({en:'Often visited together',zh:'常一起去的景点',ja:'一緒に訪れるスポット',es:'Visitados juntos'}[_L]||'Often visited together'),
+          d_rlteMeta:ym?(ko?ym.slice(0,4)+'.'+ym.slice(4)+' 기준':ym.slice(0,4)+'-'+ym.slice(4)):'',
+          d_rlte:list.map((x,k)=>({key:'rl'+k,rank:String(x.rank).padStart(2,'0'),name:x.name,sub:[x.cat,x.region].filter(Boolean).join(' · '),
+            open:()=>window.open('https://map.kakao.com/?q='+encodeURIComponent(x.name),'_blank')}))};
+      })(),
+      d_wxTitle:({ko:'날씨 · 미세먼지',en:'Weather · Air',zh:'天气 · 空气',ja:'天気 · 大気',es:'Tiempo · Aire'}[this.state.lang||'ko'])||'Weather · Air',
+      d_wxToday:({ko:'오늘',en:'Today',zh:'今天',ja:'今日',es:'Hoy'}[this.state.lang||'ko'])||'Today',
+      d_wxYest:({ko:'어제',en:'Yday',zh:'昨天',ja:'昨日',es:'Ayer'}[this.state.lang||'ko'])||'Yday',
+      d_wxTmrw:({ko:'내일',en:'Tmrw',zh:'明天',ja:'明日',es:'Mañana'}[this.state.lang||'ko'])||'Tmrw',
       d_loadWeather:async()=>{
         if(!dp)return;
         const w=await getWeather(dp.lat,dp.lng);
@@ -2839,6 +2885,5 @@ class Component extends DCLogic {
   }
 }
 </script>
-
 
 </body></html>
