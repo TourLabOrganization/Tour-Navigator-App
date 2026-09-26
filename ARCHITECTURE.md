@@ -5,7 +5,7 @@
 빌드 과정이 없습니다. 각 화면은 Design Component 한 파일(`.dc.html`)이고, 같은 폴더의 `support.js` 가 런타임입니다.
 
 ```
-Tour Navigator Home.dc.html     홈 · 배너 · 테마 진입
+Tour Navigator Home.dc.html     홈 · 배너 · 테마 진입 · 테마 추천 · ME
 Tour Planner.dc.html            전국 통합 플래너 (가장 큼)
 RESCENE Route.dc.html           테마 5종
 Kings Warden Route.dc.html
