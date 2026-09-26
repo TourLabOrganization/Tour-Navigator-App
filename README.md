@@ -57,6 +57,7 @@
 | [DESIGN.md](DESIGN.md) · [STYLES.md](STYLES.md) | Modernist 디자인 규칙과 CSS 구성 |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | 실행 방법, 키 설정, 코드 규칙 |
 | [ROADMAP.md](ROADMAP.md) · [CHANGELOG.md](CHANGELOG.md) | 남은 일과 변경 기록 |
+| [CLEANUP.md](CLEANUP.md) | 저장소 정리 기록과 재발 방지 규칙 (내보내기본 반영 절차 · 업로드 금지) |
 | [테마 추천 알고리즘/README.md](테마%20추천%20알고리즘/README.md) | 선호 문항 → 군집 → 추천 테마 계산 (Python) |
 | [시스템 구성도/README.md](시스템%20구성도/README.md) | 시스템 구성도 PNG · 구성 명세서 docx · 생성 스크립트 |
 | [체류시간 산정/README.md](체류시간%20산정/README.md) | 체류 · 일정 시간 산정 로직, 장소별 체류 CSV, 설명서 |

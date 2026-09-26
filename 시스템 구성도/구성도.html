@@ -58,7 +58,7 @@ const B = [
  {id:'support', x:360,y:290,w:290,h:80, cls:'ink', t:'support.js — DC 런타임', s:'&lt;x-dc&gt; 템플릿 컴파일 · &lt;helmet&gt; 처리 · 로직 클래스 실행(new Function) · React·Babel 로드'},
  {id:'shared', x:360,y:385,w:290,h:115, t:'config.js → shared.js', s:'APP_CONFIG 키 6개 (googleMaps · youtube · kakao · dataGoKr · exRoad · tmdb) · 공용 상수·함수 · 조회: getWeather · getAirQuality · getFestivals · getRelatedSpots · getTitleMeta'},
  {id:'css', x:670,y:290,w:280,h:80, t:'shared.css · image-slot.js', s:'7개 화면 공통 스타일(리셋·스크롤바·Leaflet·애니메이션) · 이미지 슬롯 웹 컴포넌트'},
- {id:'assets', x:670,y:385,w:280,h:105, cls:'data', t:'assets/', s:'tour-places.csv(장소 1,197곳 · 좌표·카테고리·근거) · open-tour.csv · story-matched.json · unesco.png · 이미지'},
+ {id:'assets', x:670,y:385,w:280,h:105, cls:'data', t:'assets/', s:'tour-places.csv(장소 1,197곳 · 좌표·카테고리·근거) · open-tour-unmatched.csv · unesco.png · 이미지'},
  {id:'flow', x:60,y:520,w:890,h:165, cls:'data', t:'화면 안 처리 흐름 (브라우저에서 전부 실행)', s:'① 도시·카테고리 필터 → 지도 마커·클러스터 &nbsp;&nbsp; ② 장소 상세: 좌표 기준 한국관광공사 DB 조회 → 다국어 표기·운영시간·요금·사진·오디오·스토리 + 날씨(기상청) · 미세먼지(에어코리아)<br>③ 코스 계산: 날짜 범위 → 일자 창(720분/일) → 도시 단위 묶기 → 광역교통 체인(출발지 → 환승 관문 → 도착 관문) → 도시 안 최근접 순회 → 일자별 카드 + 예매 버튼 · 내 플랜 저장<br>④ 숙박: 동선 25km 내 STAYS 추천 → 날짜 채운 OTA 링크 &nbsp;&nbsp; ⑤ 교통: 항공 요약(하드코딩) · 도로 ETA(거리 추정) — 프록시 후 실시간 전환 &nbsp;&nbsp; ⑥ 영상: YouTube 조회수 하루 1회 갱신 · TMDB 작품 카드 &nbsp;&nbsp; ⑦ 여행 기간 축제·행사 목록 (코스 30km 안)'},
 
  // 외부 서비스

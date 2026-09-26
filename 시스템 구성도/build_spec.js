@@ -132,8 +132,7 @@ const children = [
   h2('3.3 데이터 파일 (assets/)'),
   table(['파일', '내용', '쓰는 곳'], [
     ['tour-places.csv', '장소 마스터 1,197곳 — 좌표(WGS84) · 카테고리 · 운영시간 · 요금 · 사진 · 근거(srcKo/srcEn) · 배지', '테마 추천 알고리즘 classify.py (화면은 내장 DATA 사용)'],
-    ['open-tour.csv · open-tour-unmatched.csv', '열린관광지(무장애) 목록과 좌표 미매칭 잔여분', '배지 부여 근거'],
-    ['story-matched.json', '한국관광공사 스토리텔링 ↔ 장소 매칭 결과 (원본 CSV 는 이력에만 보관)', '참고 데이터'],
+    ['open-tour-unmatched.csv', '열린관광지 배지 매칭이 남은 12곳 (ROADMAP 작업 목록)', '배지 잔여 작업'],
     ['unesco.png · busan-tile.jpg · screenshots/', '유네스코 배지, 홈 타일, README 캡처', '화면 · README'],
     ['uploads/images (17~24).jpg', '홈 배너 · 테마 타일 이미지', 'Tour Navigator Home'],
   ], [3000, 4238, 2400]),
