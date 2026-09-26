@@ -26,14 +26,15 @@ const ctx = { window: { APP_CONFIG: {} }, document: {}, console, Object, Array, 
 vm.runInNewContext(html.slice(from, to + 1).join('\n') + '\n;this.__out={DATA,CATS,REGION_HUB,ORIGINS,METRO_CITY:typeof METRO_CITY!=="undefined"?METRO_CITY:{}};', ctx);
 const { DATA, CATS, REGION_HUB, ORIGINS, METRO_CITY } = ctx.__out;
 
-// nation 은 경주 · 거제를 이미 포함하므로 도시 화면 5개만 더한다.
-// 화면 데이터는 nation 원본에 있던 경주 · 거제 장소를 조립 단계에서 한 번 더 붙여 id 가 62개 중복된다.
-// 여기서는 같은 id 의 첫 번째 레코드만 남긴다 (앱의 courseList 도 id 로 첫 레코드를 찾는다).
-const CITY_ORDER = ['nation', 'seoul', 'busan', 'jeju', 'yeongwol'];
-const dedupe = arr => { const seen = new Set(); return arr.filter(p => seen.has(p.id) ? false : (seen.add(p.id), true)); };
+// 장소는 id 당 한 번만 낸다. 도시 화면(서울 · 부산 · 제주 · 영월)에 있는 장소는 그 화면으로, 나머지는 nation 으로 적는다.
+// (nation 목록은 도시 화면 장소를 전부 포함하고, 조립 단계에서 경주 · 거제가 한 번 더 붙어 id 62개가 겹친다.
+//  앱의 courseList 도 id 로 첫 레코드를 찾으므로 첫 레코드만 남긴다.)
+const CITY_ORDER = ['seoul', 'busan', 'jeju', 'yeongwol', 'nation'];
+const seen = new Set();
+const dedupe = arr => arr.filter(p => seen.has(p.id) ? false : (seen.add(p.id), true));
 let dupCount = 0;
 for (const ck of CITY_ORDER) { const b = DATA[ck].places.length; DATA[ck].places = dedupe(DATA[ck].places); dupCount += b - DATA[ck].places.length; }
-console.log('중복 id 제거:', dupCount, '건');
+console.log('중복 id 제거:', dupCount, '건 (화면 간 중복 포함)');
 const csvEsc = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
 const writeCsv = (file, header, rows) => {
   const body = [header, ...rows].map(r => r.map(csvEsc).join(',')).join('\n');

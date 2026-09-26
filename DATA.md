@@ -17,8 +17,7 @@
 | `assets/tour-places.csv` | 프로젝트 장소 마스터 (좌표 · 카테고리 · 근거) |
 | `assets/open-tour.csv` | 열린관광지 목록 |
 | `assets/open-tour-unmatched.csv` | 좌표 매칭이 안 된 열린관광지 잔여분 |
-| `assets/story-db.csv` | 한국관광공사 스토리텔링 원본 |
-| `assets/story-matched.json` | 스토리텔링 ↔ 장소 매칭 결과 |
+| `assets/story-matched.json` | 한국관광공사 스토리텔링 ↔ 장소 매칭 결과 (원본 CSV 는 2026-09-26 에 저장소에서 제거, 이력 커밋 0298fe1 에 보관) |
 
 ## 장소 레코드
 
