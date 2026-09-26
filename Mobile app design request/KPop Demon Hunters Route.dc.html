@@ -1,0 +1,2594 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<template id="__bundler_thumbnail" data-bg-color="#ec3013">
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="200" height="200" fill="#ec3013"></rect>
+<path d="M100 44c-16 0-29 13-29 29 0 22 29 54 29 54s29-32 29-54c0-16-13-29-29-29z" fill="#f3f2f2" stroke="#201e1d" stroke-width="6"></path>
+<circle cx="100" cy="73" r="10" fill="#201e1d"></circle>
+<text x="100" y="172" text-anchor="middle" font-family="Archivo, Helvetica, sans-serif" font-size="26" font-weight="800" fill="#f3f2f2">ROUTE</text>
+</svg>
+</template>
+
+
+<helmet data-dc-atomics="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+/* 기본 */
+html,body{margin:0;padding:0;background:#d7d3d3;font-family:"Archivo",system-ui,sans-serif;color:#201e1d;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#ec3013;text-underline-offset:3px}a:hover{color:#ae1800}
+button{font-family:inherit}
+:focus-visible{outline:2px solid #ec3013;outline-offset:2px}
+::selection{background:rgba(236,48,19,.3)}
+/* 이모지 렌더링 */
+button, span, div { font-variant-emoji: normal; }
+
+/* Leaflet 지도 */
+.leaflet-container{background:#e6e3e3;font-family:"Archivo",system-ui,sans-serif}
+.leaflet-control-attribution{font-size:8px;background:rgba(243,242,242,.8);border-radius:0}
+.leaflet-control-zoom{display:none}
+
+/* 수평 스크롤 (카테고리 칩) */
+.rs-xbar{overflow-x:auto;scrollbar-width:thin;scrollbar-color:#ec3013 #e2e0e0}
+.rs-xbar::-webkit-scrollbar{height:7px}
+.rs-xbar::-webkit-scrollbar-track{background:#e2e0e0}
+.rs-xbar::-webkit-scrollbar-thumb{background:#ec3013}
+
+/* 수직 스크롤 (목록/영상) */
+.rs-scroll{overflow-y:auto;scrollbar-width:thin;scrollbar-color:#ec3013 #e2e0e0}
+.rs-scroll::-webkit-scrollbar{width:7px}
+.rs-scroll::-webkit-scrollbar-track{background:#e2e0e0}
+.rs-scroll::-webkit-scrollbar-thumb{background:#ec3013}
+
+/* 애니메이션 */
+@keyframes rsUp{from{transform:translateY(14px);opacity:0}to{transform:translateY(0);opacity:1}}
+.rs-bkw{position:relative}
+.rs-bk{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:40;flex-wrap:wrap;gap:4px;width:210px;padding:6px;background:#f3f2f2;border:2px solid #201e1d;box-shadow:0 6px 18px rgba(32,30,29,.25)}
+.rs-bkw:hover .rs-bk,.rs-bk-open{display:flex}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;background:#d7d3d3">
+<div style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden;position:relative;box-shadow:0 12px 32px rgba(45,43,43,.22)">
+
+<header style="flex:none;border-bottom:2px solid rgba(32,30,29,.4)">
+<div style="display:flex;align-items:stretch;height:46px">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 12px;min-width:0">
+<div style="font-size:14px;font-weight:800;letter-spacing:-.02em;line-height:1">케데헌 서울</div>
+<div style="font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(32,30,29,.55);margin-top:3px">{{ headerSub }}</div>
+</div>
+<button sc-camel-on-click="{{ toggleLang }}" style="width: 70px; white-space: nowrap; border: 0; border-left: 2px solid rgba(32,30,29,.4); background: transparent; font-size: 11px; font-weight: 700; letter-spacing: .06em; cursor: pointer; color: #201e1d; font-family: Work Sans; text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); text-transform: capitalize; position: relative" style-hover="background:rgba(236,48,19,.12)" type="button">{{ langLabel }}</button>
+<button sc-camel-on-click="{{ cycleStyle }}" style="width:44px;border:0;border-left:2px solid rgba(32,30,29,.4);background:transparent;font-size:9px;font-weight:800;letter-spacing:.06em;cursor:pointer;color:rgba(32,30,29,.6)" style-hover="background:rgba(236,48,19,.12)">{{ styleLabel }}</button>
+<div style="flex:none;padding:0 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-left:2px solid rgba(32,30,29,.4)">
+<div style="font-size:9px;font-weight:600;color:rgba(32,30,29,.7);letter-spacing:.02em">{{ zoomLevel }}</div>
+<div style="font-size:7px;font-weight:500;color:rgba(32,30,29,.5)">{{ scaleInfo }}</div>
+</div>
+</div>
+<div style="display:flex;border-top:2px solid rgba(32,30,29,.4)">
+<sc-for list="{{ cities }}" as="c" hint-placeholder-count="2">
+<button sc-camel-on-click="{{ c.pick }}" style="flex:1;height:36px;border:0;border-right:2px solid rgba(32,30,29,.4);cursor:pointer;text-align:left;padding:0 9px;font-size:11.5px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;background:{{ c.bg }};color:{{ c.fg }}">{{ c.label }}</button>
+</sc-for>
+<div style="flex:none;width:74px;display:flex;align-items:center;padding:0 10px;font-size:9.5px;font-weight:600;color:rgba(32,30,29,.55);letter-spacing:.02em;white-space:nowrap">{{ cityCount }}</div>
+</div>
+</header>
+
+<div style="flex:1;position:relative;overflow:hidden">
+
+<section style="position:absolute;inset:0;display:{{ mapDisplay }};flex-direction:column">
+<div ref="{{ chipsRef }}" class="rs-xbar" style="flex:none;display:flex;gap:0;border-bottom:2px solid rgba(32,30,29,.4);background:#f3f2f2;touch-action:pan-x;-webkit-overflow-scrolling:touch">
+<sc-for list="{{ chips }}" as="ch" hint-placeholder-count="4">
+<button sc-camel-on-click="{{ ch.pick }}" style="flex:none;height:34px;padding:0 12px;border:0;border-right:1px solid rgba(32,30,29,.25);cursor:pointer;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;background:{{ ch.bg }};color:{{ ch.fg }}">{{ ch.label }}</button>
+</sc-for>
+</div>
+<div style="flex:1;position:relative">
+<div data-map-container="" style="position: absolute; inset: 0; left: 0; top: 0"></div>
+<div style="position:absolute;left:0;bottom:0;right:0;height:{{ sheetHeight }};background:#f3f2f2;border-top:2px solid #201e1d;display:flex;flex-direction:column;z-index:500">
+<div style="flex:none;height:44px;display:flex;align-items:stretch;border-bottom:2px solid rgba(32,30,29,.35)">
+<button sc-camel-on-click="{{ toggleSheet }}" style="flex:1;min-width:0;border:0;background:transparent;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 12px;cursor:pointer">
+<span style="font-size:15px;font-weight:800;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sheetTitle }}</span>
+<span style="font-size:14px;font-weight:800;color:rgba(32,30,29,.5)">{{ sheetChevron }}</span>
+</button>
+<button sc-camel-on-click="{{ toggleOff }}" style="flex:none;display:{{ offShow }};align-items:center;padding:0 12px;border:0;border-left:1px solid rgba(32,30,29,.25);cursor:pointer;font-size:13px;font-weight:800;letter-spacing:.01em;white-space:nowrap;background:{{ offBg }};color:{{ offFg }}">{{ offLabel }}</button>
+</div>
+<div class="rs-scroll" style="flex:1;overflow-y:auto">
+<sc-for list="{{ visiblePlaces }}" as="p" hint-placeholder-count="5">
+<div sc-camel-on-click="{{ p.open }}" style="display:flex;gap:10px;padding:10px 12px;border-bottom:1px solid rgba(32,30,29,.2);cursor:pointer;align-items:flex-start" style-hover="background:#eae9e9">
+<div style="flex:none;width:26px;height:26px;border-radius:50%;border:{{ p.pinBorder }};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;background:{{ p.pinBg }};color:{{ p.pinFg }}">{{ p.n }}</div>
+<div style="flex:1;min-width:0">
+<div style="display:flex;align-items:center;gap:5px;min-width:0">
+<span style="font-size:14px;font-weight:800;letter-spacing:-.01em;line-height:1.2">{{ p.name }}</span>
+<img src="assets/unesco.png" alt="UNESCO World Heritage" title="UNESCO World Heritage" style="display:{{ p.unShow }};flex:none;height:15px;width:auto">
+</div>
+<div style="font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(32,30,29,.55);margin-top:3px">{{ p.catLabel }} · {{ p.stay }}</div>
+</div>
+<div style="flex:none;text-align:right">
+<div style="font-size:10px;font-weight:800;font-variant-numeric:tabular-nums">{{ p.distLabel }}</div>
+<div style="font-size:9px;font-weight:600;color:{{ p.videoColor }};margin-top:3px">{{ p.videoLabel }}</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<sc-if value="{{ isCourse }}" hint-placeholder-val="{{ false }}">
+<section class="rs-scroll" style="position:absolute;inset:0;overflow-y:auto;background:#f3f2f2">
+<div style="padding:14px 12px 10px;border-bottom:2px solid rgba(32,30,29,.4)">
+<div style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#ec3013">{{ courseKicker }}</div>
+<h2 style="font-size:26px;font-weight:800;letter-spacing:-.02em;margin:4px 0 10px;line-height:1.1">{{ courseTitle }}</h2>
+<div style="background:#fff;border:2px solid #201e1d;padding:10px;border-radius:4px;margin-bottom:10px">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+<button sc-camel-on-click="{{ prevMonth }}" style="width:26px;height:26px;border:1px solid #201e1d;background:#f3f2f2;font-weight:800;cursor:pointer;border-radius:2px;font-size:10px">◀</button>
+<div style="font-size:11px;font-weight:800">{{ displayMonth }}</div>
+<button sc-camel-on-click="{{ nextMonth }}" style="width:26px;height:26px;border:1px solid #201e1d;background:#f3f2f2;font-weight:800;cursor:pointer;border-radius:2px;font-size:10px">▶</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1px;font-size:8px;text-align:center">
+<sc-for list="{{ weekdays }}" as="w" hint-placeholder-count="7">
+<div style="font-weight:800;padding:2px;background:rgba(236,48,19,.1)">{{ w.label }}</div>
+</sc-for>
+<sc-for list="{{ calendarDays }}" as="day" hint-placeholder-count="35">
+<div onClick="{{ day.pick }}" style="padding:2px;background:{{ day.bg }};font-weight:{{ day.fw }};color:{{ day.fg }};border:{{ day.bd }};cursor:pointer;font-size:8px;user-select:none">{{ day.label }}</div>
+</sc-for>
+</div>
+<div style="font-size:9px;line-height:1.5;color:rgba(32,30,29,.55);margin-top:6px">{{ tripHint }}</div>
+</div>
+<div style="display:{{ tripBarDisplay }};align-items:center;justify-content:space-between;gap:8px;border:2px solid #201e1d;background:#ec3013;color:#f3f2f2;padding:8px 10px;margin-bottom:10px">
+<span style="font-size:12px;font-weight:800;letter-spacing:.02em">{{ tripRange }}</span>
+<button sc-camel-on-click="{{ clearTrip }}" style="flex:none;height:24px;border:1px solid #f3f2f2;background:transparent;color:#f3f2f2;font-size:10px;font-weight:800;padding:0 8px;cursor:pointer">✕</button>
+</div>
+<div style="display:{{ regionPickShow }};flex-direction:column;gap:6px;margin-bottom:8px">
+<div style="display:flex;align-items:baseline;gap:8px">
+<span style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(32,30,29,.55)">{{ regionPickLabel }}</span>
+<button onClick="{{ regionClear }}" style="display:{{ regionClearShow }};align-items:center;height:16px;border:0;background:transparent;color:#ec3013;font-size:9px;font-weight:800;letter-spacing:.06em;cursor:pointer;padding:0">✕ ALL</button>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:4px">
+<sc-for list="{{ regionChips }}" as="r" hint-placeholder-count="7">
+<button onClick="{{ r.toggle }}" style="flex:none;height:26px;padding:0 9px;border:2px solid #201e1d;background:{{ r.bg }};color:{{ r.fg }};font-size:10px;font-weight:800;letter-spacing:.04em;cursor:pointer">{{ r.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;gap:6px;margin-bottom:6px">
+<label style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
+<span style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(32,30,29,.55)">{{ originLabel }}</span>
+<select value="{{ originValue }}" onChange="{{ originChange }}" style="width:100%;height:30px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;font-family:Archivo,sans-serif;font-size:11px;font-weight:800;padding:0 6px;cursor:pointer">
+<sc-for list="{{ originOptions }}" as="o" hint-placeholder-count="4">
+<option value="{{ o.value }}">{{ o.label }}</option>
+</sc-for>
+</select>
+</label>
+<label style="flex:0 0 92px;display:flex;flex-direction:column;gap:3px">
+<span style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(32,30,29,.55)">{{ depTimeLabel }}</span>
+<select value="{{ depTimeValue }}" onChange="{{ depTimeChange }}" style="width:100%;height:30px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;font-family:Archivo,sans-serif;font-size:11px;font-weight:800;padding:0 6px;cursor:pointer">
+<sc-for list="{{ depTimeOptions }}" as="tt" hint-placeholder-count="4">
+<option value="{{ tt.value }}">{{ tt.label }}</option>
+</sc-for>
+</select>
+</label>
+</div>
+<div style="display:flex;gap:6px;margin-bottom:8px">
+<label style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
+<span style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(32,30,29,.55)">{{ originEndLabel }}</span>
+<select value="{{ originEndValue }}" onChange="{{ originEndChange }}" style="width:100%;height:30px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;font-family:Archivo,sans-serif;font-size:11px;font-weight:800;padding:0 6px;cursor:pointer">
+<option value="">{{ originSameLabel }}</option>
+<sc-for list="{{ originOptions }}" as="o" hint-placeholder-count="4">
+<option value="{{ o.value }}">{{ o.label }}</option>
+</sc-for>
+</select>
+</label>
+<label style="flex:0 0 92px;display:flex;flex-direction:column;gap:3px">
+<span style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(32,30,29,.55)">{{ retTimeLabel }}</span>
+<select value="{{ retTimeValue }}" onChange="{{ retTimeChange }}" style="width:100%;height:30px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;font-family:Archivo,sans-serif;font-size:11px;font-weight:800;padding:0 6px;cursor:pointer">
+<sc-for list="{{ retTimeOptions }}" as="rt" hint-placeholder-count="4">
+<option value="{{ rt.value }}">{{ rt.label }}</option>
+</sc-for>
+</select>
+</label>
+</div>
+<div style="display:flex;gap:0;border:2px solid #201e1d;margin-bottom:8px">
+<button sc-camel-on-click="{{ setDrive }}" style="flex:1;height:30px;border:0;border-right:2px solid #201e1d;background:{{ modeDriveBg }};color:{{ modeDriveFg }};font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">{{ modeDriveLabel }}</button>
+<button sc-camel-on-click="{{ setOwn }}" style="flex:1;height:30px;border:0;border-right:2px solid #201e1d;background:{{ modeOwnBg }};color:{{ modeOwnFg }};font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">{{ modeOwnLabel }}</button>
+<button sc-camel-on-click="{{ setTransit }}" style="flex:1;height:30px;border:0;background:{{ modeTransitBg }};color:{{ modeTransitFg }};font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">{{ modeTransitLabel }}</button>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid rgba(32,30,29,.4)">
+<div style="padding:8px 0;border-right:1px solid rgba(32,30,29,.25)">
+<div style="font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(32,30,29,.55)">{{ lblStops }}</div>
+<div style="font-size:20px;font-weight:800;font-variant-numeric:tabular-nums">{{ courseStops }}</div>
+</div>
+<div style="padding:8px 0 8px 10px;border-right:1px solid rgba(32,30,29,.25)">
+<div style="font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(32,30,29,.55)">{{ lblDist }}</div>
+<div style="font-size:20px;font-weight:800;font-variant-numeric:tabular-nums">{{ courseDist }}</div>
+</div>
+<div style="padding:8px 0 8px 10px">
+<div style="font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(32,30,29,.55)">{{ lblTime }}</div>
+<div style="font-size:20px;font-weight:800;font-variant-numeric:tabular-nums">{{ courseTime }}</div>
+</div>
+</div>
+<div style="display:{{ planBasisShow }};font-size:10px;font-weight:700;line-height:1.5;color:#201e1d;background:rgba(236,48,19,.08);border-left:2px solid #ec3013;padding:6px 8px;margin:0 0 6px">{{ planBasis }}</div>
+<div style="font-size:9px;line-height:1.5;color:rgba(32,30,29,.5);padding:0 0 8px">{{ routeNote }}</div>
+</div>
+<div style="display:{{ dayPlanDisplay }};flex-direction:column">
+<sc-for list="{{ dayPlan }}" as="d" hint-placeholder-count="2">
+<div style="border-bottom:2px solid rgba(32,30,29,.4)">
+<div style="display:flex;align-items:baseline;gap:8px;padding:10px 12px 8px;background:rgba(32,30,29,.05);border-bottom:1px solid rgba(32,30,29,.2)">
+<span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#ec3013">{{ d.dayLabel }}</span>
+<span style="font-size:13px;font-weight:800;letter-spacing:-.01em">{{ d.dateLabel }}</span>
+<span style="margin-left:auto;font-size:10px;font-weight:600;color:rgba(32,30,29,.55);font-variant-numeric:tabular-nums">{{ d.sumLabel }}</span>
+</div>
+<sc-for list="{{ d.regionHops }}" as="h" hint-placeholder-count="0">
+<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(32,30,29,.05);border-bottom:1px solid rgba(32,30,29,.2)">
+<span style="flex:none;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#ec3013">{{ regionMoveLabel }}</span>
+<div style="flex:1;min-width:0">
+<div style="font-size:12px;font-weight:800;letter-spacing:-.01em">{{ h.label }}</div>
+<div style="display:{{ h.altShow }};font-size:10px;font-weight:600;color:rgba(32,30,29,.55);margin-top:2px">{{ h.altLabel }}</div>
+</div>
+<div style="flex:none;display:flex;gap:4px">
+<sc-for list="{{ h.btns }}" as="bt" hint-placeholder-count="2">
+<button onClick="{{ bt.open }}" style="height:28px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;font-size:10px;font-weight:800;letter-spacing:.04em;padding:0 10px;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2">{{ bt.label }}</button>
+</sc-for>
+</div>
+</div>
+</sc-for>
+<div style="display:{{ d.transShow }};align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid rgba(32,30,29,.2)">
+<span style="flex:1;min-width:0;font-size:11px;font-weight:600;letter-spacing:.04em;color:rgba(32,30,29,.7)">{{ d.transLabel }}</span>
+<div style="flex:none;display:flex;gap:4px">
+<sc-for list="{{ d.transBtns }}" as="tb" hint-placeholder-count="2">
+<button onClick="{{ tb.open }}" style="height:28px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;font-size:10px;font-weight:800;letter-spacing:.04em;padding:0 10px;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2">{{ tb.label }}</button>
+</sc-for>
+</div>
+</div>
+<sc-for list="{{ d.items }}" as="c" hint-placeholder-count="2">
+
+<div style="border-bottom:1px solid rgba(32,30,29,.2)">
+<div style="display:flex;gap:10px;padding:12px;align-items:flex-start">
+<div style="flex:none;width:26px;height:26px;border-radius:50%;background:#201e1d;color:#f3f2f2;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800">{{ c.order }}</div>
+<div style="flex:1;min-width:0">
+<div style="font-size:15px;font-weight:800;letter-spacing:-.01em">{{ c.name }}</div>
+<div style="font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(32,30,29,.55);margin-top:2px">{{ c.catLabel }} · {{ c.stay }}</div>
+<div style="font-size:10px;font-weight:800;letter-spacing:.02em;color:#ec3013;margin-top:2px;font-variant-numeric:tabular-nums">{{ c.atLabel }}</div>
+</div>
+<div style="flex:none;display:flex;gap:0;border:1px solid rgba(32,30,29,.35)">
+<button sc-camel-on-click="{{ c.up }}" style="width:26px;height:26px;border:0;border-right:1px solid rgba(32,30,29,.35);background:transparent;cursor:pointer;font-size:11px;font-weight:800" style-hover="background:rgba(236,48,19,.12)">↑</button>
+<button sc-camel-on-click="{{ c.down }}" style="width:26px;height:26px;border:0;border-right:1px solid rgba(32,30,29,.35);background:transparent;cursor:pointer;font-size:11px;font-weight:800" style-hover="background:rgba(236,48,19,.12)">↓</button>
+<button sc-camel-on-click="{{ c.remove }}" style="width:26px;height:26px;border:0;background:transparent;cursor:pointer;font-size:11px;font-weight:800;color:#ec3013" style-hover="background:rgba(236,48,19,.12)">✕</button>
+</div>
+</div>
+<div style="display:{{ c.legDisplay }};flex-direction:column;gap:4px;padding:0 12px 10px 48px">
+<div style="display:flex;align-items:center;gap:8px;font-size:10px;font-weight:600;letter-spacing:.06em;color:rgba(32,30,29,.55)">
+<span style="flex:none;display:block;width:18px;height:2px;background:#ec3013"></span>
+<span style="flex:1;min-width:0">{{ c.legLabel }}</span>
+<button onClick="{{ c.routeOpen }}" style="flex:none;height:20px;border:1px solid rgba(32,30,29,.35);background:transparent;color:#201e1d;font-size:9px;font-weight:800;letter-spacing:.06em;padding:0 6px;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2;border-color:#201e1d">{{ routeBtnLabel }}</button>
+</div>
+<div style="display:{{ c.legWideShow }};font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#ec3013;background:rgba(236,48,19,.08);border-left:2px solid #ec3013;padding:5px 7px">{{ c.legWide }}</div>
+<div style="display:{{ c.transitShow }};font-size:10px;font-weight:600;line-height:1.5;color:rgba(32,30,29,.75);background:rgba(32,30,29,.05);border-left:2px solid #ec3013;padding:5px 7px">{{ c.transitInfo }}</div>
+</div>
+</div>
+</sc-for>
+<div style="display:{{ d.transShowEnd }};align-items:center;gap:8px;padding:8px 12px;border-top:1px solid rgba(32,30,29,.2)">
+<span style="flex:1;min-width:0;font-size:11px;font-weight:600;letter-spacing:.04em;color:rgba(32,30,29,.7)">{{ d.transLabelEnd }}</span>
+<div style="flex:none;display:flex;gap:4px">
+<sc-for list="{{ d.transBtns }}" as="tb" hint-placeholder-count="2">
+<button onClick="{{ tb.open }}" style="height:28px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;font-size:10px;font-weight:800;letter-spacing:.04em;padding:0 10px;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2">{{ tb.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:{{ d.stayShow }};align-items:center;gap:10px;padding:10px 12px;background:rgba(236,48,19,.06)">
+<div style="flex:1;min-width:0">
+<div style="font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#ec3013">{{ d.stayLabel }}</div>
+<div style="font-size:13px;font-weight:800;letter-spacing:-.01em;margin-top:2px">{{ d.stayName }}</div>
+<div style="font-size:10px;font-weight:600;color:rgba(32,30,29,.55);margin-top:2px">{{ d.stayMeta }}</div>
+</div>
+<div class="rs-bkw" style="flex:none">
+<button onClick="{{ d.sgToggle }}" style="display:{{ d.sgShow }};height:28px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;font-size:10px;font-weight:800;letter-spacing:.04em;padding:0 10px;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2">{{ d.sgLabel }} ▾</button>
+<div class="{{ d.sgClass }}" style="width:250px">
+<sc-for list="{{ d.staySuggest }}" as="sg" hint-placeholder-count="3">
+<button onClick="{{ sg.open }}" style="flex:1 1 100%;display:flex;flex-direction:column;align-items:flex-start;gap:2px;border:1px solid #201e1d;background:#f3f2f2;color:#201e1d;padding:6px 7px;cursor:pointer;text-align:left" style-hover="background:#ec3013;color:#f3f2f2">
+<span style="font-size:11px;font-weight:800;letter-spacing:-.01em">{{ sg.name }}</span>
+<span style="font-size:9px;font-weight:600;opacity:.75">{{ sg.meta }} · {{ sg.dist }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div class="rs-bkw" style="flex:none">
+<button sc-camel-on-click="{{ d.stayBookOpen }}" style="height:28px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;font-size:10px;font-weight:800;letter-spacing:.04em;padding:0 10px;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2">{{ d.stayBtn }} ▾</button>
+<div class="{{ d.bkClass }}">
+<sc-for list="{{ d.stayBookings }}" as="b" hint-placeholder-count="6">
+<button sc-camel-on-click="{{ b.open }}" style="flex:0 1 calc(50% - 2px);height:30px;border:1px solid #201e1d;background:#f3f2f2;color:#201e1d;font-size:10px;font-weight:800;letter-spacing:.02em;cursor:pointer;padding:0 4px" style-hover="background:#ec3013;color:#f3f2f2">{{ b.name }}</button>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display:{{ flatDisplay }};flex-direction:column">
+<sc-for list="{{ courseItems }}" as="c" hint-placeholder-count="3">
+<div style="border-bottom:1px solid rgba(32,30,29,.2)">
+<div style="display:flex;gap:10px;padding:12px;align-items:flex-start">
+<div style="flex:none;width:26px;height:26px;border-radius:50%;background:#201e1d;color:#f3f2f2;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800">{{ c.order }}</div>
+<div style="flex:1;min-width:0">
+<div style="font-size:15px;font-weight:800;letter-spacing:-.01em">{{ c.name }}</div>
+<div style="font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(32,30,29,.55);margin-top:2px">{{ c.catLabel }} · {{ c.stay }}</div>
+</div>
+<div style="flex:none;display:flex;gap:0;border:1px solid rgba(32,30,29,.35)">
+<button sc-camel-on-click="{{ c.up }}" style="width:26px;height:26px;border:0;border-right:1px solid rgba(32,30,29,.35);background:transparent;cursor:pointer;font-size:11px;font-weight:800" style-hover="background:rgba(236,48,19,.12)">↑</button>
+<button sc-camel-on-click="{{ c.down }}" style="width:26px;height:26px;border:0;border-right:1px solid rgba(32,30,29,.35);background:transparent;cursor:pointer;font-size:11px;font-weight:800" style-hover="background:rgba(236,48,19,.12)">↓</button>
+<button sc-camel-on-click="{{ c.remove }}" style="width:26px;height:26px;border:0;background:transparent;cursor:pointer;font-size:11px;font-weight:800;color:#ec3013" style-hover="background:rgba(236,48,19,.12)">✕</button>
+</div>
+</div>
+<div style="display:{{ c.legDisplay }};flex-direction:column;gap:4px;padding:0 12px 10px 48px">
+<div style="display:flex;align-items:center;gap:8px;font-size:10px;font-weight:600;letter-spacing:.06em;color:rgba(32,30,29,.55)">
+<span style="flex:none;display:block;width:18px;height:2px;background:#ec3013"></span>
+<span style="flex:1;min-width:0">{{ c.legLabel }}</span>
+<button onClick="{{ c.routeOpen }}" style="flex:none;height:20px;border:1px solid rgba(32,30,29,.35);background:transparent;color:#201e1d;font-size:9px;font-weight:800;letter-spacing:.06em;padding:0 6px;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2;border-color:#201e1d">{{ routeBtnLabel }}</button>
+</div>
+<div style="display:{{ c.legWideShow }};font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#ec3013;background:rgba(236,48,19,.08);border-left:2px solid #ec3013;padding:5px 7px">{{ c.legWide }}</div>
+<div style="display:{{ c.transitShow }};font-size:10px;font-weight:600;line-height:1.5;color:rgba(32,30,29,.75);background:rgba(32,30,29,.05);border-left:2px solid #ec3013;padding:5px 7px">{{ c.transitInfo }}</div>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display:{{ courseEmptyDisplay }};padding:28px 12px;font-size:13px;line-height:1.6;color:rgba(32,30,29,.55)">{{ courseEmpty }}</div>
+<div style="padding:14px 12px 24px;display:flex;flex-direction:column;gap:8px">
+<button sc-camel-on-click="{{ autoCourse }}" style="width:100%;height:44px;border:0;background:#ec3013;color:#f3f2f2;font-size:13px;font-weight:800;letter-spacing:.04em;text-align:left;padding:0 14px;cursor:pointer" style-hover="background:#dd2b0f" style-active="background:#ae1800">{{ btnAuto }}</button>
+<button sc-camel-on-click="{{ clearCourse }}" style="width:100%;height:44px;border:2px solid #201e1d;background:transparent;color:#201e1d;font-size:13px;font-weight:800;letter-spacing:.04em;text-align:left;padding:0 12px;cursor:pointer" style-hover="background:rgba(236,48,19,.1)">{{ btnClear }}</button>
+<div style="display:{{ interBookShow }};grid-template-columns:1fr 1fr;gap:0">
+<button onClick="{{ ktxBooking }}" style="width:100%;height:44px;border:2px solid #201e1d;border-right-width:1px;background:#f3f2f2;color:#201e1d;font-size:13px;font-weight:800;letter-spacing:.04em;text-align:left;padding:0 12px;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2">{{ ktxLabel }}</button>
+<button onClick="{{ srtBooking }}" style="width:100%;height:44px;border:2px solid #201e1d;border-left-width:1px;background:#f3f2f2;color:#201e1d;font-size:13px;font-weight:800;letter-spacing:.04em;text-align:left;padding:0 12px;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2">{{ srtLabel }}</button>
+</div>
+<div style="display:grid;grid-template-columns:{{ busGridCols }};gap:0">
+<button sc-camel-on-click="{{ busBooking }}" style="display:{{ interBookShow2 }};width:100%;height:44px;border:2px solid #201e1d;border-right-width:1px;background:#f3f2f2;color:#201e1d;font-size:13px;font-weight:800;letter-spacing:.04em;text-align:left;padding:0 12px;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2">{{ busLabel }}</button>
+<div class="rs-bkw" style="width:100%">
+<button sc-camel-on-click="{{ rentToggle }}" style="width:100%;height:44px;border:2px solid #201e1d;border-left-width:1px;background:#f3f2f2;color:#201e1d;font-size:13px;font-weight:800;letter-spacing:.04em;text-align:left;padding:0 12px;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2">{{ rentLabel }} ▾</button>
+<div class="{{ rentClass }}" style="width:100%;left:auto;right:0;top:auto;bottom:calc(100% + 4px)">
+<sc-for list="{{ rentSites }}" as="rc" hint-placeholder-count="6">
+<button onClick="{{ rc.open }}" style="flex:0 1 calc(50% - 2px);height:34px;border:1px solid #201e1d;background:#f3f2f2;color:#201e1d;font-size:11px;font-weight:800;letter-spacing:.02em;cursor:pointer;padding:0 4px" style-hover="background:#ec3013;color:#f3f2f2">{{ rc.name }}</button>
+</sc-for>
+</div>
+</div>
+</div>
+<div class="rs-bkw">
+<button sc-camel-on-click="{{ stayPanelToggle }}" style="width:100%;height:44px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;font-size:13px;font-weight:800;letter-spacing:.04em;text-align:left;padding:0 12px;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2">{{ stayPanelLabel }}</button>
+<div class="{{ stayPanelClass }}" style="width:100%;left:0;right:auto;top:auto;bottom:calc(100% + 4px)">
+<sc-for list="{{ coursePanelBookings }}" as="b" hint-placeholder-count="6">
+<button sc-camel-on-click="{{ b.open }}" style="flex:0 1 calc(50% - 2px);height:34px;border:1px solid #201e1d;background:#f3f2f2;color:#201e1d;font-size:11px;font-weight:800;letter-spacing:.02em;cursor:pointer;padding:0 4px" style-hover="background:#ec3013;color:#f3f2f2">{{ b.name }}</button>
+</sc-for>
+</div>
+</div>
+</div></section>
+</sc-if>
+
+<sc-if value="{{ isVideos }}" hint-placeholder-val="{{ false }}">
+<section class="rs-scroll" style="position:absolute;inset:0;overflow-y:auto;background:#f3f2f2">
+<div style="padding:14px 12px 12px;border-bottom:2px solid rgba(32,30,29,.4)">
+<div style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#ec3013">{{ videoKicker }}</div>
+<h2 style="font-size:26px;font-weight:800;letter-spacing:-.02em;margin:4px 0 10px;line-height:1.1">{{ videoTitle }}</h2>
+<div style="display:flex;border:2px solid #201e1d;width:fit-content">
+<sc-for list="{{ vsorts }}" as="s" hint-placeholder-count="2">
+<button sc-camel-on-click="{{ s.pick }}" style="height:30px;padding:0 14px;border:0;border-right:2px solid #201e1d;cursor:pointer;font-size:11px;font-weight:800;letter-spacing:.04em;white-space:nowrap;background:{{ s.bg }};color:{{ s.fg }}">{{ s.label }}</button>
+</sc-for>
+</div>
+</div>
+<form sc-camel-on-submit="{{ ytSubmit }}" style="display:flex;border-bottom:2px solid rgba(32,30,29,.4)">
+<input value="{{ ytq }}" sc-camel-on-change="{{ ytChange }}" placeholder="{{ ytPlaceholder }}" style="flex:1;height:44px;border:0;background:transparent;padding:0 12px;font-size:13px;font-family:inherit;color:#201e1d;outline:none">
+<button type="submit" style="flex:none;width:64px;border:0;border-left:2px solid rgba(32,30,29,.4);background:#ec3013;color:#f3f2f2;font-size:11px;font-weight:800;letter-spacing:.04em;cursor:pointer" style-hover="background:#dd2b0f">{{ ytGoLabel }}</button>
+</form>
+<sc-for list="{{ videoItems }}" as="v" hint-placeholder-count="3">
+<article style="border-bottom:2px solid rgba(32,30,29,.4)">
+<div style="display:{{ v.photoShow }};width:100%;height:160px;background-color:#d7d3d3;background-image:url('{{ v.thumb }}');background-size:cover;background-position:center;border-bottom:2px solid #201e1d"></div>
+<a href="{{ v.url }}" target="_blank" style="display:flex;align-items:flex-end;gap:12px;text-decoration:none;background:#ec3013;color:#f3f2f2;padding:14px 12px 12px;min-height:86px">
+<span style="font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:.9">{{ v.views }}</span>
+<span style="flex:1;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding-bottom:4px">{{ v.date }}</span>
+<span style="font-size:10px;font-weight:800;letter-spacing:.06em;border:2px solid rgba(243,242,242,.7);padding:4px 8px;white-space:nowrap">▶ {{ v.watch }}</span>
+</a>
+<div style="padding:10px 12px 12px">
+<div style="font-size:14px;font-weight:800;letter-spacing:-.01em">{{ v.title }}</div>
+<div style="font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(32,30,29,.55);margin-top:4px">{{ v.spots }}</div>
+<div style="display:flex;gap:8px;font-size:11px;font-weight:800;font-variant-numeric:tabular-nums;color:#ae1800;margin-top:4px">
+<span>{{ v.views }}</span><span style="color:rgba(32,30,29,.35)">·</span><span>{{ v.date }}</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
+<sc-for list="{{ v.pins }}" as="pin" hint-placeholder-count="2">
+<button sc-camel-on-click="{{ pin.open }}" style="border:1px solid rgba(32,30,29,.35);background:transparent;padding:5px 9px;font-size:10px;font-weight:800;letter-spacing:.04em;cursor:pointer;color:#201e1d" style-hover="background:rgba(236,48,19,.12)">{{ pin.label }}</button>
+</sc-for>
+</div>
+</div>
+</article>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{ isStamp }}" hint-placeholder-val="{{ false }}">
+<section class="rs-scroll" style="position:absolute;inset:0;overflow-y:auto;background:#f3f2f2">
+<div style="padding:14px 12px 12px;border-bottom:2px solid rgba(32,30,29,.4)">
+<div style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#ec3013">{{ stampKicker }}</div>
+<h2 style="font-size:26px;font-weight:800;letter-spacing:-.02em;margin:4px 0 10px;line-height:1.1">{{ stampTitle }}</h2>
+<div style="height:12px;border:2px solid #201e1d;padding:0">
+<div style="height:100%;background:#ec3013;width:{{ stampPct }}"></div>
+</div>
+<div style="display:flex;justify-content:space-between;margin-top:6px;font-size:10px;font-weight:800;letter-spacing:.06em">
+<span>{{ stampCount }}</span><span style="color:rgba(32,30,29,.55)">{{ stampPct }}</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<sc-for list="{{ stampCells }}" as="s" hint-placeholder-count="6">
+<button sc-camel-on-click="{{ s.open }}" style="position:relative;min-height:96px;border:0;border-right:1px solid rgba(32,30,29,.25);border-bottom:1px solid rgba(32,30,29,.25);cursor:pointer;text-align:left;padding:12px;display:flex;flex-direction:column;gap:10px;justify-content:flex-start;background:#f3f2f2;color:#201e1d;overflow:hidden">
+<span style="font-size:11px;font-weight:800;letter-spacing:.06em;position:relative;z-index:1">{{ s.n }}</span>
+<span style="position:relative;z-index:1">
+<span style="display:block;font-size:14px;font-weight:800;letter-spacing:-.01em;line-height:1.15">{{ s.name }}</span>
+<span style="display:block;font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:4px;opacity:.7">{{ s.state }}</span>
+</span>
+<svg sc-camel-view-box="0 0 120 120" style="position:absolute;top:50%;right:6%;width:58%;height:58%;transform:translateY(-50%) rotate({{ s.stampRot }}deg);display:{{ s.stampDisplay }};mix-blend-mode:multiply;pointer-events:none">
+<circle cx="60" cy="60" r="56" fill="none" stroke="#ec3013" stroke-width="3"></circle>
+<circle cx="60" cy="60" r="48" fill="none" stroke="#ec3013" stroke-width="1.5"></circle>
+<path d="M42 38c-8 0-13 5-13 11 0 13 26 10 26 22 0 6-5 11-13 11M55 82c8 0 13-5 13-11 0-13-26-10-26-22 0-6 5-11 13-11" fill="none" stroke="#ec3013" stroke-width="4.5" stroke-linecap="round"></path>
+<circle cx="55" cy="60" r="2.6" fill="#ec3013"></circle>
+<text x="60" y="100" text-anchor="middle" font-family="Archivo,sans-serif" font-size="11" font-weight="800" letter-spacing="2" fill="#ec3013">RESCÉNE</text>
+</svg>
+</button>
+</sc-for>
+</div>
+<div>
+<div style="padding:14px 12px 12px;border-bottom:2px solid rgba(32,30,29,.4)">
+<div style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#ec3013">{{ savedKicker }}</div>
+<h2 style="font-size:26px;font-weight:800;letter-spacing:-.02em;margin:4px 0 0;line-height:1.1">{{ savedTitle }}</h2>
+</div>
+<sc-for list="{{ savedItems }}" as="s" hint-placeholder-count="2">
+<div sc-camel-on-click="{{ s.open }}" style="display:flex;gap:10px;padding:12px;border-bottom:1px solid rgba(32,30,29,.2);cursor:pointer;align-items:center" style-hover="background:#eae9e9">
+<div style="flex:none;width:26px;height:26px;border-radius:50%;border:2px solid #201e1d;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800">{{ s.n }}</div>
+<div style="flex:1;min-width:0">
+<div style="font-size:15px;font-weight:800;letter-spacing:-.01em">{{ s.name }}</div>
+<div style="font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(32,30,29,.55);margin-top:2px">{{ s.cityLabel }} · {{ s.catLabel }}</div>
+</div>
+<div style="flex:none;font-size:11px;font-weight:800;color:#ec3013">→</div>
+</div>
+</sc-for>
+<div style="display:{{ savedEmptyDisplay }};padding:28px 12px;font-size:13px;line-height:1.6;color:rgba(32,30,29,.55)">{{ savedEmpty }}</div>
+</div>
+
+</section>
+</sc-if>
+
+
+
+<sc-if value="{{ hasDetail }}" hint-placeholder-val="{{ false }}">
+<section class="rs-scroll" style="position:absolute;inset:0;background:#f3f2f2;overflow-y:auto;z-index:900;animation:rsUp .18s ease-out">
+<div style="display:flex;align-items:center;justify-content:space-between;height:40px;border-bottom:2px solid rgba(32,30,29,.4);padding:0 0 0 12px;position:sticky;top:0;background:#f3f2f2;z-index:2">
+<span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#ec3013">{{ d_cat }}</span>
+<button sc-camel-on-click="{{ closeDetail }}" style="width:44px;height:40px;border:0;border-left:2px solid rgba(32,30,29,.4);background:transparent;cursor:pointer;font-size:14px;font-weight:800" style-hover="background:rgba(236,48,19,.12)">✕</button>
+</div>
+<a href="{{ d_url }}" target="_blank" style="display:{{ d_heroShow }};position:relative;text-decoration:none">
+<div style="width:100%;height:196px;background-color:#d7d3d3;background-image:url('{{ d_thumb }}');background-size:cover;background-position:center;"></div>
+<span style="position:absolute;left:0;bottom:0;background:#ec3013;color:#f3f2f2;font-size:11px;font-weight:800;letter-spacing:.08em;padding:8px 12px">{{ d_videoCta }}</span>
+</a>
+<div style="display:{{ d_noMediaShow }};flex-direction:column;justify-content:flex-end;gap:4px;height:96px;padding:0 12px 12px;background:#e6e4e1;border-bottom:2px solid rgba(32,30,29,.4)">
+<span style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(32,30,29,.45)">{{ d_cat }}</span>
+<span style="font-size:11px;font-weight:600;letter-spacing:.02em;color:rgba(32,30,29,.6)">{{ d_noMediaLabel }}</span>
+</div>
+<div style="padding:14px 12px 10px;border-bottom:2px solid rgba(32,30,29,.4)">
+<div style="display:flex;align-items:baseline;gap:8px">
+<span style="font-size:12px;font-weight:800;color:rgba(32,30,29,.45)">{{ d_index }}</span>
+<h2 style="font-size:28px;font-weight:800;letter-spacing:-.025em;margin:0;line-height:1.05">{{ d_name }}</h2>
+<img src="assets/unesco.png" alt="UNESCO World Heritage" title="UNESCO World Heritage" style="display:{{ d_unShow }};flex:none;height:22px;width:auto;align-self:center">
+</div>
+<div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(32,30,29,.55);margin-top:6px">{{ d_sub }}</div>
+<p style="font-size:14px;line-height:1.6;margin:12px 0 0;text-wrap:pretty">{{ d_blurb }}</p>
+</div>
+<div style="border-bottom:2px solid rgba(32,30,29,.4)">
+<sc-for list="{{ d_rows }}" as="r" hint-placeholder-count="4">
+<div style="display:flex;border-bottom:1px solid rgba(32,30,29,.2)">
+<div style="width:104px;flex:none;padding:9px 12px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(32,30,29,.55);border-right:1px solid rgba(32,30,29,.2)">{{ r.k }}</div>
+<div style="flex:1;padding:9px 12px;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums">{{ r.v }}</div>
+</div>
+</sc-for>
+</div>
+<div style="padding:12px;display:flex;gap:8px">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:0 12px;font-weight:800;border:2px solid #201e1d;background:#f3f2f2">
+<div style="display:flex;align-items:center;gap:8px;height:auto">
+<div style="display:flex;flex-direction:column;align-items:center;gap:2px;flex:1">
+<span style="font-size:28px">{{ d_weather.today.icon }}</span>
+<div style="font-size:12px;font-weight:800">{{ d_weather.today.tmp }}</div>
+<div style="font-size:9px">{{ d_weather.today.rn1 }}mm</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:3px;flex:1">
+<div style="display:flex;align-items:center;gap:4px;padding:3px;background:rgba(236,48,19,.05);border-radius:2px">
+<span style="font-size:16px">{{ d_weather.yesterday.icon }}</span>
+<div style="display:flex;flex-direction:column;gap:1px">
+<div style="font-size:8px;font-weight:800">어제</div>
+<div style="font-size:9px">{{ d_weather.yesterday.tmp }} {{ d_weather.yesterday.rn1 }}mm</div>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:4px;padding:3px;background:rgba(236,48,19,.05);border-radius:2px">
+<span style="font-size:16px">{{ d_weather.tomorrow.icon }}</span>
+<div style="display:flex;flex-direction:column;gap:1px">
+<div style="font-size:8px;font-weight:800">내일</div>
+<div style="font-size:9px">{{ d_weather.tomorrow.tmp }} {{ d_weather.tomorrow.rn1 }}mm</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="padding:12px;display:flex;flex-direction:column;gap:8px">
+<button sc-camel-on-click="{{ d_toggleCourse }}" style="width:100%;height:46px;border:0;text-align:left;padding:0 14px;font-size:13px;font-weight:800;letter-spacing:.04em;cursor:pointer;background:{{ d_courseBg }};color:{{ d_courseFg }}" style-hover="opacity:.88">{{ d_courseLabel }}</button>
+<div style="display:flex;gap:8px">
+<button sc-camel-on-click="{{ d_toggleSave }}" style="flex:1;height:46px;border:2px solid #201e1d;background:{{ d_saveBg }};color:{{ d_saveFg }};text-align:left;padding:0 12px;font-size:12px;font-weight:800;letter-spacing:.04em;cursor:pointer" style-hover="background:rgba(236,48,19,.1)">{{ d_saveLabel }}</button>
+<button sc-camel-on-click="{{ d_toggleStamp }}" style="flex:1;height:46px;border:2px solid #201e1d;background:{{ d_stampBg }};color:{{ d_stampFg }};text-align:left;padding:0 12px;font-size:12px;font-weight:800;letter-spacing:.04em;cursor:pointer" style-hover="background:rgba(236,48,19,.1)">{{ d_stampLabel }}</button>
+</div>
+<div style="display:flex;gap:8px">
+<button sc-camel-on-click="{{ d_transit }}" style="flex:1;height:46px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;text-align:left;padding:0 12px;font-size:12px;font-weight:800;letter-spacing:.04em;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2">{{ d_transitLabel }}</button>
+<button sc-camel-on-click="{{ d_taxiOpen }}" style="flex:1;height:46px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;text-align:left;padding:0 12px;font-size:12px;font-weight:800;letter-spacing:.04em;cursor:pointer" style-hover="background:#ec3013;color:#f3f2f2">{{ d_taxiLabel }}</button>
+</div>
+
+<a href="{{ d_directions }}" target="_blank" style="display:block;height:46px;line-height:42px;border:2px solid rgba(32,30,29,.4);padding:0 12px;font-size:12px;font-weight:800;letter-spacing:.04em;text-decoration:none;color:#201e1d">{{ d_directionsLabel }}</a>
+</div>
+<div style="padding:0 12px 22px;font-size:10px;line-height:1.6;color:rgba(32,30,29,.5)">{{ d_note }}</div>
+</section>
+</sc-if>
+
+<section style="display:{{ channelDisplay }};flex-direction:column;flex:1;background:#f3f2f2;color:#201e1d;padding:12px;gap:12px;overflow-y:auto">
+<div style="font-size:18px;font-weight:800;letter-spacing:-.02em;line-height:1.2">여행 정보</div>
+<div style="background:#fff;border:2px solid #201e1d;padding:12px">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+<button sc-camel-on-click="{{ prevMonth }}" style="width:30px;height:30px;border:1px solid #201e1d;background:#f3f2f2;font-weight:800;cursor:pointer">◀</button>
+<div style="font-size:13px;font-weight:800">{{ displayMonth }}</div>
+<button sc-camel-on-click="{{ nextMonth }}" style="width:30px;height:30px;border:1px solid #201e1d;background:#f3f2f2;font-weight:800;cursor:pointer">▶</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;font-size:10px;text-align:center">
+<sc-for list="{{ weekdays }}" as="w" hint-placeholder-count="7">
+<div style="font-weight:800;padding:4px;background:rgba(236,48,19,.1)">{{ w.label }}</div>
+</sc-for>
+<sc-for list="{{ calendarDays }}" as="day" hint-placeholder-count="35">
+<div style="padding:4px;background:{{ day.bg }};font-weight:{{ day.fw }};color:{{ day.fg }};border:{{ day.bd }}">{{ day.label }}</div>
+</sc-for>
+</div>
+</div>
+<div style="border:2px solid #201e1d;background:#ec3013;color:#f3f2f2;padding:12px">
+<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.85">서울 관광 팝업부스</div>
+<div style="font-size:15px;font-weight:800;margin-top:6px;line-height:1.3">명동·홍대·강남 관광안내소</div>
+<div style="font-size:12px;line-height:1.6;margin-top:6px;opacity:.92">서울관광재단이 주요 거점에 운영하는 안내 부스에서 지도와 다국어 상담, 교통카드를 받을 수 있다. 배경지 순례 전 명동 안내소에서 시작하면 명동거리 코스와 바로 이어진다.</div>
+</div>
+<div style="border:2px solid #201e1d;background:#fff;padding:12px">
+<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ec3013">이동 요령</div>
+<div style="font-size:12px;line-height:1.7;margin-top:8px">
+서울 배경지는 지하철로 대부분 닿는다. 낙산공원·북촌·경복궁은 4호선과 3호선으로 묶이고, 잠실·삼성역 구간은 2호선 한 줄로 이어진다. 청담대교 구간은 7호선 열차가 한강 위를 지나므로 자양역에서 건대입구 방향으로 한 정거장 타보면 장면 그대로다. 하루 여러 곳을 도는 일정이면 기후동행카드나 1일권이 유리하다.
+</div>
+</div>
+<div style="font-size:13px;line-height:1.6;opacity:.8"><div style="font-size:13px;line-height:1.6;opacity:.8">서울 관광 안내와 작품 정보.</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px">
+<a href="https://korean.visitseoul.net/" target="_blank" style="height:40px;line-height:36px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;text-align:center;padding:0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-decoration:none;display:block" style-hover="background:#ec3013;color:#f3f2f2">비짓서울</a>
+<a href="https://mediahub.seoul.go.kr/" target="_blank" style="height:40px;line-height:36px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;text-align:center;padding:0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-decoration:none;display:block" style-hover="background:#ec3013;color:#f3f2f2">내 손안에 서울</a>
+<a href="https://www.youtube.com/results?search_query=KPop+Demon+Hunters" target="_blank" style="height:40px;line-height:36px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;text-align:center;padding:0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-decoration:none;display:block" style-hover="background:#ec3013;color:#f3f2f2">예고편</a>
+<a href="https://www.seoul.go.kr/story/tourGuide/" target="_blank" style="height:40px;line-height:36px;border:2px solid #201e1d;background:#f3f2f2;color:#201e1d;text-align:center;padding:0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-decoration:none;display:block" style-hover="background:#ec3013;color:#f3f2f2">관광안내소</a>
+</div>
+</section>
+
+</div>
+
+<nav style="flex:none;display:flex;border-top:2px solid #201e1d;background:#f3f2f2">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+<button sc-camel-on-click="{{ t.pick }}" style="flex:1;height:56px;border:0;border-right:1px solid rgba(32,30,29,.25);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:0 8px;background:{{ t.bg }};color:{{ t.fg }}">
+<span style="display:block;width:14px;height:14px;border:2px solid currentColor;background:{{ t.dot }}"></span>
+<span style="font-size:8.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;line-height:1">{{ t.label }}</span>
+</button>
+</sc-for>
+</nav>
+
+</div>
+</div>
+
+</x-dc>
+<script>
+window.CAT_COLORS={
+  sea:{bg:'#e0f7f4',fg:'#0d7377'},
+  heal:{bg:'#e8f5e9',fg:'#2e7d32'},
+  activity:{bg:'#f3e0b0',fg:'#e65100'},
+  herit:{bg:'#fff3e0',fg:'#e65100'},
+  stay:{bg:'#fce4ec',fg:'#c2185b'},
+  food:{bg:'#ffebee',fg:'#c62828'},
+  local:{bg:'#e3f2fd',fg:'#1565c0'}
+};
+</script>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:440,&quot;height&quot;:900},&quot;markerStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;pin&quot;,&quot;solid&quot;,&quot;duotone&quot;],&quot;default&quot;:&quot;duotone&quot;,&quot;tsType&quot;:&quot;'pin'|'solid'|'duotone'&quot;,&quot;section&quot;:&quot;지도 표현&quot;},&quot;mapSkin&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;paper&quot;,&quot;ink&quot;,&quot;plain&quot;],&quot;default&quot;:&quot;plain&quot;,&quot;tsType&quot;:&quot;'paper'|'ink'|'plain'&quot;,&quot;section&quot;:&quot;지도 표현&quot;},&quot;catPalette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;pastel&quot;,&quot;vivid&quot;,&quot;mono&quot;],&quot;default&quot;:&quot;pastel&quot;,&quot;tsType&quot;:&quot;'pastel'|'vivid'|'mono'&quot;,&quot;section&quot;:&quot;지도 표현&quot;}}">
+const CATS = {
+  stay:{ko:'숙박·로컬체험',en:'Stay & Local'},
+  channel:{ko:'여행 정보',en:'Travel Info',zh:'旅行信息',ja:'旅行情報'},
+  food:{ko:'로컬상권·먹거리',en:'Local & Food'},
+  activity:{ko:'테마파크·액티비티',en:'Theme Park & Activity'},
+  sea:{ko:'해양·자연경관',en:'Coast & Nature'},
+  heal:{ko:'힐링·생태·체험',en:'Healing & Eco'},
+  herit:{ko:'역사·문화유산',en:'Heritage'},
+  station:{ko:'역',en:'Station',zh:'车站',ja:'駅'},
+  terminal:{ko:'터미널',en:'Terminal',zh:'汽车站',ja:'ターミナル'}
+};
+// 지도 스킨 (Tweaks: mapSkin)
+const MAP_SKINS={
+  paper:[
+    {elementType:'geometry',stylers:[{color:'#f3f2f2'}]},
+    {elementType:'labels.text.fill',stylers:[{color:'#201e1d'}]},
+    {elementType:'labels.text.stroke',stylers:[{color:'#f3f2f2'},{weight:3}]},
+    {featureType:'water',elementType:'geometry',stylers:[{color:'#dfe6e8'}]},
+    {featureType:'landscape.natural',elementType:'geometry',stylers:[{color:'#eceae6'}]},
+    {featureType:'poi',elementType:'labels',stylers:[{visibility:'off'}]},
+    {featureType:'road',elementType:'geometry',stylers:[{color:'#ffffff'}]},
+    {featureType:'road.highway',elementType:'geometry',stylers:[{color:'#e8ded9'}]},
+    {featureType:'transit',stylers:[{visibility:'off'}]}
+  ],
+  ink:[
+    {elementType:'geometry',stylers:[{color:'#201e1d'}]},
+    {elementType:'labels.text.fill',stylers:[{color:'#bdb8b4'}]},
+    {elementType:'labels.text.stroke',stylers:[{color:'#201e1d'},{weight:3}]},
+    {featureType:'water',elementType:'geometry',stylers:[{color:'#14201f'}]},
+    {featureType:'landscape.natural',elementType:'geometry',stylers:[{color:'#2a2726'}]},
+    {featureType:'poi',elementType:'labels',stylers:[{visibility:'off'}]},
+    {featureType:'road',elementType:'geometry',stylers:[{color:'#3a3634'}]},
+    {featureType:'road.highway',elementType:'geometry',stylers:[{color:'#5a4b44'}]},
+    {featureType:'transit',stylers:[{visibility:'off'}]}
+  ],
+  plain:null
+};
+// 카테고리 색 팔레트 (Tweaks: catPalette)
+const PALETTE={
+  pastel:null,
+  vivid:{sea:{bg:'#6fd3e7',fg:'#06323d'},heal:{bg:'#7fd97a',fg:'#0d3b0a'},herit:{bg:'#f5c944',fg:'#3d2c00'},activity:{bg:'#b18cf0',fg:'#231046'},stay:{bg:'#f383ae',fg:'#450f26'},food:{bg:'#f2795c',fg:'#3f1005'}},
+  mono:{sea:{bg:'#e6e4e1',fg:'#201e1d'},heal:{bg:'#d2cfcb',fg:'#201e1d'},herit:{bg:'#f3f2f2',fg:'#201e1d'},activity:{bg:'#bcb8b3',fg:'#201e1d'},stay:{bg:'#a8a39e',fg:'#f3f2f2'},food:{bg:'#201e1d',fg:'#f3f2f2'}}
+};
+const CAT_COLORS={
+  sea:{bg:'#e0f7f4',fg:'#0d7377'},
+  heal:{bg:'#e8f5e9',fg:'#2e7d32'},
+  activity:{bg:'#f3e5f5',fg:'#7b1fa2'},
+  herit:{bg:'#fffde7',fg:'#f57f17'},
+  stay:{bg:'#fce4ec',fg:'#c2185b'},
+  food:{bg:'#ffebee',fg:'#c62828'},
+  station:{bg:'#f3e5f5',fg:'#7b1fa2'},
+  terminal:{bg:'#f3e5f5',fg:'#7b1fa2'}
+};
+// 숙소 샘플 데이터셋 (임의 구성 — 실제 예약 정보 아님)
+const STAYS={
+  seoul:[
+    {id:'ss1',lat:37.5700,lng:126.9830,ko:'명동·을지로 호텔',en:'Myeongdong & Euljiro hotels',qKo:'명동 호텔',qEn:'hotel Myeongdong Seoul',areaKo:'중구 명동',areaEn:'Myeong-dong, Jung-gu',band:[10,22],typeKo:'시티 호텔',typeEn:'City hotel'},
+    {id:'ss2',lat:37.5760,lng:126.9860,ko:'북촌·익선동 한옥 스테이',en:'Bukchon & Ikseon hanok stays',qKo:'북촌 한옥스테이',qEn:'hanok stay Bukchon Seoul',areaKo:'종로구 가회동',areaEn:'Gahoe-dong, Jongno-gu',band:[12,25],typeKo:'한옥 스테이',typeEn:'Hanok stay'},
+    {id:'ss3',lat:37.5133,lng:127.1010,ko:'잠실 롯데월드타워 권역 호텔',en:'Jamsil tower-district hotels',qKo:'잠실 호텔',qEn:'hotel Jamsil Seoul',areaKo:'송파구 잠실',areaEn:'Jamsil, Songpa-gu',band:[18,40],typeKo:'타워 호텔',typeEn:'Tower hotel'},
+    {id:'ss4',lat:37.5445,lng:127.0557,ko:'성수 부티크 호텔',en:'Seongsu boutique hotels',qKo:'성수동 호텔',qEn:'boutique hotel Seongsu Seoul',areaKo:'성동구 성수동',areaEn:'Seongsu-dong, Seongdong-gu',band:[12,24],typeKo:'부티크 호텔',typeEn:'Boutique hotel'}
+  ]
+};
+// 숙소 요금: 고정 문구 대신 비수기 주중~주말 성수기 상한의 1박 추정 구간으로 표기한다.
+// band:[min,max] (만원). band가 없는 항목은 기존 price 문구를 그대로 쓴다.
+function stayPrice(s,lang){
+  if(!s||!s.band)return (s&&s.price)||'';
+  const [a,b]=s.band;
+  if(lang==='ko')return a+'~'+b+'\ub9cc\uc6d0 \ucd94\uc815';
+  if(lang==='ja')return a+'\uff5e'+b+'\u4e07\u30a6\u30a9\u30f3\u76ee\u5b89';
+  if(lang==='zh')return '\u7ea6'+(a*10)+'\uff5e'+(b*10)+'\u5343\u97e9\u5143';
+  if(lang==='es')return '\u20a9'+(a*10)+'\u2013'+(b*10)+'k aprox.';
+  return '\u20a9'+(a*10)+'k\u2013'+(b*10)+'k est.';
+}
+// 지도/예약 검색 키워드: 실제 검색 결과가 나오는 지역+숙소유형 키워드를 우선 사용한다.
+function stayQuery(s,lang){
+  if(!s)return '';
+  if(lang==='ko')return s.qKo||((s.ko||'')+' '+(s.areaKo||'')).trim();
+  return s.qEn||((s.en||s.ko||'')+' '+(s.areaEn||'')).trim();
+}
+const REGION_HUB={
+  '서울':{lat:37.5559,lng:126.9723,ko:'서울역 (KTX)',en:'Seoul Stn (KTX)',busKo:'센트럴시티터미널',busEn:'Central City Terminal',modes:['ktx','srt','bus']}
+};
+// 출발지(귀가지) 선택 — 광역 관문
+// 자가용 모드 표시용 — 역·터미널 수식을 떼어 도시명만 남긴다.
+const cityName=(o,lang)=>{
+  const s=(lang==='ko'?o.ko:(o.en||o.ko))||'';
+  return s.replace(/\s*\([^)]*\)\s*$/,'').replace(/(역|터미널|Stn|Station|Terminal|Bus)\s*$/,'').trim()||s;
+};
+const ORIGINS={
+  // 수도권 — 철도
+  seoul:{ko:'서울역 (KTX)',en:'Seoul Stn (KTX)',lat:37.5559,lng:126.9723,modes:['ktx']},
+  suseo:{ko:'수서역 (SRT)',en:'Suseo Stn (SRT)',lat:37.4870,lng:127.1013,modes:['srt']},
+  yongsan:{ko:'용산역 (KTX)',en:'Yongsan Stn (KTX)',lat:37.5299,lng:126.9648,modes:['ktx']},
+  cheongnyangni:{ko:'청량리역 (KTX)',en:'Cheongnyangni Stn (KTX)',lat:37.5800,lng:127.0466,modes:['ktx']},
+  gwangmyeong:{ko:'광명역 (KTX)',en:'Gwangmyeong Stn (KTX)',lat:37.4161,lng:126.8845,modes:['ktx']},
+  suwonStn:{ko:'수원역 (KTX)',en:'Suwon Stn (KTX)',lat:37.2660,lng:127.0008,modes:['ktx']},
+  // 수도권 — 고속·시외버스
+  centralcity:{ko:'센트럴시티터미널 (고속버스)',en:'Central City Terminal (bus)',lat:37.5050,lng:127.0044,modes:['bus']},
+  nambu:{ko:'서울남부터미널 (시외버스)',en:'Seoul Nambu Terminal (bus)',lat:37.4847,lng:127.0166,modes:['bus']},
+  dongseoul:{ko:'동서울터미널 (고속버스)',en:'East Seoul Terminal (bus)',lat:37.5347,lng:127.0947,modes:['bus']},
+  sangbong:{ko:'상봉터미널 (시외버스)',en:'Sangbong Terminal (bus)',lat:37.5966,lng:127.0855,modes:['bus']},
+  incheonBus:{ko:'인천종합터미널 (고속버스)',en:'Incheon Bus Terminal',lat:37.4419,lng:126.7008,modes:['bus']},
+  suwonBus:{ko:'수원종합터미널 (고속버스)',en:'Suwon Bus Terminal',lat:37.2455,lng:127.0086,modes:['bus']},
+  seongnam:{ko:'성남종합터미널 (고속버스)',en:'Seongnam Bus Terminal',lat:37.4086,lng:127.1289,modes:['bus']},
+  // 공항
+  incheonAir:{ko:'인천공항 (리무진)',en:'Incheon Airport (limousine)',lat:37.4602,lng:126.4407,modes:['bus']},
+  gimpoAir:{ko:'김포공항 (리무진)',en:'Gimpo Airport (limousine)',lat:37.5583,lng:126.7906,modes:['bus']},
+  gimhaeAir:{ko:'김해공항 (리무진)',en:'Gimhae Airport (limousine)',lat:35.1795,lng:128.9382,modes:['bus']},
+  // 충청 — 경부·호남고속선 분기
+  osong:{ko:'오송역 (KTX·SRT)',en:'Osong Stn (KTX/SRT)',lat:36.6200,lng:127.3277,modes:['ktx','srt']},
+  cheonan:{ko:'천안아산역 (KTX·SRT)',en:'Cheonan-Asan Stn (KTX/SRT)',lat:36.7943,lng:127.1043,modes:['ktx','srt']},
+  daejeonStn:{ko:'대전역 (KTX·SRT)',en:'Daejeon Stn (KTX/SRT)',lat:36.3315,lng:127.4347,modes:['ktx','srt']},
+  daejeonBus:{ko:'대전복합터미널 (고속버스)',en:'Daejeon Terminal Complex',lat:36.3506,lng:127.4349,modes:['bus']},
+  cheongjuBus:{ko:'청주고속버스터미널',en:'Cheongju Express Bus Terminal',lat:36.6284,lng:127.4290,modes:['bus']},
+  chungjuBus:{ko:'충주공용버스터미널',en:'Chungju Bus Terminal',lat:36.9700,lng:127.9310,modes:['bus']},
+  // 영남
+  daeguStn:{ko:'동대구역 (KTX·SRT)',en:'Dongdaegu Stn (KTX/SRT)',lat:35.8797,lng:128.6286,modes:['ktx','srt']},
+  daeguBus:{ko:'동대구터미널 (고속버스)',en:'Dongdaegu Bus Terminal',lat:35.8776,lng:128.6288,modes:['bus']},
+  busanStn:{ko:'부산역 (KTX·SRT)',en:'Busan Stn (KTX/SRT)',lat:35.1151,lng:129.0415,modes:['ktx','srt']},
+  busanBus:{ko:'부산종합버스터미널 (노포)',en:'Busan Central Bus Terminal',lat:35.2565,lng:129.0925,modes:['bus']},
+  sasangBus:{ko:'부산서부터미널 (사상)',en:'Busan West Bus Terminal (Sasang)',lat:35.1607,lng:128.9800,modes:['bus']},
+  ulsanStn:{ko:'울산역 (KTX·SRT)',en:'Ulsan Stn (KTX/SRT)',lat:35.5513,lng:129.1373,modes:['ktx','srt']},
+  ulsanBus:{ko:'울산고속버스터미널',en:'Ulsan Express Bus Terminal',lat:35.5384,lng:129.3325,modes:['bus']},
+  pohangStn:{ko:'포항역 (KTX)',en:'Pohang Stn (KTX)',lat:36.0640,lng:129.3396,modes:['ktx']},
+  gyeongjuStn:{ko:'신경주역 (KTX·SRT)',en:'Singyeongju Stn (KTX/SRT)',lat:35.8746,lng:129.1756,modes:['ktx','srt']},
+  jinjuStn:{ko:'진주역 (KTX)',en:'Jinju Stn (KTX)',lat:35.1602,lng:128.1359,modes:['ktx']},
+  changwonStn:{ko:'창원중앙역 (KTX)',en:'Changwon Jungang Stn (KTX)',lat:35.2405,lng:128.6890,modes:['ktx']},
+  tongyeongBus:{ko:'통영종합버스터미널',en:'Tongyeong Bus Terminal',lat:34.8556,lng:128.4286,modes:['bus']},
+  // 호남·강원
+  gwangjuStn:{ko:'광주송정역 (KTX·SRT)',en:'Gwangju-Songjeong Stn (KTX/SRT)',lat:35.1394,lng:126.7913,modes:['ktx','srt']},
+  gwangjuBus:{ko:'광주 유·스퀘어 (고속버스)',en:'Gwangju U-Square (bus)',lat:35.1601,lng:126.8783,modes:['bus']},
+  jeonjuStn:{ko:'전주역 (KTX)',en:'Jeonju Stn (KTX)',lat:35.8492,lng:127.1600,modes:['ktx']},
+  mokpoStn:{ko:'목포역 (KTX·SRT)',en:'Mokpo Stn (KTX/SRT)',lat:34.7910,lng:126.3866,modes:['ktx','srt']},
+  yeosuStn:{ko:'여수엑스포역 (KTX)',en:'Yeosu-Expo Stn (KTX)',lat:34.7519,lng:127.7513,modes:['ktx']},
+  gangneungStn:{ko:'강릉역 (KTX)',en:'Gangneung Stn (KTX)',lat:37.7637,lng:128.8986,modes:['ktx']},
+  wonjuStn:{ko:'원주역 (KTX)',en:'Wonju Stn (KTX)',lat:37.3182,lng:127.9633,modes:['ktx']},
+  donghaeStn:{ko:'동해역 (KTX)',en:'Donghae Stn (KTX)',lat:37.4897,lng:129.1289,modes:['ktx']}
+};
+// 같은 권역 내 수단별 대체 관문 — 철도만 있는 출발지에서 버스가 필요할 때 등
+const ORIGIN_ALT={
+  seoul:{bus:'centralcity'}, suseo:{bus:'centralcity'}, yongsan:{bus:'centralcity'},
+  cheongnyangni:{bus:'dongseoul'}, gwangmyeong:{bus:'centralcity'},
+  suwonStn:{bus:'suwonBus'}, suwonBus:{ktx:'suwonStn'},
+  centralcity:{ktx:'seoul',srt:'suseo'}, nambu:{ktx:'seoul',srt:'suseo'},
+  dongseoul:{ktx:'seoul',srt:'suseo'}, sangbong:{ktx:'cheongnyangni'},
+  incheonBus:{ktx:'gwangmyeong'}, seongnam:{srt:'suseo',ktx:'seoul'},
+  osong:{bus:'cheongjuBus'}, cheongjuBus:{ktx:'osong',srt:'osong'},
+  cheonan:{bus:'daejeonBus'}, chungjuBus:{ktx:'osong'},
+  daejeonStn:{bus:'daejeonBus'}, daejeonBus:{ktx:'daejeonStn',srt:'daejeonStn'},
+  daeguStn:{bus:'daeguBus'}, daeguBus:{ktx:'daeguStn',srt:'daeguStn'},
+  busanStn:{bus:'busanBus'}, busanBus:{ktx:'busanStn',srt:'busanStn'}, sasangBus:{ktx:'busanStn',srt:'busanStn'},
+  ulsanStn:{bus:'ulsanBus'}, ulsanBus:{ktx:'ulsanStn',srt:'ulsanStn'},
+  pohangStn:{bus:'daeguBus'}, gyeongjuStn:{bus:'daeguBus'},
+  jinjuStn:{bus:'tongyeongBus'}, changwonStn:{bus:'sasangBus'}, tongyeongBus:{ktx:'jinjuStn'},
+  gwangjuStn:{bus:'gwangjuBus'}, gwangjuBus:{ktx:'gwangjuStn',srt:'gwangjuStn'},
+  jeonjuStn:{bus:'gwangjuBus'}, mokpoStn:{bus:'gwangjuBus'}, yeosuStn:{bus:'gwangjuBus'},
+  gangneungStn:{bus:'dongseoul'}, wonjuStn:{bus:'dongseoul'}, donghaeStn:{bus:'dongseoul'}
+};
+const GATEWAY={
+  seoul:{ko:'서울역 · 센트럴시티터미널',en:'Seoul Stn / Central City Terminal',modes:['ktx','srt','bus']}
+};
+const DATA = {
+  seoul: {ko:'서울', en:'Seoul', center:[37.556,127.010], zoom:12, places:[
+    {n:1,id:'kd1',ko:'낙산공원 성곽길',en:'Naksan Park City Wall',cat:'herit',lat:37.5800,lng:127.0075,srcKo:'종로구 낙산길 41 주소 기반 좌표',srcEn:'Address-based: Naksan-gil 41, Jongno-gu',yt:'sc1',chan:'케이팝 데몬 헌터스 (2025)',vt:'루미와 진우의 밤 — 낙산공원',min:70,hrs:'상시 개방 · 무료 · 02-743-7985',bKo:'루미와 진우가 밤에 만나 속마음을 털어놓는 장면의 무대. 한양도성 성곽을 따라 걷는 길에서 도심 야경이 내려다보이고, 해 질 무렵부터 성곽 조명이 들어온다. 오르막 계단이 가파르니 혜화역에서 마을버스를 타는 편이 낫다.',bEn:'Where Rumi and Jinu talk at night. The Hanyang city-wall path looks down over the lit centre; the wall lighting comes on at dusk. The stairs are steep — the village bus from Hyehwa station is easier.'},
+    {n:2,id:'kd2',ko:'북촌한옥마을',en:'Bukchon Hanok Village',cat:'herit',lat:37.5826,lng:126.9850,srcKo:'종로구 계동길 일대 주소 기반 좌표',srcEn:'Address-based: Gyedong-gil area, Jongno-gu',img:'https://commons.wikimedia.org/wiki/Special:FilePath/Bukchon-ro%2011-gil%20street%20with%20hanok%20houses%20in%20Bukchon%20Hanok%20Village%20Seoul.jpg?width=960',imgCredit:'Wikimedia Commons',yt:'sc2',chan:'케이팝 데몬 헌터스 (2025)',vt:'골목과 지붕 위 — 프리(Free)',min:90,hrs:'상시 개방 · 주민 거주 구역 17:00 이후 관람 제한',bKo:'루미와 진우가 골목과 지붕을 오가며 듀엣곡을 부르는 구간. 실제로는 주민이 사는 마을이라 정숙 관람 구역이 지정돼 있고, 계동길과 북촌로11길이 촬영 구도와 가장 가깝다.',bEn:'The alleys and rooftops of the duet sequence. It is a lived-in neighbourhood with quiet-hours zones; Gyedong-gil and Bukchon-ro 11-gil match the framing most closely.'},
+    {n:3,id:'kd3',ko:'명동거리',en:'Myeongdong Street',cat:'food',lat:37.5636,lng:126.9850,srcKo:'중구 명동8길 일대 주소 기반 좌표',srcEn:'Address-based: Myeongdong 8-gil, Jung-gu',yt:'sc3',chan:'케이팝 데몬 헌터스 (2025)',vt:'사자보이즈 첫 등장 — 소다팝',min:110,hrs:'상점 10:30–22:00 · 노점 17:00 이후',bKo:'사자 보이즈가 처음 등장해 무대를 여는 거리. 저녁에 길 한가운데로 포장마차가 들어서면서 화면 속 밀도에 가까워진다.',bEn:'The street where the Saja Boys make their entrance. It comes closest to the film at night, when the food carts fill the middle of the road.'},
+    {n:4,id:'kd4',ko:'남산서울타워',en:'N Seoul Tower',cat:'activity',lat:37.5512,lng:126.9882,srcKo:'용산구 남산공원길 105 주소 기반 좌표',srcEn:'Address-based: Namsangongwon-gil 105, Yongsan-gu',img:'https://commons.wikimedia.org/wiki/Special:FilePath/Namsan%20Tower%2C%20Seoul%20-%20Namsan2299.jpg?width=960',imgCredit:'Wikimedia Commons',yt:'sc4',chan:'케이팝 데몬 헌터스 (2025)',vt:'서울의 스카이라인',min:120,hrs:'10:30–23:00 · 전망대 어른 21,000원 · 02-3455-9277',bKo:'작품 전반에 서울의 기준점처럼 반복해서 등장하는 실루엣. 케이블카 또는 남산 순환버스로 오른다.',bEn:'The silhouette that recurs through the film as the city\u2019s fixed point. Reached by cable car or the Namsan circular bus.'},
+    {n:5,id:'kd5',ko:'롯데월드타워 서울스카이',en:'Lotte World Tower Seoul Sky',cat:'activity',lat:37.5125,lng:127.1025,srcKo:'송파구 올림픽로 300 주소 기반 좌표',srcEn:'Address-based: Olympic-ro 300, Songpa-gu',yt:'sc5',chan:'케이팝 데몬 헌터스 (2025)',vt:'헌트릭스의 숙소',min:120,hrs:'10:00–22:00 · 전망대 어른 29,000원 · 1661-2000',bKo:'헌트릭스 숙소의 배경이 된 117층 이상 전망대. 창 너머로 보이는 한강과 잠실 일대의 구도가 작품 속 거실 창과 겹친다.',bEn:'The observatory above the 117th floor behind the Huntrix apartment. The river and Jamsil laid out beyond the glass match the living-room window in the film.'},
+    {n:6,id:'kd6',ko:'서울올림픽주경기장',en:'Seoul Olympic Stadium',cat:'activity',lat:37.5159,lng:127.0728,srcKo:'송파구 올림픽로 25 주소 기반 좌표',srcEn:'Address-based: Olympic-ro 25, Songpa-gu',yt:'sc6',chan:'케이팝 데몬 헌터스 (2025)',vt:'최종 무대',min:80,hrs:'외부 상시 · 내부는 행사일에 따름',bKo:'마지막 대결이 벌어지는 공연장의 모델. 잠실종합운동장 단지 안에 있으며, 공연이 없는 날에도 외곽 트랙을 따라 걸을 수 있다.',bEn:'The model for the arena of the final confrontation, inside the Jamsil sports complex; the outer track is walkable on non-event days.'},
+    {n:7,id:'kd7',ko:'청담대교 · 자양역',en:'Cheongdam Bridge & Jayang Stn',cat:'heal',lat:37.5343,lng:127.0678,srcKo:'광진구 자양동 7호선 자양역 주소 기반 좌표',srcEn:'Address-based: Jayang Stn (Line 7), Gwangjin-gu',yt:'sc7',chan:'케이팝 데몬 헌터스 (2025)',vt:'한강을 건너는 7호선',min:40,hrs:'상시',bKo:'지하철이 한강 위를 건너는 구간. 청담대교는 위층이 도로, 아래층이 7호선인 복층 교량이라 열차가 강을 가로지르는 화면이 그대로 재현된다.',bEn:'Where the subway crosses the Han. Cheongdam Bridge carries road above and Line 7 below, so the shot of a train over water is literal.'},
+    {n:8,id:'kd8',ko:'K-POP SQUARE (삼성역 전광판)',en:'K-POP SQUARE Media',cat:'activity',lat:37.5115,lng:127.0595,srcKo:'강남구 영동대로 513 코엑스 주소 기반 좌표',srcEn:'Address-based: COEX, Yeongdong-daero 513',yt:'sc8',chan:'케이팝 데몬 헌터스 (2025)',vt:'도시를 덮는 화면',min:40,hrs:'상시 · 영상 10:00–23:00',bKo:'코엑스 외벽의 대형 곡면 전광판. 도시 전체가 화면이 되는 장면의 출발점으로, 삼성역 6번 출구 앞 광장에서 정면으로 본다.',bEn:'The curved LED wall on the COEX façade — the starting point for the scenes where the city itself becomes a screen. Best viewed from the plaza at Samseong station exit 6.'},
+    {n:9,id:'kd9',ko:'서울한방진흥센터',en:'Seoul Oriental Medicine Center',cat:'heal',lat:37.5825,lng:127.0374,srcKo:'동대문구 약령중앙로 26 주소 기반 좌표',srcEn:'Address-based: Yangnyeongjungang-ro 26, Dongdaemun-gu',yt:'sc9',chan:'케이팝 데몬 헌터스 (2025)',vt:'한의원',min:70,hrs:'10:00–18:00 · 월요일 휴관 · 02-969-9241',bKo:'작품 속 한의원 외관과 닮은 건물로 알려지며 순례지가 됐다. 1호선 제기동역 옆 약령시 한복판에 있고, 족욕과 한방차 체험을 운영한다.',bEn:'Recognised for its resemblance to the clinic in the film, in the middle of the herbal-medicine market by Jegi-dong station; foot baths and herbal tea sessions run on site.'},
+    {n:10,id:'kd10',ko:'경복궁',en:'Gyeongbokgung Palace',cat:'herit',lat:37.5796,lng:126.9770,srcKo:'종로구 사직로 161 주소 기반 좌표',srcEn:'Address-based: Sajik-ro 161, Jongno-gu',yt:'sc10',chan:'케이팝 데몬 헌터스 (2025)',vt:'전통의 결',min:100,hrs:'09:00–18:00 · 화요일 휴궁 · 어른 3,000원 · 02-3700-3900',bKo:'궁의 지붕선과 단청이 작품의 전통 모티프 전반에 깔려 있다. 한복을 입으면 입장이 무료다.',bEn:'The roof lines and dancheong colouring run through the film\u2019s traditional motifs. Admission is free in hanbok.'},
+    {n:11,id:'kd11',ko:'뚝섬한강공원',en:'Ttukseom Hangang Park',cat:'heal',lat:37.5295,lng:127.0700,srcKo:'광진구 강변북로 139 주소 기반 좌표',srcEn:'Address-based: Gangbyeonbuk-ro 139, Gwangjin-gu',yt:'sc7',chan:'케이팝 데몬 헌터스 (2025)',vt:'한강을 건너는 7호선',min:80,hrs:'상시 개방 · 무료',bKo:'강변에서 청담대교를 정면으로 올려다보는 자리. 편의점과 돗자리 대여가 있어 치맥 장면을 그대로 따라 하기 좋다.',bEn:'The riverbank looking straight up at Cheongdam Bridge; convenience stores and mat rentals make the chicken-and-beer scene easy to reproduce.'},
+    {id:'kdx1',off:true,n:'·',ko:'창덕궁',en:'Changdeokgung Palace',cat:'herit',lat:37.5794,lng:126.9910,srcKo:'종로구 율곡로 99 주소 기반 좌표',srcEn:'Address-based: Yulgok-ro 99',img:'https://commons.wikimedia.org/wiki/Special:FilePath/Changdeokgung-Injeongjeon.jpg?width=960',imgCredit:'Wikimedia Commons',yt:'',min:110,hrs:'09:00–18:00 · 월요일 휴궁 · 어른 3,000원 · 후원 별도',bKo:'유네스코 세계유산. 후원은 시간제 관람이라 예약이 필요하다.',bEn:'A UNESCO World Heritage palace; the rear garden is timed-entry and needs booking.'},
+    {id:'kdx2',off:true,n:'·',ko:'광화문광장',en:'Gwanghwamun Square',cat:'herit',lat:37.5725,lng:126.9769,srcKo:'종로구 세종대로 172 주소 기반 좌표',srcEn:'Address-based: Sejong-daero 172',yt:'',min:50,hrs:'상시 개방 · 무료',bKo:'경복궁에서 곧장 남쪽으로 이어지는 광장. 분수와 역사물길이 있고, 야간 조명이 들어오면 궁 방향으로 보는 구도가 좋다.',bEn:'The square running south from Gyeongbokgung, with fountains and a history water channel; the palace-facing view is best once the lights come on.'},
+    {id:'kdx3',off:true,n:'·',ko:'삼청동길',en:'Samcheong-dong',cat:'food',lat:37.5828,lng:126.9817,srcKo:'종로구 삼청로 일대 주소 기반 좌표',srcEn:'Address-based: Samcheong-ro, Jongno-gu',yt:'',min:90,hrs:'상점 11:00–21:00',bKo:'북촌 서쪽의 카페·공방 거리. 한옥마을 관람 뒤 쉬어가는 구간으로 붙인다.',bEn:'A café and studio street west of Bukchon — the natural rest stop after the hanok village.'},
+    {id:'kdx4',off:true,n:'·',ko:'익선동 한옥거리',en:'Ikseon-dong',cat:'food',lat:37.5735,lng:126.9903,srcKo:'종로구 수표로28길 주소 기반 좌표',srcEn:'Address-based: Supyo-ro 28-gil',yt:'',min:80,hrs:'상점 11:00–23:00',bKo:'한옥을 고쳐 만든 좁은 골목 상권. 종로3가역에서 바로 닿는다.',bEn:'A tight lane of converted hanok shops, straight out of Jongno 3-ga station.'},
+    {id:'kdx5',off:true,n:'·',ko:'인사동',en:'Insa-dong',cat:'food',lat:37.5740,lng:126.9856,srcKo:'종로구 인사동길 주소 기반 좌표',srcEn:'Address-based: Insadong-gil',yt:'',min:70,hrs:'상점 10:00–21:00',bKo:'전통 공예와 찻집이 모인 거리. 쌈지길 나선 통로가 중심이다.',bEn:'A street of craft shops and tea houses, centred on the Ssamziegil spiral.'},
+    {id:'kdx6',off:true,n:'·',ko:'국립중앙박물관',en:'National Museum of Korea',cat:'herit',lat:37.5240,lng:126.9803,srcKo:'용산구 서빙고로 137 주소 기반 좌표',srcEn:'Address-based: Seobinggo-ro 137',yt:'',min:150,hrs:'10:00–18:00 · 상설전시 무료 · 02-2077-9000',bKo:'작품이 빌려온 호랑이·까치 도상과 무속 유물을 실물로 볼 수 있다. 기념품점의 인기도 작품 이후 크게 올랐다.',bEn:'Where the tiger-and-magpie imagery and shamanic objects the film borrows can be seen in the original; its shop grew busy after the film.'},
+    {id:'kdx7',off:true,n:'·',ko:'흥인지문 · 한양도성',en:'Heunginjimun & City Wall',cat:'herit',lat:37.5712,lng:127.0094,srcKo:'종로구 종로 288 주소 기반 좌표',srcEn:'Address-based: Jongno 288',yt:'',min:50,hrs:'상시 개방 · 무료',bKo:'낙산 성곽길의 남쪽 들머리. 동대문에서 걸어 올라가면 낙산공원까지 40분이다.',bEn:'The south trailhead of the Naksan wall path — forty minutes on foot up to the park.'},
+    {id:'kdx8',off:true,n:'·',ko:'성수동 카페거리',en:'Seongsu Cafe Street',cat:'food',lat:37.5445,lng:127.0557,srcKo:'성동구 연무장길 주소 기반 좌표',srcEn:'Address-based: Yeonmujang-gil',yt:'',min:100,hrs:'상점 11:00–22:00',bKo:'붉은 벽돌 공장을 고친 카페와 팝업 스토어 밀집 구역. 케이팝 관련 팝업이 자주 선다.',bEn:'Converted red-brick factories full of cafés and pop-ups; K-pop pop-ups appear here often.'},
+    {id:'kdx9',off:true,n:'·',ko:'코엑스 별마당도서관',en:'Starfield Library COEX',cat:'activity',lat:37.5126,lng:127.0589,srcKo:'강남구 영동대로 513 주소 기반 좌표',srcEn:'Address-based: Yeongdong-daero 513',yt:'',min:50,hrs:'10:30–22:00 · 무료',bKo:'13m 서가가 선 실내 광장. 삼성역 전광판을 보러 간 김에 함께 돈다.',bEn:'An indoor plaza of 13 m bookshelves — folded in with the Samseong media wall.'},
+    {id:'kdx10',off:true,n:'·',ko:'서울약령시 한의약박물관',en:'Seoul Yangnyeongsi Herb Museum',cat:'heal',lat:37.5830,lng:127.0382,srcKo:'동대문구 약령중앙로 26 주소 기반 좌표',srcEn:'Address-based: Yangnyeongjungang-ro 26',yt:'',min:50,hrs:'10:00–18:00 · 월요일 휴관 · 무료',bKo:'한방진흥센터와 같은 단지. 약재 감별과 한방차 체험을 함께 운영한다.',bEn:'In the same complex as the medicine centre, with herb-identification and tea sessions.'},
+    {id:'kdx11',off:true,n:'·',ko:'잠실 롯데월드 어드벤처',en:'Lotte World Adventure',cat:'activity',lat:37.5111,lng:127.0980,srcKo:'송파구 올림픽로 240 주소 기반 좌표',srcEn:'Address-based: Olympic-ro 240',yt:'',min:300,hrs:'10:00–21:00 · 종일권 어른 62,000원',bKo:'서울스카이와 같은 단지의 실내외 테마파크. 비 오는 날 대안이 된다.',bEn:'The indoor-outdoor theme park sharing the Seoul Sky complex — the wet-day option.'},
+    {id:'kdx12',off:true,n:'·',ko:'반포한강공원 달빛무지개분수',en:'Banpo Moonlight Rainbow Fountain',cat:'heal',lat:37.5106,lng:126.9955,srcKo:'서초구 신반포로11길 40 주소 기반 좌표',srcEn:'Address-based: Sinbanpo-ro 11-gil 40',yt:'',min:60,hrs:'분수 4–10월 야간 20:00·20:30·21:00',bKo:'반포대교 난간에서 물을 뿜는 야간 분수. 한강 야경 코스의 마무리로 넣는다.',bEn:'A night fountain from the rail of Banpo Bridge — the close of a river-at-night route.'},
+    {id:'kdx13',off:true,n:'·',ko:'덕수궁 돌담길',en:'Deoksugung Doldam-gil',cat:'herit',lat:37.5658,lng:126.9751,srcKo:'중구 세종대로 99 주소 기반 좌표',srcEn:'Address-based: 중구 세종대로 99',yt:'',min:60,hrs:'궁 09:00–21:00 · 어른 1,000원 · 돌담길 상시',bKo:'정동 방향으로 이어지는 돌담길. 궁과 근대 건축이 한 화면에 들어온다.',bEn:'A stone-wall lane running toward Jeongdong, where palace and modern architecture share one frame.'},
+    {id:'kdx14',off:true,n:'·',ko:'종묘',en:'Jongmyo Shrine',cat:'herit',lat:37.5747,lng:126.9944,srcKo:'종로구 종로 157 주소 기반 좌표',srcEn:'Address-based: 종로구 종로 157',yt:'',min:80,hrs:'09:00–18:00 · 화요일 휴무 · 시간제 관람 · 어른 1,000원',bKo:'조선 왕실 신주를 모신 사당. 유네스코 세계유산이며 정전의 긴 지붕선이 압도적이다.',bEn:'The royal ancestral shrine, a World Heritage site; the long roofline of Jeongjeon is its defining view.'},
+    {id:'kdx15',off:true,n:'·',ko:'운현궁',en:'Unhyeongung',cat:'herit',lat:37.5747,lng:126.9857,srcKo:'종로구 삼일대로 464 주소 기반 좌표',srcEn:'Address-based: 종로구 삼일대로 464',yt:'',min:50,hrs:'09:00–18:00 · 월요일 휴무 · 무료',bKo:'흥선대원군의 사저. 안국역 옆이라 북촌 코스에 붙이기 쉽다.',bEn:'The residence of the Heungseon Daewongun, beside Anguk station and easy to add to a Bukchon route.'},
+    {id:'kdx16',off:true,n:'·',ko:'동대문디자인플라자',en:'Dongdaemun Design Plaza',cat:'activity',lat:37.5665,lng:127.0092,srcKo:'중구 을지로 281 주소 기반 좌표',srcEn:'Address-based: 중구 을지로 281',yt:'',min:80,hrs:'10:00–20:00 · 외부 상시',bKo:'곡면 알루미늄 외피의 복합 문화 시설. 야간 조명과 LED 장미밭이 사진 자리다.',bEn:'A curved-aluminium culture complex; the night lighting and LED rose field are the photo spots.'},
+    {id:'kdx17',off:true,n:'·',ko:'광장시장',en:'Gwangjang Market',cat:'food',lat:37.5701,lng:126.9997,srcKo:'종로구 창경궁로 88 주소 기반 좌표',srcEn:'Address-based: 종로구 창경궁로 88',yt:'',min:70,hrs:'09:00–23:00 · 점포별 상이',bKo:'빈대떡과 김밥 좌판이 통로를 채우는 100년 시장.',bEn:'A century-old market whose aisles are lined with mung-bean pancake and kimbap stalls.'},
+    {id:'kdx18',off:true,n:'·',ko:'청계천',en:'Cheonggyecheon',cat:'heal',lat:37.5696,lng:126.9784,srcKo:'종로구 청계천로 주소 기반 좌표',srcEn:'Address-based: 종로구 청계천로',yt:'',min:60,hrs:'상시 개방 · 무료',bKo:'도심을 동서로 가르는 복원 하천. 광장시장까지 물길을 따라 걷는다.',bEn:'A restored stream cutting east-west through the centre; walk it as far as Gwangjang Market.'},
+    {id:'kdx19',off:true,n:'·',ko:'서울로7017',en:'Seoullo 7017',cat:'heal',lat:37.5561,lng:126.9723,srcKo:'중구 청파로 432 주소 기반 좌표',srcEn:'Address-based: 중구 청파로 432',yt:'',min:50,hrs:'상시 개방 · 무료',bKo:'고가도로를 고쳐 만든 보행길. 서울역에서 남대문 방향으로 이어진다.',bEn:'A walkway converted from an overpass, running from Seoul station toward Namdaemun.'},
+    {id:'kdx20',off:true,n:'·',ko:'남대문시장',en:'Namdaemun Market',cat:'food',lat:37.5591,lng:126.9773,srcKo:'중구 남대문시장4길 21 주소 기반 좌표',srcEn:'Address-based: 중구 남대문시장4길 21',yt:'',min:70,hrs:'08:30–18:00 · 일부 야간',bKo:'서울 최대 전통시장. 갈치조림 골목과 수입 상가가 붙어 있다.',bEn:'Seoul’s largest traditional market, with the braised-hairtail alley and import arcades side by side.'},
+    {id:'kdx21',off:true,n:'·',ko:'경리단길',en:'Gyeongnidan-gil',cat:'food',lat:37.5405,lng:126.9895,srcKo:'용산구 회나무로 주소 기반 좌표',srcEn:'Address-based: 용산구 회나무로',yt:'',min:80,hrs:'상점 12:00–24:00',bKo:'남산 남쪽 사면의 경사진 상권. 국적이 섞인 식당이 많다.',bEn:'A sloping strip on the south face of Namsan, thick with restaurants of mixed origin.'},
+    {id:'kdx22',off:true,n:'·',ko:'홍대 걷고싶은거리',en:'Hongdae Street',cat:'food',lat:37.5556,lng:126.9236,srcKo:'마포구 어울마당로 주소 기반 좌표',srcEn:'Address-based: 마포구 어울마당로',yt:'',min:90,hrs:'상시 · 버스킹 저녁',bKo:'거리 공연이 상시로 열리는 대학가 상권.',bEn:'A university-district strip with street performances running most evenings.'},
+    {id:'kdx23',off:true,n:'·',ko:'연남동 경의선숲길',en:'Yeonnam Gyeongui Line Park',cat:'heal',lat:37.5606,lng:126.9256,srcKo:'마포구 연남동 주소 기반 좌표',srcEn:'Address-based: 마포구 연남동',yt:'',min:70,hrs:'상시 개방 · 무료',bKo:'폐선을 공원으로 바꾼 긴 녹지. 홍대에서 연남동까지 이어진다.',bEn:'A long green strip made from a disused rail line, running from Hongdae to Yeonnam.'},
+    {id:'kdx24',off:true,n:'·',ko:'여의도 한강공원',en:'Yeouido Hangang Park',cat:'heal',lat:37.5285,lng:126.9337,srcKo:'영등포구 여의동로 330 주소 기반 좌표',srcEn:'Address-based: 영등포구 여의동로 330',yt:'',min:80,hrs:'상시 개방 · 무료',bKo:'봄 벚꽃과 여름 물빛광장. 유람선 선착장이 붙어 있다.',bEn:'Spring blossom and a summer water plaza, with the river-cruise pier alongside.'},
+    {id:'kdx25',off:true,n:'·',ko:'노들섬',en:'Nodeul Island',cat:'activity',lat:37.5176,lng:126.9583,srcKo:'용산구 양녕로 445 주소 기반 좌표',srcEn:'Address-based: 용산구 양녕로 445',yt:'',min:60,hrs:'10:00–22:00 · 무료',bKo:'한강 한가운데의 공연·전시 섬. 보행로로 걸어 들어간다.',bEn:'A performance and exhibition island mid-river, entered on foot along the bridge walkway.'},
+    {id:'kdx26',off:true,n:'·',ko:'서울숲',en:'Seoul Forest',cat:'heal',lat:37.5444,lng:127.0374,srcKo:'성동구 뚝섬로 273 주소 기반 좌표',srcEn:'Address-based: 성동구 뚝섬로 273',yt:'',min:90,hrs:'상시 개방 · 무료',bKo:'사슴방사장과 은행나무길이 있는 대형 공원. 성수동과 붙어 있다.',bEn:'A large park with a deer enclosure and ginkgo avenue, adjoining Seongsu.'},
+    {id:'kdx27',off:true,n:'·',ko:'건국대 일감호',en:'Konkuk Univ. Ilgamho',cat:'heal',lat:37.5415,lng:127.0782,srcKo:'광진구 능동로 120 주소 기반 좌표',srcEn:'Address-based: 광진구 능동로 120',yt:'',min:40,hrs:'상시 개방 · 무료',bKo:'캠퍼스 안의 큰 호수. 자양역·청담대교 구간에서 걸어서 닿는다.',bEn:'A large campus lake, walkable from the Jayang station and Cheongdam Bridge stretch.'},
+    {id:'kdx28',off:true,n:'·',ko:'아차산 해맞이광장',en:'Achasan Sunrise Plaza',cat:'heal',lat:37.5541,lng:127.1005,srcKo:'광진구 광장동 주소 기반 좌표',srcEn:'Address-based: 광진구 광장동',yt:'',min:120,hrs:'상시 개방 · 무료',bKo:'한강과 강동 일대가 내려다보이는 낮은 산. 왕복 두 시간이면 충분하다.',bEn:'A low hill overlooking the river and the eastern districts; two hours round trip is enough.'},
+    {id:'kdx29',off:true,n:'·',ko:'석촌호수',en:'Seokchon Lake',cat:'heal',lat:37.5088,lng:127.1024,srcKo:'송파구 삼학사로 136 주소 기반 좌표',srcEn:'Address-based: 송파구 삼학사로 136',yt:'',min:60,hrs:'상시 개방 · 무료',bKo:'롯데월드타워를 물에 비추는 호수. 한 바퀴 2.5km다.',bEn:'The lake that reflects Lotte World Tower; the loop is 2.5 km.'},
+    {id:'kdx30',off:true,n:'·',ko:'올림픽공원',en:'Olympic Park',cat:'heal',lat:37.5202,lng:127.1215,srcKo:'송파구 올림픽로 424 주소 기반 좌표',srcEn:'Address-based: 송파구 올림픽로 424',yt:'',min:90,hrs:'상시 개방 · 무료',bKo:'들판 한가운데 선 나무로 알려진 대형 공원. 주경기장 코스 뒤에 붙인다.',bEn:'A large park known for the lone tree in its open field — the stop after the stadium.'},
+    {id:'kdx31',off:true,n:'·',ko:'가로수길',en:'Garosu-gil',cat:'food',lat:37.5209,lng:127.0227,srcKo:'강남구 신사동 주소 기반 좌표',srcEn:'Address-based: 강남구 신사동',yt:'',min:70,hrs:'상점 11:00–22:00',bKo:'신사동 은행나무 가로수 상권. 강남 쪽 카페 코스의 기준점이다.',bEn:'The ginkgo-lined shopping street in Sinsa-dong, the anchor of the Gangnam café route.'},
+    {id:'kdx32',off:true,n:'·',ko:'봉은사',en:'Bongeunsa Temple',cat:'herit',lat:37.5148,lng:127.0577,srcKo:'강남구 봉은사로 531 주소 기반 좌표',srcEn:'Address-based: 강남구 봉은사로 531',yt:'',min:60,hrs:'05:00–22:00 · 무료 · 02-3218-4800',bKo:'코엑스 건너편의 천년 사찰. 템플스테이와 연등이 알려져 있다.',bEn:'A thousand-year-old temple across from COEX, known for its temple stay and lantern displays.'},
+    {id:'kdx33',off:true,n:'·',ko:'선릉·정릉',en:'Seonjeongneung',cat:'herit',lat:37.5089,lng:127.0492,srcKo:'강남구 선릉로100길 1 주소 기반 좌표',srcEn:'Address-based: 강남구 선릉로100길 1',yt:'',min:60,hrs:'06:00–21:00 · 어른 1,000원',bKo:'빌딩 사이에 남은 조선 왕릉. 유네스코 세계유산이다.',bEn:'Joseon royal tombs left standing among office towers; a World Heritage site.'},
+    {id:'kdx34',off:true,n:'·',ko:'국립민속박물관',en:'National Folk Museum',cat:'herit',lat:37.5814,lng:126.9793,srcKo:'종로구 삼청로 37 주소 기반 좌표',srcEn:'Address-based: 종로구 삼청로 37',yt:'',min:80,hrs:'09:00–18:00 · 무료 · 02-3704-3114',bKo:'경복궁 경내의 민속 전시관. 무속과 세시풍속 자료가 두텁다.',bEn:'A folk museum inside Gyeongbokgung, strong on shamanic and seasonal-custom material.'},
+    {id:'kdx35',off:true,n:'·',ko:'북악스카이웨이 팔각정',en:'Bugaksan Skyway Pavilion',cat:'heal',lat:37.6013,lng:126.9814,srcKo:'종로구 북악산로 267 주소 기반 좌표',srcEn:'Address-based: 종로구 북악산로 267',yt:'',min:50,hrs:'상시 개방 · 무료',bKo:'북악 능선의 전망 정자. 도심과 남산이 한눈에 든다.',bEn:'A viewing pavilion on the Bugak ridge, taking in the centre and Namsan at once.'},
+    {id:'kdx36',off:true,n:'·',ko:'통인시장',en:'Tongin Market',cat:'food',lat:37.5808,lng:126.9704,srcKo:'종로구 자하문로15길 18 주소 기반 좌표',srcEn:'Address-based: 종로구 자하문로15길 18',yt:'',min:50,hrs:'07:00–18:00 · 일부 월요일 휴무',bKo:'엽전으로 반찬을 사는 도시락 카페로 알려진 시장. 경복궁 서쪽이다.',bEn:'Known for its brass-coin lunchbox café, just west of Gyeongbokgung.'},
+    {id:'kdx37',off:true,n:'·',ko:'서촌',en:'Seochon',cat:'food',lat:37.5789,lng:126.9711,srcKo:'종로구 필운대로 주소 기반 좌표',srcEn:'Address-based: 종로구 필운대로',yt:'',min:70,hrs:'상점 11:00–21:00',bKo:'경복궁 서쪽의 오래된 주택가 상권. 골목이 좁고 조용하다.',bEn:'An old residential quarter west of the palace, its lanes narrow and quiet.'},
+    {id:'kdx38',off:true,n:'·',ko:'국립현대미술관 서울',en:'MMCA Seoul',cat:'activity',lat:37.5785,lng:126.98,srcKo:'종로구 삼청로 30 주소 기반 좌표',srcEn:'Address-based: 종로구 삼청로 30',yt:'',min:90,hrs:'10:00–18:00 · 수·토 21:00 · 02-3701-9500',bKo:'경복궁 옆 현대미술관. 삼청동 코스와 묶인다.',bEn:'A contemporary art museum beside the palace, folded into the Samcheong route.'},
+    {id:'kdx39',off:true,n:'·',ko:'노량진 수산시장',en:'Noryangjin Fish Market',cat:'food',lat:37.5145,lng:126.9541,srcKo:'동작구 노들로 674 주소 기반 좌표',srcEn:'Address-based: 동작구 노들로 674',yt:'',min:70,hrs:'24시간 · 경매 새벽',bKo:'24시간 도매 수산시장. 2층 식당에서 바로 손질해 먹는다.',bEn:'A 24-hour wholesale fish market; the upstairs restaurants prepare what you buy.'},
+    {id:'kdx40',off:true,n:'·',ko:'하늘공원',en:'Haneul Park',cat:'heal',lat:37.5701,lng:126.8827,srcKo:'마포구 하늘공원로 95 주소 기반 좌표',srcEn:'Address-based: 마포구 하늘공원로 95',yt:'',min:80,hrs:'상시 개방 · 무료',bKo:'매립지를 덮어 만든 언덕 공원. 가을 억새밭이 넓다.',bEn:'A hilltop park capping a former landfill, with wide autumn silver-grass fields.'}
+  ]}
+};
+const T = {
+  sub:{ko:'케이팝 데몬 헌터스 · 서울 배경지 가이드',en:'KPop Demon Hunters · Seoul locations'},
+  spots:{ko:'개 장소',en:'spots'},
+  all:{ko:'전체',en:'All'},
+  sheet:{ko:'장소 목록',en:'Place list'},
+  video:{ko:'영화',en:'Film'},
+  novideo:{ko:'해당 장면 없음',en:'No scene'},
+  tabs:{map:{ko:'지도',en:'Map'},course:{ko:'코스',en:'Course'},videos:{ko:'영화',en:'Film'},stamp:{ko:'스탬프',en:'Stamp'},saved:{ko:'저장',en:'Saved'},channel:{ko:'여행 정보',en:'Travel Info'}},
+  courseKicker:{ko:'코스 빌더',en:'Course builder'},
+  courseTitle:{ko:'오늘의 동선',en:"Today's route"},
+  stops:{ko:'경유지',en:'Stops'},dist:{ko:'총 거리',en:'Distance'},time:{ko:'예상 시간',en:'Est. time'},
+  courseEmpty:{ko:'아직 담은 장소가 없습니다. 지도에서 장소를 열고 “코스에 추가”를 누르거나, 아래에서 추천 코스를 불러오세요.',en:'No stops yet. Open a place on the map and add it, or load a suggested course below.'},
+  btnAuto:{ko:'추천 코스 불러오기',en:'Load suggested course'},
+  btnClear:{ko:'코스 비우기',en:'Clear course'},
+  videoKicker:{ko:'영화 속 장면',en:'Scenes in the film'},
+  videoTitle:{ko:'영화 속 그 자리',en:'Scenes on location'},
+  watch:{ko:'장면 찾아보기',en:'Look up scene'},
+  usedIn:{ko:'등장 장소',en:'Featured spots'},
+  stampKicker:{ko:'체크인',en:'Check-in'},
+  stampTitle:{ko:'스탬프 북',en:'Stamp book'},
+  collected:{ko:'수집',en:'collected'},
+  done:{ko:'획득',en:'Collected'},undone:{ko:'미획득',en:'Not yet'},
+  savedKicker:{ko:'북마크',en:'Bookmarks'},
+  savedTitle:{ko:'저장한 장소',en:'Saved places'},
+  savedEmpty:{ko:'저장한 장소가 없습니다.',en:'Nothing saved yet.'},
+  addCourse:{ko:'코스에 추가',en:'Add to course'},
+  inCourse:{ko:'코스에서 빼기',en:'Remove from course'},
+  save:{ko:'저장',en:'Save'},saved2:{ko:'저장됨',en:'Saved'},
+  stampBtn:{ko:'스탬프 찍기',en:'Check in'},stamped:{ko:'스탬프 완료',en:'Checked in'},
+  directions:{ko:'지도 앱에서 길찾기',en:'Open in maps'},
+  lat:{ko:'위도',en:'Latitude'},lng:{ko:'경도',en:'Longitude'},
+  srcRow:{ko:'좌표 기준',en:'Coordinate source'},hoursRow:{ko:'운영시간',en:'Hours'},feeRow:{ko:'요금',en:'Admission'},telRow:{ko:'전화',en:'Phone'},stayRow:{ko:'권장 체류',en:'Suggested stay'},
+  chanRow:{ko:'작품',en:'Film'},
+  ytSearch:{ko:'장면·장소 검색',en:'Search a scene or place',zh:'搜索场景或地点',ja:'シーン・場所を検索'},
+  ytSearchGo:{ko:'검색',en:'Search',zh:'搜索',ja:'検索'},
+  transit:{ko:'대중교통',en:'Transit',zh:'公共交通',ja:'公共交通'},
+  taxi:{ko:'택시 요금',en:'Taxi Fare',zh:'出租车费用',ja:'タクシー料金'},
+  ktx:{ko:'KTX 예매',en:'KTX Booking',zh:'KTX预订',ja:'KTX予約'},
+  bus:{ko:'버스 예매',en:'Bus Booking',zh:'巴士预订',ja:'バス予約'},
+  booking:{ko:'숙박 예매',en:'Accommodation Booking',zh:'住宿预订',ja:'宿泊予約'},
+  bmMap:{ko:'일반',en:'Map',zh:'地图',ja:'地図'},
+  bmSat:{ko:'위성',en:'Satellite',zh:'卫星',ja:'衛星'},
+  sortPop:{ko:'장면순',en:'Scene order',zh:'场景顺序',ja:'シーン順'},
+  sortNew:{ko:'역순',en:'Reverse',zh:'倒序',ja:'逆順'},
+  views:{ko:'회',en:' views',zh:'次观看',ja:'回再生'},
+  note:{ko:'좌표는 WGS84 기준이며 지형·도로는 실제 베이스맵을 사용합니다. 배경지 정보는 서울관광재단·내 손안에 서울 등 공개 자료를 참고했습니다.',en:'Coordinates are WGS84; the basemap is real. Video links open the original channel.'},
+  videoCta:{ko:'▶ 이 장소가 나오는 영상',en:'▶ Watch the clip'},
+  noVideoCta:{ko:'연결 영상 미기재',en:'No linked video'},
+  styleNames:[{ko:'레드',en:'RED'},{ko:'잉크',en:'INK'},{ko:'반전',en:'INV'}]
+};
+const ACCENTS = [
+  {base:'#ec3013',on:'#f3f2f2'},
+  {base:'#201e1d',on:'#f3f2f2'},
+  {base:'#f3f2f2',on:'#201e1d'}
+];
+const KAKAO_KEY='edebe2c3eab88d994d0b404e7b0c0e53';
+const getWeather=async(lat,lng)=>{
+  try{
+    const res=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weather_code&timezone=Asia/Seoul&past_days=1&forecast_days=3`);
+    const data=await res.json();
+    if(data.daily){
+      const today=1;
+      const getIcon=(code)=>code===0?'☀️':code===1||code===2?'☁️':code===3?'☁️':code===45||code===48?'🌫️':code>=51&&code<=67?'🌧️':code>=71&&code<=77?'❄️':code===80||code===81||code===82?'⛈️':'🌡️';
+      return {
+        yesterday:{tmp:Math.round(data.daily.temperature_2m_max[0])+'°C',rn1:(data.daily.precipitation_sum[0]||0).toFixed(1),icon:getIcon(data.daily.weather_code[0])},
+        today:{tmp:Math.round(data.daily.temperature_2m_max[today])+'°C',rn1:(data.daily.precipitation_sum[today]||0).toFixed(1),icon:getIcon(data.daily.weather_code[today])},
+        tomorrow:{tmp:Math.round(data.daily.temperature_2m_max[2])+'°C',rn1:(data.daily.precipitation_sum[2]||0).toFixed(1),icon:getIcon(data.daily.weather_code[2])}
+      };
+    }
+  }catch(e){console.log('weather error',e);}
+  return {yesterday:{tmp:'?',rn1:'0',icon:'?'},today:{tmp:'?',rn1:'0',icon:'?'},tomorrow:{tmp:'?',rn1:'0',icon:'?'}};
+};
+const getKakaoTaxiFare=async(lat,lng)=>{
+  try{
+    const res=await fetch('https://apis.map.kakao.com/v1/directions/car?origin=37.5559,126.9723&destination='+lat+','+lng,
+      {headers:{'Authorization':'KakaoAK '+KAKAO_KEY}});
+    const data=await res.json();
+    if(data.routes&&data.routes[0]){
+      const dist=data.routes[0].summary.distance/1000; // km
+      const basefare=3800, per1km=1450, per144m=100;
+      const kmfare=Math.ceil((dist-2)*per1km/100)*100; // 처음 2km 기본
+      const fare=basefare+Math.max(0,kmfare);
+      return {fare:Math.round(fare/100)*100, dist:dist.toFixed(1)};
+    }
+  }catch(e){console.log('taxi fare error',e);}
+  return {fare:0,dist:'?'};
+};
+const TRANSIT=[
+  {city:'seoul',name:'서울역',type:'train',lat:37.55591,lng:126.97230},
+  {city:'seoul',name:'청량리역',type:'train',lat:37.58007,lng:127.04661},
+  {city:'seoul',name:'센트럴시티터미널',type:'bus',lat:37.50478,lng:127.00456},
+  {city:'seoul',name:'동서울종합터미널',type:'bus',lat:37.53437,lng:127.09477}
+];
+const TLABEL={train:{ko:'역',en:'Station',zh:'车站',ja:'駅'},bus:{ko:'터미널',en:'Terminal',zh:'汽车站',ja:'ターミナル'}};
+const TICON={
+  train:'<svg viewBox="0 0 24 24" fill="none" stroke="#f3f2f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="13" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="M8 19l-2 3"/><path d="M18 22l-2-3"/><circle cx="8" cy="14" r="0.6" fill="#f3f2f2"/><circle cx="16" cy="14" r="0.6" fill="#f3f2f2"/></svg>',
+  bus:'<svg viewBox="0 0 24 24" fill="none" stroke="#f3f2f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11"/><path d="M4 11h16"/><path d="M8 19l-1.5 2"/><path d="M16 19l1.5 2"/><circle cx="7.5" cy="16.5" r="0.6" fill="#f3f2f2"/><circle cx="16.5" cy="16.5" r="0.6" fill="#f3f2f2"/></svg>'
+};
+const noSrt=ms=>Array.from(new Set((ms||[]).map(m=>m==='srt'?'ktx':m)));
+function hav(a,b){const R=6371,r=Math.PI/180;const dl=(b.lat-a.lat)*r,dg=(b.lng-a.lng)*r;const s=Math.sin(dl/2)**2+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dg/2)**2;return 2*R*Math.asin(Math.sqrt(s));}
+
+// 영상 메타 (조회수·게시일은 예시값 — 실제 통계로 교체 필요)
+// 영상 메타 — 화면에 그대로 출력되는 문자열. 여기 텍스트만 고치면 카드 표시가 바뀐다.
+// 정렬은 views의 숫자, date의 날짜값으로 계산한다.
+// 장면 아카이브 — 영화 속 장면을 촬영지에 묶은 목록.
+// 각 키는 장소 데이터의 yt 필드와 맞물린다. q는 유튜브 검색어.
+const VMETA={
+  'sc1':{views:'장면 01',date:'낙산공원',q:'케이팝 데몬 헌터스 낙산공원'},
+  'sc2':{views:'장면 02',date:'북촌 · Free',q:'케이팝 데몬 헌터스 북촌한옥마을'},
+  'sc3':{views:'장면 03',date:'명동 · Soda Pop',q:'케이팝 데몬 헌터스 명동'},
+  'sc4':{views:'장면 04',date:'남산타워',q:'케이팝 데몬 헌터스 남산서울타워'},
+  'sc5':{views:'장면 05',date:'헌트릭스 숙소',q:'케이팝 데몬 헌터스 서울스카이'},
+  'sc6':{views:'장면 06',date:'최종 무대',q:'케이팝 데몬 헌터스 올림픽주경기장'},
+  'sc7':{views:'장면 07',date:'한강 · 7호선',q:'케이팝 데몬 헌터스 청담대교'},
+  'sc8':{views:'장면 08',date:'삼성역 전광판',q:'케이팝 데몬 헌터스 K-POP SQUARE'},
+  'sc9':{views:'장면 09',date:'한의원',q:'케이팝 데몬 헌터스 서울한방진흥센터'},
+  'sc10':{views:'장면 10',date:'경복궁',q:'케이팝 데몬 헌터스 경복궁'}
+};
+// 마커 상단 카테고리 약어 (D안 듀오톤)
+const CAT_SHORT={
+  ko:{sea:'해양',heal:'힐링',herit:'역사',activity:'테마',stay:'숙박',food:'상권'},
+  en:{sea:'SEA',heal:'ECO',herit:'HER',activity:'FUN',stay:'STAY',food:'EAT'},
+  zh:{sea:'海洋',heal:'疗愈',herit:'历史',activity:'主题',stay:'住宿',food:'商圈'},
+  ja:{sea:'海洋',heal:'癒し',herit:'歴史',activity:'テーマ',stay:'宿泊',food:'商圏'},
+  es:{sea:'MAR',heal:'ECO',herit:'HIS',activity:'OCIO',stay:'HOTEL',food:'COMER'}
+};
+// 장소목록 외 버튼 라벨
+const OFFL={ko:'장소목록 외',en:'Off-list',zh:'名单外地点',ja:'リスト外',es:'Fuera de lista'};
+// Google Maps 라벨 언어 코드
+const GMAP_LANG={ko:'ko',en:'en',zh:'zh-CN',ja:'ja',es:'es'};
+// 캘린더 다국어 — 요일 머리글과 '연·월' 표기
+const CAL_WD={
+  ko:['일','월','화','수','목','금','토'],
+  en:['Su','Mo','Tu','We','Th','Fr','Sa'],
+  zh:['日','一','二','三','四','五','六'],
+  ja:['日','月','火','水','木','金','土'],
+  es:['D','L','M','X','J','V','S']
+};
+const CAL_MONTH={
+  ko:(m,y)=>y+'년 '+(m+1)+'월',
+  en:(m,y)=>['January','February','March','April','May','June','July','August','September','October','November','December'][m]+' '+y,
+  zh:(m,y)=>y+'年'+(m+1)+'月',
+  ja:(m,y)=>y+'年'+(m+1)+'月',
+  es:(m,y)=>['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'][m]+' '+y
+};
+// YouTube Data API v3 키. 조회수·게시일을 하루 1회 실제 값으로 갱신하는 데 쓴다.
+// 지도 키와 같은 키를 쓰려면 콘솔에서 해당 키의 'API 제한'에 YouTube Data API v3를 추가해야 한다.
+const YT_KEY='AIzaSyCZVT0ICydcnLGQmqoX4lSL1-FGa_wfCVc';
+const updateViewCounts=()=>{};
+updateViewCounts();
+const vNum=s=>Number(String(s||'').replace(/[^\d]/g,''))||0;
+const vDate=s=>String(s||'').replace(/[^\d]/g,'');
+const LANGS=[
+  {id:'ko',label:'한국어'},{id:'en',label:'ENGLISH'},{id:'zh',label:'中文'},{id:'ja',label:'日本語'},{id:'es',label:'ESPAÑOL'}
+];
+const SUF={ko:'Ko',en:'En',zh:'Zh',ja:'Ja',es:'Es'};
+// zh-Hans / ja layer over the ko+en source data
+const I18N={
+  cats:{
+    stay:['住宿·当地体验','宿泊·ローカル体験'],
+    food:['本地商圈·美食','ローカル商圏·グルメ'],park:['主题公园·体验','テーマパーク·体験'],
+sea:['海洋·自然景观','海洋·自然景観'],
+    heal:['疗愈·生态·体验','癒やし·エコ·体験'],herit:['历史·文化遗产','歴史·文化遺産'],
+    resort:['度假村·活动','リゾート·アクティビティ']
+  },
+  cities:{seoul:['首尔','ソウル']},
+  locs:{서울:['首尔','ソウル']},
+  hrs:{'상시 개방':['全天开放','常時開放'],'시즌별 상이':['因季节而异','シーズンにより異なる'],
+    '유람선 09:00–16:00':['游船 09:00–16:00','遊覧船 09:00–16:00']},
+  src:{'한국관광공사 좌표':['韩国观光公社坐标','韓国観光公社座標'],'관광정보 좌표':['官方旅游信息坐标','観光情報の座標'],
+    '주소 기반 좌표':['基于地址的坐标','住所ベースの座標'],'주소 기반 분석용 좌표':['基于地址的分析坐标','住所ベースの解析座標'],
+    '매장 주소 기반 좌표':['基于门店地址的坐标','店舗住所ベースの座標'],'시장 대표 좌표':['市场代表坐标','市場の代表座標'],
+    'WGS84 / EPSG:4326 실좌표':['WGS84 / EPSG:4326 实测坐标','WGS84 / EPSG:4326 実座標']},
+  names:{
+    gj1:['孝友堂','孝友堂'],gj2:['Jjoksaem 44号新罗公主墓','チョクセム44号 新羅公主墓'],
+    gj3:['东宫与月池','東宮と月池'],gj4:['皇理团路','ファンリダン通り'],gj5:['庆州世界游乐园','慶州ワールド'],
+    gj6:['庆州罗园 媒体艺术','慶州ラウォン(メディアアート)'],gj7:['回忆的月亮村(鬼屋)','思い出の月の町(お化け屋敷)'],
+    gz1:['德浦海水浴场','徳浦海水浴場'],gz2:['蝉城','メミ城'],gz3:['海金刚','海金剛'],gz4:['风之丘','風の丘'],
+    gz5:['海景咖啡厅 Seayard','オーシャンビューカフェ シーヤード'],gz6:['巨济植物园','巨済植物園'],
+    gz7:['巨济全景缆车','巨済パノラマケーブルカー'],gz8:['东部水库','東部貯水池'],gz9:['古县洞商圈','古県洞エリア'],
+    gz10:['巨济古县市场','巨済古県市場'],gz11:['正宗巨济烤牡蛎','元祖 巨済カキ焼き'],
+    gz12:['巨济传统牛肠火锅','巨済 伝統ヤンコプチャン鍋'],gz13:['金农排骨','クムノンカルビ'],
+    gz14:['农所卵石海水浴场','ノンソ石ころ海水浴場'],
+    na1:['水原华城','水原華城'],na2:['水原传统文化馆','水原伝統文化館'],na3:['幸理团路','ヘンリダン通り'],
+    na4:['旌善High1滑雪场 / 水上世界','旌善ハイワンスキー場 / ウォーターワールド'],
+    na5:['High1度假村(动物农场 / 高山过山车)','ハイワンリゾート(動物農場 / アルパインコースター)'],
+    na6:['圣心堂','聖心堂'],na7a:['美美西饼店','ミミ製菓店'],na7b:['派花园 Pie Garden','パイガーデン'],
+    na7c:['甜点店 Sosin','パティスリー ソシン'],na8:['忠州鳄鱼桥','忠州ワニ橋'],na9:['忠州舞鹤市场','忠州舞鶴市場']
+  },
+  blurbs:{
+    gj1:['韩屋民宿，影片开头的庭院镜头在此拍摄，早晨提供茶道体验。','韓屋ステイ。冒頭の中庭カットの撮影地で、朝の茶道体験もある。'],
+    gj2:['以发掘现场原样公开的新罗公主墓，馆内可以拍照。','発掘現場をそのまま公開した新羅公主の墓。館内は撮影可。'],
+    gj3:['日落后三十分钟的灯光倒影，最接近影片中的画面。','日没30分後の照明が水面に映る時間帯が映像に最も近い。'],
+    gj4:['韩屋商街，成员们去过的三家甜点店步行五分钟内。','韓屋の商店街。メンバーが立ち寄った三軒のデザート店は徒歩5分圏。'],
+    gj5:['过山车反应篇的拍摄地，傍晚排队最短。','ライド企画の撮影地。夕方が最も待ち時間が短い。'],
+    gj6:['室内媒体艺术展，设有最后一首歌表演所用的沉浸式展厅。','屋内メディアアート展。ラスト曲の背景となった没入型ホールがある。'],
+    gj7:['“我是来帮你的”一集的鬼屋拍摄地，位于重现旧巷弄的主题村内。','「助けに来たよ」回のお化け屋敷の撮影地。昔の路地を再現したテーマ村の中にある。'],
+    gz1:['平缓的沙滩，清晨的水色与片头镜头一致。','なだらかな砂浜。早朝の水の色がイントロと同じ。'],
+    gz2:['一个人为抵挡台风而垒起的石墙，停车后步行五分钟。','台風被害を防ぐため一人で積み上げた石の城壁。駐車場から徒歩5分。'],
+    gz3:['海上奇岩，只有乘游船才能看到的十字洞出现在影片后段。','海上の奇岩。遊覧船からのみ見える十字洞が映像後半に登場する。'],
+    gz4:['草坡与风车，与海金刚组合成半日行程。','芝生の丘と風車。海金剛と合わせて半日コースに。'],
+    gz5:['紧邻植物园，二楼窗边座位可同时望见大海与穹顶。','植物園のすぐ隣。2階の窓際席から海とドームが一望できる。'],
+    gz6:['玻璃穹顶丛林，雨天的首选替代行程。','ガラスドームのジャングル。雨天の代替コース第一候補。'],
+    gz7:['从卢子山上部俯瞰多岛海，水晶车厢另行收费。','ノジャ山上部から多島海を一望。クリスタルキャビンは別料金。'],
+    gz8:['雾气弥漫的湖畔步道，途中停留十五分钟也足够。','霧の立つ湖畔の遊歩道。移動途中に15分立ち寄るだけでも十分。'],
+    gz9:['巨济最大商圈，住在这里晚上无需再移动。','巨済最大の商圏。ここに宿を取れば夜の移動が不要。'],
+    gz10:['水产区试吃热闹的上午最值得来。','試食が活発な午前中が一番おすすめ。'],
+    gz11:['冬季烤牡蛎，基本两人起点，放在行程最后更合适。','冬のカキ焼き。2人前からなのでコースの最後が向く。'],
+    gz12:['只做晚市，从古县商圈可步行前往。','夜のみ営業。古県エリアから徒歩で行ける。'],
+    gz13:['郊外排骨店，从德浦海水浴场回程时顺路。','郊外のカルビ店。徳浦海水浴場からの帰り道に寄りやすい。'],
+    gz14:['“久等了 | 梅的巨济漫步”一集的拍摄地，卵石海滩的浪声与沙滩不同。','「お待たせしました｜メイの巨済さんぽ」回の撮影地。砂ではなく石ころの浜で波音が違う。'],
+    na1:['城墙周长5.7公里，影片中出现的是西将台一段。','城壁は周囲5.7km。映像に登場するのは西将台の区間。'],
+    na2:['传统饮食体验馆与礼节教育馆，从华城行宫可步行前往。','伝統食生活体験館と礼節教育館。華城行宮から徒歩圏。'],
+    na3:['紧邻华城城墙内侧的巷弄商圈，适合作为游览后的晚餐行程。','城壁のすぐ内側にある路地の商圏。観覧後の夕食コースに向く。'],
+    na4:['冬季为滑雪场，夏季为水上世界，第一次暑假篇的舞台。','冬はスキー場、夏はウォーターワールド。初の夏休み回の舞台。'],
+    na5:['高山过山车从山顶出发，动物农场雨天缩短营业。','アルパインコースターは山頂から出発。動物農場は雨天時に短縮営業。'],
+    na6:['面包之旅的起点，炸馅面包的队伍在工作日上午最短。','パン巡りの出発点。ツイソボロの行列は平日午前が最短。'],
+    na7a:['面包之旅第二站，位于老城区巷内，影片中乘面包出租车前往。','パン巡り2軒目。旧市街の路地にあり、パンタクシーで移動した。'],
+    na7b:['屯山商圈，下午的派种类最齐全。','屯山エリア。午後にパイの種類が最も揃う。'],
+    na7c:['面包之旅最后一站，少量生产，越晚品项越少。','パン巡りの最終地点。少量生産のため遅い時間は品数が減る。'],
+    na8:['在水面上呈之字形横渡的浮桥，风大时晃动明显。','水面をジグザグに渡る浮橋。風の強い日は揺れが大きい。'],
+    na9:['传统市场，影片后段的美食环节在此拍摄。','伝統市場。映像後半のグルメ企画はここで撮影された。']
+  },
+  ui:{
+    sub:['基于实测坐标的取景地指南','実座標ベースのロケ地ガイド'],spots:['处','か所'],all:['全部','すべて'],
+    sheet:['地点列表','スポット一覧'],video:['影片','映像'],novideo:['无影片','映像なし'],
+    courseKicker:['行程编排','コースビルダー'],courseTitle:['今日路线','今日のルート'],
+    stops:['途经点','経由地'],dist:['总距离','総距離'],time:['预计时间','所要時間'],
+    courseEmpty:['还没有添加地点。在地图上打开地点并点击“加入行程”，或在下方载入推荐行程。','まだ追加した場所がありません。地図でスポットを開いて「コースに追加」を押すか、下から推奨コースを読み込んでください。'],
+    btnAuto:['载入推荐行程','推奨コースを読み込む'],btnClear:['清空行程','コースを空にする'],
+    videoKicker:['电影场景','映画のシーン'],videoTitle:['电影中的那个地方','映画のあの場所'],
+    watch:['查看场景','シーンを探す'],usedIn:['出现地点','登場スポット'],
+    stampKicker:['打卡','チェックイン'],stampTitle:['集章册','スタンプ帳'],collected:['已收集','取得'],
+    done:['已获得','取得済み'],undone:['未获得','未取得'],
+    savedKicker:['收藏','ブックマーク'],savedTitle:['收藏的地点','保存したスポット'],
+    savedEmpty:['还没有收藏的地点。','保存したスポットはありません。'],
+    addCourse:['加入行程','コースに追加'],inCourse:['从行程移除','コースから外す'],
+    save:['收藏','保存'],saved2:['已收藏','保存済み'],stampBtn:['盖章','スタンプを押す'],stamped:['已盖章','スタンプ済み'],
+    directions:['在地图应用中导航','地図アプリで経路案内'],lat:['纬度','緯度'],lng:['经度','経度'],
+    srcRow:['坐标依据','座標の基準'],hoursRow:['营业时间','営業時間'],feeRow:['门票','料金'],telRow:['电话','電話'],stayRow:['建议停留','推奨滞在'],chanRow:['影片频道','配信チャンネル'],
+    note:['坐标采用 WGS84，底图为真实地图。影片链接将跳转至原频道。','座標はWGS84、ベースマップは実地図です。映像リンクは元のチャンネルに移動します。'],
+    videoCta:['▶ 观看该地点的影片','▶ このスポットの映像を見る'],noVideoCta:['未标注关联影片','関連映像の記載なし'],
+    drive:['分钟车程',' 分の移動']
+  }
+};
+Object.keys(I18N.ui).forEach(k=>{if(T[k]){T[k].zh=I18N.ui[k][0];T[k].ja=I18N.ui[k][1];}});
+const TABS={map:['地图','地図'],course:['行程','コース'],videos:['电影','映画'],stamp:['集章','スタンプ'],saved:['收藏','保存'],channel:['旅行信息','旅行情報']};
+Object.keys(TABS).forEach(k=>{T.tabs[k].zh=TABS[k][0];T.tabs[k].ja=TABS[k][1];});
+Object.assign(I18N.src,{
+  '소현효자길 21-3':null,
+  '주소(소현효자길 21-3) 기반 지오코딩':['基于地址(소현효자길21-3)的地理编码','住所(소현효자길21-3)によるジオコーディング'],
+  '쪽샘지구(쪽샘길 60) 기준 위치':['以Jjoksaem地区(쪽샘길60)为基准','チョクセム地区(쪽샘길60)基準の位置'],
+  '관광정보 위치':['官方旅游信息位置','観光情報の位置'],
+  '황리단길 대표 구간 중심점':['皇理团路主街中心点','ファンリダン通り主要区間の中心点'],
+  '경주월드 주소 기준 지오코딩':['基于庆州世界地址的地理编码','慶州ワールド住所によるジオコーディング'],
+  '보문동 3-3 일원 기준 위치':['以普门洞3-3一带为基准','普門洞3-3一帯を基準とした位置'],
+  '상부역사 기준 분석용 좌표':['以上部站为基准的分析坐标','上部駅基準の解析座標'],
+  '고현시장 대표점 기준 분석점 (반경 500m)':['以古县市场代表点为基准的分析点(半径500m)','古県市場の代表地点基準の解析点(半径500m)'],
+  '화성행궁 일원 기준 좌표':['以华城行宫一带为基准的坐标','華城行宮一帯を基準とした座標'],
+  '행궁동 상권 중심 기준점':['幸宫洞商圈中心基准点','幸宮洞商圏の中心基準点'],
+  '하이원리조트 일원 기준 좌표':['以High1度假村一带为基准的坐标','ハイワンリゾート一帯を基準とした座標'],
+  '리조트 상부 시설 기준 좌표':['以度假村上部设施为基准的坐标','リゾート上部施設基準の座標'],
+  '대전 본점 기준 좌표':['以大田总店为基准的坐标','大田本店基準の座標'],
+  '충주호 수변 기준 분석점':['以忠州湖水岸为基准的分析点','忠州湖の水辺基準の解析点'],
+  '농소마을 해안 기준 분석점':['以农所村海岸为基准的分析点','ノンソ集落の海岸基準の解析点']
+});
+T.drive={ko:'분 이동',en:' min drive',zh:I18N.ui.drive[0],ja:I18N.ui.drive[1]};
+T.styleNames.forEach(s=>{s.zh=s.en;s.ja=s.en;});
+Object.assign(I18N.names,{
+  kd1:['骆山公园城郭路','駱山公園城郭路'], kd2:['北村韩屋村','北村韓屋村'], kd3:['明洞街','明洞通り'],
+  kd4:['南山首尔塔','Nソウルタワー'], kd5:['乐天世界塔 首尔天空','ロッテワールドタワー ソウルスカイ'],
+  kd6:['首尔奥林匹克主竞技场','ソウルオリンピック主競技場'], kd7:['清潭大桥·紫阳站','清潭大橋・紫陽駅'],
+  kd8:['K-POP SQUARE 三成站大屏','K-POP SQUARE 三成駅大型ビジョン'], kd9:['首尔韩方振兴中心','ソウル韓方振興センター'],
+  kd10:['景福宫','景福宮'], kd11:['纛岛汉江公园','トゥクソム漢江公園'],
+  kdx1:['昌德宫','昌徳宮'], kdx2:['光化门广场','光化門広場'], kdx3:['三清洞','三清洞'],
+  kdx4:['益善洞韩屋街','益善洞韓屋街'], kdx5:['仁寺洞','仁寺洞'], kdx6:['国立中央博物馆','国立中央博物館'],
+  kdx7:['兴仁之门·汉阳都城','興仁之門・漢陽都城'], kdx8:['圣水洞咖啡街','聖水洞カフェ通り'],
+  kdx9:['COEX 星空图书馆','COEX 星空図書館'], kdx10:['首尔药令市韩医药博物馆','ソウル薬令市韓医薬博物館'],
+  kdx11:['乐天世界','ロッテワールド'], kdx12:['盘浦汉江公园月光彩虹喷泉','盤浦漢江公園 月光虹の噴水'],
+  kdx13:['德寿宫石墙路','徳寿宮石垣道'], kdx14:['宗庙','宗廟'], kdx15:['云岘宫','雲峴宮'],
+  kdx16:['东大门设计广场','東大門デザインプラザ'], kdx17:['广藏市场','広蔵市場'], kdx18:['清溪川','清渓川'],
+  kdx19:['首尔路7017','ソウル路7017'], kdx20:['南大门市场','南大門市場'], kdx21:['经理团街','経理団通り'],
+  kdx22:['弘大步行街','弘大の歩きたい通り'], kdx23:['延南洞京义线林荫路','延南洞京義線森の道'], kdx24:['汝矣岛汉江公园','汝矣島漢江公園'],
+  kdx25:['鹭得岛','ノドゥル島'], kdx26:['首尔林','ソウルの森'], kdx27:['建国大学一鉴湖','建国大学一鑑湖'],
+  kdx28:['峨嵯山迎日广场','峨嵯山日の出広場'], kdx29:['石村湖','石村湖'], kdx30:['奥林匹克公园','オリンピック公園'],
+  kdx31:['林荫道','カロスキル'], kdx32:['奉恩寺','奉恩寺'], kdx33:['宣陵·靖陵','宣陵・靖陵'],
+  kdx34:['国立民俗博物馆','国立民俗博物館'], kdx35:['北岳天空之路八角亭','北岳スカイウェイ八角亭'], kdx36:['通仁市场','通仁市場'],
+  kdx37:['西村','西村'], kdx38:['国立现代美术馆首尔馆','国立現代美術館ソウル館'], kdx39:['鹭梁津水产市场','鷺梁津水産市場'],
+  kdx40:['天空公园','ハヌル公園']
+});
+Object.keys(I18N.cats).forEach(k=>{if(CATS[k]){CATS[k].zh=I18N.cats[k][0];CATS[k].ja=I18N.cats[k][1];}});
+
+const ES={
+  sub:'Guía de localizaciones con coordenadas reales',
+  spots:'lugares', all:'Todos', sheet:'Lista de lugares', video:'Vídeo', novideo:'Sin vídeo',
+  courseKicker:'Creador de ruta', courseTitle:'Ruta de hoy',
+  stops:'Paradas', dist:'Distancia', time:'Tiempo est.',
+  courseEmpty:'Aún no hay paradas. Abre un lugar en el mapa y añádelo, o carga una ruta sugerida abajo.',
+  btnAuto:'Cargar ruta sugerida', btnClear:'Vaciar ruta',
+  videoKicker:'Escenas de la película', videoTitle:'El lugar de la escena',
+  watch:'Ver la escena', usedIn:'Lugares destacados',
+  stampKicker:'Registro', stampTitle:'Libro de sellos', collected:'obtenidos',
+  done:'Obtenido', undone:'Pendiente',
+  savedKicker:'Marcadores', savedTitle:'Lugares guardados', savedEmpty:'Nada guardado todavía.',
+  addCourse:'Añadir a la ruta', inCourse:'Quitar de la ruta',
+  save:'Guardar', saved2:'Guardado',
+  stampBtn:'Registrarse', stamped:'Registrado',
+  directions:'Abrir en mapas', lat:'Latitud', lng:'Longitud',
+  srcRow:'Fuente de coordenadas', hoursRow:'Horario', feeRow:'Entrada', telRow:'Teléfono', stayRow:'Estancia sugerida', chanRow:'Canal',
+  ytSearch:'Buscar escenas en YouTube', ytSearchGo:'Buscar',
+  transit:'Transporte público', taxi:'Tarifa de taxi', ktx:'Reserva KTX', bus:'Reserva de autobús',
+  booking:'Reserva de alojamiento', bmMap:'Mapa', bmSat:'Satélite',
+  sortPop:'Por escena', sortNew:'Inverso', views:' visualizaciones',
+  note:'Las coordenadas son WGS84 y el mapa base es real. Los enlaces abren el canal original.',
+  videoCta:'▶ Ver la escena', noVideoCta:'Sin escena vinculada'
+};
+Object.keys(ES).forEach(k=>{if(T[k])T[k].es=ES[k];});
+const TABS_ES={map:'Mapa',course:'Ruta',videos:'Película',stamp:'Sellos',saved:'Guardado',channel:'Información'};
+Object.keys(TABS_ES).forEach(k=>{if(T.tabs[k])T.tabs[k].es=TABS_ES[k];});
+const CATS_ES={stay:'Alojamiento y experiencias',sea:'Paisaje costero',heal:'Naturaleza y ecoturismo',herit:'Patrimonio histórico',food:'Comercio y gastronomía',activity:'Parques y actividades',station:'Estación',terminal:'Terminal'};
+Object.keys(CATS_ES).forEach(k=>{if(CATS[k])CATS[k].es=CATS_ES[k];});
+T.drive.es=' min en coche';
+T.styleNames.forEach(s=>{s.es=s.en;});
+Object.keys(T).forEach(k=>{const o=T[k];if(o&&typeof o==='object'&&!Array.isArray(o)&&o.en&&!o.es)o.es=o.en;});
+Object.keys(DATA).forEach(c=>{
+  DATA[c].es=DATA[c].en;
+  DATA[c].places.forEach(p=>{p.es=p.en;p.bEs=p.bEn;p.locEs=p.locEn;p.hrsEs=p.hrs;p.srcEs=p.srcEn;});
+});
+Object.keys(DATA).forEach(c=>{
+  DATA[c].zh=I18N.cities[c][0]; DATA[c].ja=I18N.cities[c][1];
+  DATA[c].places.forEach(p=>{
+    const n=I18N.names[p.id]; if(n){p.zh=n[0];p.ja=n[1];}
+    const b=I18N.blurbs[p.id]; if(b){p.bZh=b[0];p.bJa=b[1];}
+    if(p.locKo&&I18N.locs[p.locKo]){p.locZh=I18N.locs[p.locKo][0];p.locJa=I18N.locs[p.locKo][1];}
+    const h=I18N.hrs[p.hrs]; p.hrsZh=h?h[0]:p.hrs; p.hrsJa=h?h[1]:p.hrs;
+    const s=I18N.src[p.srcKo]; p.srcZh=s?s[0]:p.srcEn; p.srcJa=s?s[1]:p.srcEn;
+  });
+});
+
+class Component extends DCLogic {
+  state = {city:'seoul', lang:'ko', tab:'map', cat:'ALL', detail:null, sheet:true, style:0, travelMode:'transit', legs:{}, transit:{}, regions:[], origin:'seoul', originEnd:'', depTime:'08:00', retTime:'19:00', currentMonth:new Date().getMonth(), currentYear:new Date().getFullYear(),
+    course:{seoul:[]}, saved:[], stamps:[], vsort:'pop', basemap:'map', showOff:false, ytq:'', taxiFare:0, taxiDist:'', weather:{}, showBooking:false, activeTab:'map'};
+
+  tr(k){const o=T[k];return o[this.state.lang]||o.ko;}
+  accent(){return ACCENTS[this.state.style%3];}
+  places(){return DATA[this.state.city].places;}
+  find(id){const here=DATA[this.state.city].places.find(x=>x.id===id);
+    if(here)return {p:here,c:this.state.city};
+    for(const c of Object.keys(DATA)){const p=DATA[c].places.find(x=>x.id===id);if(p)return {p,c};}return null;}
+  filtered(){const c=this.state.cat,so=this.state.showOff;return this.places().filter(p=>(so||!p.off)&&(c==='ALL'||p.cat===c));}
+  offPlaces(){return this.places().filter(p=>p.off);}
+  courseList(){return this.state.course[this.state.city].map(id=>this.places().find(p=>p.id===id)).filter(Boolean);}
+
+  componentDidMount(){this.boot();this.loadYtStats();}
+  // YouTube Data API v3가 활성화되면 조회수·게시일을 실시간 값으로 덮어쓴다.
+  // 차단/미활성 시 VMETA의 정적 값(일별 증가 추정)이 그대로 쓰인다.
+  loadYtStats(){
+    const fmt=new Intl.NumberFormat('ko-KR');
+    const apply=map=>{
+      Object.keys(map).forEach(id=>{
+        if(!VMETA[id])VMETA[id]={};
+        if(map[id].v)VMETA[id].views='조회수 '+fmt.format(map[id].v)+'회';
+        if(map[id].d)VMETA[id].date=map[id].d;
+      });
+      this.forceUpdate();
+    };
+    // 하루 1회만 호출 — 같은 날 다시 열면 캐시된 실제 조회수를 그대로 쓴다.
+    const today=new Date().toISOString().slice(0,10);
+    try{
+      const c=JSON.parse(localStorage.getItem('rs_ytstats')||'null');
+      if(c&&c.day===today&&c.map){apply(c.map);return;}
+    }catch(e){}
+    const ids=Object.keys(VMETA);
+  }
+  sync(){
+    clearTimeout(this._q);
+    this._q=setTimeout(()=>{
+      if(!this.map)return;
+      const s=this.state;
+      try{
+        if(this._city!==s.city){this._city=s.city; this._sig=null; this._fits=0;}
+        if(this._tab!==s.tab){this._tab=s.tab; if(s.tab==='map'){this._sig=null;this._fits=0;}}
+      }catch(e){this._sig=null; this._fits=0;}
+      this.draw();
+    },0);
+  }
+
+  // 지도 라벨 언어 — Maps JS는 로드 시점의 language만 반영하므로
+  // 언어가 바뀌면 스크립트를 걷어내고 새 language로 다시 주입한다.
+  loadMaps(){
+    const gl=GMAP_LANG[this.state.lang]||'en';
+    if(window.__gmapsInjected){
+      // 이미 로드됐거나 로드 중이면 건드리지 않는다. 언어가 다를 때만 재주입.
+      if(window.__gmapsLang===gl||!window.google?.maps?.Map)return;
+      this.reloadMaps(gl);return;
+    }
+    window.__gmapsInjected=true;window.__gmapsLang=gl;
+    const s=document.createElement('script');
+    s.id='gmaps-sdk';
+    s.src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCZVT0ICydcnLGQmqoX4lSL1-FGa_wfCVc&libraries=marker&language='+gl+'&region=KR';
+    s.async=true;
+    document.head.appendChild(s);
+  }
+  reloadMaps(gl){
+    window.__gmapsLang=gl;
+    document.querySelectorAll('script[src*="maps.googleapis.com/maps/api/js"],script[src*="maps.gstatic.com"]').forEach(n=>n.remove());
+    try{delete window.google;}catch(e){window.google=undefined;}
+    this.map=null;this.markers=[];this.lines=[];
+    const s=document.createElement('script');
+    s.id='gmaps-sdk';
+    s.src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCZVT0ICydcnLGQmqoX4lSL1-FGa_wfCVc&libraries=marker&language='+gl+'&region=KR';
+    s.async=true;
+    s.onload=()=>{clearTimeout(this._t);this.boot();};
+    document.head.appendChild(s);
+  }
+  boot(){
+    if(this.map)return;                 // 이미 생성됨 — 중복 초기화 방지
+    this.loadMaps();
+    if(!window.google?.maps?.Map){this._t=setTimeout(()=>this.boot(),120);return;}
+    window.DATA = DATA;
+    window.CAT_COLORS = CAT_COLORS;
+    const mapEl=document.querySelector('[data-map-container]');
+    if(!mapEl||!mapEl.offsetWidth||!mapEl.offsetHeight){this._t=setTimeout(()=>this.boot(),120);return;}
+    this.el=mapEl;
+    const d=DATA[this.state.city];
+    this.map=new window.google.maps.Map(this.el,{
+      center:{lat:d.center[0],lng:d.center[1]},
+      zoom:d.zoom,
+      mapTypeId:'roadmap',
+      styles:MAP_SKINS[this.pSkin()]||undefined,
+      mapTypeControl:true,
+      mapTypeControlOptions:{position:window.google.maps.ControlPosition.TOP_LEFT,style:window.google.maps.MapTypeControlStyle.COMPACT_HORIZONTAL},
+      zoomControl:true,
+      zoomControlOptions:{position:window.google.maps.ControlPosition.RIGHT_CENTER},
+      scaleControl:false,
+      fullscreenControl:false,
+      disableDefaultUI:false
+    });
+    this.markers=[];
+    this.polylines=[];
+    this._city=this.state.city; this._tab=this.state.tab; this._basemap=this.state.basemap;
+    window.googleTransit=this.googleTransit.bind(this);
+    window.googleTaxi=this.googleTaxi.bind(this);
+    this.map.addListener('zoom_changed',()=>{this.draw();this.forceUpdate();});
+    // 클러스터 단위로 확대되면 장소 목록도 화면에 보이는 지역만 남긴다.
+    this.map.addListener('idle',()=>{this.forceUpdate();});
+    // 지도 인스턴스 생성 직후 한 번 동기화 — 줌 표시와 마커가 첫 로드에서도 맞게 그려진다.
+    window.google.maps.event.trigger(this.map,'resize');
+    this.forceUpdate();
+    setTimeout(()=>{if(this.map){window.google.maps.event.trigger(this.map,'resize');this.draw();this.forceUpdate();}},350);
+    this.draw();
+  }
+  draw(){
+    if(!this.map)return;
+    this.markers.forEach(m=>m.setMap(null));
+    this.polylines.forEach(p=>p.setMap(null));
+    if(this.clusterMarkers)this.clusterMarkers.forEach(m=>m.setMap(null));
+    this.markers=[];
+    this.polylines=[];
+    this.clusterMarkers=[];
+    
+    const a=this.accent(), on=a.base==='#f3f2f2'?'#201e1d':'#f3f2f2';
+    const list=this.filtered(), course=this.state.course[this.state.city];
+    const z=this.map.getZoom();
+    
+    // 마커 아이콘 — Tweaks markerStyle: pin(핀 드롭) / solid(솔리드 원) / duotone(듀오톤)
+    const variant=this.pMarker();
+    const createIcon=(text,bg,fg,top,pin)=>{
+      const usePin=variant==='pin'&&pin!==false;
+      const duo=variant==='duotone'&&pin!==false&&top;
+      const S=2, DW=duo?32:30, DH=usePin?38:DW;
+      const W=DW*S, H=DH*S, r=W/2-5;
+      const canvas=document.createElement('canvas');
+      canvas.width=W; canvas.height=H;
+      const ctx=canvas.getContext('2d');
+      const t=String(text), long=t.length>2, cx=W/2, cy=r+5;
+      const path=()=>{
+        ctx.beginPath();
+        if(usePin){
+          const ty=H-3;
+          ctx.moveTo(cx,ty);
+          ctx.quadraticCurveTo(cx-r*0.52,cy+r*0.74,cx-r*0.84,cy+r*0.54);
+          ctx.arc(cx,cy,r,Math.PI*0.86,Math.PI*0.14,false);
+          ctx.quadraticCurveTo(cx+r*0.52,cy+r*0.74,cx,ty);
+          ctx.closePath();
+        }else{
+          ctx.arc(cx,cy,r,0,Math.PI*2);
+        }
+      };
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.shadowColor='rgba(32,30,29,.32)';ctx.shadowBlur=5;ctx.shadowOffsetY=2;
+      ctx.fillStyle=duo?'#f3f2f2':bg;
+      path();ctx.fill();
+      ctx.shadowColor='transparent';ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+      if(duo){
+        ctx.save();
+        ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();
+        ctx.fillStyle=bg;ctx.fillRect(0,0,W,cy-2);
+        ctx.fillStyle='rgba(32,30,29,.18)';ctx.fillRect(0,cy-2.5,W,2.5);
+        ctx.restore();
+      }
+      ctx.lineWidth=3;ctx.strokeStyle='#201e1d';
+      path();ctx.stroke();
+      if(duo){
+        ctx.fillStyle=fg;
+        ctx.font='800 '+(String(top).length>2?11:13)+'px Archivo, Helvetica Neue, sans-serif';
+        ctx.fillText(String(top),cx,cy-13);
+        ctx.fillStyle='#201e1d';
+        ctx.font='800 '+(long?15:19)+'px Archivo, Helvetica Neue, sans-serif';
+        ctx.fillText(t,cx,cy+13);
+      }else{
+        ctx.fillStyle=fg;
+        ctx.font='800 '+(long?15:20)+'px Archivo, Helvetica Neue, sans-serif';
+        ctx.fillText(t,cx,cy-1);
+      }
+      return {url:canvas.toDataURL(),
+        scaledSize:new window.google.maps.Size(DW,DH),
+        anchor:new window.google.maps.Point(DW/2,usePin?DH:DH/2)};
+    };
+    
+    if(false&&z<=8){
+      const clusters={};
+      list.forEach(p=>{
+        const locKo=p.locKo||'지역';
+        if(!clusters[locKo])clusters[locKo]=[];
+        clusters[locKo].push(p);
+      });
+      Object.entries(clusters).forEach(([loc,ps])=>{
+        const avgLat=ps.reduce((s,p)=>s+p.lat,0)/ps.length;
+        const avgLng=ps.reduce((s,p)=>s+p.lng,0)/ps.length;
+        const marker=new window.google.maps.Marker({
+          position:{lat:avgLat,lng:avgLng},
+          map:this.map,
+          title:loc+' '+ps.length+'개 장소',
+          icon:createIcon(loc.substring(0,2),'#f3f2f2','#201e1d','',false),
+          visible:z<=8
+        });
+        const cityKey=loc==='경주'?'gyeongju':loc==='거제'?'geoje':null;
+        marker.addListener('click',()=>{
+          if(cityKey){
+            this._sig=null; this._fits=0;
+            this.setState({city:cityKey,cat:'ALL',detail:null,sheet:true,activeTab:'map',tab:'map'});
+            const d=DATA[cityKey];
+            this.map.setCenter({lat:d.center[0],lng:d.center[1]});
+            this.map.setZoom(d.zoom);
+          }else{
+            this.map.setCenter({lat:avgLat,lng:avgLng});
+            this.map.setZoom(11);
+          }
+        });
+        this.clusterMarkers=this.clusterMarkers||[];
+        this.clusterMarkers.push(marker);
+      });
+    }else{
+      list.forEach(p=>{
+        const inC=course.indexOf(p.id)>-1;
+        const catColor=this.cc(p.cat);
+        const bg=inC?a.base:catColor.bg, fg=inC?on:catColor.fg;
+        const marker=new window.google.maps.Marker({
+          position:{lat:p.lat,lng:p.lng},
+          map:this.map,
+          title:p.ko,
+          icon:createIcon(p.off?'':p.n,bg,fg,(CAT_SHORT[this.state.lang]||CAT_SHORT.en)[p.cat]||'')
+        });
+        marker.addListener('click',()=>this.setState({detail:p.id}));
+        this.markers.push(marker);
+      });
+    }
+    
+    const pts=course.map(id=>this.places().find(p=>p.id===id)).filter(Boolean);
+    if(pts.length>1){
+      const filteredPts=[];
+      for(let i=0;i<pts.length;i++){
+        filteredPts.push({lat:pts[i].lat,lng:pts[i].lng});
+        if(i<pts.length-1){
+          const R=6371;
+          const lat1=pts[i].lat*Math.PI/180, lat2=pts[i+1].lat*Math.PI/180;
+          const dLat=(pts[i+1].lat-pts[i].lat)*Math.PI/180, dLng=(pts[i+1].lng-pts[i].lng)*Math.PI/180;
+          const a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLng/2)*Math.sin(dLng/2);
+          const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+          const dist=R*c;
+          if(dist<1) filteredPts.pop();
+        }
+      }
+      if(filteredPts.length>1){
+        const polyline=new window.google.maps.Polyline({
+          path:filteredPts,
+          geodesic:true,
+          strokeColor:a.base==='#f3f2f2'?'#201e1d':a.base,
+          strokeOpacity:0.7,
+          strokeWeight:3,
+          map:this.map
+        });
+        this.polylines.push(polyline);
+      }
+    }
+    this.frame();
+  }
+  googleTransit(from,to,title){
+    const [fromLat,fromLng]=from, [toLat,toLng]=to;
+    window.open(`https://www.google.com/maps/dir/?api=1&origin=${fromLat},${fromLng}&destination=${toLat},${toLng}&travelmode=transit`,'_blank');
+  }
+  googleTaxi(lat,lng,title){
+    window.open(`https://www.google.com/maps/search/taxi+near+${lat},${lng}`,'_blank');
+  }
+  frame(){
+    const list=this.filtered();
+    if(!list.length||!this.map)return;
+    const sig=this.state.city+'|'+this.state.cat+'|'+this.state.sheet+'|'+
+      (this.el?this.el.clientWidth+'x'+this.el.clientHeight:'0');
+    if(sig!==this._sig){
+      this._sig=sig;
+      const lats=list.map(p=>p.lat), lngs=list.map(p=>p.lng);
+      const n=Math.max(...lats), s=Math.min(...lats), e=Math.max(...lngs), wl=Math.min(...lngs);
+      const bounds=new window.google.maps.LatLngBounds(
+        new window.google.maps.LatLng(s,wl),
+        new window.google.maps.LatLng(n,e)
+      );
+      this.map.fitBounds(bounds,{top:50,right:50,bottom:200,left:50});
+    }
+  }
+
+  toggleIn(key,id){this.setState(s=>{const arr=s[key].slice();const i=arr.indexOf(id);i>-1?arr.splice(i,1):arr.push(id);return {[key]:arr};});}
+  toggleCourse(id){this.setState(s=>{const c={...s.course};const arr=c[s.city].slice();const i=arr.indexOf(id);i>-1?arr.splice(i,1):arr.push(id);c[s.city]=arr;return {course:c};});}
+  moveCourse(id,dir){this.setState(s=>{const c={...s.course};const arr=c[s.city].slice();const i=arr.indexOf(id);const j=i+dir;if(j<0||j>=arr.length)return null;[arr[i],arr[j]]=[arr[j],arr[i]];c[s.city]=arr;return {course:c};});}
+
+  // ── Tweaks 프롭 ──────────────────────────────────────────────────
+  pMarker(){return this.props.markerStyle||'pin';}
+  pSkin(){return this.props.mapSkin||'plain';}
+  cc(c){
+    const P=PALETTE[this.props.catPalette||'pastel'];
+    return (P&&P[c])||CAT_COLORS[c]||{bg:'#f3f2f2',fg:'#201e1d'};
+  }
+  // ── 실제 이동 거리/시간 (Google Distance Matrix) ──────────────────
+  fetchLegs(){
+    if(!window.google?.maps?.DistanceMatrixService)return;
+    const items=this.courseList();
+    if(items.length<2)return;
+    const mode=this.state.travelMode||'driving';
+    const legs={...(this.state.legs||{})};
+    const need=[];
+    for(let i=1;i<items.length;i++){
+      const k=mode+':'+items[i-1].id+'>'+items[i].id;
+      const ra=items[i-1].locKo||'', rb=items[i].locKo||'';
+      if(ra&&rb&&ra!==rb)continue;   // 광역 구간은 추정식 사용
+      if(!legs[k])need.push([items[i-1],items[i],k]);
+    }
+    if(!need.length)return;
+    const sig=mode+'|'+need.map(n=>n[2]).join(',');
+    if(this._legSig===sig)return;
+    this._legSig=sig;
+    const svc=new window.google.maps.DistanceMatrixService();
+    svc.getDistanceMatrix({
+      origins:need.map(n=>({lat:n[0].lat,lng:n[0].lng})),
+      destinations:need.map(n=>({lat:n[1].lat,lng:n[1].lng})),
+      travelMode:mode==='transit'?'TRANSIT':'DRIVING',
+      unitSystem:window.google.maps.UnitSystem.METRIC
+    },(res,status)=>{
+      if(status!=='OK'||!res)   {this._legFail=status;this.forceUpdate();return;}
+      let got=0;
+      need.forEach((n,i)=>{
+        const el=res.rows[i]&&res.rows[i].elements[i];
+        if(el&&el.status==='OK'){
+          legs[n[2]]={km:el.distance.value/1000,min:Math.round(el.duration.value/60),
+            fare:el.fare?el.fare.text:''};
+        }else{
+          // 국내 자동차 경로는 Google이 제공하지 않는다(ZERO_RESULTS) — 추정치로 고정.
+          legs[n[2]]={unavailable:true};
+        }
+        got++;
+      });
+      if(got)this.setState({legs},()=>this.trimCourse());
+    });
+  }
+  // ── 구간별 대중교통 상세 (시내버스·지하철 노선) ─────────────────────
+  fetchTransit(){
+    if((this.state.travelMode||'transit')!=='transit')return;
+    if(!window.google?.maps?.DirectionsService)return;
+    const items=this.courseList();
+    if(items.length<2)return;
+    const cache=(this._trLang===this.state.lang)?{...(this.state.transit||{})}:{};
+    if(this._trLang!==this.state.lang){this._trLang=this.state.lang;this._trSig=null;}
+    const need=[];
+    for(let i=1;i<items.length;i++){
+      const k=items[i-1].id+'>'+items[i].id;
+      const ra=items[i-1].locKo||'', rb=items[i].locKo||'';
+      if(ra&&rb&&ra!==rb)continue;   // 시군 간 광역 구간은 제외
+      if(!cache[k])need.push([items[i-1],items[i],k]);
+    }
+    if(!need.length)return;
+    const sig=need.map(n=>n[2]).join(',');
+    if(this._trSig===sig)return;
+    this._trSig=sig;
+    const svc=new window.google.maps.DirectionsService();
+    let done=0, got=0;
+    const lang=this.state.lang||'ko';
+    const VEHS={
+      ko:{BUS:'버스',SUBWAY:'지하철',HEAVY_RAIL:'철도',RAIL:'철도',TRAM:'트램',INTERCITY_BUS:'고속버스',HIGH_SPEED_TRAIN:'KTX',COMMUTER_TRAIN:'전철'},
+      en:{BUS:'Bus',SUBWAY:'Metro',HEAVY_RAIL:'Rail',RAIL:'Rail',TRAM:'Tram',INTERCITY_BUS:'Express bus',HIGH_SPEED_TRAIN:'KTX',COMMUTER_TRAIN:'Train'},
+      zh:{BUS:'公交',SUBWAY:'地铁',HEAVY_RAIL:'铁路',RAIL:'铁路',TRAM:'电车',INTERCITY_BUS:'长途巴士',HIGH_SPEED_TRAIN:'KTX',COMMUTER_TRAIN:'城铁'},
+      ja:{BUS:'バス',SUBWAY:'地下鉄',HEAVY_RAIL:'鉄道',RAIL:'鉄道',TRAM:'トラム',INTERCITY_BUS:'高速バス',HIGH_SPEED_TRAIN:'KTX',COMMUTER_TRAIN:'電車'},
+      es:{BUS:'Autobús',SUBWAY:'Metro',HEAVY_RAIL:'Tren',RAIL:'Tren',TRAM:'Tranvía',INTERCITY_BUS:'Autobús interurbano',HIGH_SPEED_TRAIN:'KTX',COMMUTER_TRAIN:'Tren'}
+    };
+    const VEH=VEHS[lang]||VEHS.en;
+    const WALK={ko:n=>'도보 '+n+'분',en:n=>n+' min walk',zh:n=>'步行'+n+'分钟',ja:n=>'徒歩'+n+'分',es:n=>n+' min a pie'};
+    const walk=WALK[lang]||WALK.en;
+    need.slice(0,8).forEach(n=>{
+      svc.route({origin:{lat:n[0].lat,lng:n[0].lng},destination:{lat:n[1].lat,lng:n[1].lng},travelMode:'TRANSIT',language:GMAP_LANG[lang]||'en'},(res,status)=>{
+        done++;
+        if(status==='OK'&&res.routes[0]){
+          const leg=res.routes[0].legs[0];
+          const parts=leg.steps.map(s=>{
+            if(s.travel_mode==='WALKING')return {w:true,text:walk(Math.max(1,Math.round(s.duration.value/60)))};
+            const t=s.transit;
+            if(!t)return null;
+            const kind=VEH[t.line.vehicle.type]||t.line.vehicle.name||'';
+            const no=t.line.short_name||t.line.name||'';
+            return {w:false,text:no+(kind?' '+kind:''),from:t.departure_stop&&t.departure_stop.name,to:t.arrival_stop&&t.arrival_stop.name,stops:t.num_stops};
+          }).filter(Boolean);
+          cache[n[2]]={parts,min:Math.round(leg.duration.value/60)};
+          got++;
+        }else{
+          cache[n[2]]={parts:[],none:true};
+        }
+        if(done===Math.min(need.length,8))this.setState({transit:cache});
+      });
+    });
+  }
+  // ── 코스 비용 모델 (헤더·자동설계·트림이 같은 값을 쓴다) ────────────
+  legInfo(p,q,mode){
+    const m=mode||this.state.travelMode||'transit';
+    // 시군이 바뀌는 광역 구간은 KTX·고속버스 기준 추정을 쓴다.
+    // (Google 대중교통은 시내버스 우회 경로를 반환해 8시간대가 나오기도 한다)
+    const wide=!!(p.locKo&&q.locKo&&p.locKo!==q.locKo);
+    const r=wide?null:(this.state.legs||{})[m+':'+p.id+'>'+q.id];
+    if(r&&!r.unavailable)return {km:r.km,min:r.min,fare:r.fare||'',real:true};
+    const R=6371,dLa=(q.lat-p.lat)*Math.PI/180,dLo=(q.lng-p.lng)*Math.PI/180,
+      la=(p.lat+q.lat)/2*Math.PI/180;
+    const d=R*Math.hypot(dLa,dLo*Math.cos(la))*1.35;
+    let min;
+    // 자가용: 시내·광역 구분 없이 도로공사 고속도로 표정속도 모델을 쓴다.
+    if(m==='own')return {km:d,min:this.ownDriveMin(p,q),fare:'',real:false,wide,own:true};
+    if(wide){
+      // 시군 간 구간은 두 관문의 가능 수단에서 철도 여부를 판단해
+      // accessMin과 같은 계수를 쓴다(철도 200km/h, 고속버스 110km/h).
+      const ha=REGION_HUB[p.locKo]||{modes:['bus']}, hb=REGION_HUB[q.locKo]||{modes:['bus']};
+      const rail=['ktx','srt'].some(x=>(ha.modes||[]).indexOf(x)>-1&&(hb.modes||[]).indexOf(x)>-1);
+      min = (rail ? 18+d*0.30 : 18+d*0.55)+35;   // 환승·연계 여유
+    }else if(m==='transit'){
+      min = d<=3 ? Math.max(10,d*11) : 15+d*3.6;
+    }else{
+      min = d<=30 ? 8+d*2.2 : 20+d*1.05;
+    }
+    return {km:d,min:Math.max(8,Math.round(min)),fare:'',real:false,wide};
+  }
+  // 자가용 주행시간 — 한국도로공사 고속도로 표정속도(약 92km/h) 기준.
+  // 20km 이내는 시내도로 35km/h, 그 이상은 진출입 15분 + 고속도로 구간,
+  // 2시간을 넘기면 휴게소 정차 15분을 2시간마다 더한다.
+  ownDriveMin(a,b){
+    const R=6371, dLa=(b.lat-a.lat)*Math.PI/180, dLo=(b.lng-a.lng)*Math.PI/180,
+      la=(a.lat+b.lat)/2*Math.PI/180;
+    const d=R*Math.hypot(dLa,dLo*Math.cos(la))*1.30;
+    if(d<=20)return Math.max(8,Math.round(d/35*60));
+    const run=15+(20/35*60)+((d-20)/92*60);
+    const rest=Math.floor(run/120)*15;
+    return Math.round(run+rest);
+  }
+  // 한국도로공사 휴게소 목록(장거리 구간 휴게 안내용). 실패해도 일정 계산에는 영향 없음.
+  loadRests(){
+    if(this._rests||this._restLoading)return;
+    this._restLoading=true;
+    fetch('https://data.ex.co.kr/openapi/restinfo/restBestfoodList?key=5174201859&type=json&numOfRows=300&pageNo=1')
+      .then(r=>r.json())
+      .then(j=>{
+        const seen={};
+        (j.list||[]).forEach(x=>{if(x.stdRestNm&&!seen[x.stdRestNm]){seen[x.stdRestNm]={name:x.stdRestNm,route:x.routeNm,addr:x.svarAddr};}});
+        this._rests=Object.values(seen);
+        this.forceUpdate();
+      })
+      .catch(()=>{this._rests=[];});
+  }
+  // 출발지 → 지역 관문 이동 시간 (KTX·SRT는 고속선, 버스는 고속도로 기준)
+  accessMin(origin,region,mode){
+    const hub=REGION_HUB[region];
+    if(!origin||!hub)return 0;
+    const target={lat:hub.lat,lng:hub.lng};
+    // 관문 좌표가 없으면 지역 중심 좌표 대신 출발지 기준 직선거리로 계산
+    const q=(hub.lat&&hub.lng)?target:null;
+    const R=6371;
+    const to=q||{lat:origin.lat,lng:origin.lng};
+    const dLa=(to.lat-origin.lat)*Math.PI/180, dLo=(to.lng-origin.lng)*Math.PI/180,
+      la=(origin.lat+to.lat)/2*Math.PI/180;
+    if(mode==='own')return this.ownDriveMin(origin,to);           // 자가용: 관문 경유 없이 직행
+    const d=R*Math.hypot(dLa,dLo*Math.cos(la))*1.35;
+    if(mode==='ktx'||mode==='srt')return Math.round(18+d*0.30);  // 고속선 약 200km/h + 승하차
+    return Math.round(18+d*0.55);                                 // 고속버스 약 110km/h(고속도로)
+  }
+  dayBudget(){
+    let days=1;
+    const st=this.state;
+    if(st.tripFrom){
+      const a=st.tripFrom,b=st.tripTo||st.tripFrom, lo=a<b?a:b, hi=a<b?b:a;
+      days=Math.round((new Date(hi+'T00:00:00')-new Date(lo+'T00:00:00'))/864e5)+1;
+    }
+    return {days, budget:720*days};
+  }
+  // 실측 이동시간이 들어온 뒤 하루 예산(9시간×일수)을 넘으면 뒤쪽 경유지를 덜어낸다.
+  // 일자별 창(window)을 그대로 시뮬레이션해 들어가지 않는 뒤쪽 경유지를 코스에서 덜어낸다.
+  // day1 = 21:00 − (출발시각 + 광역 이동), 중간일 = 720분(09:00–21:00), 마지막일 = 여행지 출발시각 − 09:00
+  // 운영시간 문자열에서 여닫는 시각을 뽑는다. 없으면 null(상시 개방).
+  openHours(p){
+    const raw=String(p.hrs||'');
+    const m=raw.match(/(\d{1,2}):(\d{2})\s*[–~\-]\s*(\d{1,2}):(\d{2})/);
+    if(!m)return null;
+    const open=(+m[1])*60+(+m[2]);
+    let close=(+m[3])*60+(+m[4]);
+    if(close<=open)close+=24*60;
+    return {open,close};
+  }
+  dayWindows(items){
+    const st=this.state, DAY=720;
+    const {days}=this.dayBudget();
+    const oK=st.origin||'seoul', eK=st.originEnd||oK;
+    const oO=ORIGINS[oK]||ORIGINS.seoul, eO=ORIGINS[eK]||oO;
+    const mf=(o,key,reg)=>{
+      if(this.state.travelMode==='own')return 'own';   // 자가용은 광역교통을 쓰지 않는다
+      const h=REGION_HUB[reg]||{modes:['bus']};
+      const it=['ktx','srt','bus'].filter(m=>(o.modes||['bus']).indexOf(m)>-1&&(h.modes||['bus']).indexOf(m)>-1);
+      if(it.length)return it[0];
+      const alt=ORIGIN_ALT[key]||{};
+      for(const m of (h.modes||['bus']))if(alt[m])return m;
+      return 'bus';
+    };
+    const r1=items.length?(items[0].locKo||''):'';
+    const r2=items.length?(items[items.length-1].locKo||''):'';
+    const accIn=r1?this.accessMin(oO,r1,mf(oO,oK,r1)):0;
+    const accOut=r2?this.accessMin(eO,r2,mf(eO,eK,r2)):0;
+    if(!st.tripFrom)return {days:1,windows:[DAY],accIn:0,accOut:0};
+    const dp=(st.depTime||'08:00').split(':'), rp=(st.retTime||'19:00').split(':');
+    const depMin=(+dp[0])*60+(+dp[1]), retMin=(+rp[0])*60+(+rp[1]);
+    const w=[];
+    for(let i=0;i<days;i++){
+      let avail=DAY;
+      if(i===0)avail=Math.max(0,Math.min(DAY,21*60-(depMin+accIn)));
+      if(i===days-1)avail=Math.min(avail,Math.max(0,Math.min(DAY,retMin-9*60)));   // 여행지 출발 시각까지
+      w.push(avail);
+    }
+    return {days,windows:w,accIn,accOut};
+  }
+  trimCourse(){
+    const items=this.courseList();
+    if(items.length<2)return;
+    const {days,windows}=this.dayWindows(items);
+    const mode=this.state.travelMode||'transit';
+    let d=0, used=0, keep=0;
+    for(let i=0;i<items.length;i++){
+      const legIn=i>0?this.legInfo(items[i-1],items[i],mode).min:0;
+      const stay=items[i].min||0;
+      let placed=false;
+      while(d<days){
+        if(used+legIn+stay<=windows[d]){used+=legIn+stay;placed=true;break;}
+        if(d===days-1)break;
+        d++; used=0;
+      }
+      if(!placed)break;
+      keep++;
+    }
+    if(keep>=items.length||keep<1)return;
+    const ids=items.slice(0,keep).map(p=>p.id);
+    this.setState(s=>{const c={...s.course};c[s.city]=ids;return {course:c};});
+  }
+
+  componentDidUpdate(prev){
+    this.fetchLegs();
+    this.fetchTransit();
+    const sig=(this.state.course[this.state.city]||[]).join(',')+'|'+(this.state.travelMode||'')+'|'+(this.state.tripFrom||'')+(this.state.tripTo||'')+'|'+Object.keys(this.state.legs||{}).length;
+    if(this._trimSig!==sig){this._trimSig=sig;this.trimCourse();}
+    if(this.map){
+      const sk=this.pSkin();
+      if(this._skin!==sk){this._skin=sk;this.map.setOptions({styles:MAP_SKINS[sk]||[]});}
+      const pv=(prev&&prev.props)||{};
+      if(pv.markerStyle!==this.props.markerStyle||pv.catPalette!==this.props.catPalette)this.draw();
+    }
+  }
+  renderVals(){
+    this.sync();
+    const st=this.state, lang=st.lang, a=this.accent(), on=a.base==='#f3f2f2'?'#201e1d':'#f3f2f2';
+    const city=DATA[st.city], list=this.filtered(), course=st.course[st.city];
+    const S=SUF[lang];
+    const nm=p=>p[lang]||p.ko, cat=p=>CATS[p.cat][lang]||CATS[p.cat].ko;
+    const loc=(p,c)=>p['loc'+S]||DATA[c||st.city][lang]||DATA[c||st.city].ko;
+    const stay=p=>p.min>=60?Math.floor(p.min/60)+'h'+(p.min%60?' '+(p.min%60)+'m':''):p.min+'m';
+    const center={lat:city.center[0],lng:city.center[1]};
+
+    const cats=['ALL'].concat([...new Set(city.places.map(p=>p.cat))]);
+    const chips=cats.map(c=>({key:c,label:c==='ALL'?this.tr('all'):CATS[c][lang],
+      bg:st.cat===c?a.base:'transparent', fg:st.cat===c?on:'rgba(32,30,29,.7)',
+      pick:()=>this.setState({cat:c})}));
+
+    // 전국 뷰에서 줌이 클러스터 안으로 들어가면 화면(뷰포트)에 든 장소만 목록에 남긴다.
+    let listForSheet=list, sheetScope='';
+    if(false&&this.map&&this.map.getZoom()>8){
+      const b=this.map.getBounds();
+      if(b){
+        const inView=list.filter(p=>b.contains(new window.google.maps.LatLng(p.lat,p.lng)));
+        if(inView.length){
+          listForSheet=inView;
+          const locs=[...new Set(inView.map(p=>p.locKo).filter(Boolean))];
+          if(locs.length===1)sheetScope=(I18N.locs[locs[0]]&&lang!=='ko'&&lang!=='en'?(I18N.locs[locs[0]][lang==='zh'?0:1]||locs[0]):locs[0]);
+        }
+      }
+    }
+    const visiblePlaces=listForSheet.map(p=>{
+      const catColor=this.cc(p.cat);
+      return {key:p.id,n:p.off?'':p.n,unShow:p.un?'block':'none',pinBorder:'2px solid #201e1d',name:nm(p),
+      catLabel:cat(p),stay:stay(p),
+      distLabel:p.locKo?loc(p):hav(center,p).toFixed(1)+' km',
+      videoLabel:p.yt?this.tr('video'):this.tr('novideo'),
+      videoColor:p.yt?'#ae1800':'rgba(32,30,29,.4)',
+      pinBg:course.indexOf(p.id)>-1?a.base:catColor.bg, pinFg:course.indexOf(p.id)>-1?on:catColor.fg,
+      open:()=>this.setState({detail:p.id})};
+    });
+
+    const cItems=this.courseList();
+    // Google Directions로 구한 실제 이동 거리·시간을 쓰고, 아직 못 받았으면
+    // 직선거리 보정치(×1.35)로 잠정 표시한다.
+    const mode=st.travelMode||'driving';
+    const legOf=(a,b)=>this.legInfo(a,b,mode);
+    let total=0,moveMin=0,allReal=cItems.length>1;
+    for(let i=1;i<cItems.length;i++){const L=legOf(cItems[i-1],cItems[i]);total+=L.km;moveMin+=L.min;if(!L.real)allReal=false;}
+    const stayMin=cItems.reduce((s,p)=>s+p.min,0)+moveMin;
+    const courseItems=cItems.map((p,i)=>{
+      const L=i<cItems.length-1?legOf(p,cItems[i+1]):{km:0,min:0,real:true};
+      const leg=L.km;
+      return {key:p.id,minutes:p.min||0,order:String(i+1).padStart(2,'0'),name:nm(p),
+        catLabel:p.locKo?loc(p)+' · '+cat(p):cat(p),stay:stay(p),
+        legDisplay:i<cItems.length-1?'flex':'none',
+        legLabel:leg.toFixed(1)+' km · '+L.min+this.tr('drive')+(L.fare?' · '+L.fare:'')+(L.real?'':' ≈'),
+        // 시군이 바뀌는 구간은 광역 이동(KTX·고속버스)임을 명시한다.
+        legWide:(()=>{
+          if(i>=cItems.length-1)return '';
+          const ra=p.locKo||city.ko, rb=cItems[i+1].locKo||city.ko;
+          if(ra===rb)return '';
+          // 배지 문구를 두 지역의 실제 가능 수단(교집합)에서 만든다.
+          const ha=REGION_HUB[ra]||{modes:['bus']}, hb=REGION_HUB[rb]||{modes:['bus']};
+          const modes=['ktx','srt','bus'].filter(m=>(ha.modes||['bus']).indexOf(m)>-1&&(hb.modes||['bus']).indexOf(m)>-1);
+          const use=modes.length?modes:['bus'];
+          const MN={ktx:{ko:'KTX',en:'KTX',zh:'KTX',ja:'KTX',es:'KTX'},
+                    srt:{ko:'SRT',en:'SRT',zh:'SRT',ja:'SRT',es:'SRT'},
+                    bus:{ko:'고속버스',en:'express bus',zh:'长途巴士',ja:'高速バス',es:'autobús'}};
+          const names=use.map(m=>MN[m][lang]||MN[m].en).join(lang==='ko'||lang==='ja'||lang==='zh'?'·':'/');
+          const T2={ko:h=>'광역 이동 · '+h+' 기준 추정',en:h=>'Intercity leg · '+h+' estimate',
+                    zh:h=>'跨市郡移动 · '+h+'估算',ja:h=>'広域移動 · '+h+'想定',es:h=>'Tramo interurbano · estimación '+h};
+          return (ra+' → '+rb)+'  ·  '+((T2[lang]||T2.en)(names));
+        })(),
+        legWideShow:(()=>{
+          if(i>=cItems.length-1)return 'none';
+          const ra=p.locKo||city.ko, rb=cItems[i+1].locKo||city.ko;
+          return ra===rb?'none':'block';
+        })(),
+        transitInfo:(()=>{
+          if(mode!=='transit'||i>=cItems.length-1)return '';
+          const t=(st.transit||{})[p.id+'>'+cItems[i+1].id];
+          if(!t||!t.parts||!t.parts.length)return '';
+          const ST={ko:n=>n+'개 정류장',en:n=>n+' stops',zh:n=>n+'站',ja:n=>n+'停留所',es:n=>n+' paradas'};
+          const st2=ST[lang]||ST.en;
+          return t.parts.map(x=>x.w?x.text:(x.text+(x.stops?' · '+st2(x.stops):''))).join(' › ');
+        })(),
+        transitShow:(()=>{
+          if(mode!=='transit'||i>=cItems.length-1)return 'none';
+          const t=(st.transit||{})[p.id+'>'+cItems[i+1].id];
+          return (t&&t.parts&&t.parts.length)?'block':'none';
+        })(),
+        routeOpen:i<cItems.length-1?(()=>{
+          const q=cItems[i+1];
+          window.open('https://www.google.com/maps/dir/?api=1&origin='+p.lat+','+p.lng+'&destination='+q.lat+','+q.lng+'&travelmode='+(mode==='transit'?'transit':'driving')+'&hl='+lang,'_blank');
+        }):(()=>{}),
+        up:()=>this.moveCourse(p.id,-1),down:()=>this.moveCourse(p.id,1),remove:()=>this.toggleCourse(p.id)};
+    });
+
+    const vids={};
+    city.places.forEach(p=>{if(!p.yt)return;(vids[p.yt]=vids[p.yt]||[]).push(p);});
+    const videoItems=Object.keys(vids).sort((x,y)=>{
+      return st.vsort==='pop'?x.localeCompare(y):y.localeCompare(x);
+        }).map(id=>({key:id,url:'https://www.youtube.com/results?search_query='+encodeURIComponent((VMETA[id]&&VMETA[id].q)||'왕과 사는 남자'),
+      thumb:(vids[id].find(p=>p.img)||{}).img||'',
+      photoShow:vids[id].some(p=>p.img)?'block':'none',
+      views:(VMETA[id]&&VMETA[id].views)||'장면',
+      date:(VMETA[id]&&VMETA[id].date)||'',
+      watch:this.tr('watch'),
+      title:vids[id][0].vt||vids[id].map(nm).slice(0,2).join(', '),
+      spots:(vids[id][0].chan?vids[id][0].chan+' · ':'')+this.tr('usedIn')+' '+vids[id].length,
+      pins:vids[id].map(p=>({key:p.id,label:(p.off?'':String(p.n).padStart(2,'0')+' ')+nm(p),open:()=>this.setState({detail:p.id})}))}));
+
+    const stampCells=city.places.filter(p=>!p.off).map(p=>{const has=st.stamps.indexOf(p.id)>-1;
+      const seed=String(p.n).split('').reduce((s,c)=>s+c.charCodeAt(0),0);
+      return {key:p.id,n:String(p.n).padStart(2,'0'),name:nm(p),state:has?this.tr('done'):this.tr('undone'),
+        stampDisplay:has?'block':'none', stampRot:(seed%17)-8,
+        open:()=>this.setState({detail:p.id})};});
+    const got=city.places.filter(p=>!p.off&&st.stamps.indexOf(p.id)>-1).length;
+
+    const savedItems=st.saved.map(id=>this.find(id)).filter(Boolean).map(({p,c})=>({key:p.id,n:p.n,name:nm(p),
+      cityLabel:loc(p,c),catLabel:CATS[p.cat][lang],open:()=>this.setState({city:c,detail:p.id})}));
+
+    const d=st.detail?this.find(st.detail):null;
+    const dp=d&&d.p;
+    const inCourse=dp?st.course[d.c].indexOf(dp.id)>-1:false;
+    const isSaved=dp?st.saved.indexOf(dp.id)>-1:false;
+    const isStamped=dp?st.stamps.indexOf(dp.id)>-1:false;
+    if(dp&&!st.weather[dp.id]){
+      getWeather(dp.lat,dp.lng).then(w=>{
+        this.setState(s=>({weather:{...s.weather,[dp.id]:w}}));
+      });
+    }
+
+    const tabDefs=[['map','tabs'],['course','tabs'],['videos','tabs'],['stamp','tabs'],['channel','tabs']];
+    const tabs=tabDefs.map(([k])=>({key:k,label:T.tabs[k][lang]||T.tabs[k].ko,
+      bg:st.activeTab===k?'#201e1d':'transparent',fg:st.activeTab===k?'#f3f2f2':'rgba(32,30,29,.65)',
+      dot:st.activeTab===k?a.base:'transparent',pick:()=>this.setState({activeTab:k})}));
+
+    return {
+      headerSub:this.tr('sub'), langLabel:(LANGS.find(l=>l.id===lang)||LANGS[0]).label,
+      styleLabel:T.styleNames[st.style%3][lang]||T.styleNames[st.style%3].en,
+      toggleLang:()=>{
+        const next=LANGS[(LANGS.findIndex(l=>l.id===lang)+1)%LANGS.length].id;
+        this.setState({lang:next},()=>{
+          const gl=GMAP_LANG[next]||'en';
+          if(window.__gmapsInjected&&window.__gmapsLang!==gl)this.reloadMaps(gl);
+        });
+      },
+      cycleStyle:()=>this.setState({style:(st.style+1)%3}),
+      cities:['seoul'].map(c=>({key:c,label:(DATA[c][lang]||DATA[c].ko).toUpperCase(),
+        bg:st.city===c?'#201e1d':'transparent',fg:st.city===c?'#f3f2f2':'rgba(32,30,29,.7)',
+        pick:()=>this.setState({city:c,cat:'ALL',detail:null})})),
+      cityCount:city.places.filter(p=>st.showOff||!p.off).length+' '+this.tr('spots'),
+      chips, visiblePlaces,
+      mapDisplay:st.activeTab==='map'?'flex':'none',
+      channelDisplay:st.activeTab==='channel'?'flex':'none',
+      videoDisplay:st.activeTab==='videos'?'flex':'none',
+      stampDisplay:st.activeTab==='stamp'?'flex':'none',
+      sheetHeight:st.sheet?'46%':'30px',
+      sheetTitle:(sheetScope?sheetScope+' · ':'')+this.tr('sheet')+' · '+listForSheet.length,
+      sheetChevron:st.sheet?'▼':'▲',
+      toggleSheet:()=>this.setState({sheet:!st.sheet}),
+      isCourse:st.activeTab==='course', isVideos:st.activeTab==='videos', isStamp:st.activeTab==='stamp', isChannel:st.activeTab==='channel',
+      prevMonth:()=>this.setState(s=>({currentMonth:s.currentMonth===0?11:s.currentMonth-1,currentYear:(s.currentYear??new Date().getFullYear())-(s.currentMonth===0?1:0)})),
+      nextMonth:()=>this.setState(s=>({currentMonth:s.currentMonth===11?0:s.currentMonth+1,currentYear:(s.currentYear??new Date().getFullYear())+(s.currentMonth===11?1:0)})),
+      displayMonth:(()=>{const y=st.currentYear??new Date().getFullYear();return CAL_MONTH[lang]?CAL_MONTH[lang](st.currentMonth,y):CAL_MONTH.en(st.currentMonth,y);})(),
+      weekdays:(CAL_WD[lang]||CAL_WD.en).map((w,i)=>({key:'wd'+i,label:w})),
+      calendarDays:(()=>{
+        const now=new Date();
+        const year=st.currentYear??now.getFullYear();
+        const tY=now.getFullYear(), tM=now.getMonth(), tD=now.getDate();
+        const leap=(year%4===0&&year%100!==0)||year%400===0;
+        const dim=[31,leap?29:28,31,30,31,30,31,31,30,31,30,31][st.currentMonth];
+        const firstDay=new Date(year,st.currentMonth,1).getDay();
+        const cells=Math.ceil((firstDay+dim)/7)*7;
+        const iso=d=>year+'-'+String(st.currentMonth+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+        const a=st.tripFrom, b=st.tripTo||st.tripFrom;
+        const lo=a&&b?(a<b?a:b):null, hi=a&&b?(a<b?b:a):null;
+        return Array.from({length:cells}).map((_,i)=>{
+          const d=i-firstDay+1, inM=d>0&&d<=dim;
+          const key=inM?iso(d):'';
+          const isToday=inM&&d===tD&&st.currentMonth===tM&&year===tY;
+          const half=!!(inM&&st.tripFrom&&!st.tripTo&&key===st.tripFrom);
+          const inRange=!!(inM&&lo&&key>=lo&&key<=hi);
+          const isEdge=!!(inM&&(key===lo||key===hi));
+          return {date:inM?d:'',isToday,inRange,
+            label:inM?(isToday?d+' 📍':String(d)):'',
+            bg:half?'#ec3013':(isEdge?'#ec3013':(inRange?'rgba(236,48,19,.18)':(isToday?'#FFB84D':'#f3f2f2'))),
+            fw:(isEdge||inRange||isToday)?800:400,
+            fg:(half||isEdge)?'#f3f2f2':(isToday&&!inRange?'#663300':'#201e1d'),
+            bd:isEdge?'2px solid #ae1800':(isToday?'2px solid #FF8C00':'1px solid rgba(32,30,29,.2)'),
+            // 날짜 클릭 방식: 첫 클릭=출발일, 두 번째 클릭=귀가일(n박 m일).
+            // 범위가 완성된 뒤 다시 클릭하면 새 출발일부터 다시 고른다.
+            pick:inM?(()=>{
+              this.setState(x=>{
+                if(!x.tripFrom||x.tripTo)return {tripFrom:key,tripTo:null};
+                if(key===x.tripFrom)return {tripFrom:key,tripTo:key};
+                return key<x.tripFrom?{tripFrom:key,tripTo:x.tripFrom}:{tripTo:key};
+              });
+            }):(()=>{}),
+          };
+        });
+      })(),
+      courseKicker:this.tr('courseKicker'),courseTitle:city[lang]+' · '+this.tr('courseTitle'),
+      lblStops:this.tr('stops'),lblDist:this.tr('dist'),lblTime:this.tr('time'),
+      courseStops:String(cItems.length).padStart(2,'0'),
+      courseDist:total.toFixed(1)+'km',
+      courseTime:(()=>{
+        // 체류 + 구간 이동 + (기간 선택 시) 출발·귀가 광역 이동을 모두 합산
+        let tot=stayMin;
+        if(cItems.length&&st.tripFrom){
+          const oK=st.origin||'seoul', eK=st.originEnd||oK;
+          const oO=ORIGINS[oK]||ORIGINS.seoul, eO=ORIGINS[eK]||oO;
+          const mf=(o,reg)=>{
+            if(this.state.travelMode==='own')return 'own';   // 자가용은 광역교통을 쓰지 않는다
+      const h=REGION_HUB[reg]||{modes:['bus']};
+            const it=['ktx','srt','bus'].filter(m=>(o.modes||['bus']).indexOf(m)>-1&&(h.modes||['bus']).indexOf(m)>-1);
+            if(it.length)return it[0];
+            const alt=ORIGIN_ALT[oK]||{};
+            for(const m of (h.modes||['bus']))if(alt[m])return m;
+            return 'bus';
+          };
+          const r1=cItems[0].locKo||city.ko, r2=cItems[cItems.length-1].locKo||city.ko;
+          tot+=this.accessMin(oO,r1,mf(oO,r1))+this.accessMin(eO,r2,mf(eO,r2));
+        }
+        return Math.floor(tot/60)+'h'+(tot%60?' '+(tot%60)+'m':'');
+      })(),
+      originLabel:{ko:'출발지',en:'Departure',zh:'出发地',ja:'出発地',es:'Origen'}[lang]||'Departure',
+      originEndLabel:{ko:'귀가지',en:'Return to',zh:'返程地',ja:'帰着地',es:'Regreso a'}[lang]||'Return to',
+      originSameLabel:{ko:'출발지와 동일',en:'Same as departure',zh:'与出发地相同',ja:'出発地と同じ',es:'Igual que el origen'}[lang]||'Same as departure',
+      originValue:st.origin||'seoul',
+      originEndValue:st.originEnd||'',
+      depTimeLabel:{ko:'출발 시각 (출발지)',en:'Depart (origin)',zh:'出发时间(出发地)',ja:'出発時刻(出発地)',es:'Salida (origen)'}[lang]||'Depart (origin)',
+      depTimeValue:st.depTime||'08:00',
+      depTimeOptions:(()=>{
+        const out=[];
+        for(let h=5;h<=20;h++)for(const m of ['00','30'])out.push({key:h+m,value:String(h).padStart(2,'0')+':'+m,label:String(h).padStart(2,'0')+':'+m});
+        return out;
+      })(),
+      depTimeChange:e=>this.setState({depTime:e.target.value}),
+      retTimeLabel:{ko:'귀가 출발 (여행지)',en:'Depart (destination)',zh:'返程出发(旅行地)',ja:'帰路出発(旅行地)',es:'Salida (destino)'}[lang]||'Depart (destination)',
+      retTimeValue:st.retTime||'19:00',
+      retTimeOptions:(()=>{const out=[];for(let h=10;h<=23;h++)for(const m of ['00','30'])out.push({key:'r'+h+m,value:String(h).padStart(2,'0')+':'+m,label:String(h).padStart(2,'0')+':'+m});return out;})(),
+      retTimeChange:e=>this.setState({retTime:e.target.value}),
+      originOptions:Object.keys(ORIGINS).map(k=>({key:k,value:k,label:lang==='ko'?ORIGINS[k].ko:(ORIGINS[k].en||ORIGINS[k].ko)})),
+      originChange:e=>this.setState({origin:e.target.value}),
+      originEndChange:e=>this.setState({originEnd:e.target.value}),
+      srtLabel:{ko:'SRT 예매',en:'Book SRT',zh:'预订SRT',ja:'SRT予約',es:'Reservar SRT'}[lang]||'Book SRT',
+      srtBooking:()=>window.open('https://etk.srail.kr/main.do','_blank'),
+      planBasis:(()=>{
+        if(!cItems.length)return '';
+        const orgKey=st.origin||'seoul', orgO=ORIGINS[orgKey]||ORIGINS.seoul;
+        const reg=cItems[0].locKo||city.ko;
+        const mode0=st.travelMode||'transit';
+        const h=REGION_HUB[reg];
+        if(!h&&mode0!=='own')return '';
+        const own=mode0==='own';
+        const inter=['ktx','srt','bus'].filter(m=>(orgO.modes||['bus']).indexOf(m)>-1&&(h.modes||['bus']).indexOf(m)>-1);
+        let mode=own?'own':inter[0];
+        if(!mode){const alt=ORIGIN_ALT[orgKey]||{};for(const m of (h.modes||['bus']))if(alt[m]){mode=m;break;}}
+        mode=mode||'bus';
+        const mins=this.accessMin(orgO,reg,mode);
+        const dt0=(st.depTime||'08:00').split(':');
+        const dep=(+dt0[0])*60+(+dt0[1]), arr=dep+mins;
+        const hhmm=t=>String(Math.floor(t/60)%24).padStart(2,'0')+':'+String(t%60).padStart(2,'0');
+        const END=21*60;      // 21:00 이후로는 일정을 잡지 않는다
+        const rest=Math.max(0,Math.min(720, END-arr));
+        const OWN={ko:'자가용',en:'Own car',zh:'自驾私家车',ja:'自家用車',es:'Coche propio'}[lang]||'Own car';
+        const MN={ktx:'KTX',srt:'SRT',own:OWN,bus:{ko:'고속버스',en:'Express bus',zh:'长途巴士',ja:'高速バス',es:'Autobús'}[lang]||'Bus'};
+        const mName=mode==='bus'?MN.bus:MN[mode];
+        const firstNm=(cItems[0][lang]||cItems[0].ko);
+        const hubName=mode==='own'?firstNm
+          :(mode==='bus'?(lang==='ko'?(h.busKo||h.ko):(h.busEn||h.en||h.ko)):(lang==='ko'?h.ko:(h.en||h.ko)));
+        const T3={
+          ko:()=>mName+' '+hhmm(dep)+' 출발 → '+hubName+' '+hhmm(arr)+' 도착  ·  첫날 잔여 '+Math.floor(rest/60)+'시간 '+(rest%60)+'분',
+          en:()=>mName+' dep '+hhmm(dep)+' → '+hubName+' arr '+hhmm(arr)+'  ·  '+Math.floor(rest/60)+'h '+(rest%60)+'m left on day 1',
+          zh:()=>mName+' '+hhmm(dep)+'出发 → '+hubName+' '+hhmm(arr)+'抵达  ·  首日剩余'+Math.floor(rest/60)+'小时'+(rest%60)+'分',
+          ja:()=>mName+' '+hhmm(dep)+'発 → '+hubName+' '+hhmm(arr)+'着  ·  初日残り'+Math.floor(rest/60)+'時間'+(rest%60)+'分',
+          es:()=>mName+' sale '+hhmm(dep)+' → '+hubName+' llega '+hhmm(arr)+'  ·  quedan '+Math.floor(rest/60)+'h '+(rest%60)+'m el día 1'
+        };
+        // 귀가 기준 한 줄 덧붙이기
+        const eK=st.originEnd||orgKey, eO=ORIGINS[eK]||orgO;
+        const rLast=cItems[cItems.length-1].locKo||city.ko;
+        const hb=REGION_HUB[rLast];
+        let rMode=(st.travelMode==='own')?'own':'bus';
+        if(hb&&rMode!=='own'){
+          const it=['ktx','srt','bus'].filter(m=>(eO.modes||['bus']).indexOf(m)>-1&&(hb.modes||['bus']).indexOf(m)>-1);
+          rMode=it[0]||(()=>{const alt=ORIGIN_ALT[eK]||{};for(const m of (hb.modes||['bus']))if(alt[m])return m;return 'bus';})();
+        }
+        const rMins=rMode==='own'?this.ownDriveMin(eO,cItems[cItems.length-1]):(hb?this.accessMin(eO,rLast,rMode):0);
+        const rtp2=(st.retTime||'19:00').split(':');
+        const retM=(+rtp2[0])*60+(+rtp2[1]);
+        const boardM=retM;                 // 여행지에서 출발하는 시각
+        const homeM=retM+rMins;            // 귀가지 도착
+        const avail=Math.max(0,Math.min(720,boardM-9*60));
+        const rName=rMode==='own'?({ko:'자가용',en:'Own car',zh:'自驾私家车',ja:'自家用車',es:'Coche propio'}[lang]||'Own car')
+          :(rMode==='bus'?({ko:'고속버스',en:'Express bus',zh:'长途巴士',ja:'高速バス',es:'Autobús'}[lang]||'Bus'):rMode.toUpperCase());
+        const hubR=rMode==='own'?(cItems[cItems.length-1][lang]||cItems[cItems.length-1].ko)
+          :(hb?(rMode==='bus'?(lang==='ko'?(hb.busKo||hb.ko):(hb.busEn||hb.en||hb.ko)):(lang==='ko'?hb.ko:(hb.en||hb.ko))):'');
+        const homeName=rMode==='own'?cityName(eO,lang):(lang==='ko'?eO.ko:(eO.en||eO.ko));
+        const T4={
+          ko:()=>'  /  '+rName+' '+hubR+' '+hhmm(boardM)+' 출발 → '+homeName+' '+hhmm(homeM)+' 도착  ·  마지막날 활동 '+Math.floor(avail/60)+'시간 '+(avail%60)+'분',
+          en:()=>'  /  '+rName+' '+hubR+' '+hhmm(boardM)+' → '+homeName+' '+hhmm(homeM)+'  ·  '+Math.floor(avail/60)+'h '+(avail%60)+'m on the last day',
+          zh:()=>'  /  '+rName+' '+hubR+' '+hhmm(boardM)+'出发 → '+homeName+' '+hhmm(homeM)+'抵达  ·  末日可用'+Math.floor(avail/60)+'小时'+(avail%60)+'分',
+          ja:()=>'  /  '+rName+' '+hubR+' '+hhmm(boardM)+'発 → '+homeName+' '+hhmm(homeM)+'着  ·  最終日 '+Math.floor(avail/60)+'時間'+(avail%60)+'分',
+          es:()=>'  /  '+rName+' '+hubR+' '+hhmm(boardM)+' → '+homeName+' '+hhmm(homeM)+'  ·  '+Math.floor(avail/60)+'h '+(avail%60)+'m el último día'
+        };
+        return (T3[lang]||T3.en)()+((T4[lang]||T4.en)());
+      })(),
+      planBasisShow:(cItems.length&&st.tripFrom)?'block':'none',
+      routeBtnLabel:{ko:'길찾기',en:'Route',zh:'路线',ja:'経路',es:'Ruta'}[lang]||'Route',
+      courseItems,
+      // ── 여러 날 일정 ───────────────────────────────────────────────
+      regionMoveLabel:{ko:'지역 이동',en:'Transfer',zh:'区域移动',ja:'地域移動',es:'Traslado'}[lang]||'Transfer',
+      dayPlanDisplay:st.tripFrom&&cItems.length?'flex':'none',
+      flatDisplay:st.tripFrom&&cItems.length?'none':'flex',
+      tripBarDisplay:st.tripFrom?'flex':'none',
+      tripHint:(st.tripFrom&&!st.tripTo)
+        ?({ko:'귀가일을 한 번 더 선택하세요.',en:'Now pick your return date.',zh:'请再选择返程日期。',ja:'帰着日をもう一度選んでください。',es:'Ahora elige la fecha de regreso.'}[lang]||'')
+        :({ko:'출발일과 귀가일을 차례로 선택하면 n박 m일 일정으로 나뉩니다.',en:'Pick a start date, then an end date — the course splits across those days.',zh:'依次选择出发日与返程日，行程将按天分配。',ja:'出発日と帰着日を順に選ぶと、日程が日別に分かれます。',es:'Elige la fecha de salida y la de regreso; la ruta se divide por días.'}[lang]||''),
+      tripRange:(()=>{
+        if(!st.tripFrom)return '';
+        if(!st.tripTo){
+          const d=st.tripFrom.slice(5).replace('-','.');
+          return ({ko:'출발 '+d+'  ·  귀가일 선택 중',en:'From '+d+'  ·  pick return date',zh:'出发 '+d+'  ·  选择返程日',ja:'出発 '+d+'  ·  帰着日を選択',es:'Salida '+d+'  ·  elige regreso'}[lang])||('From '+d);
+        }
+        const a=st.tripFrom,b=st.tripTo||st.tripFrom;
+        const lo=a<b?a:b, hi=a<b?b:a;
+        const n=Math.round((new Date(hi+'T00:00:00')-new Date(lo+'T00:00:00'))/864e5);
+        const fmt=s=>s.slice(5).replace('-','.');
+        const nights={ko:n+'박 '+(n+1)+'일',en:n+' night'+(n===1?'':'s')+' / '+(n+1)+' days',zh:n+'晚'+(n+1)+'天',ja:n+'泊'+(n+1)+'日',es:n+' noches / '+(n+1)+' días'}[lang];
+        return fmt(lo)+' – '+fmt(hi)+'  ·  '+nights;
+      })(),
+      clearTrip:()=>this.setState({tripFrom:null,tripTo:null}),
+      modeDriveBg:mode==='driving'?'#201e1d':'#f3f2f2', modeDriveFg:mode==='driving'?'#f3f2f2':'#201e1d',
+      modeTransitBg:mode==='transit'?'#201e1d':'#f3f2f2', modeTransitFg:mode==='transit'?'#f3f2f2':'#201e1d',
+      modeDriveLabel:{ko:'자동차 (렌트카)',en:'Driving (rental)',zh:'自驾 (租车)',ja:'車 (レンタカー)',es:'Coche (alquiler)'}[lang]||'Driving (rental)',
+      modeTransitLabel:{ko:'대중교통',en:'Transit',zh:'公共交通',ja:'公共交通',es:'Transporte'}[lang]||'Transit',
+      modeOwnBg:mode==='own'?'#201e1d':'#f3f2f2', modeOwnFg:mode==='own'?'#f3f2f2':'#201e1d',
+      modeOwnLabel:{ko:'자가용',en:'Own car',zh:'私家车',ja:'自家用車',es:'Coche propio'}[lang]||'Own car',
+      setOwn:()=>{this.loadRests();this.setState({travelMode:'own'});},
+      setDrive:()=>this.setState({travelMode:'driving'}),
+      setTransit:()=>this.setState({travelMode:'transit'}),
+      routeNote:(cItems.length<2?'':(mode==='own'
+        ?({ko:'자가용 기준 — 한국도로공사 고속도로 표정속도(약 92km/h)와 진출입·휴게 시간을 적용한 주행시간입니다. KTX·버스 예매는 필요하지 않습니다.',en:'Own car — driving times use the Korea Expressway Corporation average highway speed (~92 km/h) plus ramp and rest stops. No rail or bus booking needed.',zh:'私家车 — 采用韩国道路公社高速公路平均速度(约92km/h)并计入出入口与休息时间，无需预订火车或客车。',ja:'自家用車 — 韓国道路公社の高速道路平均速度(約92km/h)に出入口・休憩時間を加えた所要時間です。鉄道・バスの予約は不要です。',es:'Coche propio — tiempos según la velocidad media de autopista de Korea Expressway (~92 km/h) más accesos y descansos. No hace falta reservar tren ni autobús.'}[lang]||'')
+        :(mode==='driving'
+        ?({ko:'자동차 경로는 Google이 국내 서비스를 제공하지 않아 추정값입니다. 대중교통을 선택하면 실제 환승 시간·요금이 표시됩니다.',en:'Google does not serve driving routes in Korea — driving values are estimates. Switch to Transit for real times and fares.',zh:'Google在韩国不提供自驾路线，自驾为估算值。切换公共交通可查看实际时间与票价。',ja:'Googleは韓国で車ルートを提供しないため推定値です。公共交通を選ぶと実際の所要時間・運賃が表示されます。',es:'Google no ofrece rutas en coche en Corea; son estimaciones. Cambia a Transporte para tiempos y tarifas reales.'}[lang]||'')
+        :(allReal
+        ?({ko:'Google 경로 기준 실제 이동 거리·시간',en:'Real driving/transit times via Google',zh:'基于Google路线的实际距离与时间',ja:'Googleルートによる実移動距離・時間',es:'Distancias reales según Google'}[lang]||'')
+        :({ko:'≈ 표시는 경로 조회 전 추정값입니다',en:'≈ values are estimates pending route lookup',zh:'≈ 为路线查询前的估算值',ja:'≈ はルート取得前の推定値です',es:'≈ son estimaciones pendientes de ruta'}[lang]||''))))),
+      stayPanelLabel:(this.tr('booking')||'숙박 예매')+' ▾',
+      stayPanelToggle:()=>this.setState(s=>({stayOpen:s.stayOpen==='panel'?null:'panel'})),
+      stayPanelClass:st.stayOpen==='panel'?'rs-bk rs-bk-open':'rs-bk',
+      // 코스 전체 기준 숙박 예매 — 기간을 고르면 그 날짜가, 없으면 첫 경유지 지역이 채워진다.
+      coursePanelBookings:(()=>{
+        const a=st.tripFrom,b=st.tripTo||st.tripFrom;
+        const lo=a&&b?(a<b?a:b):null, hi=a&&b?(a<b?b:a):null;
+        const ci=lo||new Date().toISOString().slice(0,10);
+        const co=hi&&hi!==lo?hi:new Date(new Date(ci+'T00:00:00').getTime()+864e5).toISOString().slice(0,10);
+        const first=cItems[0];
+        const q=encodeURIComponent(first?(first[lang]||first.ko):(city[lang]||city.ko));
+        const lc=lang==='ko'?'ko':lang==='zh'?'zh_CN':lang==='ja'?'ja':'en';
+        return [
+          {name:'Booking',u:'https://www.booking.com/searchresults.html?ss='+q+'&checkin='+ci+'&checkout='+co+'&lang='+lc},
+          {name:'Agoda',u:'https://www.agoda.com/search?ss='+q+'&checkIn='+ci+'&checkOut='+co+'&lang='+lc},
+          {name:'Airbnb',u:'https://www.airbnb.com/s/'+q+'/homes?checkin='+ci+'&checkout='+co},
+          {name:'야놀자',u:'https://www.yanolja.com/search/'+q},
+          {name:'여기어때',u:'https://www.goodchoice.kr/product/search/'+q},
+          {name:'Trip.com',u:'https://www.trip.com/'+(lang==='ko'?'ko':lang==='zh'?'zh':lang==='ja'?'ja':'en')+'/hotels/list?checkin='+ci+'&checkout='+co+'&city='+q}
+        ].map(x=>({key:'cp'+x.name,name:x.name,open:()=>window.open(x.u,'_blank')}));
+      })(),
+      dayPlan:(()=>{
+        if(!st.tripFrom||!cItems.length)return [];
+        const a=st.tripFrom,b=st.tripTo||st.tripFrom;
+        const lo=a<b?a:b, hi=a<b?b:a;
+        const days=Math.round((new Date(hi+'T00:00:00')-new Date(lo+'T00:00:00'))/864e5)+1;
+        // 날짜 배분은 시간 기준으로 한다. 각 날짜에 체류시간과 구간 이동시간을
+        // 누적하고, 첫날은 출발지→첫 지역 도착시간, 마지막날은 귀가시간을 미리 확보한다.
+        const DAYMIN=720;
+        const regOf=p=>p.locKo||city.ko;
+        const orgKey=st.origin||'seoul', endKey=st.originEnd||orgKey;
+        const orgO=ORIGINS[orgKey]||ORIGINS.seoul, endO=ORIGINS[endKey]||orgO;
+        const modeFor=(o,reg)=>{
+          if(this.state.travelMode==='own')return 'own';   // 자가용은 광역교통을 쓰지 않는다
+      const h=REGION_HUB[reg]||{modes:['bus']};
+          const inter=['ktx','srt','bus'].filter(m=>(o.modes||['bus']).indexOf(m)>-1&&(h.modes||['bus']).indexOf(m)>-1);
+          if(inter.length)return inter[0];
+          const alt=ORIGIN_ALT[orgKey]||{};
+          for(const m of (h.modes||['bus']))if(alt[m])return m;
+          return 'bus';
+        };
+        const regFirst=cItems.length?(cItems[0].locKo||city.ko):'';
+        const regLast=cItems.length?(cItems[cItems.length-1].locKo||city.ko):'';
+        const W=this.dayWindows(cItems);
+
+        const buckets=Array.from({length:days},()=>[]);
+        let d0=0, used=0;
+        cItems.forEach((p,idx)=>{
+          const legIn=idx>0?this.legInfo(cItems[idx-1],p,mode).min:0;
+          const stay=p.min||0;
+          // 일자별 창(첫날 도착·마지막날 귀가 반영) 안에서만 배정한다.
+          while(d0<days-1&&used+legIn+stay>(W.windows[d0]||DAYMIN)){d0++;used=0;}
+          used+=legIn+stay;
+          buckets[d0].push(idx);
+        });
+        buckets.forEach(b=>b.sort((x,y)=>x-y));
+        const beds=Object.keys(STAYS).reduce((a,k)=>a.concat(STAYS[k]||[]),[]);
+        const org=ORIGINS[st.origin||'seoul']||ORIGINS.seoul;
+        const orgEnd=ORIGINS[st.originEnd||st.origin||'seoul']||org;
+        const hubOf=r=>REGION_HUB[r]||{ko:r,en:r,modes:['bus']};
+        // 출발지와 지역 관문의 가능 수단이 겹치지 않으면(예: 서울역 KTX → 거제 버스전용)
+        // 같은 권역의 대체 관문으로 바꿔 라벨과 예매를 일치시킨다.
+        const resolveOrigin=(o,oKey,reg)=>{
+          if(this.state.travelMode==='own')return {origin:o,modes:['own']};   // 자가용: 관문 없이 직행
+          const h=hubOf(reg);
+          const hm=h.modes||['bus'];
+          const om=o.modes||['bus'];
+          const inter=['ktx','srt','bus'].filter(m=>om.indexOf(m)>-1&&hm.indexOf(m)>-1);
+          if(inter.length)return {origin:o,modes:inter};
+          // 관문이 지원하는 수단 중 하나를 같은 권역 대체 관문에서 찾는다
+          const altMap=ORIGIN_ALT[oKey]||{};
+          for(const m of hm){
+            const k=altMap[m];
+            if(k&&ORIGINS[k])return {origin:ORIGINS[k],modes:[m]};
+          }
+          return {origin:o,modes:hm.slice(0,1)};
+        };
+        const WD={ko:['일','월','화','수','목','금','토'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],zh:['日','一','二','三','四','五','六'],ja:['日','月','火','水','木','金','土'],es:['Dom','Lun','Mar','Mié','Jue','Vie','Sáb']}[lang]||['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        const L={
+          day:{ko:'일차',en:'Day',zh:'天',ja:'日目',es:'Día'}[lang],
+          arrive:{ko:'도착 · ',en:'Arrive · ',zh:'抵达 · ',ja:'到着 · ',es:'Llegada · '}[lang],
+          depart:{ko:'귀가 · ',en:'Return · ',zh:'返程 · ',ja:'帰路 · ',es:'Regreso · '}[lang],
+          stay:{ko:'숙박',en:'Overnight',zh:'住宿',ja:'宿泊',es:'Alojamiento'}[lang],
+          book:{ko:'예매',en:'Book',zh:'预订',ja:'予約',es:'Reservar'}[lang]
+        };
+        return Array.from({length:days}).map((_,i)=>{
+          const dt=new Date(new Date(lo+'T00:00:00').getTime()+i*864e5);
+          // 그날 마지막 경유지에서 가장 가까운 숙소를 고른다. 25km 넘으면
+          // 실제 동선상 숙박이 불가능하므로 실명 대신 '숙소 A/B'로 표기하고
+          // 예매 버튼은 그 지역명으로 검색되게 남긴다.
+          const dayIdx=buckets[i]||[];
+          const dayStops=dayIdx.map(k=>courseItems[k]);
+          const dayRaw=dayIdx.map(k=>cItems[k]);
+          // 경유지가 없는 날은 다음(없으면 이전) 날의 경유지를 기준으로 지역·숙소를 잡는다.
+          const nextStop=(()=>{for(let k=i;k<days;k++){const b=buckets[k];if(b&&b.length)return cItems[b[0]];}return null;})();
+          const prevStop=(()=>{for(let k=i-1;k>=0;k--){const b=buckets[k];if(b&&b.length)return cItems[b[b.length-1]];}return null;})();
+          const ctxFirst=dayRaw.length?dayRaw[0]:(nextStop||prevStop);
+          const ctxLast=dayRaw.length?dayRaw[dayRaw.length-1]:(nextStop||prevStop);
+          const anchor=ctxLast;
+          const km=(p,q)=>{const R=6371,dLa=(q.lat-p.lat)*Math.PI/180,dLo=(q.lng-p.lng)*Math.PI/180,
+            la=(p.lat+q.lat)/2*Math.PI/180;return R*Math.hypot(dLa,dLo*Math.cos(la));};
+          let bed=null, far=false;
+          if(anchor&&beds.length){
+            const ranked=beds.map(s=>({s,d:km(anchor,s)})).sort((x,y)=>x.d-y.d);
+            if(ranked[0].d<=25)bed=ranked[0].s; else far=true;
+          }else if(beds.length){bed=beds[i%beds.length];}
+          const genericName=(far?({ko:'숙소 ',en:'Stay ',zh:'住宿 ',ja:'宿 ',es:'Alojamiento '}[lang]||'Stay ')+String.fromCharCode(65+i):'');
+          const nearArea=anchor?(anchor[lang]||anchor.ko||''):'';
+          const last=i===days-1;
+          const mins=dayStops.reduce((s,c)=>s+(c.minutes||0),0);
+          return {
+            key:'d'+i,
+            dayLabel:(lang==='ko'||lang==='ja'||lang==='zh')?(i+1)+L.day:L.day+' '+(i+1),
+            dateLabel:(dt.getMonth()+1)+'.'+dt.getDate()+' ('+WD[dt.getDay()]+')',
+            sumLabel:mins?Math.floor(mins/60)+'h'+(mins%60?' '+(mins%60)+'m':''):'—',
+            items:dayStops.map((c,k)=>{
+              // 그날 시작 시각부터 이동·체류를 누적해 도착 시각을 계산한다.
+              if(!this._clk||this._clkDay!==i){this._clk=(i===0&&st.tripFrom)?Math.max(9*60,(()=>{const d=(st.depTime||'08:00').split(':');return (+d[0])*60+(+d[1])+W.accIn;})()):9*60;this._clkDay=i;}
+              if(k>0){
+                const prev=dayRaw[k-1], now=dayRaw[k];
+                this._clk+=this.legInfo(prev,now,mode).min;
+              }
+              const oh=this.openHours(dayRaw[k]);
+              if(oh&&this._clk<oh.open)this._clk=oh.open;
+              const at=this._clk;
+              this._clk+=dayRaw[k].min||0;
+              const hm=t=>String(Math.floor(t/60)%24).padStart(2,'0')+':'+String(t%60).padStart(2,'0');
+              return {...c,atLabel:hm(at)+'–'+hm(this._clk)};
+            }),
+            transShow:i===0?'flex':'none',
+            transShowEnd:last&&days>1?'flex':(days===1&&i===0?'flex':'none'),
+            transLabel:(()=>{
+              const firstReg=ctxFirst?(ctxFirst.locKo||city.ko):'';
+              if(!firstReg)return L.arrive+(lang==='ko'?org.ko:(org.en||org.ko));
+              const R=resolveOrigin(org,st.origin||'seoul',firstReg);
+              const h=hubOf(firstReg);
+              const useBus=R.modes[0]==='bus';
+              const hubName=R.modes[0]==='own'?(ctxFirst[lang]||ctxFirst.ko)
+                :(useBus?(lang==='ko'?(h.busKo||h.ko):(h.busEn||h.en||h.ko)):(lang==='ko'?h.ko:(h.en||h.ko)));
+              return L.arrive+(R.modes[0]==='own'?cityName(R.origin,lang):(lang==='ko'?R.origin.ko:(R.origin.en||R.origin.ko)))+' → '+hubName;
+            })(),
+            transLabelEnd:(()=>{
+              const lastReg=ctxLast?(ctxLast.locKo||city.ko):'';
+              if(!lastReg)return L.depart+(lang==='ko'?orgEnd.ko:(orgEnd.en||orgEnd.ko));
+              const R=resolveOrigin(orgEnd,st.originEnd||st.origin||'seoul',lastReg);
+              const h=hubOf(lastReg);
+              const useBus=R.modes[0]==='bus';
+              const hubName=R.modes[0]==='own'?(ctxLast[lang]||ctxLast.ko)
+                :(useBus?(lang==='ko'?(h.busKo||h.ko):(h.busEn||h.en||h.ko)):(lang==='ko'?h.ko:(h.en||h.ko)));
+              return L.depart+hubName+' → '+(R.modes[0]==='own'?cityName(R.origin,lang):(lang==='ko'?R.origin.ko:(R.origin.en||R.origin.ko)));
+            })(),
+            transBtns:(()=>{
+              if(mode==='own')return [];   // 자가용은 예매가 필요 없다
+              const reg=ctxFirst?(ctxFirst.locKo||city.ko):'';
+              if(!reg)return ['bus'];
+              return resolveOrigin(org,st.origin||'seoul',reg).modes;
+            })().map(m=>({
+              key:'t'+i+m,
+              label:({ktx:{ko:'KTX 예매',en:'Book KTX',zh:'预订KTX',ja:'KTX予約',es:'Reservar KTX'},
+                      srt:{ko:'SRT 예매',en:'Book SRT',zh:'预订SRT',ja:'SRT予約',es:'Reservar SRT'},
+                      bus:{ko:'버스 예매',en:'Book bus',zh:'预订巴士',ja:'バス予約',es:'Reservar bus'}}[m][lang])||m.toUpperCase(),
+              open:()=>{
+                const d=dt.toISOString().slice(0,10);
+                try{localStorage.setItem('rs_trip_leg',JSON.stringify({date:d,city:st.city,mode:m}));}catch(e){}
+                window.open(m==='bus'?'https://txbus.t-money.co.kr/':(m==='srt'?'https://etk.srail.kr/main.do':'https://www.letskorail.com/ebizprd/prdMain.do'),'_blank');
+              }
+            })),
+            stayShow:(!last&&(bed||far))?'flex':'none',
+            stayLabel:L.stay,
+            stayName:bed?(bed[lang]||bed.ko):genericName,
+            stayMeta:bed?((lang==='ko'?bed.areaKo:bed.areaEn)+' · '+(lang==='ko'?bed.typeKo:bed.typeEn)+' · '+stayPrice(bed,lang)):(nearArea+({ko:' 근처 · 숙소 미지정',en:' area · not assigned',zh:' 附近 · 未指定',ja:' 周辺 · 未指定',es:' zona · sin asignar'}[lang]||'')),
+            stayBook:()=>{
+              const ci=dt.toISOString().slice(0,10);
+              const co=new Date(dt.getTime()+864e5).toISOString().slice(0,10);
+              const q=encodeURIComponent(bed?stayQuery(bed,lang):nearArea);
+              window.open('https://www.booking.com/searchresults.html?ss='+q+'&checkin='+ci+'&checkout='+co,'_blank');
+            },
+            sgLabel:{ko:'추천',en:'Nearby',zh:'推荐',ja:'おすすめ',es:'Cerca'}[lang]||'Nearby',
+            sgToggle:()=>this.setState(s=>({stayOpen:s.stayOpen==='sg'+i?null:'sg'+i})),
+            sgShow:(anchor&&beds.some(s2=>km(anchor,s2)<=25))?'inline-block':'none',
+            sgClass:st.stayOpen==='sg'+i?'rs-bk rs-bk-open':'rs-bk',
+            staySuggest:(()=>{
+              if(!anchor||!beds.length)return [];
+              const ci=dt.toISOString().slice(0,10);
+              const co=new Date(dt.getTime()+864e5).toISOString().slice(0,10);
+              const lc=lang==='ko'?'ko':lang==='zh'?'zh_CN':lang==='ja'?'ja':'en';
+              // 동선상 무리한 숙소는 제외한다(배정 로직과 동일한 25km 상한).
+              return beds.map(s2=>({s:s2,d:km(anchor,s2)}))
+                .filter(x=>x.d<=25)
+                .sort((x,y)=>x.d-y.d).slice(0,4)
+                .map(({s:s2,d})=>({
+                  key:'sg'+i+s2.id,
+                  name:(s2[lang]||s2.ko),
+                  meta:(lang==='ko'?s2.areaKo:s2.areaEn)+' · '+(lang==='ko'?s2.typeKo:s2.typeEn)+' · '+stayPrice(s2,lang),
+                  dist:d<1?Math.round(d*1000)+'m':d.toFixed(1)+'km',
+                  // 지역+숙소유형 키워드로 검색 — 한국어는 네이버 지도, 그 외는 구글 지도
+                  open:()=>{
+                    const url=lang==='ko'
+                      ? 'https://map.naver.com/p/search/'+encodeURIComponent(stayQuery(s2,'ko'))
+                      : 'https://www.google.com/maps/search/'+encodeURIComponent(stayQuery(s2,lang))+'?hl='+(GMAP_LANG[lang]||'en');
+                    window.open(url,'_blank');
+                  }
+                }));
+            })(),
+            stayBookOpen:()=>this.setState(s=>({stayOpen:s.stayOpen==='d'+i?null:'d'+i})),
+            bkClass:st.stayOpen==='d'+i?'rs-bk rs-bk-open':'rs-bk',
+            stayBookings:(()=>{
+              const ci=dt.toISOString().slice(0,10);
+              const co=new Date(dt.getTime()+864e5).toISOString().slice(0,10);
+              const q=encodeURIComponent(bed?stayQuery(bed,lang):nearArea);
+              const ll=bed?bed.lat+','+bed.lng:(anchor?anchor.lat+','+anchor.lng:'');
+              const lc=lang==='ko'?'ko':lang==='zh'?'zh_CN':lang==='ja'?'ja':'en';
+              return [
+                {name:'Booking',u:'https://www.booking.com/searchresults.html?ss='+q+'&checkin='+ci+'&checkout='+co+'&lang='+lc},
+                {name:'Agoda',u:'https://www.agoda.com/search?ss='+q+'&checkIn='+ci+'&checkOut='+co+'&lang='+lc},
+                {name:'Airbnb',u:'https://www.airbnb.com/s/'+q+'/homes?checkin='+ci+'&checkout='+co},
+                {name:'야놀자',u:'https://www.yanolja.com/search/'+q},
+                {name:'여기어때',u:'https://www.goodchoice.kr/product/search/'+q},
+                {name:'Trip.com',u:'https://www.trip.com/'+(lang==='ko'?'ko':lang==='zh'?'zh':lang==='ja'?'ja':'en')+'/hotels/list?checkin='+ci+'&checkout='+co+'&city='+q}
+              ].map(b=>({key:'d'+i+b.name,name:b.name,open:()=>window.open(b.u,'_blank')}));
+            })(),
+            // 지역(클러스터) 간 이동 — KTX·고속버스 구간을 넣고 예매로 연결한다.
+            regionHops:(()=>{
+              const seq=[];
+              const prevB=i>0?(buckets[i-1]||[]):[];
+              const prevLast=prevB.length?cItems[prevB[prevB.length-1]]:null;
+              // 날짜 경계(전날 마지막 → 오늘 첫 경유지)의 크로싱만 상단 행으로 둔다.
+              const chain=(prevLast&&dayRaw.length)?[prevLast,dayRaw[0]]:[];
+              const L2={ktx:{ko:'KTX 예매',en:'Book KTX',zh:'预订KTX',ja:'KTX予約',es:'Reservar KTX'},
+                        srt:{ko:'SRT 예매',en:'Book SRT',zh:'预订SRT',ja:'SRT予約',es:'Reservar SRT'},
+                        bus:{ko:'버스 예매',en:'Book bus',zh:'预订巴士',ja:'バス予約',es:'Reservar bus'}};
+              for(let k=1;k<chain.length;k++){
+                const ra=regOf(chain[k-1]), rb=regOf(chain[k]);
+                if(ra===rb)continue;
+                const ha=REGION_HUB[ra]||{ko:ra,en:ra,modes:['bus']}, hb=REGION_HUB[rb]||{ko:rb,en:rb,modes:['bus']};
+                // 양쪽 모두 가능한 수단만 남긴다. 철도가 없는 지역이 끼면 버스만.
+                const modes=['ktx','srt','bus'].filter(m=>(ha.modes||['bus']).indexOf(m)>-1&&(hb.modes||['bus']).indexOf(m)>-1);
+                const use=modes.length?modes:['bus'];
+                const nm2=(h,m)=>m==='bus'?(lang==='ko'?(h.busKo||h.ko):(h.busEn||h.en||h.ko)):(lang==='ko'?h.ko:(h.en||h.ko));
+                seq.push({
+                  key:'h'+i+k,
+                  label:use.indexOf('ktx')>-1?nm2(ha,'ktx')+' → '+nm2(hb,'ktx'):nm2(ha,'bus')+' → '+nm2(hb,'bus'),
+                  altLabel:use.length>1?nm2(ha,'bus')+' → '+nm2(hb,'bus'):'',
+                  altShow:use.length>1?'block':'none',
+                  btns:use.map(m=>({
+                    key:'h'+i+k+m,
+                    label:(L2[m][lang]||L2[m].en),
+                    open:()=>{
+                      try{localStorage.setItem('rs_trip_leg',JSON.stringify({date:dt.toISOString().slice(0,10),from:ra,to:rb,mode:m}));}catch(e){}
+                      window.open(m==='bus'?'https://txbus.t-money.co.kr/':(m==='srt'?'https://etk.srail.kr/main.do':'https://www.letskorail.com/ebizprd/prdMain.do'),'_blank');
+                    }
+                  }))
+                });
+              }
+              return seq;
+            })(),
+            stayBtn:L.book
+          };
+        });
+      })(),
+      courseEmpty:this.tr('courseEmpty'),
+      courseEmptyDisplay:cItems.length?'none':'block',
+      btnAuto:this.tr('btnAuto'),btnClear:this.tr('btnClear'),
+      autoCourse:()=>this.setState(s=>{const c={...s.course};
+        // 시군(클러스터) 단위 일정 배분 — 광역교통 시간을 반영해 날짜를 시군별로 나눈다.
+        //  1. 선택한 시군만 후보(미선택이면 전부)
+        //  2. 시군을 지리적으로 가까운 순서로 체인 구성
+        //  3. 일수를 시군별로 배분(장소 수·영상 수 가중). 날짜가 시군 수보다 적으면 상위 시군만 남긴다
+        //  4. 시군별 예산 = 720분 × 배분일수 − 진입 광역교통 시간(이동 + 환승 여유 45분)
+        const {days}=this.dayBudget();
+        const mode=s.travelMode||'transit';
+        const legMin=(p,q)=>this.legInfo(p,q,mode).min;
+        const HOP=45;
+        const all=DATA[s.city].places.filter(p=>(p.min||0)>0&&p.cat!=='stay');
+        const regOf=p=>p.locKo||DATA[s.city].ko;
+        const sel=(s.regions&&s.regions.length)?s.regions:null;
+        const pool0=sel?all.filter(p=>sel.indexOf(regOf(p))>-1):all;
+        if(!pool0.length){c[s.city]=[];return {course:c,tab:'course'};}
+        const groups={};
+        pool0.forEach(p=>{const r=regOf(p);(groups[r]=groups[r]||[]).push(p);});
+        const cen=r=>{const g=groups[r];return {id:'c_'+r,lat:g.reduce((a,p)=>a+p.lat,0)/g.length,lng:g.reduce((a,p)=>a+p.lng,0)/g.length};};
+        const weight=r=>groups[r].filter(p=>p.yt).length*2+Math.min(groups[r].length,8);
+        // 날짜가 시군 수보다 적으면 가중치 높은 시군만 남긴다
+        let regions=Object.keys(groups).sort((a,b)=>weight(b)-weight(a));
+        if(regions.length>days)regions=regions.slice(0,days);
+        // 지리적 체인 (가중치 1위에서 출발)
+        const chain=[regions.shift()];
+        while(regions.length){
+          const last=cen(chain[chain.length-1]);
+          regions.sort((a,b)=>legMin(last,cen(a))-legMin(last,cen(b)));
+          chain.push(regions.shift());
+        }
+        // 일수 배분: 모든 시군에 최소 1일, 남는 날은 가중치 순으로 추가
+        const alloc={}; chain.forEach(r=>alloc[r]=1);
+        let left=days-chain.length;
+        const byW=chain.slice().sort((a,b)=>weight(b)-weight(a));
+        for(let i=0;left>0;i++,left--)alloc[byW[i%byW.length]]++;
+        // 일자 창(첫날 출발·마지막날 귀가 반영) 기준으로 날짜별로 채운다.
+        const orgKey=s.origin||'seoul', endKey=s.originEnd||orgKey;
+        const orgO=ORIGINS[orgKey]||ORIGINS.seoul, endO=ORIGINS[endKey]||orgO;
+        const pickMode=(o,key,reg)=>{
+          if(this.state.travelMode==='own')return 'own';   // 자가용은 광역교통을 쓰지 않는다
+      const h=REGION_HUB[reg]||{modes:['bus']};
+          const inter=['ktx','srt','bus'].filter(m=>(o.modes||['bus']).indexOf(m)>-1&&(h.modes||['bus']).indexOf(m)>-1);
+          if(inter.length)return inter[0];
+          const alt=ORIGIN_ALT[key]||{};
+          for(const m of (h.modes||['bus']))if(alt[m])return m;
+          return 'bus';
+        };
+        const DAY=720;   // 09:00–21:00 활동
+        const hasTrip=!!s.tripFrom;
+        const dpS=(s.depTime||'08:00').split(':'), rtS=(s.retTime||'19:00').split(':');
+        const depMin=(+dpS[0])*60+(+dpS[1]), retMin=(+rtS[0])*60+(+rtS[1]);
+        const accIn=hasTrip?this.accessMin(orgO,chain[0],pickMode(orgO,orgKey,chain[0])):0;
+        const windows=[];
+        for(let i=0;i<days;i++){
+          let avail=DAY;
+          if(hasTrip&&i===0)avail=Math.max(0,Math.min(DAY,21*60-(depMin+accIn)));
+          if(hasTrip&&i===days-1)avail=Math.min(avail,Math.max(0,Math.min(DAY,retMin-9*60)));
+          windows.push(avail);
+        }
+        // 시군별 최소 배분은 유지하되, 후보가 남고 창이 남으면 그 날 지역에서 계속 채운다.
+        const out=[];
+        let cur=null, ri=0, dayIdx=0, used=0, placedInRegion=0;
+        const HOP2=45;
+        const pool={}; chain.forEach(r=>pool[r]=groups[r].slice());
+        // 후보를 우선순위 순으로 나열한다(단일 선택이 아니라 목록 — 운영시간에 막히면 다음 후보로).
+        const rankInRegion=(r)=>{
+          const g=pool[r];
+          if(!g||!g.length)return [];
+          if(!cur||regOf(cur)!==r)
+            return g.slice().sort((x,y)=>((y.yt?1:0)-(x.yt?1:0))||((x.n||99)-(y.n||99)));
+          return g.slice().sort((x,y)=>(legMin(cur,x)+(x.off?26:0)+(x.yt?-14:0))-(legMin(cur,y)+(y.off?26:0)+(y.yt?-14:0)));
+        };
+        // 하루 시작 시계: 첫날은 출발+이동 도착 시각, 나머지는 09:00
+        const dayStart=d=>(hasTrip&&d===0)?Math.max(9*60,depMin+accIn):9*60;
+        let clock=dayStart(0);
+        while(dayIdx<days&&out.length<18){
+          const r=chain[Math.min(ri,chain.length-1)];
+          const ranked=rankInRegion(r);
+          if(!ranked.length){
+            if(ri<chain.length-1){ri++;placedInRegion=0;continue;}
+            dayIdx++; used=0; clock=dayStart(dayIdx); if(dayIdx>=days)break; continue;
+          }
+          let taken=null, tCost=0;
+          for(const cand of ranked){
+            const cross=cur&&regOf(cur)!==r;
+            const move=cur?(cross?legMin(cur,cand)+HOP2:legMin(cur,cand)):0;
+            const stay=cand.min||0;
+            let arrive=clock+move, wait=0;
+            const oh=this.openHours(cand);
+            if(oh){
+              if(arrive<oh.open){wait=oh.open-arrive;arrive=oh.open;}   // 개장 전이면 대기
+              if(arrive+stay>oh.close)continue;                        // 폐장 전에 못 끝내면 건너뜀
+            }
+            const cost=move+wait+stay;
+            if(used+cost>windows[dayIdx])continue;                      // 그날 창을 넘기면 다음 후보
+            taken=cand; tCost=cost; break;
+          }
+          if(!taken){
+            // 남은 후보가 이 날 창·운영시간에 맞지 않으면 다음 날(없으면 다음 지역)로
+            if(dayIdx<days-1){dayIdx++;used=0;clock=dayStart(dayIdx);continue;}
+            if(ri<chain.length-1){ri++;placedInRegion=0;continue;}
+            break;
+          }
+          used+=tCost; clock+=tCost; out.push(taken); cur=taken; placedInRegion++;
+          pool[r].splice(pool[r].indexOf(taken),1);
+          if(placedInRegion>=Math.max(2,Math.round(alloc[r]*3))&&ri<chain.length-1){ri++;placedInRegion=0;}
+        }
+        c[s.city]=out.map(p=>p.id);
+        return {course:c,tab:'course',showOff:true};}),
+      regionPickShow:'none',
+      regionPickLabel:{ko:'시군 선택',en:'Pick regions',zh:'选择市郡',ja:'市郡を選択',es:'Regiones'}[lang]||'Pick regions',
+      regionChips:(()=>{
+        const g={};
+        DATA.seoul.places.forEach(p=>{const r=p.locKo||'';if(!r)return;g[r]=(g[r]||0)+1;});
+        const on=st.regions||[];
+        return Object.keys(g).map(r=>({
+          key:r,
+          label:((lang==='zh'||lang==='ja')&&I18N.locs[r]?I18N.locs[r][lang==='zh'?0:1]:r)+' '+String(g[r]).padStart(2,'0'),
+          bg:on.indexOf(r)>-1?'#201e1d':'#f3f2f2',
+          fg:on.indexOf(r)>-1?'#f3f2f2':'#201e1d',
+          toggle:()=>this.setState(x=>{
+            const cur=x.regions||[];
+            return {regions:cur.indexOf(r)>-1?cur.filter(v=>v!==r):cur.concat([r])};
+          })
+        }));
+      })(),
+      regionClear:()=>this.setState({regions:[]}),
+      regionClearShow:(st.regions&&st.regions.length)?'inline-flex':'none',
+      clearCourse:()=>this.setState(s=>{const c={...s.course};c[s.city]=[];return {course:c};}),
+      videoKicker:this.tr('videoKicker'),videoTitle:this.tr('videoTitle'),videoItems,
+      ytq:st.ytq, ytPlaceholder:this.tr('ytSearch'), ytGoLabel:this.tr('ytSearchGo'),
+      ytChange:e=>this.setState({ytq:e.target.value}),
+      ytSubmit:e=>{e.preventDefault(); const q=st.ytq.trim(); if(!q)return;
+        window.open('https://www.youtube.com/results?search_query='+encodeURIComponent('케이팝 데몬 헌터스 서울 '+q),'_blank');},
+      vsorts:[['pop','sortPop'],['new','sortNew']].map(([k,t])=>({key:k,label:this.tr(t),
+        bg:st.vsort===k?a.base:'transparent', fg:st.vsort===k?on:'rgba(32,30,29,.7)',
+        pick:()=>this.setState({vsort:k})})),
+      stampKicker:this.tr('stampKicker'),stampTitle:city[lang]+' · '+this.tr('stampTitle'),
+      stampCells,stampCount:got+' / '+stampCells.length+' '+this.tr('collected'),
+      stampPct:(stampCells.length?Math.round(got/stampCells.length*100):0)+'%',
+      savedKicker:this.tr('savedKicker'),savedTitle:this.tr('savedTitle')+' · '+savedItems.length,savedItems,
+      savedEmpty:this.tr('savedEmpty'),savedEmptyDisplay:savedItems.length?'none':'block',
+      hasDetail:!!dp,
+      closeDetail:()=>this.setState({detail:null}),
+      d_cat:dp?CATS[dp.cat][lang]:'',
+      d_unShow:dp&&dp.un?'block':'none',
+      d_index:dp?(dp.off?'':String(dp.n).padStart(2,'0')):'',
+      d_name:dp?nm(dp):'',
+      d_sub:dp?loc(dp,d.c):'',
+      d_blurb:dp?(dp['b'+S]||dp.bKo):'',
+      d_heroShow:(dp&&(dp.img||dp.yt))?'block':'none',
+      d_noMediaShow:(dp&&!dp.img&&!dp.yt)?'flex':'none',
+      d_noMediaLabel:{ko:'사진·영상 미등록',en:'No photo or clip yet',zh:'暂无照片与影片',ja:'写真・映像 未登録',es:'Sin foto ni vídeo'}[lang]||'No photo or clip yet',
+      d_thumb:dp&&dp.img?dp.img:(dp&&dp.yt?'https://i.ytimg.com/vi/'+dp.yt+'/hqdefault.jpg':''),
+      d_url:dp&&dp.yt?'https://youtu.be/'+dp.yt+(dp.ytAt?'?t='+dp.ytAt:''):'#',
+      d_videoCta:dp&&dp.yt?this.tr('videoCta'):(dp&&dp.img?'© '+dp.imgCredit:this.tr('noVideoCta')),
+      // 운영시간 문자열(' · ' 구분)을 운영 / 요금 / 전화 행으로 분해해 표로 보여준다.
+      d_rows:dp?(()=>{
+        const raw=String(dp['hrs'+S]||dp.hrs||'');
+        const parts=raw.split('·').map(x=>x.trim()).filter(Boolean);
+        const tel=parts.filter(x=>/0\d{1,2}-\d{3,4}-\d{4}/.test(x));
+        const fee=parts.filter(x=>!tel.includes(x)&&/(원|won|무료|free|₩|\d{1,3},\d{3})/i.test(x));
+        const hrs=parts.filter(x=>!tel.includes(x)&&!fee.includes(x));
+        const meta=[];
+        if(hrs.length)meta.push({key:'h',k:this.tr('hoursRow'),v:hrs.join(' · ')});
+        if(fee.length)meta.push({key:'f',k:this.tr('feeRow'),v:fee.join(' · ')});
+        if(tel.length)meta.push({key:'t',k:this.tr('telRow'),v:tel.join(' · ')});
+        return meta.concat([{key:'d',k:this.tr('stayRow'),v:stay(dp)}],
+          dp.chan?[{key:'e',k:this.tr('chanRow'),v:dp.chan}]:[],
+          [{key:'a',k:this.tr('lat'),v:dp.lat.toFixed(6)},{key:'b',k:this.tr('lng'),v:dp.lng.toFixed(6)},
+           {key:'c',k:this.tr('srcRow'),v:dp['src'+S]||dp.srcEn}]);
+      })():[],
+      d_courseLabel:inCourse?this.tr('inCourse'):this.tr('addCourse'),
+      d_courseBg:inCourse?'#201e1d':a.base, d_courseFg:inCourse?'#f3f2f2':on,
+      d_toggleCourse:()=>dp&&this.toggleCourse(dp.id),
+      d_saveLabel:isSaved?this.tr('saved2'):this.tr('save'),
+      d_saveBg:isSaved?'#eae9e9':'transparent', d_saveFg:'#201e1d',
+      d_toggleSave:()=>dp&&this.toggleIn('saved',dp.id),
+      d_stampLabel:isStamped?this.tr('stamped'):this.tr('stampBtn'),
+      d_stampBg:isStamped?a.base:'transparent', d_stampFg:isStamped?on:'#201e1d',
+      d_toggleStamp:()=>dp&&this.toggleIn('stamps',dp.id),
+      d_directions:dp?'https://www.google.com/maps/search/?api=1&query='+dp.lat+','+dp.lng:'#',
+      d_transitLabel:this.tr('transit'),
+      d_weather:st.weather[dp?.id]||{yesterday:{tmp:'?',rn1:'0',icon:'?'},today:{tmp:'?',rn1:'0',icon:'?'},tomorrow:{tmp:'?',rn1:'0',icon:'?'}},
+      d_loadWeather:async()=>{
+        if(!dp)return;
+        const w=await getWeather(dp.lat,dp.lng);
+        this.setState(s=>({weather:{...s.weather,[dp.id]:w}}));
+      },
+      d_taxiLabel:st.taxiFare?'택시 '+st.taxiFare.toLocaleString()+'원':this.tr('taxi'),
+      d_taxi:async()=>{
+        if(!dp)return;
+        if(!st.taxiFare){
+          const f=await getKakaoTaxiFare(dp.lat,dp.lng);
+          this.setState({taxiFare:f.fare,taxiDist:f.dist});
+        }
+        window.open(`https://www.kakaotaxi.com/`,'_blank');
+      },
+      d_transit:()=>dp&&window.open(`https://www.google.com/maps/dir/?api=1&origin=35.79845,129.13879&destination=${dp.lat},${dp.lng}&travelmode=transit`,'_blank'),
+      d_taxiOpen:()=>dp&&window.open(`https://map.kakao.com/link/to/${dp.name},${dp.lat},${dp.lng}`,'_blank'),
+      d_bookingChevron:st.showBooking?'▼':'▲',
+      d_bookings:(dp?[
+        {name:'Booking',url:`https://www.booking.com/searchresults.html?ss=${dp.lat},${dp.lng}${lang==='ko'?'&lang=ko':lang==='zh'?'&lang=zh_CN':lang==='ja'?'&lang=ja':'&lang=en'}`},
+        {name:'Agoda',url:`https://www.agoda.com/search?ss=${dp.lat},${dp.lng}${lang==='ko'?'&lang=ko':lang==='zh'?'&lang=zh_CN':lang==='ja'?'&lang=ja':'&lang=en'}`},
+        {name:'Airbnb',url:`https://www.airbnb.com/s/${dp.lat},${dp.lng}/homes${lang==='ko'?'?tab=homes':lang==='zh'?'?tab=homes':lang==='ja'?'?tab=homes':''}`},
+        {name:'야놀자',url:`https://www.yanolja.com/`},
+        {name:'여기어때',url:`https://www.goodchoice.kr/`},
+        {name:'Trip.com',url:()=>{
+          const cityMap={gyeongju:'gyeongju',geoje:'geoje-si',nation:'daejeon',daejeon:'daejeon',chungju:'chungju',suwon:'suwon'};
+          const city=cityMap[d.c]||'korea';
+          const langCode=lang==='ko'?'ko':lang==='zh'?'zh':lang==='ja'?'ja':'en';
+          return `https://www.trip.com/${langCode}/hotels/search?query=${city}`;
+        }}
+      ]:[]).map(b=>({...b,key:b.name,open:()=>{const u=typeof b.url==='function'?b.url():b.url;window.open(u,'_blank');}})),
+      d_toggleBooking:()=>this.setState(s=>({showBooking:!s.showBooking})),
+      d_bookingDisplay:st.showBooking?'flex':'none',
+      d_bookingLabel:this.tr('booking')||'숙박 예매',
+
+      ktxBooking:()=>{
+        const url=lang==='ko'?'https://www.korail.com/ticket/search/general':lang==='en'?'https://www.korail.com/global/eng/main':lang==='zh'?'https://www.korail.com/global/chn/main':'https://www.korail.com/global/jpn/main';
+        window.open(url,'_blank');
+      },
+      ktxLabel:this.tr('ktx')||'KTX 예매',
+      busBooking:()=>{
+        const url=lang==='ko'?'https://intercitybus.tmoney.co.kr/':lang==='en'?'https://intercitybuse.tmoney.co.kr/':lang==='zh'?'https://intercitybusc.tmoney.co.kr/':'https://intercitybusj.tmoney.co.kr/main.do';
+        window.open(url,'_blank');
+      },
+      busLabel:this.tr('bus')||'버스 예매',
+      interBookShow:mode==='own'?'none':'grid',
+      interBookShow2:mode==='own'?'none':'block',
+      busGridCols:mode==='own'?'1fr':'1fr 1fr',
+      rentLabel:{ko:'렌트카 예매',en:'Rent a car',zh:'租车预订',ja:'レンタカー予約',es:'Alquiler de coche'}[lang]||'Rent a car',
+      rentToggle:()=>this.setState(s=>({stayOpen:s.stayOpen==='rent'?null:'rent'})),
+      rentClass:st.stayOpen==='rent'?'rs-bk rs-bk-open':'rs-bk',
+      rentSites:(()=>{
+        const a=st.tripFrom, b=st.tripTo||st.tripFrom;
+        const lo=a&&b?(a<b?a:b):null, hi=a&&b?(a<b?b:a):null;
+        const ci=lo||new Date().toISOString().slice(0,10);
+        const co=hi&&hi!==lo?hi:new Date(new Date(ci+'T00:00:00').getTime()+864e5).toISOString().slice(0,10);
+        const pl=lang==='zh'?'zh':lang==='ja'?'ja':lang==='es'?'es':'en';
+        return [
+          {name:'롯데렌터카',u:'https://www.lotterentacar.net/hp/kor/reserve/short/reserve.do'},
+          {name:'SK렌터카',u:'https://www.skcarrental.com/rent/short/main.do'},
+          {name:'쏘카',u:'https://www.socar.kr/'},
+          {name:'Rentalcars',u:'https://www.rentalcars.com/?preflang='+pl}
+        ].map(x=>({key:'rc'+x.name,name:x.name,open:()=>{
+          try{localStorage.setItem('rs_rentcar',JSON.stringify({from:ci,to:co,city:st.city,site:x.name}));}catch(e){}
+          window.open(x.u,'_blank');
+        }}));
+      })(),
+      rentBooking:()=>{
+        // 여행 기간과 첫 경유지 지역을 넘겨 롯데렌터카 예약 검색으로 연결한다.
+        const a=st.tripFrom, b=st.tripTo||st.tripFrom;
+        const lo=a&&b?(a<b?a:b):null, hi=a&&b?(a<b?b:a):null;
+        const ci=lo||new Date().toISOString().slice(0,10);
+        const co=hi&&hi!==lo?hi:new Date(new Date(ci+'T00:00:00').getTime()+864e5).toISOString().slice(0,10);
+        const url=lang==='ko'
+          ? 'https://www.lotterentacar.net/hp/kor/reserve/short/reserve.do'
+          : 'https://www.rentalcars.com/SearchResults.do?doYear='+ci.slice(0,4)+'&puDay='+(+ci.slice(8))+'&doDay='+(+co.slice(8))+'&preflang='+(lang==='zh'?'zh':lang==='ja'?'ja':lang==='es'?'es':'en');
+        try{localStorage.setItem('rs_rentcar',JSON.stringify({from:ci,to:co,city:st.city}));}catch(e){}
+        window.open(url,'_blank');
+      },
+
+      d_directionsLabel:this.tr('directions'),
+      d_note:this.tr('note'),
+      zoomLevel:'Zoom: '+(this.map?this.map.getZoom():'—'),
+      scaleInfo:this.map?'1 : '+Math.round(40075000*Math.cos(36*Math.PI/180)/(256*Math.pow(2,this.map.getZoom()))):'—',
+      tabs,
+      offCount:this.offPlaces().length,
+      offShow:this.offPlaces().length?'flex':'none',
+      offLabel:(st.showOff?'☑ ':'☐ ')+(OFFL[lang]||OFFL.en)+' '+String(this.offPlaces().length).padStart(2,'0'),
+      offBg:st.showOff?'rgba(32,30,29,.08)':'transparent',
+      offFg:st.showOff?'#201e1d':'rgba(32,30,29,.6)',
+      toggleOff:()=>{this._sig=null;this.setState({showOff:!st.showOff});},
+      chipsRef:el=>{
+        if(!el||el._drag)return; el._drag=true;
+        el.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){el.scrollLeft+=e.deltaY;e.preventDefault();}},{passive:false});
+      }
+    };
+  }
+}
+</script>
+
+
+</body></html>

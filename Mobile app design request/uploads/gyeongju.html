@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_23468e2d22a7feacd1b165229b429de9 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+<div style="position:fixed;top:18px;left:50px;z-index:9999;background:rgba(255,255,255,.95);
+padding:15px 20px;border-radius:18px;box-shadow:0 5px 20px rgba(70,30,90,.2);
+font-family:Arial,'Malgun Gothic',sans-serif">
+<div style="font-size:23px;font-weight:900;color:#7B3FBF">RESCENE × 경주</div>
+<div style="font-size:13px;font-weight:800;color:#FF4F9A">실제 좌표 기반 관광 테마맵</div>
+<div style="font-size:11px;color:#777;margin-top:4px">지형·도로는 실제 베이스맵 / 장소는 WGS84 좌표</div>
+</div>
+    
+            <div class="folium-map" id="map_23468e2d22a7feacd1b165229b429de9" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_23468e2d22a7feacd1b165229b429de9 = L.map(
+                "map_23468e2d22a7feacd1b165229b429de9",
+                {
+                    center: [35.85, 129.235],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_23468e2d22a7feacd1b165229b429de9);
+
+            
+
+        
+    
+            var tile_layer_ec5e22bed705156274f3ab92461737ce = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ec5e22bed705156274f3ab92461737ce.addTo(map_23468e2d22a7feacd1b165229b429de9);
+        
+    
+            var tile_layer_50c849b389624b5c3cbdafe914752dce = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri World Imagery",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_50c849b389624b5c3cbdafe914752dce.addTo(map_23468e2d22a7feacd1b165229b429de9);
+        
+    
+            var feature_group_ceaa0405ed91e5718f9b5a04806e2503 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_30c4558f927eeca15aaafb08812c0cd1 = L.marker(
+                [35.9002, 129.1772],
+                {
+}
+            ).addTo(feature_group_ceaa0405ed91e5718f9b5a04806e2503);
+        
+    
+            var div_icon_470d3af6813190e011ef2dd6c7b962bb = L.divIcon({
+  "html": "\n      \u003cdiv style=\"width:38px;height:38px;border-radius:50%;background:#FF4F9A;\n      border:4px solid white;box-shadow:0 3px 10px rgba(40,20,60,.35);\n      color:white;text-align:center;line-height:30px;font-weight:900;font-size:16px\"\u003e\n      1\u003c/div\u003e",
+  "iconSize": [38, 38],
+  "iconAnchor": [19, 19],
+  "className": "empty",
+});
+        
+    
+        var popup_a181a5a9a0eab7800a9d703fb0f62fe5 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_d9bc643d609f3f3deb7ac70bcd1d2dc7 = $(`<div id="html_d9bc643d609f3f3deb7ac70bcd1d2dc7" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:270px">       <div style="color:#FF4F9A;font-weight:800;font-size:13px">숙박·로컬체험</div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px">1. 효우당</div>       <div style="line-height:1.7;font-size:13px">       <b>위도</b> 35.900200<br>       <b>경도</b> 129.177200<br>       <b>좌표 기준</b> 주소(소현효자길 21-3) 기반 지오코딩       </div>       <a href="https://youtu.be/4m9eLr-NofA?si=GnPRFNheC8jfVPvh" target="_blank"          style="display:inline-block;margin-top:10px;padding:8px 12px;          border-radius:12px;background:#FF4F9A;color:white;text-decoration:none;font-weight:800">          ▶ YouTube 영상 보기       </a>     </div>     </div>`)[0];
+                popup_a181a5a9a0eab7800a9d703fb0f62fe5.setContent(html_d9bc643d609f3f3deb7ac70bcd1d2dc7);
+            
+        
+
+        marker_30c4558f927eeca15aaafb08812c0cd1.bindPopup(popup_a181a5a9a0eab7800a9d703fb0f62fe5)
+        ;
+
+        
+    
+    
+            marker_30c4558f927eeca15aaafb08812c0cd1.bindTooltip(
+                `<div>
+                     1. 효우당
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_30c4558f927eeca15aaafb08812c0cd1.setIcon(div_icon_470d3af6813190e011ef2dd6c7b962bb);
+            
+    
+            feature_group_ceaa0405ed91e5718f9b5a04806e2503.addTo(map_23468e2d22a7feacd1b165229b429de9);
+        
+    
+            var feature_group_5b65b7980b52f9be8f14ccd0f68f53ac = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_c8dbb4afa9f75554e21acf4eb43a5e98 = L.marker(
+                [35.8453, 129.218],
+                {
+}
+            ).addTo(feature_group_5b65b7980b52f9be8f14ccd0f68f53ac);
+        
+    
+            var div_icon_f3580c76c4f6242f5cae70f9b132cf79 = L.divIcon({
+  "html": "\n      \u003cdiv style=\"width:38px;height:38px;border-radius:50%;background:#7B3FBF;\n      border:4px solid white;box-shadow:0 3px 10px rgba(40,20,60,.35);\n      color:white;text-align:center;line-height:30px;font-weight:900;font-size:16px\"\u003e\n      2\u003c/div\u003e",
+  "iconSize": [38, 38],
+  "iconAnchor": [19, 19],
+  "className": "empty",
+});
+        
+    
+        var popup_8e74e86a8173a732da0bae15448d5318 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_b475f3418a1d2e209072d7b422c8cf9c = $(`<div id="html_b475f3418a1d2e209072d7b422c8cf9c" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:270px">       <div style="color:#7B3FBF;font-weight:800;font-size:13px">신라역사·문화유산</div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px">2. 쪽샘 44호 신라공주묘</div>       <div style="line-height:1.7;font-size:13px">       <b>위도</b> 35.845300<br>       <b>경도</b> 129.218000<br>       <b>좌표 기준</b> 쪽샘지구(쪽샘길 60) 기준 위치       </div>       <a href="https://youtu.be/4m9eLr-NofA?si=GnPRFNheC8jfVPvh" target="_blank"          style="display:inline-block;margin-top:10px;padding:8px 12px;          border-radius:12px;background:#FF4F9A;color:white;text-decoration:none;font-weight:800">          ▶ YouTube 영상 보기       </a>     </div>     </div>`)[0];
+                popup_8e74e86a8173a732da0bae15448d5318.setContent(html_b475f3418a1d2e209072d7b422c8cf9c);
+            
+        
+
+        marker_c8dbb4afa9f75554e21acf4eb43a5e98.bindPopup(popup_8e74e86a8173a732da0bae15448d5318)
+        ;
+
+        
+    
+    
+            marker_c8dbb4afa9f75554e21acf4eb43a5e98.bindTooltip(
+                `<div>
+                     2. 쪽샘 44호 신라공주묘
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c8dbb4afa9f75554e21acf4eb43a5e98.setIcon(div_icon_f3580c76c4f6242f5cae70f9b132cf79);
+            
+    
+            var marker_d400908f913e00fd809afbd803fc4d2c = L.marker(
+                [35.8314, 129.2266],
+                {
+}
+            ).addTo(feature_group_5b65b7980b52f9be8f14ccd0f68f53ac);
+        
+    
+            var div_icon_2d6707702d9c5a259f0f08e82845fada = L.divIcon({
+  "html": "\n      \u003cdiv style=\"width:38px;height:38px;border-radius:50%;background:#7B3FBF;\n      border:4px solid white;box-shadow:0 3px 10px rgba(40,20,60,.35);\n      color:white;text-align:center;line-height:30px;font-weight:900;font-size:16px\"\u003e\n      3\u003c/div\u003e",
+  "iconSize": [38, 38],
+  "iconAnchor": [19, 19],
+  "className": "empty",
+});
+        
+    
+        var popup_3de4b270ec82675b8c2034da4cf548da = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_cb950f650895f2c01b3f675bbb0bd597 = $(`<div id="html_cb950f650895f2c01b3f675bbb0bd597" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:270px">       <div style="color:#7B3FBF;font-weight:800;font-size:13px">신라역사·문화유산</div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px">3. 동궁과 월지</div>       <div style="line-height:1.7;font-size:13px">       <b>위도</b> 35.831400<br>       <b>경도</b> 129.226600<br>       <b>좌표 기준</b> 관광정보 위치       </div>       <a href="https://youtu.be/4m9eLr-NofA?si=GnPRFNheC8jfVPvh" target="_blank"          style="display:inline-block;margin-top:10px;padding:8px 12px;          border-radius:12px;background:#FF4F9A;color:white;text-decoration:none;font-weight:800">          ▶ YouTube 영상 보기       </a>     </div>     </div>`)[0];
+                popup_3de4b270ec82675b8c2034da4cf548da.setContent(html_cb950f650895f2c01b3f675bbb0bd597);
+            
+        
+
+        marker_d400908f913e00fd809afbd803fc4d2c.bindPopup(popup_3de4b270ec82675b8c2034da4cf548da)
+        ;
+
+        
+    
+    
+            marker_d400908f913e00fd809afbd803fc4d2c.bindTooltip(
+                `<div>
+                     3. 동궁과 월지
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d400908f913e00fd809afbd803fc4d2c.setIcon(div_icon_2d6707702d9c5a259f0f08e82845fada);
+            
+    
+            feature_group_5b65b7980b52f9be8f14ccd0f68f53ac.addTo(map_23468e2d22a7feacd1b165229b429de9);
+        
+    
+            var feature_group_ada77807129d693559d7cd58a9394ecc = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_6f0ea7cb8539614a3d03b2fe3cc0a699 = L.marker(
+                [35.8364, 129.2114],
+                {
+}
+            ).addTo(feature_group_ada77807129d693559d7cd58a9394ecc);
+        
+    
+            var div_icon_c27c2d874017d14eddb708c47e977fe6 = L.divIcon({
+  "html": "\n      \u003cdiv style=\"width:38px;height:38px;border-radius:50%;background:#FF8A3D;\n      border:4px solid white;box-shadow:0 3px 10px rgba(40,20,60,.35);\n      color:white;text-align:center;line-height:30px;font-weight:900;font-size:16px\"\u003e\n      4\u003c/div\u003e",
+  "iconSize": [38, 38],
+  "iconAnchor": [19, 19],
+  "className": "empty",
+});
+        
+    
+        var popup_26cdf80575a2f613d328b8b9c6dca993 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_7065c2f13605b609031bc72fb992fd65 = $(`<div id="html_7065c2f13605b609031bc72fb992fd65" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:270px">       <div style="color:#FF8A3D;font-weight:800;font-size:13px">로컬상권·먹거리</div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px">4. 황리단길</div>       <div style="line-height:1.7;font-size:13px">       <b>위도</b> 35.836400<br>       <b>경도</b> 129.211400<br>       <b>좌표 기준</b> 황리단길 대표 구간 중심점       </div>       <a href="https://youtu.be/WTdyA5N4K0k?si=ik7TJ52quNd9v_9i" target="_blank"          style="display:inline-block;margin-top:10px;padding:8px 12px;          border-radius:12px;background:#FF4F9A;color:white;text-decoration:none;font-weight:800">          ▶ YouTube 영상 보기       </a>     </div>     </div>`)[0];
+                popup_26cdf80575a2f613d328b8b9c6dca993.setContent(html_7065c2f13605b609031bc72fb992fd65);
+            
+        
+
+        marker_6f0ea7cb8539614a3d03b2fe3cc0a699.bindPopup(popup_26cdf80575a2f613d328b8b9c6dca993)
+        ;
+
+        
+    
+    
+            marker_6f0ea7cb8539614a3d03b2fe3cc0a699.bindTooltip(
+                `<div>
+                     4. 황리단길
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6f0ea7cb8539614a3d03b2fe3cc0a699.setIcon(div_icon_c27c2d874017d14eddb708c47e977fe6);
+            
+    
+            feature_group_ada77807129d693559d7cd58a9394ecc.addTo(map_23468e2d22a7feacd1b165229b429de9);
+        
+    
+            var feature_group_1f181f2726cf28d8a6f6d93b2eca1f73 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_a579504ea9f2bf363b2b8e77ef54f6f6 = L.marker(
+                [35.8368, 129.2828],
+                {
+}
+            ).addTo(feature_group_1f181f2726cf28d8a6f6d93b2eca1f73);
+        
+    
+            var div_icon_c3e98c93cdb87f23b324425390e6858c = L.divIcon({
+  "html": "\n      \u003cdiv style=\"width:38px;height:38px;border-radius:50%;background:#E94F8A;\n      border:4px solid white;box-shadow:0 3px 10px rgba(40,20,60,.35);\n      color:white;text-align:center;line-height:30px;font-weight:900;font-size:16px\"\u003e\n      5\u003c/div\u003e",
+  "iconSize": [38, 38],
+  "iconAnchor": [19, 19],
+  "className": "empty",
+});
+        
+    
+        var popup_542ecbd8487074ea5a490fbec9e2b8a9 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_d4592fc88b155caa5e94c221b803a2de = $(`<div id="html_d4592fc88b155caa5e94c221b803a2de" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:270px">       <div style="color:#E94F8A;font-weight:800;font-size:13px">테마파크·체험</div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px">5. 경주월드</div>       <div style="line-height:1.7;font-size:13px">       <b>위도</b> 35.836800<br>       <b>경도</b> 129.282800<br>       <b>좌표 기준</b> 경주월드 주소 기준 지오코딩       </div>       <a href="https://youtu.be/hqSzEdrSpno?si=raNEWGCBnVhMRYpk" target="_blank"          style="display:inline-block;margin-top:10px;padding:8px 12px;          border-radius:12px;background:#FF4F9A;color:white;text-decoration:none;font-weight:800">          ▶ YouTube 영상 보기       </a>     </div>     </div>`)[0];
+                popup_542ecbd8487074ea5a490fbec9e2b8a9.setContent(html_d4592fc88b155caa5e94c221b803a2de);
+            
+        
+
+        marker_a579504ea9f2bf363b2b8e77ef54f6f6.bindPopup(popup_542ecbd8487074ea5a490fbec9e2b8a9)
+        ;
+
+        
+    
+    
+            marker_a579504ea9f2bf363b2b8e77ef54f6f6.bindTooltip(
+                `<div>
+                     5. 경주월드
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a579504ea9f2bf363b2b8e77ef54f6f6.setIcon(div_icon_c3e98c93cdb87f23b324425390e6858c);
+            
+    
+            feature_group_1f181f2726cf28d8a6f6d93b2eca1f73.addTo(map_23468e2d22a7feacd1b165229b429de9);
+        
+    
+            var feature_group_35896413466e3fd9216a23e2e8a5738f = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_cdf90cf582df6aee95b5c167a90672d5 = L.marker(
+                [35.8393, 129.2862],
+                {
+}
+            ).addTo(feature_group_35896413466e3fd9216a23e2e8a5738f);
+        
+    
+            var div_icon_0e4eda12a8793f454c489eb5883adb80 = L.divIcon({
+  "html": "\n      \u003cdiv style=\"width:38px;height:38px;border-radius:50%;background:#9A55D1;\n      border:4px solid white;box-shadow:0 3px 10px rgba(40,20,60,.35);\n      color:white;text-align:center;line-height:30px;font-weight:900;font-size:16px\"\u003e\n      6\u003c/div\u003e",
+  "iconSize": [38, 38],
+  "iconAnchor": [19, 19],
+  "className": "empty",
+});
+        
+    
+        var popup_4ca0e9967bc7d4e3d95ed7096db7e273 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_12abc0e06975b2a45756994e48527fcd = $(`<div id="html_12abc0e06975b2a45756994e48527fcd" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial,'Malgun Gothic',sans-serif;min-width:270px">       <div style="color:#9A55D1;font-weight:800;font-size:13px">미디어·힐링체험</div>       <div style="font-size:19px;font-weight:900;margin:5px 0 8px">6. 경주 라원(미디어아트)</div>       <div style="line-height:1.7;font-size:13px">       <b>위도</b> 35.839300<br>       <b>경도</b> 129.286200<br>       <b>좌표 기준</b> 보문동 3-3 일원 기준 위치       </div>       <a href="https://youtu.be/QHomm66dhL0?si=f8ahNz0ULyvlqBVI" target="_blank"          style="display:inline-block;margin-top:10px;padding:8px 12px;          border-radius:12px;background:#FF4F9A;color:white;text-decoration:none;font-weight:800">          ▶ YouTube 영상 보기       </a>     </div>     </div>`)[0];
+                popup_4ca0e9967bc7d4e3d95ed7096db7e273.setContent(html_12abc0e06975b2a45756994e48527fcd);
+            
+        
+
+        marker_cdf90cf582df6aee95b5c167a90672d5.bindPopup(popup_4ca0e9967bc7d4e3d95ed7096db7e273)
+        ;
+
+        
+    
+    
+            marker_cdf90cf582df6aee95b5c167a90672d5.bindTooltip(
+                `<div>
+                     6. 경주 라원(미디어아트)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cdf90cf582df6aee95b5c167a90672d5.setIcon(div_icon_0e4eda12a8793f454c489eb5883adb80);
+            
+    
+            feature_group_35896413466e3fd9216a23e2e8a5738f.addTo(map_23468e2d22a7feacd1b165229b429de9);
+        
+    
+            var poly_line_7de3d05ddbed105d90678277b3608a9b = L.polyline(
+                [[35.9002, 129.1772], [35.8453, 129.218], [35.8314, 129.2266], [35.8364, 129.2114], [35.8368, 129.2828], [35.8393, 129.2862]],
+                {"bubblingMouseEvents": true, "color": "#FF4F9A", "dashArray": "8 8", "dashOffset": null, "fill": false, "fillColor": "#FF4F9A", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.65, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_23468e2d22a7feacd1b165229b429de9);
+        
+    
+            poly_line_7de3d05ddbed105d90678277b3608a9b.bindTooltip(
+                `<div>
+                     리센느 관련 장소 공간 연결(분석용)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            map_23468e2d22a7feacd1b165229b429de9.fitBounds(
+                [[35.82, 129.15], [35.92, 129.31]],
+                {}
+            );
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topright",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_23468e2d22a7feacd1b165229b429de9);
+        
+    
+            var layer_control_98b18d6086e04e6bd8abd4136addc00f_layers = {
+                base_layers : {
+                    "\ud83d\uddfa\ufe0f \uc2e4\uc81c \ub3c4\ub85c\u00b7\uc9c0\ud615 \uc9c0\ub3c4" : tile_layer_ec5e22bed705156274f3ab92461737ce,
+                    "\ud83d\udef0\ufe0f \uc704\uc131\uc9c0\ub3c4" : tile_layer_50c849b389624b5c3cbdafe914752dce,
+                },
+                overlays :  {
+                    "\ud83d\udc97 \uc219\ubc15\u00b7\ub85c\uceec\uccb4\ud5d8" : feature_group_ceaa0405ed91e5718f9b5a04806e2503,
+                    "\ud83d\udc97 \uc2e0\ub77c\uc5ed\uc0ac\u00b7\ubb38\ud654\uc720\uc0b0" : feature_group_5b65b7980b52f9be8f14ccd0f68f53ac,
+                    "\ud83d\udc97 \ub85c\uceec\uc0c1\uad8c\u00b7\uba39\uac70\ub9ac" : feature_group_ada77807129d693559d7cd58a9394ecc,
+                    "\ud83d\udc97 \ud14c\ub9c8\ud30c\ud06c\u00b7\uccb4\ud5d8" : feature_group_1f181f2726cf28d8a6f6d93b2eca1f73,
+                    "\ud83d\udc97 \ubbf8\ub514\uc5b4\u00b7\ud790\ub9c1\uccb4\ud5d8" : feature_group_35896413466e3fd9216a23e2e8a5738f,
+                },
+            };
+            let layer_control_98b18d6086e04e6bd8abd4136addc00f = L.control.layers(
+                layer_control_98b18d6086e04e6bd8abd4136addc00f_layers.base_layers,
+                layer_control_98b18d6086e04e6bd8abd4136addc00f_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_23468e2d22a7feacd1b165229b429de9);
+
+        
+</script>
+</html>
