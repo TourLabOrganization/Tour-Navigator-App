@@ -7,3 +7,7 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# Node (시스템 구성도/ · 체류시간 산정/ 스크립트용)
+node_modules/
+package-lock.json

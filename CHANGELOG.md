@@ -11,6 +11,9 @@
 - 설계 쪽이 화면 안에 다시 넣었던 미세먼지 줄 · TMDB 작품 카드는 그대로 두고 함수만 `shared.js` 것을 쓰도록 연결. 플래너의 "여행 기간 행사 · 축제" 는 내보내기본에 없어 다시 붙임
 - 홈 부산 타일 이미지 `uploads/images (23).jpg` · `(24).jpg` (국제시장 · 범죄와의 전쟁 포스터) 추가 — 내보내기본에 빠져 있던 것을 별도로 받아 넣음
 
+### 문서
+- `시스템 구성도/` 폴더 추가 — 구성도 PNG(구성도.html + render_png.mjs)와 구성 명세서 docx(build_spec.js). 09-26 통합본 기준으로 화면 7개 · shared.js 조회 함수 · 키 6개 · 체류시간 산정 폴더 반영
+
 ### 정리
 - main 에 GitHub 웹 업로드로 들어갔던 `Mobile app design request/github-upload/` 폴더(내보내기본 원본 11개, 화면 7개 사본 포함) 삭제 — 내용은 `cea5b62` 에서 루트 화면에 이미 반영됨
 - 코드가 읽지 않는 원자료 `assets/story-db.csv`(2.1MB) 제거 — 매칭 결과 `story-matched.json` 은 유지, 원본은 이력 커밋 0298fe1 에 있음
