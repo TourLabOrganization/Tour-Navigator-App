@@ -7,6 +7,8 @@ cp config.example.js config.js   # 키 입력
 python3 -m http.server 8000
 ```
 
+브라우저에서 `http://localhost:8000/` 을 열고 `Tour Navigator Home.dc.html` 을 선택합니다. 파일을 직접 더블클릭해도 열리지만, 공사 API 호출은 HTTP 서버에서만 동작합니다.
+
 ## 파일 규칙
 
 - 화면은 `*.dc.html` 한 파일. 템플릿과 로직 클래스가 같이 들어 있습니다.
@@ -18,7 +20,7 @@ python3 -m http.server 8000
 
 ## 포매팅
 
-기존 코드는 한 줄에 몰아 쓴 곳이 많습니다. 손대는 파일만 Prettier로 정리하고 커밋을 나눠 주세요 (포매팅 커밋과 로직 커밋 분리).
+기존 코드는 한 줄에 몰아 쓴 곳이 많습니다. 손대는 파일만 Prettier로 정리하고, 포매팅 커밋과 로직 커밋을 나눠 주세요.
 
 ```bash
 npx prettier --write "Tour Planner.dc.html"
@@ -28,7 +30,7 @@ npx prettier --write "Tour Planner.dc.html"
 
 ## 커밋 전 확인
 
-- 브라우저 콘솔에 오류 없음 (키 미설정으로 인한 Google Maps 경고는 제외)
+- 브라우저 콘솔에 오류 없음. 키를 넣지 않아 나오는 Google Maps 경고는 제외
 - `config.js` 가 커밋에 포함되지 않았는지 확인
 - 데이터 추가 시 좌표 근거를 `srcKo`/`srcEn` 에 기록
 
