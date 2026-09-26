@@ -100,6 +100,46 @@
 <div style="padding:14px 12px 10px;border-bottom:2px solid rgba(21,59,61,.4)">
 <div style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#b8431c">{{ courseKicker }}</div>
 <h2 style="font-size:26px;font-weight:800;letter-spacing:-.02em;margin:4px 0 10px;line-height:1.1">{{ courseTitle }}</h2>
+<div ref="{{ planBoxRef }}" style="display:flex;flex-direction:column;gap:6px;border:2px solid #153b3d;background:#fff;padding:10px;margin-bottom:10px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"><span style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#b8431c">{{ planTitle }}</span><span style="font-size:9px;font-weight:700;color:rgba(21,59,61,.6)">{{ planCount }}</span></div>
+<div style="display:flex;gap:6px">
+<input value="{{ planName }}" onChange="{{ planNameChange }}" placeholder="{{ planPh }}" style="flex:1;min-width:0;height:30px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;font-size:11px;font-weight:700;padding:0 8px;font-family:inherit">
+<button onClick="{{ planSave }}" style="flex:none;height:30px;border:2px solid #b8431c;background:#b8431c;color:#f2ece0;font-size:10px;font-weight:800;padding:0 10px;cursor:pointer" style-hover="background:#dd2b0f" type="button">{{ planSaveLabel }}</button>
+</div>
+<div style="font-size:9.5px;font-weight:700;color:#b8431c;display:{{ planMsgShow }}">{{ planMsg }}</div>
+<sc-for list="{{ plans }}" as="pl" hint-placeholder-count="0">
+<div style="display:flex;align-items:center;gap:6px;padding:6px 0;border-top:1px solid rgba(21,59,61,.15)">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font-size:11.5px;font-weight:800;color:#153b3d;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ pl.name }}</span><span style="font-size:9.5px;font-weight:700;color:rgba(21,59,61,.62)">{{ pl.sub }}</span></div>
+<button onClick="{{ pl.load }}" style="flex:none;height:24px;border:2px solid #153b3d;background:#153b3d;color:#f2ece0;font-size:9.5px;font-weight:800;padding:0 8px;cursor:pointer" type="button">{{ planLoadLabel }}</button>
+<button onClick="{{ pl.del }}" style="flex:none;height:24px;border:1px solid rgba(21,59,61,.4);background:transparent;color:#153b3d;font-size:9.5px;font-weight:800;padding:0 7px;cursor:pointer" type="button">✕</button>
+</div>
+</sc-for>
+</div>
+<div style="display:{{ ferryShow }};flex-direction:column;gap:6px;border:2px solid #153b3d;background:#fff;padding:10px;margin-bottom:10px">
+<div style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#b8431c">{{ ferryTitle }}</div>
+<label style="display:flex;flex-direction:column;gap:3px">
+<span style="font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(21,59,61,.72)">{{ ferryPortLabel }}</span>
+<select value="{{ ferryPortValue }}" onChange="{{ ferryPortChange }}" style="width:100%;height:30px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;font-family:Archivo,'Gowun Dodum',sans-serif;font-size:11px;font-weight:800;padding:0 6px;cursor:pointer">
+<sc-for list="{{ ferryPortOptions }}" as="fp" hint-placeholder-count="5">
+<option value="{{ fp.value }}">{{ fp.label }}</option>
+</sc-for>
+</select>
+</label>
+<div style="display:flex;flex-direction:column;border-top:1px solid rgba(21,59,61,.25)">
+<sc-for list="{{ ferrySched }}" as="fs" hint-placeholder-count="5">
+<div style="display:grid;grid-template-columns:72px 1fr;gap:8px;padding:5px 0;border-bottom:1px solid rgba(21,59,61,.12);font-size:11px">
+<span style="font-weight:800;color:rgba(21,59,61,.7)">{{ fs.k }}</span>
+<span style="min-width:0;color:#153b3d;text-wrap:pretty">{{ fs.v }}</span>
+</div>
+</sc-for>
+<div style="font-size:9.5px;font-weight:700;color:rgba(21,59,61,.55);padding-top:6px">{{ ferryNote }}</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:4px">
+<button onClick="{{ ferryBook }}" style="flex:none;height:26px;padding:0 10px;border:2px solid #b8431c;background:#b8431c;color:#f2ece0;font-size:10px;font-weight:800;cursor:pointer" style-hover="background:#dd2b0f" type="button">{{ ferryBookLabel }}</button>
+<button onClick="{{ ferryOp }}" style="flex:none;height:26px;padding:0 10px;border:1px solid rgba(21,59,61,.4);background:#f2ece0;color:#153b3d;font-size:10px;font-weight:800;cursor:pointer" style-hover="background:#153b3d;color:#f2ece0" type="button">{{ ferryOpLabel }}</button>
+</div>
+</div>
+
 <div style="background:#fff;border:2px solid #153b3d;padding:10px;border-radius:4px;margin-bottom:10px">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
 <button sc-camel-on-click="{{ prevMonth }}" style="width:26px;height:26px;border:1px solid #153b3d;background:#f2ece0;font-weight:800;cursor:pointer;border-radius:2px;font-size:10px">◀</button>
@@ -131,8 +171,20 @@
 </sc-for>
 </div>
 </div>
-<div style="display:flex;gap:6px;margin-bottom:6px">
-<label style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px">
+<div style="display:flex;align-items:baseline;gap:6px"><span style="font-size:10px;font-weight:800;color:#b8431c;font-variant-numeric:tabular-nums">01</span><span style="font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">{{ wideTitle }}</span></div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:#153b3d;border:2px solid #153b3d">
+<sc-for list="{{ wideOpts }}" as="w" hint-placeholder-count="6">
+<button sc-camel-on-click="{{ w.pick }}" style="height:32px;border:0;background:{{ w.bg }};color:{{ w.fg }};font-family:Archivo,'Gowun Dodum',sans-serif;font-size:10px;font-weight:800;letter-spacing:.02em;text-align:left;padding:0 8px;cursor:{{ w.cursor }};text-decoration:{{ w.deco }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis" type="button">{{ w.label }}</button>
+</sc-for>
+</div>
+<div style="display:{{ wideNoteShow }};gap:8px;align-items:flex-start;border:2px solid #b8431c;background:rgba(184,67,28,.06);padding:8px">
+<svg style="flex:none;margin-top:1px" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8431c" stroke-width="2.4" stroke-linecap="square"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16v.5"></path></svg>
+<span style="flex:1;min-width:0;font-size:10.5px;font-weight:700;line-height:1.55;color:#153b3d;text-wrap:pretty">{{ wideNote }}</span>
+</div>
+</div>
+<div style="display:{{ wideRowShow }};gap:6px;margin-bottom:6px">
+<label style="flex:1;min-width:0;display:{{ ownSelShow }};flex-direction:column;gap:3px">
 <span style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(21,59,61,.72)">{{ originLabel }}</span>
 <select value="{{ originValue }}" onChange="{{ originChange }}" style="width:100%;height:30px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;font-family:Archivo,'Gowun Dodum',sans-serif;font-size:11px;font-weight:800;padding:0 6px;cursor:pointer">
 <sc-for list="{{ originOptions }}" as="o" hint-placeholder-count="4">
@@ -140,7 +192,7 @@
 </sc-for>
 </select>
 </label>
-<label style="flex:0 0 92px;display:flex;flex-direction:column;gap:3px">
+<label style="flex:{{ ownTimeFlex }};display:flex;flex-direction:column;gap:3px">
 <span style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(21,59,61,.72)">{{ depTimeLabel }}</span>
 <select value="{{ depTimeValue }}" onChange="{{ depTimeChange }}" style="width:100%;height:30px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;font-family:Archivo,'Gowun Dodum',sans-serif;font-size:11px;font-weight:800;padding:0 6px;cursor:pointer">
 <sc-for list="{{ depTimeOptions }}" as="tt" hint-placeholder-count="4">
@@ -149,8 +201,8 @@
 </select>
 </label>
 </div>
-<div style="display:flex;gap:6px;margin-bottom:8px">
-<label style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
+<div style="display:{{ wideRowShow }};gap:6px;margin-bottom:8px">
+<label style="flex:1;min-width:0;display:{{ ownSelShow }};flex-direction:column;gap:3px">
 <span style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(21,59,61,.72)">{{ originEndLabel }}</span>
 <select value="{{ originEndValue }}" onChange="{{ originEndChange }}" style="width:100%;height:30px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;font-family:Archivo,'Gowun Dodum',sans-serif;font-size:11px;font-weight:800;padding:0 6px;cursor:pointer">
 <option value="">{{ originSameLabel }}</option>
@@ -159,7 +211,7 @@
 </sc-for>
 </select>
 </label>
-<label style="flex:0 0 92px;display:flex;flex-direction:column;gap:3px">
+<label style="flex:{{ ownTimeFlex }};display:flex;flex-direction:column;gap:3px">
 <span style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(21,59,61,.72)">{{ retTimeLabel }}</span>
 <select value="{{ retTimeValue }}" onChange="{{ retTimeChange }}" style="width:100%;height:30px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;font-family:Archivo,'Gowun Dodum',sans-serif;font-size:11px;font-weight:800;padding:0 6px;cursor:pointer">
 <sc-for list="{{ retTimeOptions }}" as="rt" hint-placeholder-count="4">
@@ -168,10 +220,14 @@
 </select>
 </label>
 </div>
-<div style="display:flex;gap:0;border:2px solid #153b3d;margin-bottom:8px">
-<button sc-camel-on-click="{{ setDrive }}" style="flex:1;height:30px;border:0;border-right:2px solid #153b3d;background:{{ modeDriveBg }};color:{{ modeDriveFg }};font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">{{ modeDriveLabel }}</button>
-<button sc-camel-on-click="{{ setOwn }}" style="flex:1;height:30px;border:0;border-right:2px solid #153b3d;background:{{ modeOwnBg }};color:{{ modeOwnFg }};font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">{{ modeOwnLabel }}</button>
-<button sc-camel-on-click="{{ setTransit }}" style="flex:1;height:30px;border:0;background:{{ modeTransitBg }};color:{{ modeTransitFg }};font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">{{ modeTransitLabel }}</button>
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px">
+<div style="display:flex;align-items:baseline;gap:6px;margin-top:0"><span style="font-size:10px;font-weight:800;color:#b8431c;font-variant-numeric:tabular-nums">02</span><span style="font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">{{ localTitle }}</span></div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:#153b3d;border:2px solid #153b3d;opacity:{{ localOpacity }}">
+<sc-for list="{{ localOpts }}" as="l" hint-placeholder-count="2">
+<button sc-camel-on-click="{{ l.pick }}" style="height:32px;border:0;background:{{ l.bg }};color:{{ l.fg }};font-family:Archivo,'Gowun Dodum',sans-serif;font-size:10px;font-weight:800;letter-spacing:.02em;text-align:left;padding:0 8px;cursor:{{ l.cursor }}" type="button">{{ l.label }}</button>
+</sc-for>
+</div>
+<div style="display:{{ localOwnNoteShow }};font-size:9.5px;font-weight:700;line-height:1.5;color:rgba(21,59,61,.72)">{{ localOwnNote }}</div>
 </div>
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid rgba(21,59,61,.4)">
 <div style="padding:8px 0;border-right:1px solid rgba(21,59,61,.25)">
@@ -274,6 +330,33 @@
 </div>
 </div>
 </sc-for>
+<div style="display:flex;flex-direction:column;gap:5px;padding:8px 12px;border-top:1px solid rgba(21,59,61,.2);background:rgba(21,59,61,.03)">
+<div style="display:flex;align-items:center;gap:6px">
+<span style="flex:none;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#b8431c">{{ dayAddLabel }}</span>
+<div style="flex:1;min-width:0;position:relative;display:flex">
+<input value="{{ d.addQ }}" onChange="{{ d.addChange }}" onFocus="{{ d.addFocus }}" placeholder="{{ dayAddPh }}" style="flex:1;min-width:0;height:28px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;font-family:Archivo,'Gowun Dodum',sans-serif;font-size:11px;font-weight:700;padding:0 26px 0 7px" />
+<button sc-camel-on-click="{{ d.addClear }}" aria-label="{{ dayAddClearLabel }}" style="display:{{ d.addClearShow }};position:absolute;right:2px;top:2px;width:24px;height:24px;border:0;background:transparent;color:rgba(21,59,61,.6);cursor:pointer;align-items:center;justify-content:center" style-hover="color:#b8431c" type="button">
+<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+</div>
+</div>
+<div style="display:{{ d.addHitsShow }};flex-direction:column;border:2px solid rgba(21,59,61,.35);background:#f2ece0">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 4px 4px 8px;border-bottom:2px solid rgba(21,59,61,.35)">
+<span style="font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(21,59,61,.72)">{{ d.addHitsTitle }}</span>
+<button sc-camel-on-click="{{ d.addClose }}" style="height:24px;border:2px solid #153b3d;background:transparent;color:#153b3d;font-family:Archivo,'Gowun Dodum',sans-serif;font-size:9px;font-weight:800;letter-spacing:.06em;padding:0 8px;cursor:pointer;display:flex;align-items:center;gap:5px" style-hover="background:#153b3d;color:#f2ece0" type="button">{{ dayAddCloseLabel }}<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<sc-for list="{{ d.addHits }}" as="h" hint-placeholder-count="0">
+<button sc-camel-on-click="{{ h.add }}" style="border:0;border-bottom:1px solid rgba(21,59,61,.18);background:transparent;color:#153b3d;text-align:left;padding:7px 8px;cursor:pointer;display:flex;align-items:center;gap:8px" style-hover="background:rgba(184,67,28,.12)" type="button">
+<span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px">
+<span style="font-family:Archivo,'Gowun Dodum',sans-serif;font-size:12px;font-weight:800;letter-spacing:-.01em">{{ h.name }}</span>
+<span style="font-family:Archivo,'Gowun Dodum',sans-serif;font-size:9.5px;font-weight:600;color:rgba(21,59,61,.66)">{{ h.meta }}</span>
+</span>
+<span style="flex:none;font-size:13px;font-weight:800;color:#b8431c">+</span>
+</button>
+</sc-for>
+</div>
+<div style="display:{{ d.addMsgShow }};font-size:10px;font-weight:700;color:rgba(21,59,61,.66)">{{ d.addMsg }}</div>
+</div>
 <div style="display:{{ d.transShowEnd }};align-items:center;gap:8px;padding:8px 12px;border-top:1px solid rgba(21,59,61,.2)">
 <span style="flex:1;min-width:0;font-size:11px;font-weight:600;letter-spacing:.04em;color:rgba(21,59,61,.7)">{{ d.transLabelEnd }}</span>
 <div style="flex:none;display:flex;gap:4px">
@@ -310,6 +393,20 @@
 </div>
 </div>
 </sc-for>
+<div style="display:flex;flex-direction:column;gap:6px;padding:12px;border-bottom:2px solid rgba(21,59,61,.4);background:rgba(184,67,28,.06)">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"><span style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#b8431c">{{ cbSaveKicker }}</span><span style="font-size:9.5px;font-weight:700;color:rgba(21,59,61,.62)">{{ cbSaveMeta }}</span></div>
+<div style="display:flex;gap:6px">
+<input value="{{ planName }}" onChange="{{ planNameChange }}" placeholder="{{ planPh }}" style="flex:1;min-width:0;height:34px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;font-size:11px;font-weight:700;padding:0 8px;font-family:inherit">
+<button onClick="{{ planSave }}" style="flex:none;height:34px;border:2px solid #b8431c;background:#b8431c;color:#f2ece0;font-size:10.5px;font-weight:800;padding:0 12px;cursor:pointer;text-align:left" style-hover="background:#dd2b0f" type="button">{{ planSaveLabel }}</button>
+</div>
+<div style="display:{{ cbUpdateShow }};gap:6px">
+<button onClick="{{ planUpdate }}" style="flex:1;height:30px;border:2px solid #153b3d;background:#153b3d;color:#f2ece0;font-size:10px;font-weight:800;padding:0 10px;cursor:pointer;text-align:left" style-hover="background:#b8431c;border-color:#b8431c" type="button">{{ planUpdateLabel }}</button>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+<span style="font-size:9.5px;font-weight:700;color:#b8431c;display:{{ planMsgShow }}">{{ planMsg }}</span>
+<button onClick="{{ planGoStore }}" style="margin-left:auto;flex:none;height:26px;border:2px solid #153b3d;background:transparent;color:#153b3d;font-size:9.5px;font-weight:800;padding:0 8px;cursor:pointer" style-hover="background:#153b3d;color:#f2ece0" type="button">{{ planGoStoreLabel }}</button>
+</div>
+</div>
 </div>
 <div style="display:{{ flatDisplay }};flex-direction:column">
 <sc-for list="{{ courseItems }}" as="c" hint-placeholder-count="3">
@@ -501,6 +598,13 @@
 </div>
 </sc-for>
 </div>
+<div style="display:{{ d_airShow }};padding:12px 12px 0">
+<div style="flex:1;display:flex;align-items:center;justify-content:space-between;gap:6px;padding:3px 6px;font-size:9px;background:{{ d_airBg }};border:1px solid rgba(21,59,61,.25)">
+<span style="font-weight:800">{{ d_airLabel }}</span>
+<span style="font-variant-numeric:tabular-nums">{{ d_airText }}</span>
+<span style="font-weight:800">{{ d_airGrade }}</span>
+</div>
+</div>
 <div style="padding:12px;display:flex;gap:8px">
 <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:0 12px;font-weight:800;border:2px solid #153b3d;background:#f2ece0">
 <div style="display:flex;align-items:center;gap:8px;height:auto">
@@ -526,11 +630,6 @@
 </div>
 </div>
 </div>
-<div style="display:{{ d_airShow }};align-items:center;justify-content:space-between;gap:6px;margin:0 0 6px;padding:3px 6px;font-size:9px;background:{{ d_airBg }};border:1px solid rgba(21,59,61,.25)">
-<span style="font-weight:800">{{ d_airLabel }}</span>
-<span style="font-variant-numeric:tabular-nums">{{ d_airText }}</span>
-<span style="font-weight:800">{{ d_airGrade }}</span>
-</div>
 </div>
 </div>
 <div style="padding:12px;display:flex;flex-direction:column;gap:8px">
@@ -554,7 +653,7 @@
 <div style="font-size:18px;font-weight:800;letter-spacing:-.02em;line-height:1.2">여행 정보</div>
 <div style="display:{{ worksShow }};flex-direction:column;gap:8px">
 <sc-for list="{{ works }}" as="wk" hint-placeholder-count="1">
-<button sc-camel-on-click="{{ wk.open }}" style="display:flex;gap:12px;align-items:flex-start;text-align:left;border:2px solid #153b3d;background:#fff;padding:10px;cursor:pointer;color:#153b3d;font-family:inherit">
+<button sc-camel-on-click="{{ wk.open }}" style="display:flex;gap:12px;align-items:flex-start;text-align:left;border:2px solid #153b3d;background:#fff;padding:10px;cursor:pointer;color:#153b3d;font-family:inherit" type="button">
 <div style="width:56px;height:84px;flex:none;background:#e6e4e1 url('{{ wk.poster }}') center/cover"></div>
 <div style="flex:1;min-width:0">
 <div style="font-size:13px;font-weight:800;line-height:1.3">{{ wk.title }}</div>
@@ -651,6 +750,18 @@ const STAYS={
     {id:'js5',lat:33.5430,lng:126.6690,ko:'함덕·조천 스테이',en:'Hamdeok & Jocheon stays',qKo:'함덕 숙소',qEn:'stay Hamdeok Jeju',areaKo:'제주시 조천읍',areaEn:'Jocheon-eup, Jeju City',band:[9,22],typeKo:'해변 스테이',typeEn:'Beach stay'}
   ]
 };
+// 광역교통 수단에 맞는 출발·귀가 관문만 남긴다 (맞는 곳이 없으면 전체 유지)
+const WIDE_ALLOW={bus:['bus'],rail:['ktx','srt'],air:['air'],ship:['ship'],metro:['metro']};
+// 제주는 섬 — 버스·기차·지하철로는 들어올 수 없다
+const WIDE_DISABLED=['bus','rail','metro'];
+const isPort=k=>/여객선/.test((ORIGINS[k]||{}).ko||'');
+const wideOriginFilter=(keys,wm)=>{if(wm==='ship'){const f=keys.filter(k=>ORIGINS[k]&&(ORIGINS[k].custom||isPort(k)));return f.length?f:keys;}if(wm==='air'){const f=keys.filter(k=>ORIGINS[k]&&(ORIGINS[k].custom||(!isPort(k)&&(ORIGINS[k].modes||[]).indexOf('air')>-1)));return f.length?f:keys;}const al=WIDE_ALLOW[wm];if(!al)return keys;const f=keys.filter(k=>ORIGINS[k]&&(ORIGINS[k].custom||(ORIGINS[k].modes||['bus']).some(x=>al.indexOf(x)>-1)));return f.length?f:keys;};
+// 관문 종류 → 광역교통 칼럼 (공항=항공, 항만=배, 역=기차, 터미널=버스). 검색 지점·혼합 관문은 null
+// 리무진 공항 항목(modes:['bus'])은 같은 공항의 항공 관문으로 바꿔 읽는다
+const airTwin=k=>{const o=ORIGINS[k];if(!o||!/공항/.test(o.ko||'')||(o.modes||[]).indexOf('air')>-1)return k;const t=k+'F';return (ORIGINS[t]&&(ORIGINS[t].modes||[]).indexOf('air')>-1)?t:k;};
+const gwWideOf=k0=>{const k=airTwin(k0);const o=ORIGINS[k];if(!o||o.custom)return null;const C={air:'air',ship:'ship',ktx:'rail',srt:'rail',bus:'bus',metro:'metro'};const c=[...new Set((o.modes||[]).map(m=>C[m]).filter(Boolean))];if(c.length!==1)return null;if(c[0]==='air'&&!/공항/.test(o.ko||''))return null;if(c[0]==='ship'&&!/(항|여객)/.test(o.ko||''))return null;return c[0];};
+// 광역교통 선호 수단을 앞으로 당긴 탐색 순서 — 불가하면 나머지 수단으로 대체
+const wideOrder=()=>{const p=window.__tpWide;const base=wideOrder();const pr={bus:['bus'],rail:['ktx','srt'],air:['air'],ship:['ship'],metro:['metro']}[p]||[];return pr.concat(base.filter(m=>pr.indexOf(m)<0));};
 const REGION_HUB={
   '제주':{lat:33.5104,lng:126.4914,ko:'제주국제공항',en:'Jeju Intl Airport',busKo:'제주국제공항',busEn:'Jeju Intl Airport',modes:['air']}
 };
@@ -782,8 +893,6 @@ const DATA = {
     {id:'jdx75',off:true,n:'·',ko:'성판악 탐방로',en:'Seongpanak Trail',un:1,cat:'heal',lat:33.385,lng:126.619,srcKo:'제주시 조천읍 516로 1865 주소 기반 좌표',srcEn:'Address-based: 제주시 조천읍 516로 1865',img:'https://upload.wikimedia.org/wikipedia/commons/e/eb/KOCIS_Halla_Mountain_in_Jeju-do_%286387785543%29.jpg',imgCredit:'Wikimedia Commons',yt:'',min:480,hrs:'입산 통제 시간 엄격 · 예약제 · 무료',bKo:'백록담까지 오르는 유일한 완주 코스 중 하나. 왕복 아홉 시간을 잡는다.',bEn:'One of the two routes that reach the summit crater; allow nine hours round trip.'}
   ]}
 };
-// 작품 정보 (TMDB) — 채널 탭 상단 카드. type: 'movie' | 'tv'
-const WORKS=[{q:'폭싹 속았수다',type:'tv'},{q:'우리들의 블루스',type:'tv'}];
 const T = {
   sub:{ko:'폭싹 속았수다 · 우리들의 블루스 · 제주 촬영지',en:'When Life Gives You Tangerines · Our Blues · Jeju'},
   spots:{ko:'개 장소',en:'spots'},
@@ -862,6 +971,8 @@ const TICON={
   bus:'<svg viewBox="0 0 24 24" fill="none" stroke="#f2ece0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11"/><path d="M4 11h16"/><path d="M8 19l-1.5 2"/><path d="M16 19l1.5 2"/><circle cx="7.5" cy="16.5" r="0.6" fill="#f2ece0"/><circle cx="16.5" cy="16.5" r="0.6" fill="#f2ece0"/></svg>'
 };
 const noSrt=ms=>Array.from(new Set((ms||[]).map(m=>m==='srt'?'ktx':m)));
+
+const WORKS=[{q:'폭싹 속았수다',type:'tv'},{q:'우리들의 블루스',type:'tv'}];
 
 // 영상 메타 (조회수·게시일은 예시값 — 실제 통계로 교체 필요)
 // 영상 메타 — 화면에 그대로 출력되는 문자열. 여기 텍스트만 고치면 카드 표시가 바뀐다.
@@ -1082,9 +1193,104 @@ Object.keys(DATA).forEach(c=>{
   });
 });
 
+const FERRY_ROUTES={
+ jeju:[
+  {k:'wando',ko:'완도항',en:'Wando',op:'한일고속 (실버클라우드·블루나래)',opEn:'Hanil Express (Silver Cloud, Blue Narae)',dur:'1시간 30분 – 2시간 50분',durEn:'1h30 – 2h50',day:'2 – 3회',first:'02:30 무렵',last:'15:00 무렵',arr:'제주항'},
+  {k:'mokpo',ko:'목포항',en:'Mokpo',op:'씨월드고속훼리 (퀸제누비아·퀸메리)',opEn:'Seaworld Express Ferry (Queen Jenuvia, Queen Mary)',dur:'약 4시간 30분',durEn:'about 4h30',day:'2 – 3회',first:'01:00 무렵',last:'09:00 무렵',arr:'제주항'},
+  {k:'nokdong',ko:'고흥 녹동항',en:'Nokdong (Goheung)',op:'남해고속 (아리온제주)',opEn:'Namhae Express (Arion Jeju)',dur:'약 3시간 40분',durEn:'about 3h40',day:'1회',first:'09:00 무렵',last:'—',arr:'제주항'},
+  {k:'yeosu',ko:'여수항',en:'Yeosu',op:'한일고속 (골드스텔라)',opEn:'Hanil Express (Gold Stella)',dur:'약 5시간 30분',durEn:'about 5h30',day:'1회',first:'01:40 무렵',last:'—',arr:'제주항'},
+  {k:'busan',ko:'부산항',en:'Busan',op:'엠에스페리 (뉴스타)',opEn:'MS Ferry (New Star)',dur:'약 12시간 (야간)',durEn:'about 12h (overnight)',day:'주 3 – 6회',first:'19:00 무렵',last:'—',arr:'제주항'},
+  {k:'incheon',ko:'인천항',en:'Incheon',op:'하이덱스스토리지 (비욘드트러스트)',opEn:'Hydex (Beyond Trust)',dur:'약 13시간 30분 (야간)',durEn:'about 13h30 (overnight)',day:'주 3회',first:'19:00 무렵',last:'—',arr:'제주항'}],
+ ulleung:[
+  {k:'pohang',ko:'포항 영일만·여객선터미널',en:'Pohang',op:'대저해운 · 울릉크루즈 (뉴씨다오펄)',opEn:'Daejeo Shipping · Ulleung Cruise (New Xidao Pearl)',dur:'쾌속 약 3시간 20분 / 크루즈 약 6시간 30분',durEn:'fast ~3h20 / cruise ~6h30',day:'2 – 3회',first:'09:50 무렵',last:'23:50 무렵 (크루즈)',arr:'도동항·사동항'},
+  {k:'mukho',ko:'동해 묵호항',en:'Mukho (Donghae)',op:'씨스포빌',opEn:'Seaspovill',dur:'약 2시간 40분',durEn:'about 2h40',day:'1 – 2회',first:'08:30 무렵',last:'—',arr:'도동항·사동항'},
+  {k:'hupo',ko:'울진 후포항',en:'Hupo (Uljin)',op:'에이치해운',opEn:'H Shipping',dur:'약 2시간 20분',durEn:'about 2h20',day:'1회',first:'08:00 무렵',last:'—',arr:'사동항'},
+  {k:'gangneung',ko:'강릉항',en:'Gangneung',op:'씨스포빌',opEn:'Seaspovill',dur:'약 3시간',durEn:'about 3h',day:'1회',first:'08:00 무렵',last:'—',arr:'저동항·사동항'}]
+};
+const PLAN_NS='jeju-k-drama-route';
 class Component extends DCLogic {
-  state = {city:'jeju', lang:'ko', tab:'map', cat:'ALL', detail:null, sheet:true, style:0, travelMode:'transit', legs:{}, transit:{}, regions:[], origin:'gimpoAir', originEnd:'', depTime:'08:00', retTime:'19:00', currentMonth:new Date().getMonth(), currentYear:new Date().getFullYear(),
-    course:{jeju:[]}, saved:[], stamps:[], vsort:'pop', basemap:'map', showOff:false, ytq:'', taxiFare:0, taxiDist:'', weather:{}, air:{}, works:{}, fest:{}, showBooking:false, activeTab:'map'};
+  ferryVals(forceIsland){
+    const st=this.state,lang=st.lang||'ko',t=o=>o[lang]||o.en,ko=lang==='ko';
+    let isl=forceIsland||null;
+    if(!isl){const f=this.courseList()[0];const reg=(f&&f.locKo)||((typeof DATA!=='undefined'&&DATA[st.city])||{}).ko;
+      if(['제주','서귀포'].indexOf(reg)>-1)isl='jeju';else if(reg==='울릉'||(this.ulleungTrip&&this.ulleungTrip()))isl='ulleung';}
+    if(!isl)return {ferryShow:'none',ferrySched:[],ferryPortOptions:[]};
+    const L=FERRY_ROUTES[isl];const r=L.find(x=>x.k===(st.ferryPort||{})[isl])||L[0];
+    const IS={jeju:{ko:'제주',en:'Jeju'},ulleung:{ko:'울릉도',en:'Ulleungdo'}}[isl];
+    const q=u=>window.open(u,'_blank');
+    return {
+      ferryShow:'flex',
+      ferryTitle:t({ko:IS.ko+' 배편 시간표',en:IS.en+' ferry timetable',zh:(isl==='jeju'?'济州':'郁陵岛')+'船班时刻',ja:(isl==='jeju'?'済州':'鬱陵島')+'フェリー時刻',es:'Ferris a '+IS.en}),
+      ferryPortLabel:t({ko:'출발 항구',en:'Departure port',zh:'出发港口',ja:'出発港',es:'Puerto de salida'}),
+      ferryPortValue:r.k,
+      ferryPortOptions:L.map(x=>({key:x.k,value:x.k,label:(ko?x.ko:x.en)+' → '+(ko?x.arr:IS.en)})),
+      ferryPortChange:e=>{const v=e.target.value;this.setState(s=>({ferryPort:{...(s.ferryPort||{}),[isl]:v}}));},
+      ferrySched:[
+        {key:'op',k:t({ko:'운항 선사',en:'Operator',zh:'船公司',ja:'船会社',es:'Naviera'}),v:ko?r.op:r.opEn},
+        {key:'dur',k:t({ko:'소요 시간',en:'Crossing',zh:'航行时间',ja:'所要時間',es:'Travesía'}),v:ko?r.dur:r.durEn},
+        {key:'day',k:t({ko:'운항 횟수',en:'Sailings',zh:'班次',ja:'便数',es:'Salidas'}),v:ko?('하루 '+r.day).replace('하루 주','주'):r.day.replace('회',' /day').replace('주 ','').replace(' /day',r.day.indexOf('주')>-1?' /week':' /day')},
+        {key:'first',k:t({ko:'첫 출항',en:'First',zh:'首班',ja:'始発',es:'Primero'}),v:ko?r.first:r.first.replace(' 무렵','').replace(' (크루즈)',' (cruise)')},
+        {key:'last',k:t({ko:'막 출항',en:'Last',zh:'末班',ja:'最終',es:'Último'}),v:ko?r.last:r.last.replace(' 무렵','').replace(' (크루즈)',' (cruise)')},
+        {key:'arr',k:t({ko:'도착 항구',en:'Arrives',zh:'到达港',ja:'到着港',es:'Llegada'}),v:ko?r.arr:(isl==='jeju'?'Jeju Port':r.arr.replace('도동항','Dodong').replace('사동항','Sadong').replace('저동항','Jeodong'))}],
+      ferryNote:t({ko:'본토 출항 기준 참고 시간입니다. 요일·계절·기상에 따라 운항 횟수와 시간이 바뀌거나 결항될 수 있으니 예매 전 선사 시간표를 확인하세요.',en:'Indicative departures from the mainland. Frequency and times change by weekday, season and weather, and sailings can be cancelled — check the operator timetable before booking.',zh:'以大陆出发为准的参考时间，班次会随星期、季节和天气变动或停航，预订前请确认船公司时刻表。',ja:'本土発の目安です。曜日・季節・天候で便数や時刻が変わり欠航もあるため、予約前に船会社の時刻表をご確認ください。',es:'Horarios orientativos desde tierra firme; cambian según el día, la temporada y el tiempo. Consulta a la naviera antes de reservar.'}),
+      ferryBookLabel:t({ko:'가보고싶은섬 예매',en:'Book (KSA island ferry)',zh:'预订船票',ja:'乗船券予約',es:'Reservar'}),
+      ferryBook:()=>q('https://island.theksa.co.kr/'),
+      ferryOpLabel:t({ko:'선사 시간표 검색',en:'Operator timetable',zh:'船公司时刻表',ja:'船会社の時刻表',es:'Horario de la naviera'}),
+      ferryOp:()=>q('https://search.naver.com/search.naver?query='+encodeURIComponent(r.op.split(' (')[0]+' '+r.ko+' '+IS.ko+' 시간표'))
+    };
+  }
+
+  planKey(){return 'dc_plans:'+PLAN_NS;}
+  planList(){if(!this._plans){try{this._plans=JSON.parse(localStorage.getItem(this.planKey())||'[]')||[];}catch(e){this._plans=[];}}return this._plans;}
+  planStore(l){this._plans=l;try{localStorage.setItem(this.planKey(),JSON.stringify(l));}catch(e){}this.forceUpdate();}
+  planVals(){
+    const st=this.state,lang=st.lang||'ko';
+    const t=o=>o[lang]||o.en;
+    const K=['city','tripFrom','tripTo','origin','originEnd','regions','depTime','retTime','travelMode','wideMode','localMode','routePick','gwPick','metroOrigin','metroLine','metroEnd','metroEndLine','scopeLoc','scopeMacro','focusLoc'];
+    const ids=((st.course||{})[st.city]||[]);
+    const nm=p=>{const d=(typeof DATA!=='undefined'&&DATA[p.snap.city])||{};return d[lang]||d.ko||p.snap.city;};
+    const list=this.planList();
+    return {
+      planTitle:t({ko:'내 플랜',en:'My plans',zh:'我的行程',ja:'マイプラン',es:'Mis planes'}),
+      planCount:list.length?String(list.length):'',
+      planName:st.planName||'',
+      planPh:t({ko:'플랜 이름 (예: 가을 2박 3일)',en:'Plan name',zh:'行程名称',ja:'プラン名',es:'Nombre del plan'}),
+      planNameChange:e=>this.setState({planName:e.target.value}),
+      planSaveLabel:t({ko:'코스 저장',en:'Save course',zh:'保存',ja:'保存',es:'Guardar'}),
+      planLoadLabel:t({ko:'불러오기',en:'Load',zh:'载入',ja:'読込',es:'Cargar'}),
+      planMsg:st.planMsg||'',planMsgShow:st.planMsg?'block':'none',
+      planSave:()=>{
+        if(!ids.length){this.setState({planMsg:t({ko:'코스에 장소를 먼저 담아주세요.',en:'Add stops to the course first.',zh:'请先添加地点。',ja:'先にスポットを追加してください。',es:'Añade paradas primero.'})});return;}
+        const snap={};K.forEach(k=>{if(st[k]!==undefined)snap[k]=st[k];});snap.ids=ids.slice();
+        const d=(typeof DATA!=='undefined'&&DATA[st.city])||{};
+        const name=(st.planName||'').trim()||((d[lang]||d.ko||st.city)+(st.tripFrom?' '+st.tripFrom.slice(5).replace('-','.'):'')+' · '+ids.length);
+        const _nid=Date.now();this.planStore([{id:_nid,name,at:new Date().toISOString(),snap},...list]);
+        this.setState({planId:_nid,planName:'',planMsg:t({ko:'저장했습니다.',en:'Saved.',zh:'已保存。',ja:'保存しました。',es:'Guardado.'})});
+        clearTimeout(this._pmT);this._pmT=setTimeout(()=>this.setState({planMsg:''}),2000);
+      },
+      cbSaveKicker:t({ko:'이 코스를 저장소에 저장',en:'Save this course',zh:'保存此路线',ja:'このコースを保存',es:'Guardar esta ruta'}),
+      cbSaveMeta:ids.length?t({ko:ids.length+'곳'+(st.tripFrom?' · '+st.tripFrom.slice(5).replace('-','.')+(st.tripTo&&st.tripTo!==st.tripFrom?'–'+st.tripTo.slice(5).replace('-','.'):''):''),en:ids.length+' stops',zh:ids.length+'处',ja:ids.length+'か所',es:ids.length+' paradas'}):'',
+      cbUpdateShow:(st.planId&&list.some(x=>x.id===st.planId))?'flex':'none',
+      planUpdateLabel:(()=>{const c=list.find(x=>x.id===st.planId);return t({ko:'「'+(c?c.name:'')+'」 덮어쓰기',en:'Update “'+(c?c.name:'')+'”',zh:'覆盖保存',ja:'上書き保存',es:'Actualizar'});})(),
+      planUpdate:()=>{
+        if(!ids.length)return;
+        const snap={};K.forEach(k=>{if(st[k]!==undefined)snap[k]=st[k];});snap.ids=ids.slice();
+        this.planStore(list.map(x=>x.id===st.planId?{...x,at:new Date().toISOString(),snap}:x));
+        this.setState({planMsg:t({ko:'저장소의 플랜을 업데이트했습니다.',en:'Plan updated.',zh:'已更新。',ja:'更新しました。',es:'Actualizado.'})});
+        clearTimeout(this._pmT);this._pmT=setTimeout(()=>this.setState({planMsg:''}),2000);
+      },
+      planBoxRef:el=>{this._planBox=el;},
+      planGoStoreLabel:t({ko:'저장소 보기 ('+list.length+')',en:'View saved ('+list.length+')',zh:'查看已保存 ('+list.length+')',ja:'保存一覧 ('+list.length+')',es:'Ver guardados ('+list.length+')'}),
+      planGoStore:()=>{const el=this._planBox;if(!el)return;let p=el.parentElement;while(p&&p.scrollHeight<=p.clientHeight)p=p.parentElement;if(p)p.scrollTo({top:Math.max(0,p.scrollTop+el.getBoundingClientRect().top-p.getBoundingClientRect().top-12),behavior:'smooth'});},
+      plans:list.map(p=>({key:String(p.id),name:p.name,
+        sub:[nm(p),p.snap.tripFrom?(p.snap.tripFrom+(p.snap.tripTo&&p.snap.tripTo!==p.snap.tripFrom?' – '+p.snap.tripTo.slice(5):'')):null,t({ko:p.snap.ids.length+'곳',en:p.snap.ids.length+' stops',zh:p.snap.ids.length+'处',ja:p.snap.ids.length+'か所',es:p.snap.ids.length+' paradas'})].filter(Boolean).join(' · '),
+        load:()=>this.setState(s=>{const n={...p.snap};delete n.ids;n.course={...(s.course||{}),[p.snap.city]:p.snap.ids.slice()};n.legs={};n.transit={};n.planId=p.id;n.planMsg=t({ko:'「'+p.name+'」을 불러왔습니다.',en:'Loaded “'+p.name+'”.',zh:'已载入',ja:'読み込みました',es:'Cargado'});return n;}),
+        del:()=>{if(window.confirm(t({ko:'이 플랜을 삭제할까요?',en:'Delete this plan?',zh:'删除此行程？',ja:'削除しますか？',es:'¿Eliminar?'})))this.planStore(this.planList().filter(x=>x.id!==p.id));}}))
+    };
+  }
+
+  state = {city:'jeju', lang:'ko', tab:'map', cat:'ALL', detail:null, sheet:true, style:0, travelMode:'transit', wideMode:'air', localMode:'transit', legs:{}, transit:{}, regions:[], origin:'gimpoAir', originEnd:'', depTime:'08:00', retTime:'19:00', currentMonth:new Date().getMonth(), currentYear:new Date().getFullYear(),
+    course:{jeju:[]}, saved:[], stamps:[], vsort:'pop', basemap:'map', showOff:false, ytq:'', taxiFare:0, taxiDist:'', weather:{}, showBooking:false, activeTab:'map'};
 
   tr(k){const o=T[k];return o[this.state.lang]||o.ko;}
   accent(){return ACCENTS[this.state.style%3];}
@@ -1384,6 +1590,41 @@ class Component extends DCLogic {
 
   toggleIn(key,id){this.setState(s=>{const arr=s[key].slice();const i=arr.indexOf(id);i>-1?arr.splice(i,1):arr.push(id);return {[key]:arr};});}
   toggleCourse(id){this.setState(s=>{const c={...s.course};const arr=c[s.city].slice();const i=arr.indexOf(id);i>-1?arr.splice(i,1):arr.push(id);c[s.city]=arr;return {course:c};});}
+  addCourseAt(id,afterIdx){
+    this.setState(s=>{
+      const c={...s.course};
+      const arr=c[s.city].slice();
+      const cur=arr.indexOf(id);
+      if(cur>-1)arr.splice(cur,1);
+      const at=(afterIdx==null||afterIdx<0)?arr.length:Math.min(afterIdx+1,arr.length);
+      arr.splice(at,0,id);
+      c[s.city]=arr;
+      return {course:c};
+    });
+  }
+  // 일자 칸 검색 — 앱이 가진 장소 DB에서 이름·도시로 찾는다
+  dayPlaceHits(q,reg,all){
+    const s=(q||'').trim().toLowerCase();
+    if(s.length<1&&!(all&&reg))return [];
+    const lang=this.state.lang||'ko';
+    const inCourse=this.state.course[this.state.city]||[];
+    const out=[],seen={};
+    Object.keys(DATA).forEach(ck=>{
+      (DATA[ck].places||[]).forEach(p=>{
+        if(seen[p.id]||inCourse.indexOf(p.id)>-1)return;
+        if(reg&&(p.locKo||DATA[ck].ko)!==reg)return;   // 그날 여행 도시의 장소만
+        const hay=[p.ko,p.en,p.locKo,p.locEn].filter(Boolean).join(' ').toLowerCase();
+        if(hay.indexOf(s)<0)return;
+        seen[p.id]=1;
+        out.push({id:p.id,city:ck,
+          name:lang==='ko'?p.ko:(p.en||p.ko),
+          loc:lang==='ko'?(p.locKo||DATA[ck].ko):(p.locEn||p.locKo||DATA[ck].ko),
+          cat:(CATS[p.cat]&&CATS[p.cat][lang])||''});
+      });
+    });
+    if(reg&&!out.length&&s)return this.dayPlaceHits(q,null,false);   // 그 도시에 없으면 전체에서
+    return out.slice(0,reg&&!s?12:6);
+  }
   moveCourse(id,dir){this.setState(s=>{const c={...s.course};const arr=c[s.city].slice();const i=arr.indexOf(id);const j=i+dir;if(j<0||j>=arr.length)return null;[arr[i],arr[j]]=[arr[j],arr[i]];c[s.city]=arr;return {course:c};});}
 
   // ── Tweaks 프롭 ──────────────────────────────────────────────────
@@ -1738,6 +1979,7 @@ class Component extends DCLogic {
       if(pv.markerStyle!==this.props.markerStyle||pv.catPalette!==this.props.catPalette)this.draw();
     }
   }
+  isJejuTrip(){return true;}
   renderVals(){
     this.sync();
     const st=this.state, lang=st.lang, a=this.accent(), on=a.base==='#f2ece0'?'#153b3d':'#f2ece0';
@@ -1877,18 +2119,6 @@ class Component extends DCLogic {
         this.setState(s=>({weather:{...s.weather,[dp.id]:w}}));
       });
     }
-    if(dp&&!st.air[dp.id]){
-      this._airReq=this._airReq||{};
-      if(!this._airReq[dp.id]){
-        this._airReq[dp.id]=1;
-        getAirQuality(dp.lat,dp.lng).then(a=>{this.setState(s=>({air:{...s.air,[dp.id]:a||{none:true}}}));}).catch(()=>{});
-      }
-    }
-    if(TMDB_KEY&&st.activeTab==='channel'){
-      this._worksReq=this._worksReq||{};
-      WORKS.forEach(w=>{const k=w.q+'|'+lang;if(!st.works[k]&&!this._worksReq[k]){this._worksReq[k]=1;
-        getTitleMeta(w.q,w.type,lang).then(v=>this.setState(s=>({works:{...s.works,[k]:v||{none:true}}}))).catch(()=>{});}});
-    }
 
     const tabDefs=[['map','tabs'],['course','tabs'],['videos','tabs'],['stamp','tabs'],['channel','tabs']];
     const tabs=tabDefs.map(([k])=>({key:k,label:T.tabs[k][lang]||T.tabs[k].ko,
@@ -1921,11 +2151,6 @@ class Component extends DCLogic {
       chips, visiblePlaces,
       mapDisplay:st.activeTab==='map'?'flex':'none',
       channelDisplay:st.activeTab==='channel'?'flex':'none',
-      worksShow:WORKS.some(w=>{const v=st.works[w.q+'|'+lang];return v&&!v.none;})?'flex':'none',
-      works:WORKS.map(w=>st.works[w.q+'|'+lang]).filter(v=>v&&!v.none).map(v=>({key:v.id,
-        title:v.title+(v.year?' ('+v.year+')':''),
-        sub:(v.orig&&v.orig!==v.title?v.orig+' · ':'')+(v.rating?'★ '+v.rating:'')+' · TMDB',
-        overview:v.overview.slice(0,140)+(v.overview.length>140?'…':''),poster:v.poster,open:()=>window.open(v.url,'_blank')})),
       videoDisplay:st.activeTab==='videos'?'flex':'none',
       stampDisplay:st.activeTab==='stamp'?'flex':'none',
       sheetHeight:st.sheet?'46%':'30px',
@@ -1974,7 +2199,7 @@ class Component extends DCLogic {
           };
         });
       })(),
-      courseKicker:this.tr('courseKicker'),courseTitle:city[lang]+' · '+this.tr('courseTitle'),
+      ...this.planVals(),...this.ferryVals('jeju'),courseKicker:this.tr('courseKicker'),courseTitle:city[lang]+' · '+this.tr('courseTitle'),
       lblStops:this.tr('stops'),lblDist:this.tr('dist'),lblTime:this.tr('time'),
       courseStops:String(cItems.length).padStart(2,'0'),
       courseDist:total.toFixed(1)+'km',
@@ -2015,7 +2240,7 @@ class Component extends DCLogic {
       retTimeValue:st.retTime||'19:00',
       retTimeOptions:(()=>{const out=[];for(let h=10;h<=23;h++)for(const m of ['00','30'])out.push({key:'r'+h+m,value:String(h).padStart(2,'0')+':'+m,label:String(h).padStart(2,'0')+':'+m});return out;})(),
       retTimeChange:e=>this.setState({retTime:e.target.value}),
-      originOptions:Object.keys(ORIGINS)
+      originOptions:wideOriginFilter(Object.keys(ORIGINS),st.travelMode==='own'?(this.isJejuTrip()?'ship':'own'):st.wideMode).filter(k=>st.wideMode==='bus'||airTwin(k)===k)
       .sort((a,b)=>{
         const rk=k=>{const m=ORIGINS[k].modes||['bus'];
           if(m.indexOf('ktx')>-1||m.indexOf('srt')>-1)return 0;   // 기차역
@@ -2025,8 +2250,8 @@ class Component extends DCLogic {
         return rk(a)-rk(b);
       })
       .map(k=>({key:k,value:k,label:lang==='ko'?ORIGINS[k].ko:(ORIGINS[k].en||ORIGINS[k].ko)})),
-      originChange:e=>this.setState({origin:e.target.value}),
-      originEndChange:e=>this.setState({originEnd:e.target.value}),
+      originChange:e=>{const v=airTwin(e.target.value),w=gwWideOf(v);const p={origin:v,legs:{}};if(w&&this.state.travelMode!=='own'){p.wideMode=w;window.__tpWide=w;const e2=this.state.originEnd;if(e2&&gwWideOf(e2)&&gwWideOf(e2)!==w)p.originEnd='';}this.setState(p);},
+      originEndChange:e=>{const v=airTwin(e.target.value),w=gwWideOf(v);const p={originEnd:v,legs:{}};if(w&&!this.state.wideMode&&this.state.travelMode!=='own'){p.wideMode=w;window.__tpWide=w;}this.setState(p);},
       srtLabel:{ko:'SRT 예매',en:'Book SRT',zh:'预订SRT',ja:'SRT予約',es:'Reservar SRT'}[lang]||'Book SRT',
       srtBooking:()=>window.open('https://etk.srail.kr/main.do','_blank'),
       planBasis:(()=>{
@@ -2095,6 +2320,10 @@ class Component extends DCLogic {
       courseItems,
       // ── 여러 날 일정 ───────────────────────────────────────────────
       regionMoveLabel:{ko:'지역 이동',en:'Transfer',zh:'区域移动',ja:'地域移動',es:'Traslado'}[lang]||'Transfer',
+      dayAddLabel:{ko:'장소 추가',en:'Add place',zh:'添加地点',ja:'スポット追加',es:'Añadir lugar',fr:'Add place'}[lang]||'Add place',
+      dayAddPh:{ko:'이 날에 넣을 장소 검색',en:'Search a place for this day',zh:'搜索当天要加入的地点',ja:'この日に入れる場所を検索',es:'Buscar un lugar para este día',fr:'Search a place for this day'}[lang]||'Search a place for this day',
+      dayAddCloseLabel:{ko:'닫기',en:'Close',zh:'关闭',ja:'閉じる',es:'Cerrar',fr:'Close'}[lang]||'Close',
+      dayAddClearLabel:{ko:'지우기',en:'Clear',zh:'清除',ja:'クリア',es:'Borrar',fr:'Clear'}[lang]||'Clear',
       dayPlanDisplay:st.tripFrom&&cItems.length?'flex':'none',
       flatDisplay:st.tripFrom&&cItems.length?'none':'flex',
       tripBarDisplay:st.tripFrom?'flex':'none',
@@ -2124,6 +2353,29 @@ class Component extends DCLogic {
       setOwn:()=>{this.loadRests();this.setState({travelMode:'own'});},
       setDrive:()=>this.setState({travelMode:'driving'}),
       setTransit:()=>this.setState({travelMode:'transit'}),
+      ownSelShow:((st.travelMode!=='own'||this.isJejuTrip())&&['bus','rail','air','ship'].indexOf(st.wideMode)>-1)?'flex':'none',
+      wideRowShow:(st.travelMode==='own'||st.wideMode)?'flex':'none',
+      ownTimeFlex:((st.travelMode!=='own'||this.isJejuTrip())&&['bus','rail','air','ship'].indexOf(st.wideMode)>-1)?'0 0 92px':'1 1 0',
+      wideTitle:{ko:'광역교통',en:'Intercity',zh:'城际交通',ja:'広域交通',es:'Interurbano',fr:'Intercity'}[lang]||'Intercity',
+      localTitle:{ko:'현지 이동',en:'Getting around',zh:'当地出行',ja:'現地移動',es:'En destino',fr:'Getting around'}[lang]||'Getting around',
+      wideOpts:(()=>{
+        const cur=st.travelMode==='own'?'own':((st.wideMode&&st.wideMode!=='own')?st.wideMode:'');
+        window.__tpWide=cur||undefined;
+        const L={bus:{ko:'버스',en:'Bus',zh:'巴士',ja:'バス',es:'Autobús'},rail:{ko:'기차',en:'Train',zh:'火车',ja:'鉄道',es:'Tren'},air:{ko:'항공',en:'Flight',zh:'飞机',ja:'飛行機',es:'Avión'},ship:{ko:'배',en:'Ferry',zh:'轮渡',ja:'フェリー',es:'Ferry'},metro:{ko:'지하철(도시철도)',en:'Subway',zh:'地铁',ja:'地下鉄',es:'Metro'},own:{ko:'자가용',en:'Own car',zh:'私家车',ja:'自家用車',es:'Coche propio'}};
+        return ['bus','rail','air','ship','metro','own'].filter(k=>WIDE_DISABLED.indexOf(k)<0).map(k=>{const off=false;const _on=cur===k||(k==='ship'&&st.travelMode==='own');return {label:L[k][lang]||L[k].en,bg:_on?'#153b3d':(off?'#e2dccf':'#f2ece0'),fg:_on?'#f2ece0':(off?'rgba(21,59,61,.35)':'#153b3d'),cursor:off?'not-allowed':'pointer',deco:off?'line-through':'none',
+          pick:()=>{if(off)return;if(k==='own'){const ports=wideOriginFilter(Object.keys(ORIGINS),'ship');const s0=this.state;const fx={};const ok0=this.oKey?this.oKey(s0.origin):s0.origin;if(ports.indexOf(ok0)<0&&ports.length)fx.origin=ports[0];if(s0.originEnd&&ports.indexOf(s0.originEnd)<0)fx.originEnd='';window.__tpWide='ship';this.loadRests();this.setState({wideMode:'ship',travelMode:'own',legs:{},...fx});return;}window.__tpWide=k;const s0=this.state,al=k!=='own';const _ok=wideOriginFilter(Object.keys(ORIGINS),k);const ok=key=>!al||!key||_ok.indexOf(key)>-1;const cand=al?_ok:[];const fix={};if(!ok((this.oKey?this.oKey(s0.origin):s0.origin))&&cand.length)fix.origin=cand[0];if(s0.originEnd&&!ok(s0.originEnd))fix.originEnd='';if(k==='own'){this.loadRests();this.setState({wideMode:'own',travelMode:'own',legs:{},...fix});}else this.setState({wideMode:k,travelMode:this.state.localMode||'transit',legs:{},...fix});}};});
+      })(),
+      localOpts:(()=>{
+        const own=st.travelMode==='own', cur=st.localMode||'transit';
+        const L={driving:{ko:'자동차 (렌트카)',en:'Driving (rental)',zh:'自驾 (租车)',ja:'車 (レンタカー)',es:'Coche (alquiler)'},transit:{ko:'대중교통',en:'Transit',zh:'公共交通',ja:'公共交通',es:'Transporte'}};
+        return ['driving','transit'].map(k=>{const on=!own&&cur===k;return {label:L[k][lang]||L[k].en,bg:on?'#153b3d':'#f2ece0',fg:on?'#f2ece0':'#153b3d',cursor:own?'default':'pointer',
+          pick:()=>{if(this.state.travelMode==='own')return;this.setState({localMode:k,travelMode:k});}};});
+      })(),
+      localOpacity:st.travelMode==='own'?'.45':'1',
+      wideNoteShow:(this.isJejuTrip()&&st.travelMode==='own')?'flex':'none',
+      wideNote:{ko:'제주는 섬이라 자가용만으로는 갈 수 없습니다. 차량을 카페리에 싣고 항만(목포·완도·여수·부산 등)을 거쳐 들어가므로 배가 함께 선택됩니다. 출발지에서 차를 실을 항만을 고르세요.',en:'Jeju is an island, so you cannot drive there directly. Your car goes on a car ferry from a mainland port, so Ferry is selected too. Pick the port to board from.',zh:'济州是岛屿，无法直接自驾前往。车辆需搭乘汽车渡轮经港口进岛，因此同时选择轮渡。请选择装车港口。',ja:'済州は島のため自家用車だけでは行けません。車をカーフェリーに載せて港から渡るため、フェリーも一緒に選択されます。乗船する港を選んでください。',es:'Jeju es una isla: el coche viaja en ferry desde un puerto, así que también se selecciona Ferry. Elija el puerto de embarque.'}[lang]||'Jeju is an island — your car travels by car ferry.',
+      localOwnNoteShow:st.travelMode==='own'?'block':'none',
+      localOwnNote:{ko:'자가용을 고르면 현지에서도 같은 차로 이동합니다.',en:'With your own car, you drive it locally too.',zh:'选择私家车时，当地也开同一辆车。',ja:'自家用車の場合、現地も同じ車で移動します。',es:'Con coche propio, también se usa en destino.'}[lang]||'With your own car, you drive it locally too.',
       routeNote:(cItems.length<2?'':(mode==='own'
         ?({ko:'자가용 기준 — 한국도로공사 고속도로 표정속도(약 92km/h)와 진출입·휴게 시간을 적용한 주행시간입니다. KTX·버스 예매는 필요하지 않습니다.',en:'Own car — driving times use the Korea Expressway Corporation average highway speed (~92 km/h) plus ramp and rest stops. No rail or bus booking needed.',zh:'私家车 — 采用韩国道路公社高速公路平均速度(约92km/h)并计入出入口与休息时间，无需预订火车或客车。',ja:'自家用車 — 韓国道路公社の高速道路平均速度(約92km/h)に出入口・休憩時間を加えた所要時間です。鉄道・バスの予約は不要です。',es:'Coche propio — tiempos según la velocidad media de autopista de Korea Expressway (~92 km/h) más accesos y descansos. No hace falta reservar tren ni autobús.'}[lang]||'')
         :(mode==='driving'
@@ -2222,8 +2474,14 @@ class Component extends DCLogic {
           // 실제 동선상 숙박이 불가능하므로 실명 대신 '숙소 A/B'로 표기하고
           // 예매 버튼은 그 지역명으로 검색되게 남긴다.
           const dayIdx=buckets[i]||[];
+          const _addQ=((st.dayAddQ||{})[i])||'';
           const dayStops=dayIdx.map(k=>courseItems[k]);
           const dayRaw=dayIdx.map(k=>cItems[k]);
+          const _dayRegP=dayRaw[0]||(()=>{for(let k=i;k<days;k++){const b=buckets[k];if(b&&b.length)return cItems[b[0]];}for(let k=i-1;k>=0;k--){const b=buckets[k];if(b&&b.length)return cItems[b[b.length-1]];}return null;})();
+          const _dayReg=_dayRegP?(_dayRegP.locKo||(DATA[st.city]||{}).ko):((DATA[st.city]||{}).ko);
+          const _addOpen=st.dayAddOpen===i;
+          const _addHits=(_addQ.trim()||_addOpen)?this.dayPlaceHits(_addQ,_dayReg,_addOpen):[];
+          // 경유지가 없는 날은 다음(없으면 이전) 날의 경유지를 기준으로 지역·숙소를 잡는다.
           // 경유지가 없는 날은 다음(없으면 이전) 날의 경유지를 기준으로 지역·숙소를 잡는다.
           const nextStop=(()=>{for(let k=i;k<days;k++){const b=buckets[k];if(b&&b.length)return cItems[b[0]];}return null;})();
           const prevStop=(()=>{for(let k=i-1;k>=0;k--){const b=buckets[k];if(b&&b.length)return cItems[b[b.length-1]];}return null;})();
@@ -2291,6 +2549,23 @@ class Component extends DCLogic {
                 arrSub:'≈ '+mk+' '+mn(Math.round(leg.min))+(leg.km?(' · '+leg.km.toFixed(1)+' km'):'')};
             })(),
             transShow:i===0?'flex':'none',
+            addQ:_addQ,
+            addChange:(e=>{const v=e.target.value;this.setState(s=>({dayAddQ:{...(s.dayAddQ||{}),[i]:v}}));}),
+            addClear:(()=>this.setState(s=>({dayAddQ:{...(s.dayAddQ||{}),[i]:''},dayAddOpen:null}))),
+            addFocus:(()=>{if(this.state.dayAddOpen!==i)this.setState({dayAddOpen:i});}),
+            addClose:(()=>this.setState(s=>({dayAddQ:{...(s.dayAddQ||{}),[i]:''},dayAddOpen:null}))),
+            addHitsTitle:_addQ.trim()?({ko:'검색 결과',en:'Results',zh:'搜索结果',ja:'検索結果',es:'Resultados'}[lang]||'Results'):(_dayReg+' '+({ko:'여행지',en:'places',zh:'景点',ja:'スポット',es:'lugares'}[lang]||'places')),
+            addClearShow:(_addQ||_addOpen)?'flex':'none',
+            addHits:_addHits.map(h=>({
+              key:'da'+i+h.id,name:h.name,meta:h.loc+(h.cat?(' · '+h.cat):''),
+              add:()=>{
+                const tail=dayIdx.length?dayIdx[dayIdx.length-1]:(i===0?-1:null);
+                this.addCourseAt(h.id,tail);
+                this.setState(s=>({dayAddQ:{...(s.dayAddQ||{}),[i]:''},dayAddOpen:null}));
+              }})),
+            addHitsShow:_addHits.length?'flex':'none',
+            addMsg:{ko:'일치하는 장소가 없습니다.',en:'No matching place.',zh:'没有匹配的地点。',ja:'一致する場所がありません。',es:'Ningún lugar coincide.'}[lang]||'No matching place.',
+            addMsgShow:(_addQ.trim()&&!_addHits.length)?'block':'none',
             transShowEnd:last&&days>1?'flex':(days===1&&i===0?'flex':'none'),
             transLabel:(()=>{
               const firstReg=ctxFirst?(ctxFirst.locKo||city.ko):'';
@@ -2609,11 +2884,22 @@ class Component extends DCLogic {
       d_directions:dp?'https://www.google.com/maps/search/?api=1&query='+dp.lat+','+dp.lng:'#',
       d_transitLabel:this.tr('transit'),
       d_weather:st.weather[dp?.id]||{yesterday:{tmp:'?',rn1:'0',icon:'?'},today:{tmp:'?',rn1:'0',icon:'?'},tomorrow:{tmp:'?',rn1:'0',icon:'?'}},
-      d_airShow:(a=>a&&!a.none?'flex':'none')(st.air[dp?.id]),
-      d_airLabel:(AIR_LABEL[lang]||AIR_LABEL.en).title,
-      d_airText:(a=>a&&!a.none?('PM10 '+(a.pm10??'–')+' · PM2.5 '+(a.pm25??'–')):'')(st.air[dp?.id]),
-      d_airGrade:(a=>a&&!a.none?(AIR_LABEL[lang]||AIR_LABEL.en).g[a.grade]||'':'')(st.air[dp?.id]),
-      d_airBg:(a=>a&&!a.none?AIR_COLOR[a.grade]:'transparent')(st.air[dp?.id]),
+      ...(()=>{
+        const _L=this.state.lang||'ko', a=dp?(this.state.air||{})[dp.id]:null, AL=AIR_LABEL[_L]||AIR_LABEL.en;
+        if(dp&&DATA_GO_KR_KEY&&!a){this._airReq=this._airReq||{};if(!this._airReq[dp.id]){this._airReq[dp.id]=1;const id=dp.id;getAirQuality(dp.lat,dp.lng).then(v=>this.setState(s=>({air:{...(s.air||{}),[id]:v||{none:true}}}))).catch(()=>this.setState(s=>({air:{...(s.air||{}),[id]:{none:true}}})));}}
+        const ok=a&&!a.none;
+        return {d_airShow:ok?'flex':'none',d_airBg:ok?AIR_COLOR[a.grade||0]:'transparent',d_airLabel:AL.title+(ok?' · '+a.sido:''),
+          d_airText:ok?('PM10 '+(a.pm10==null?'–':a.pm10)+' · PM2.5 '+(a.pm25==null?'–':a.pm25)):'',d_airGrade:ok?(AL.g[a.grade]||''):''};
+      })(),
+      ...(()=>{
+        const _L=this.state.lang||'ko', W=this.state.works||{};
+        if(TMDB_KEY){this._wkReq=this._wkReq||{};WORKS.forEach(w=>{const k=w.q+'|'+_L;if(!W[k]&&!this._wkReq[k]){this._wkReq[k]=1;getTitleMeta(w.q,w.type,_L).then(v=>this.setState(s=>({works:{...(s.works||{}),[k]:v||{none:true}}}))).catch(()=>this.setState(s=>({works:{...(s.works||{}),[k]:{none:true}}})));}});}
+        const list=WORKS.map(w=>W[w.q+'|'+_L]).filter(v=>v&&!v.none);
+        const TY={movie:{ko:'영화',en:'Film',zh:'电影',ja:'映画',es:'Película'},tv:{ko:'드라마',en:'Drama',zh:'电视剧',ja:'ドラマ',es:'Serie'}};
+        return {worksShow:list.length?'flex':'none',works:list.map(v=>({key:'wk'+v.id,title:v.title,poster:v.poster,
+          sub:[(TY[v.type]||{})[_L]||v.type,v.year,v.rating?'★ '+v.rating:''].filter(Boolean).join(' · '),
+          overview:v.overview.length>140?v.overview.slice(0,140)+'…':v.overview,open:()=>window.open(v.url,'_blank')}))};
+      })(),
       d_loadWeather:async()=>{
         if(!dp)return;
         const w=await getWeather(dp.lat,dp.lng);
