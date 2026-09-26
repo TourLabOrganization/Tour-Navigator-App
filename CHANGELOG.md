@@ -11,6 +11,17 @@
 - 설계 쪽이 화면 안에 다시 넣었던 미세먼지 줄 · TMDB 작품 카드는 그대로 두고 함수만 `shared.js` 것을 쓰도록 연결. 플래너의 "여행 기간 행사 · 축제" 는 내보내기본에 없어 다시 붙임
 - 홈 부산 타일 이미지 `uploads/images (23).jpg` · `(24).jpg` (국제시장 · 범죄와의 전쟁 포스터) 추가 — 내보내기본에 빠져 있던 것을 별도로 받아 넣음
 
+### 정리 2차
+- 코드가 읽지 않는 `assets/open-tour.csv` · `assets/story-matched.json` 제거 (이력 `0298fe1`), DATA · APIS · 구성도 반영
+- `CLEANUP.md` 추가 — 지운 것 · 남긴 것 · 규칙 · 점검 명령
+- `체류시간 산정/export_stay_csv.js` 가 `shared.js` 상수를 참조하는 새 플래너 데이터 블록을 읽도록 수정, I18N-TODO 줄 번호 재계산
+
+### 화면 교체 2차 (Claude Design 09-26 handoff 내보내기본 통합)
+- 설계 쪽 추가 기능 반영: 장소 상세의 "함께 많이 가는 관광지" 목록(한국관광공사 연관 관광지 TarRlteTarService1 · 시군구 코드는 Kakao 좌표→행정구역 또는 예비 표), 날씨·미세먼지 통합 칸(5개 언어), 테마 4종 YouTube 캐시 키를 화면별로 분리
+- 연관 관광지 함수(`getSignguCd` · `getRelatedSpots` · `SIGNGU_FALLBACK` 등)를 `shared.js` 로 옮기고 화면의 복제본 40개를 제거. 키는 `dataGoKr` 하나로 호출
+- `shared.js` 에어코리아 서비스명 오타 수정 (`ArpltnInfrInqireSvc` → `ArpltnInforInqireSvc`). 이 오타로 미세먼지가 전 화면에서 나오지 않았음. `시스템 구성도/build_spec.js` 도 같이 수정
+- main 에 웹 업로드로 다시 들어온 `Mobile app design request/`(49개) · `Mobile app design request.zip` 삭제. 내보내기본은 세션에 첨부해 통합 스크립트로 반영
+
 ### 문서
 - `시스템 구성도/` 폴더 추가 — 구성도 PNG(구성도.html + render_png.mjs)와 구성 명세서 docx(build_spec.js). 09-26 통합본 기준으로 화면 7개 · shared.js 조회 함수 · 키 6개 · 체류시간 산정 폴더 반영
 

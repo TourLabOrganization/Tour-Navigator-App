@@ -23,7 +23,10 @@ const from = html.findIndex(l => /^const CATS\s*=/.test(l));
 const to = html.findIndex((l, i) => i > from && /^Object\.assign\(I18N\.locs/.test(l));
 if (from < 0 || to < 0) throw new Error('데이터 블록을 찾지 못했습니다');
 const ctx = { window: { APP_CONFIG: {} }, document: {}, console, Object, Array, Math, String, Number, JSON };
-vm.runInNewContext(html.slice(from, to + 1).join('\n') + '\n;this.__out={DATA,CATS,REGION_HUB,ORIGINS,METRO_CITY:typeof METRO_CITY!=="undefined"?METRO_CITY:{}};', ctx);
+// 화면 데이터 블록은 shared.js 상수(DATA_GO_KR_KEY 등)를 참조하므로 shared.js 를 먼저 같은 컨텍스트에 넣는다
+ctx.localStorage = { getItem: () => null, setItem: () => {} };
+const sharedSrc = fs.readFileSync(path.join(ROOT, 'shared.js'), 'utf8');
+vm.runInNewContext(sharedSrc + '\n' + html.slice(from, to + 1).join('\n') + '\n;this.__out={DATA,CATS,REGION_HUB,ORIGINS,METRO_CITY:typeof METRO_CITY!=="undefined"?METRO_CITY:{}};', ctx);
 const { DATA, CATS, REGION_HUB, ORIGINS, METRO_CITY } = ctx.__out;
 
 // 장소는 id 당 한 번만 낸다. 도시 화면(서울 · 부산 · 제주 · 영월)에 있는 장소는 그 화면으로, 나머지는 nation 으로 적는다.

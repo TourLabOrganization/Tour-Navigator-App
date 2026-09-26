@@ -12,12 +12,12 @@
 
 ## 원본 파일
 
+장소 배지(한국관광 100선 · 열린관광지)와 스토리텔링 매칭은 오프라인에서 끝내 화면 DATA 에 넣었습니다. 그 작업에 쓴 원자료 `open-tour.csv` · `story-db.csv` · `story-matched.json` 은 2026-09-26 에 저장소에서 제거했고 이력 커밋 `0298fe1` 에 남아 있습니다.
+
 | 파일 | 내용 |
 | --- | --- |
 | `assets/tour-places.csv` | 프로젝트 장소 마스터 (좌표 · 카테고리 · 근거) |
-| `assets/open-tour.csv` | 열린관광지 목록 |
 | `assets/open-tour-unmatched.csv` | 좌표 매칭이 안 된 열린관광지 잔여분 |
-| `assets/story-matched.json` | 한국관광공사 스토리텔링 ↔ 장소 매칭 결과 (원본 CSV 는 2026-09-26 에 저장소에서 제거, 이력 커밋 0298fe1 에 보관) |
 
 ## 장소 레코드
 
