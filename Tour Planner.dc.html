@@ -2009,7 +2009,7 @@ const TOUR_BASE='https://apis.data.go.kr/B551011/KorService2/';
 // 영문 관광정보 서비스 — 언어가 한국어가 아닐 때 영문 명칭·사진을 쓴다.
 const TOUR_BASE_EN='https://apis.data.go.kr/B551011/EngService2/';
 // 언어별 관광정보 서비스 (신청된 것만 — 일문·서문은 미신청이라 영문으로 대체)
-const TOUR_SVC={ko:'KorService2',en:'EngService2',zh:'ChsService2',ja:'JpnService2',es:'SpnService2',fr:'FreService2'};
+const TOUR_SVC={ko:'KorService2',en:'EngService2',zh:'ChsService2',ja:'JpnService2',es:'SpnService2'};
 const TOUR_ROOT='https://apis.data.go.kr/B551011/';
 // 한국관광공사 오디오 가이드(Odii) — 장소 해설 스크립트
 // 한국관광공사 관광 스토리텔링 DB(2016) — 장소명으로 매칭된 해설
@@ -2017,7 +2017,7 @@ const STORY_DB={"서오릉":{"t":"숙종의 가족묘, 서오릉","s":"경복궁
 // 한국관광공사 관광사진 정보(포토갤러리)
 const PHOTO_BASE='https://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1';
 const ODII_BASE='https://apis.data.go.kr/B551011/Odii/';
-const ODII_LANG={ko:'ko',en:'en',ja:'ja',zh:'ch',es:'en',fr:'en'};
+const ODII_LANG={ko:'ko',en:'en',ja:'ja',zh:'ch',es:'en'};
 // 제주 노선 출발 공항 목록 (IATA · 표시명)
 // 제주 노선 정기 편성 요약(하드코딩 참고값 · 시즌·요일에 따라 변동)
 const JEJU_SCHED={
@@ -5964,7 +5964,7 @@ const VMETA={
   'bf12':{views:'장면 12',date:'태종대',q:'태종대 영화 촬영지'}
 };
 // Google Maps 라벨 언어 코드
-const GMAP_LANG={ko:'ko',en:'en',zh:'zh-CN',ja:'ja',es:'es',fr:'fr'};
+const GMAP_LANG={ko:'ko',en:'en',zh:'zh-CN',ja:'ja',es:'es'};
 const updateViewCounts=()=>{
   const today=new Date();
   Object.keys(VMETA).forEach(id=>{
@@ -5983,9 +5983,9 @@ const updateViewCounts=()=>{
 updateViewCounts();
 
 const LANGS=[
-  {id:'ko',label:'한국어'},{id:'en',label:'ENGLISH'},{id:'zh',label:'简体中文'},{id:'ja',label:'日本語'},{id:'es',label:'ESPAÑOL'},{id:'fr',label:'FRANÇAIS'}
+  {id:'ko',label:'한국어'},{id:'en',label:'ENGLISH'},{id:'zh',label:'简体中文'},{id:'ja',label:'日本語'},{id:'es',label:'ESPAÑOL'}
 ];
-const SUF={ko:'Ko',en:'En',zh:'Zh',ja:'Ja',es:'Es',fr:'En'};   // 불어는 영문 원문을 쓴다
+const SUF={ko:'Ko',en:'En',zh:'Zh',ja:'Ja',es:'Es'};
 // zh-Hans / ja layer over the ko+en source data
 const I18N={
   cats:{
@@ -6150,7 +6150,7 @@ sea:['海洋·自然景观','海洋·自然景観'],
   }
 };
 Object.keys(I18N.ui).forEach(k=>{if(T[k]){T[k].zh=I18N.ui[k][0];T[k].ja=I18N.ui[k][1];}});
-const TABS={map:['地图','地図'],course:['行程','コース'],videos:['影片','映像'],stamp:['集章','スタンプ'],saved:['收藏','保存'],channel:['粉丝交流','ファンコミュニティ']};
+const TABS={map:['地图','地図'],course:['行程','コース'],videos:['影片','映像'],stamp:['集章','スタンプ'],saved:['收藏','保存'],channel:['旅行信息','旅行情報']};
 Object.keys(TABS).forEach(k=>{T.tabs[k].zh=TABS[k][0];T.tabs[k].ja=TABS[k][1];});
 Object.assign(I18N.src,{
   '소현효자길 21-3':null,
@@ -6206,7 +6206,7 @@ const ES={
   videoCta:'▶ Ver el clip', noVideoCta:'Sin vídeo vinculado'
 };
 Object.keys(ES).forEach(k=>{if(T[k])T[k].es=ES[k];});
-const TABS_ES={map:'Mapa',course:'Ruta',videos:'Vídeo',stamp:'Sellos',saved:'Guardado',channel:'Canal de fans'};
+const TABS_ES={map:'Mapa',course:'Ruta',videos:'Vídeo',stamp:'Sellos',saved:'Guardado',channel:'Información'};
 Object.keys(TABS_ES).forEach(k=>{if(T.tabs[k])T.tabs[k].es=TABS_ES[k];});
 Object.keys(CATS_ES).forEach(k=>{if(CATS[k])CATS[k].es=CATS_ES[k];});
 T.drive.es=' min en coche';
@@ -6481,7 +6481,7 @@ class Component extends DCLogic {
           festEmptyShow:(F!==undefined&&!list.length)?'block':'none',
           festEmpty:T({ko:'이 기간 코스 주변에 등록된 행사가 없습니다.',en:'No events listed near your course for these dates.'}),
           festList:list.map((x,i)=>({key:'fv'+i,title:x.title,img:x.img||'',addr:x.addr,km:x.km+'km',
-            dates:md(x.start)+(x.end!==x.start?'–'+md(x.end):'')+(x.start<lo?(({ko:' (진행 중)',en:' (ongoing)',zh:' (进行中)',ja:' (開催中)',es:' (en curso)',fr:' (en cours)'}[_L]||' (ongoing)')):''),
+            dates:md(x.start)+(x.end!==x.start?'–'+md(x.end):'')+(x.start<lo?(({ko:' (진행 중)',en:' (ongoing)',zh:' (进行中)',ja:' (開催中)',es:' (en curso)'}[_L]||' (ongoing)')):''),
             open:()=>window.open('https://map.kakao.com/?q='+encodeURIComponent(x.title),'_blank')})),
           festSrc:T({ko:'출처: 한국관광공사 행사·축제 정보 · 누르면 카카오맵에서 위치를 봅니다',en:'Source: Korea Tourism Organization events'})};
       })(),
@@ -6509,7 +6509,7 @@ class Component extends DCLogic {
   state = {photos:{}, city:'nation', lang:'ko', tab:'map', cat:'ALL', detail:null, sheet:true, style:0, travelMode:'transit', wideMode:'', localMode:'transit', legs:{}, transit:{}, regions:[], origin:'seoul', originEnd:'', depTime:'08:00', retTime:'19:00', currentMonth:new Date().getMonth(), currentYear:new Date().getFullYear(),
     subArr:{}, course:{gyeongju:[],geoje:[],nation:[],seoul:[],busan:[],jeju:[],yeongwol:[]}, saved:[], stamps:[], vsort:'pop', basemap:'map', showOff:false, cityPick:false, cityQuery:'', focusLoc:null, scopeLoc:null, scopeMacro:null, ytq:'', taxiFare:0, taxiDist:'', weather:{}, showBooking:false, activeTab:'map'};
 
-  tr(k){const o=T[k];const L=this.state.lang;return o[L]||(L==='fr'?o.en:null)||o.ko;}
+  tr(k){const o=T[k];const L=this.state.lang;return o[L]||o.ko;}
   accent(){return ACCENTS[0];}
   places(){
     if(this.state.city==='nation'){
@@ -8018,9 +8018,9 @@ class Component extends DCLogic {
       pick:()=>this.setState({cat:c})}));
     // 카테고리 줄 끝에 유네스코·100선 필터를 이어 붙인다.
     const hasUn=city.places.some(p=>p.un), hasK1=city.places.some(p=>p.k100);
-    if(hasUn)chips.push({key:'UN',label:({ko:'유네스코',en:'UNESCO',zh:'世界遗产',ja:'世界遺産',es:'UNESCO',fr:'UNESCO'}[lang]||'UNESCO'),
+    if(hasUn)chips.push({key:'UN',label:({ko:'유네스코',en:'UNESCO',zh:'世界遗产',ja:'世界遺産',es:'UNESCO'}[lang]||'UNESCO'),
       bg:st.cat==='UN'?a.base:'transparent',fg:st.cat==='UN'?on:'rgba(21,59,61,.7)',pick:()=>this.setState({cat:'UN'})});
-    if(hasK1)chips.push({key:'K100',label:({ko:'100선',en:'TOP 100',zh:'100选',ja:'100選',es:'TOP 100',fr:'TOP 100'}[lang]||'TOP 100'),
+    if(hasK1)chips.push({key:'K100',label:({ko:'100선',en:'TOP 100',zh:'100选',ja:'100選',es:'TOP 100'}[lang]||'TOP 100'),
       bg:st.cat==='K100'?a.base:'transparent',fg:st.cat==='K100'?on:'rgba(21,59,61,.7)',pick:()=>this.setState({cat:'K100'})});
 
     // 전국 뷰에서 줌이 클러스터 안으로 들어가면 화면(뷰포트)에 든 장소만 목록에 남긴다.
@@ -8047,9 +8047,9 @@ class Component extends DCLogic {
       if(lang!=='ko'&&vi<120)this.ensureName(p);
       const locName=(st.tname||{})[p.id+'_'+lang];
       return {key:p.id,n:'',unShow:p.un?'block':'none',k100Show:p.k100?'inline-flex':'none',vzShow:p.vz?'inline-flex':'none',vzChip:p.vz?((/관광특구/.test(p.vz)?{ko:'관광특구',en:'Tourist Zone',zh:'旅游特区',ja:'観光特区',es:'Zona turística'}:/관광단지/.test(p.vz)?{ko:'관광단지',en:'Resort Complex',zh:'旅游园区',ja:'観光団地',es:'Complejo'}:{ko:'지정관광지',en:'Designated',zh:'指定景区',ja:'指定観光地',es:'Designado'})[this.state.lang]||'Designated'):'',vzTitle:p.vz||'',bfShow:p.bf?'inline-flex':'none',
-        k100Chip:({ko:'100선',en:'TOP 100',zh:'100选',ja:'100選',es:'TOP 100',fr:'TOP 100'}[lang]||'TOP 100'),
-        k100Title:({ko:'한국관광 100선',en:'Korea Top 100',zh:'韩国观光100选',ja:'韓国観光100選',es:'Top 100 de Corea',fr:'Top 100 de Corée'}[lang]||'Korea Top 100'),
-        bfTitle:({ko:'열린관광지 (무장애)',en:'Barrier-free site',zh:'无障碍旅游地',ja:'バリアフリー観光地',es:'Sitio accesible',fr:'Site accessible'}[lang]||'Barrier-free site'),pinBorder:'2px solid #153b3d',name:(locName||nm(p)),
+        k100Chip:({ko:'100선',en:'TOP 100',zh:'100选',ja:'100選',es:'TOP 100'}[lang]||'TOP 100'),
+        k100Title:({ko:'한국관광 100선',en:'Korea Top 100',zh:'韩国观光100选',ja:'韓国観光100選',es:'Top 100 de Corea'}[lang]||'Korea Top 100'),
+        bfTitle:({ko:'열린관광지 (무장애)',en:'Barrier-free site',zh:'无障碍旅游地',ja:'バリアフリー観光地',es:'Sitio accesible'}[lang]||'Barrier-free site'),pinBorder:'2px solid #153b3d',name:(locName||nm(p)),
       catLabel:cat(p),stay:stay(p),
       distLabel:p.locKo?loc(p):hav(center,p).toFixed(1)+' km',
       videoLabel:'',
@@ -8185,9 +8185,9 @@ class Component extends DCLogic {
       },
       langOpen:()=>this.setState({langOpen:true}),
       oSearchWrapShow:(_isUlleung||(st.travelMode==='own'&&this.isJejuTrip()))?'none':'flex',
-      oSearchLabel:{ko:'지도에서 검색해 추가',en:'Add by map search',zh:'在地图上搜索添加',ja:'地図で検索して追加',es:'Añadir buscando en el mapa',fr:'Add by map search'}[lang]||'Add by map search',
-      oSearchStartLabel:{ko:'출발지',en:'Departure',zh:'出发地',ja:'出発地',es:'Origen',fr:'Departure'}[lang]||'Departure',
-      oSearchEndLabel:{ko:'귀가지',en:'Return',zh:'返程地',ja:'帰着地',es:'Regreso',fr:'Return'}[lang]||'Return',
+      oSearchLabel:{ko:'지도에서 검색해 추가',en:'Add by map search',zh:'在地图上搜索添加',ja:'地図で検索して追加',es:'Añadir buscando en el mapa'}[lang]||'Add by map search',
+      oSearchStartLabel:{ko:'출발지',en:'Departure',zh:'出发地',ja:'出発地',es:'Origen'}[lang]||'Departure',
+      oSearchEndLabel:{ko:'귀가지',en:'Return',zh:'返程地',ja:'帰着地',es:'Regreso'}[lang]||'Return',
       oSearchStartBg:(st.oSearchFor||'start')==='start'?'#153b3d':'transparent',
       oSearchStartFg:(st.oSearchFor||'start')==='start'?'#f2ece0':'#153b3d',
       oSearchEndBg:st.oSearchFor==='end'?'#153b3d':'transparent',
@@ -8197,8 +8197,8 @@ class Component extends DCLogic {
       oSearchQ:st.oSearchQ||'',
       oSearchChange:e=>this.setState({oSearchQ:e.target.value}),
       oSearchKey:e=>{if(e.key==='Enter'){e.preventDefault();this.runOriginSearch();}},
-      oSearchPh:{ko:'집 주소·역·장소명',en:'Address, station or place',zh:'地址·车站·地点',ja:'住所・駅・場所名',es:'Dirección, estación o lugar',fr:'Address, station or place'}[lang]||'Address, station or place',
-      oSearchBtn:st.oSearchBusy?({ko:'검색중',en:'…',zh:'搜索中',ja:'検索中',es:'…',fr:'…'}[lang]||'…'):({ko:'검색',en:'Search',zh:'搜索',ja:'検索',es:'Buscar',fr:'Search'}[lang]||'Search'),
+      oSearchPh:{ko:'집 주소·역·장소명',en:'Address, station or place',zh:'地址·车站·地点',ja:'住所・駅・場所名',es:'Dirección, estación o lugar'}[lang]||'Address, station or place',
+      oSearchBtn:st.oSearchBusy?({ko:'검색중',en:'…',zh:'搜索中',ja:'検索中',es:'…'}[lang]||'…'):({ko:'검색',en:'Search',zh:'搜索',ja:'検索',es:'Buscar'}[lang]||'Search'),
       oSearchRun:()=>this.runOriginSearch(),
       oSearchResults:(st.oSearchRes||[]).map((r,i)=>({key:'osr'+i,name:r.name,addr:r.addr,pick:()=>this.pickOriginSearch(r)})),
       oSearchResShow:(st.oSearchRes||[]).length?'flex':'none',
@@ -8213,8 +8213,8 @@ class Component extends DCLogic {
         useStart:()=>this.setState(st.oSearchFor==='end'?{originEnd:c.key}:{origin:c.key}),
         remove:()=>this.removeCustomOrigin(c.key)})),
       oSearchSavedShow:(st.customOrigins||[]).length?'flex':'none',
-      oSearchSavedLabel:{ko:'추가해 둔 지점',en:'Saved points',zh:'已添加的地点',ja:'追加した地点',es:'Puntos guardados',fr:'Saved points'}[lang]||'Saved points',
-      oSearchRemoveLabel:{ko:'삭제',en:'Remove',zh:'删除',ja:'削除',es:'Quitar',fr:'Remove'}[lang]||'Remove',
+      oSearchSavedLabel:{ko:'추가해 둔 지점',en:'Saved points',zh:'已添加的地点',ja:'追加した地点',es:'Puntos guardados'}[lang]||'Saved points',
+      oSearchRemoveLabel:{ko:'삭제',en:'Remove',zh:'删除',ja:'削除',es:'Quitar'}[lang]||'Remove',
       ulNoticeShow:!!st.ulNotice,
       ...(()=>{
         const blank={routeAskShow:false,routeAskKicker:'',routeAskTitle:'',routeAskBody:'',routeAskOpts:[],routeAskClose:()=>{},routeAskFoot:''};
@@ -8263,7 +8263,7 @@ class Component extends DCLogic {
       })(),
       routeChangeLabel:{ko:'경로 변경',en:'Change route',zh:'更改路线',ja:'経路変更',es:'Cambiar ruta'}[lang]||'Change route',
       custAskShow:!!st.custAsk,
-      custAskKicker:{ko:'출발 방식 확인',en:'How will you start?',zh:'确认出发方式',ja:'出発方法の確認',es:'¿Cómo saldrás?',fr:'How will you start?'}[lang]||'How will you start?',
+      custAskKicker:{ko:'출발 방식 확인',en:'How will you start?',zh:'确认出发方式',ja:'出発方法の確認',es:'¿Cómo saldrás?'}[lang]||'How will you start?',
       custAskTitle:(()=>{
         const c=(st.customOrigins||[]).find(x=>x.key===st.custAsk);
         const nm=c?(lang==='ko'?c.ko:(c.en||c.ko)):'';
@@ -8276,7 +8276,7 @@ class Component extends DCLogic {
         ja:'追加した地点は町丁目レベルの座標で、駅やターミナルではありません。二つの方法で所要時間が大きく変わるので選んでください。',
         es:'El punto añadido es una coordenada de barrio, no una estación ni una terminal. Las dos opciones difieren mucho en tiempo; elige una.'
       }[lang]||'The point you added is a neighbourhood coordinate, not a station or terminal.',
-      custOwnTitle:{ko:'자가용으로 바로 이동',en:'Drive straight there',zh:'自驾直接前往',ja:'自家用車で直行',es:'Ir en coche directamente',fr:'Drive straight there'}[lang]||'Drive straight there',
+      custOwnTitle:{ko:'자가용으로 바로 이동',en:'Drive straight there',zh:'自驾直接前往',ja:'自家用車で直行',es:'Ir en coche directamente'}[lang]||'Drive straight there',
       custOwnDesc:{ko:'관문을 거치지 않고 이 지점에서 여행지까지 주행합니다. 고속도로 표정속도와 휴게 시간을 적용합니다.',
         en:'No gateway — drive from this point to the destination, using highway speeds plus rest stops.',
         zh:'不经关口，从该地点直接驾车前往，按高速公路平均速度并计入休息时间。',
@@ -8306,9 +8306,9 @@ class Component extends DCLogic {
       custPickOwnFn:()=>this.custPickOwn(),
       custPickViaFn:()=>this.custPickVia(),
       ulNoticeClose:()=>this.setState({ulNotice:false}),
-      ulNoticeKicker:{ko:'울릉 항로',en:'Ulleung ferry',zh:'郁陵航线',ja:'鬱陵航路',es:'Ferry a Ulleung',fr:'Ulleung ferry'}[lang]||'Ulleung ferry',
-      ulNoticeCloseLabel:{ko:'닫기',en:'Close',zh:'关闭',ja:'閉じる',es:'Cerrar',fr:'Close'}[lang]||'Close',
-      ulNoticeTitle:{ko:'울릉은 배로만 들어갑니다',en:'Ulleungdo is reached only by ferry',zh:'郁陵岛只能乘船前往',ja:'鬱陵島へは船のみ',es:'A Ulleungdo solo se llega en ferry',fr:'Ulleungdo is reached only by ferry'}[lang]||'Ulleungdo is reached only by ferry',
+      ulNoticeKicker:{ko:'울릉 항로',en:'Ulleung ferry',zh:'郁陵航线',ja:'鬱陵航路',es:'Ferry a Ulleung'}[lang]||'Ulleung ferry',
+      ulNoticeCloseLabel:{ko:'닫기',en:'Close',zh:'关闭',ja:'閉じる',es:'Cerrar'}[lang]||'Close',
+      ulNoticeTitle:{ko:'울릉은 배로만 들어갑니다',en:'Ulleungdo is reached only by ferry',zh:'郁陵岛只能乘船前往',ja:'鬱陵島へは船のみ',es:'A Ulleungdo solo se llega en ferry'}[lang]||'Ulleungdo is reached only by ferry',
       ulNoticeBody:{
         ko:'철도·고속버스·항공 노선이 없어, 출발지와 귀가지를 울릉행 여객선이 뜨는 네 항구로만 집계합니다. 출발지는 포항여객선터미널로 맞춰 두었으니 원하는 항구로 바꿔 주세요.',
         en:'There is no rail, bus or air service to the island, so departure and return are counted only from the four ports with Ulleung sailings. Departure has been set to Pohang Ferry Terminal — switch it to the port you want.',
@@ -8316,7 +8316,7 @@ class Component extends DCLogic {
         ja:'鉄道・高速バス・航空便がないため、出発地と帰着地は鬱陵航路のある四つの港だけで集計します。出発地は浦項旅客船ターミナルに設定しました。お好みの港に変更してください。',
         es:'No hay tren, autobús ni vuelo a la isla, así que la salida y el regreso se calculan solo desde los cuatro puertos con ferry a Ulleung. La salida se ha fijado en la terminal de Pohang; cámbiala al puerto que prefieras.'
       }[lang]||'There is no rail, bus or air service to the island, so departure and return are counted only from the four ports with Ulleung sailings.',
-      ulNoticePortsLabel:{ko:'출발 가능 항구 · 소요',en:'Ports served · duration',zh:'可出发港口 · 时长',ja:'出発できる港 · 所要',es:'Puertos · duración',fr:'Ports served · duration'}[lang]||'Ports served · duration',
+      ulNoticePortsLabel:{ko:'출발 가능 항구 · 소요',en:'Ports served · duration',zh:'可出发港口 · 时长',ja:'出発できる港 · 所要',es:'Puertos · duración'}[lang]||'Ports served · duration',
       ulNoticePorts:['hupoPort','mukhoPort','gangneungPort','pohangPort'].map(k=>{
         const o=ORIGINS[k], t=40+(o.sailMin||190);
         return {key:k,name:(lang==='ko'?o.ko:(o.en||o.ko)).replace(/\s*\([^)]*\)\s*$/,''),
@@ -8329,7 +8329,7 @@ class Component extends DCLogic {
         ja:'所要時間は航路ごとの固定航海時間に乗船手続40分を加えたものです。入港先は便により道洞・苧洞・沙洞と異なり、悪天候で欠航になることがあります。',
         es:'Los tiempos son la travesía fija de cada ruta más 40 minutos de embarque. El puerto de llegada varía según el servicio (Dodong, Jeodong o Sadong) y el trayecto puede cancelarse con mal tiempo.'
       }[lang]||'Durations are each route’s fixed sailing time plus 40 minutes for boarding.',
-      ulNoticeOk:{ko:'알겠습니다',en:'Got it',zh:'知道了',ja:'了解しました',es:'Entendido',fr:'Got it'}[lang]||'Got it',
+      ulNoticeOk:{ko:'알겠습니다',en:'Got it',zh:'知道了',ja:'了解しました',es:'Entendido'}[lang]||'Got it',
       langClose:()=>this.setState({langOpen:false}),
       langMenu:st.langOpen?'block':'none',
       langItems:LANGS.map(l=>({key:l.id,label:l.label,
@@ -8342,14 +8342,14 @@ class Component extends DCLogic {
       cities:['nation','seoul','busan','jeju'].map(c=>({key:c,label:(DATA[c][lang]||DATA[c].ko).toUpperCase(),
         bg:st.city===c?'#153b3d':'transparent',fg:st.city===c?'#f2ece0':'rgba(21,59,61,.7)',
         pick:()=>this.setState({city:c,cat:'ALL',detail:null})})),
-      cityPickLabel:st.cityPick?({ko:'닫기',en:'Close',zh:'关闭',ja:'閉じる',es:'Cerrar',fr:'Close'}[lang]||'Close'):({ko:'도시 ▾',en:'City ▾',zh:'城市 ▾',ja:'都市 ▾',es:'Ciudad ▾',fr:'City ▾'}[lang]||'City ▾'),
+      cityPickLabel:st.cityPick?({ko:'닫기',en:'Close',zh:'关闭',ja:'閉じる',es:'Cerrar'}[lang]||'Close'):({ko:'도시 ▾',en:'City ▾',zh:'城市 ▾',ja:'都市 ▾',es:'Ciudad ▾'}[lang]||'City ▾'),
       cityPickBg:st.cityPick?'#153b3d':'transparent',
       cityPickFg:st.cityPick?'#f2ece0':'rgba(21,59,61,.7)',
       cityPickShow2:st.cityPick?'flex':'none',
       cityPickToggle:()=>this.setState({cityPick:!st.cityPick}),
       cityQuery:st.cityQuery||'',
       cityQueryChange:e=>this.setState({cityQuery:e.target.value}),
-      citySearchPh:{ko:'도시 검색',en:'Search a city',zh:'搜索城市',ja:'都市を検索',es:'Buscar ciudad',fr:'Search a city'}[lang]||'Search a city',
+      citySearchPh:{ko:'도시 검색',en:'Search a city',zh:'搜索城市',ja:'都市を検索',es:'Buscar ciudad'}[lang]||'Search a city',
       cityOptions:(()=>{
         const q=(st.cityQuery||'').trim();
         const rows=[];
@@ -8418,14 +8418,14 @@ class Component extends DCLogic {
           if(items.length)out.push({key:r.key,label:(lang==='ko'?r.ko:(r[lang]||r.en)),sub:items.length+(lang==='ko'?'곳':''),items});
         });
         const rest=all.filter(x=>!placed[x.ko||x.label]).map(deco);
-        if(rest.length)out.push({key:'etc',label:{ko:'기타 지역',en:'Other regions',zh:'其他地区',ja:'その他の地域',es:'Otras regiones',fr:'Other regions'}[lang]||'Other regions',sub:rest.length+(lang==='ko'?'곳':''),items:rest});
+        if(rest.length)out.push({key:'etc',label:{ko:'기타 지역',en:'Other regions',zh:'其他地区',ja:'その他の地域',es:'Otras regiones'}[lang]||'Other regions',sub:rest.length+(lang==='ko'?'곳':''),items:rest});
         return out;
       })(),
 
       chips,
       visiblePlaces:visiblePlaces.slice(0,st.listLimit||40),
       moreShow:visiblePlaces.length>(st.listLimit||40)?'flex':'none',
-      moreLabel:(({ko:'더 보기 ',en:'Show more ',zh:'查看更多 ',ja:'もっと見る ',es:'Ver más ',fr:'Voir plus '})[lang]||'Show more ')+'('+Math.min(visiblePlaces.length,(st.listLimit||40))+' / '+visiblePlaces.length+')',
+      moreLabel:(({ko:'더 보기 ',en:'Show more ',zh:'查看更多 ',ja:'もっと見る ',es:'Ver más '})[lang]||'Show more ')+'('+Math.min(visiblePlaces.length,(st.listLimit||40))+' / '+visiblePlaces.length+')',
       moreClick:()=>this.setState(s=>({listLimit:(s.listLimit||40)+80})),
       mapDisplay:st.activeTab==='map'?'flex':'none',
       channelDisplay:st.activeTab==='channel'?'flex':'none',
@@ -8435,7 +8435,7 @@ class Component extends DCLogic {
       sheetTitle:(st.scopeLoc?st.scopeLoc+' · ':(st.scopeMacro?((MACRO_REGION[lang==='ko'?'ko':'en']||MACRO_REGION.en)[st.scopeMacro]+' · '):(sheetScope?sheetScope+' · ':'')))+this.tr('sheet')+' · '+listForSheet.length,
       sheetChevron:st.sheet?'▼':'▲',
       scopeShow:(st.scopeLoc||st.scopeMacro)?'flex':'none',
-      clearScopeLabel:{ko:'전체 보기 ✕',en:'Show all ✕',zh:'查看全部 ✕',ja:'全体表示 ✕',es:'Ver todo ✕',fr:'Show all ✕'}[lang]||'Show all ✕',
+      clearScopeLabel:{ko:'전체 보기 ✕',en:'Show all ✕',zh:'查看全部 ✕',ja:'全体表示 ✕',es:'Ver todo ✕'}[lang]||'Show all ✕',
       clearScope:()=>{this._sig=null;this._fits=0;this._holdUntil=0;this.setState({scopeLoc:null,focusLoc:null,scopeMacro:null});},
       locate:this.locate,
       toggleSheet:()=>this.setState({sheet:!st.sheet}),
@@ -8504,9 +8504,9 @@ class Component extends DCLogic {
         }
         return Math.floor(tot/60)+'h'+(tot%60?' '+(tot%60)+'m':'');
       })(),
-      originLabel:{ko:'출발지',en:'Departure',zh:'出发地',ja:'出発地',es:'Origen',fr:'Departure'}[lang]||'Departure',
-      originEndLabel:{ko:'귀가지',en:'Return to',zh:'返程地',ja:'帰着地',es:'Regreso a',fr:'Return to'}[lang]||'Return to',
-      originSameLabel:{ko:'출발지와 동일',en:'Same as departure',zh:'与出发地相同',ja:'出発地と同じ',es:'Igual que el origen',fr:'Same as departure'}[lang]||'Same as departure',
+      originLabel:{ko:'출발지',en:'Departure',zh:'出发地',ja:'出発地',es:'Origen'}[lang]||'Departure',
+      originEndLabel:{ko:'귀가지',en:'Return to',zh:'返程地',ja:'帰着地',es:'Regreso a'}[lang]||'Return to',
+      originSameLabel:{ko:'출발지와 동일',en:'Same as departure',zh:'与出发地相同',ja:'出発地と同じ',es:'Igual que el origen'}[lang]||'Same as departure',
       originValue:this.oKey(st.origin),
       originEndValue:(()=>{
         const e=st.originEnd;
@@ -8516,7 +8516,7 @@ class Component extends DCLogic {
         if(_isUlleung!==(rt==='ulleung'))return '';
         return e;
       })(),
-      depTimeLabel:{ko:'출발 시각 (출발지)',en:'Depart (origin)',zh:'出发时间(出发地)',ja:'出発時刻(出発地)',es:'Salida (origen)',fr:'Depart (origin)'}[lang]||'Depart (origin)',
+      depTimeLabel:{ko:'출발 시각 (출발지)',en:'Depart (origin)',zh:'出发时间(出发地)',ja:'出発時刻(出発地)',es:'Salida (origen)'}[lang]||'Depart (origin)',
       depTimeValue:st.depTime||'08:00',
       depTimeOptions:(()=>{
         const out=[];
@@ -8524,7 +8524,7 @@ class Component extends DCLogic {
         return out;
       })(),
       depTimeChange:e=>this.setState({depTime:e.target.value}),
-      retTimeLabel:{ko:'귀가 출발 (여행지)',en:'Depart (destination)',zh:'返程出发(旅行地)',ja:'帰路出発(旅行地)',es:'Salida (destino)',fr:'Depart (destination)'}[lang]||'Depart (destination)',
+      retTimeLabel:{ko:'귀가 출발 (여행지)',en:'Depart (destination)',zh:'返程出发(旅行地)',ja:'帰路出発(旅行地)',es:'Salida (destino)'}[lang]||'Depart (destination)',
       retTimeValue:st.retTime||'19:00',
       retTimeOptions:(()=>{const out=[];for(let h=10;h<=23;h++)for(const m of ['00','30'])out.push({key:'r'+h+m,value:String(h).padStart(2,'0')+':'+m,label:String(h).padStart(2,'0')+':'+m});return out;})(),
       retTimeChange:e=>this.setState({retTime:e.target.value}),
@@ -8553,7 +8553,7 @@ class Component extends DCLogic {
         if(st.wideMode!=='bus')for(let _i=_all.length-1;_i>=0;_i--){if(airTwin(_all[_i].key)!==_all[_i].key)_all.splice(_i,1);}
         return _all.filter(o=>_n.indexOf(o.key)>-1);})(),
       originChange:e=>{const v=airTwin(e.target.value),w=gwWideOf(v);const p={origin:v,legs:{}};if(w&&this.state.travelMode!=='own'){p.wideMode=w;window.__tpWide=w;const e2=this.state.originEnd;if(e2&&gwWideOf(e2)&&gwWideOf(e2)!==w)p.originEnd='';}this.setState(p);},
-      metroOriginLabel:st.wideMode==='metro'?({ko:'출발지 · 호선 → 역명',en:'Start · line → station',zh:'出发地 · 线路 → 车站',ja:'出発地 · 路線 → 駅',es:'Salida · línea → estación'}[lang]||'Start · line → station'):{ko:'출발 전철역 (광역전철 구간)',en:'Departure metro station',zh:'出发地铁站',ja:'出発の電車駅',es:'Estación de salida',fr:'Departure metro station'}[lang]||'Departure metro station',
+      metroOriginLabel:st.wideMode==='metro'?({ko:'출발지 · 호선 → 역명',en:'Start · line → station',zh:'出发地 · 线路 → 车站',ja:'出発地 · 路線 → 駅',es:'Salida · línea → estación'}[lang]||'Start · line → station'):{ko:'출발 전철역 (광역전철 구간)',en:'Departure metro station',zh:'出发地铁站',ja:'出発の電車駅',es:'Estación de salida'}[lang]||'Departure metro station',
       metroOriginShow:(()=>{
         if((st.travelMode||'transit')==='own')return 'none';
         if(st.wideMode==='metro')return 'flex';
@@ -8561,8 +8561,8 @@ class Component extends DCLogic {
         const reg=f?(f.locKo||city.ko):((DATA[st.city]||{}).ko);
         return (reg&&METRO_CITY[reg])?'flex':'none';
       })(),
-      metroLineLabel:{ko:'호선',en:'Line',zh:'线路',ja:'路線',es:'Línea',fr:'Line'}[lang]||'Line',
-      metroStnLabel:{ko:'역명',en:'Station',zh:'车站',ja:'駅',es:'Estación',fr:'Station'}[lang]||'Station',
+      metroLineLabel:{ko:'호선',en:'Line',zh:'线路',ja:'路線',es:'Línea'}[lang]||'Line',
+      metroStnLabel:{ko:'역명',en:'Station',zh:'车站',ja:'駅',es:'Estación'}[lang]||'Station',
       metroLineValue:st.metroLine||'',
       metroLineOptions:(()=>{
         const set={};
@@ -8592,8 +8592,8 @@ class Component extends DCLogic {
           .sort((a,b)=>coll.compare(lang==='ko'?a.ko:(a.en||a.ko),lang==='ko'?b.ko:(b.en||b.ko)))
           .map(m=>({key:m.ko,value:m.ko,label:(lang==='ko'?(/역$/.test(m.ko)?m.ko:m.ko+'역'):(m.en||m.ko))}));
       })(),
-      metroLinePlaceholder:{ko:'호선 선택',en:'Choose a line',zh:'选择线路',ja:'路線を選択',es:'Elige línea',fr:'Choose a line'}[lang]||'Choose a line',
-      metroStnPlaceholder:{ko:'역 선택',en:'Choose a station',zh:'选择车站',ja:'駅を選択',es:'Elige estación',fr:'Choose a station'}[lang]||'Choose a station',
+      metroLinePlaceholder:{ko:'호선 선택',en:'Choose a line',zh:'选择线路',ja:'路線を選択',es:'Elige línea'}[lang]||'Choose a line',
+      metroStnPlaceholder:{ko:'역 선택',en:'Choose a station',zh:'选择车站',ja:'駅を選択',es:'Elige estación'}[lang]||'Choose a station',
       metroOriginChange:e=>this.setState({metroOrigin:e.target.value}),
       metroEndShow:(st.travelMode!=='own'&&st.wideMode==='metro')?'flex':'none',
       metroEndLabel:{ko:'귀가지 · 호선 → 역명',en:'Return · line → station',zh:'返回地 · 线路 → 车站',ja:'帰着地 · 路線 → 駅',es:'Regreso · línea → estación'}[lang]||'Return · line → station',
@@ -8613,7 +8613,7 @@ class Component extends DCLogic {
       })(),
 
       originEndChange:e=>{const v=airTwin(e.target.value),w=gwWideOf(v);const p={originEnd:v,legs:{}};if(w&&!this.state.wideMode&&this.state.travelMode!=='own'){p.wideMode=w;window.__tpWide=w;}this.setState(p);},
-      srtLabel:{ko:'SRT 예매',en:'Book SRT',zh:'预订SRT',ja:'SRT予約',es:'Reservar SRT',fr:'Book SRT'}[lang]||'Book SRT',
+      srtLabel:{ko:'SRT 예매',en:'Book SRT',zh:'预订SRT',ja:'SRT予約',es:'Reservar SRT'}[lang]||'Book SRT',
       srtBooking:()=>window.open('https://etk.srail.kr/main.do','_blank'),
       planBasis:(()=>{
         if(!cItems.length)return '';
@@ -8634,12 +8634,12 @@ class Component extends DCLogic {
         const hhmm=t=>String(Math.floor(t/60)%24).padStart(2,'0')+':'+String(t%60).padStart(2,'0');
         const END=21*60;      // 21:00 이후로는 일정을 잡지 않는다
         const rest=Math.max(0,Math.min(720, END-arr));
-        const OWN={ko:'자가용',en:'Own car',zh:'自驾私家车',ja:'自家用車',es:'Coche propio',fr:'Own car'}[lang]||'Own car';
+        const OWN={ko:'자가용',en:'Own car',zh:'自驾私家车',ja:'自家用車',es:'Coche propio'}[lang]||'Own car';
         const MN={ktx:'KTX',srt:'SRT',own:OWN,
-          air:{ko:'항공편',en:'Flight',zh:'航班',ja:'航空便',es:'Vuelo',fr:'Flight'}[lang]||'Flight',
-          ship:{ko:'여객선',en:'Ferry',zh:'轮渡',ja:'旅客船',es:'Ferry',fr:'Ferry'}[lang]||'Ferry',
-          bus:{ko:'고속버스',en:'Express bus',zh:'长途巴士',ja:'高速バス',es:'Autobús',fr:'Express bus'}[lang]||'Bus',
-          metro:{ko:'광역전철',en:'Metro rail',zh:'城际地铁',ja:'広域電車',es:'Tren urbano',fr:'Metro rail'}[lang]||'Metro rail'};
+          air:{ko:'항공편',en:'Flight',zh:'航班',ja:'航空便',es:'Vuelo'}[lang]||'Flight',
+          ship:{ko:'여객선',en:'Ferry',zh:'轮渡',ja:'旅客船',es:'Ferry'}[lang]||'Ferry',
+          bus:{ko:'고속버스',en:'Express bus',zh:'长途巴士',ja:'高速バス',es:'Autobús'}[lang]||'Bus',
+          metro:{ko:'광역전철',en:'Metro rail',zh:'城际地铁',ja:'広域電車',es:'Tren urbano'}[lang]||'Metro rail'};
         let mName=MN[mode]||MN.bus;
         if(mode==='own'){
           const k=this.driveKey(orgO,cItems[0]);
@@ -8693,21 +8693,21 @@ class Component extends DCLogic {
         return (T3[lang]||T3.en)()+((T4[lang]||T4.en)());
       })(),
       planBasisShow:(cItems.length&&st.tripFrom)?'block':'none',
-      arrLegTag:{ko:'도착 후',en:'On arrival',zh:'抵达后',ja:'到着後',es:'Al llegar',fr:'On arrival'}[lang]||'On arrival',
-      routeBtnLabel:{ko:'길찾기',en:'Route',zh:'路线',ja:'経路',es:'Ruta',fr:'Route'}[lang]||'Route',
+      arrLegTag:{ko:'도착 후',en:'On arrival',zh:'抵达后',ja:'到着後',es:'Al llegar'}[lang]||'On arrival',
+      routeBtnLabel:{ko:'길찾기',en:'Route',zh:'路线',ja:'経路',es:'Ruta'}[lang]||'Route',
       courseItems,
       // ── 여러 날 일정 ───────────────────────────────────────────────
-      regionMoveLabel:{ko:'지역 이동',en:'Transfer',zh:'区域移动',ja:'地域移動',es:'Traslado',fr:'Transfer'}[lang]||'Transfer',
-      dayAddLabel:{ko:'장소 추가',en:'Add place',zh:'添加地点',ja:'スポット追加',es:'Añadir lugar',fr:'Add place'}[lang]||'Add place',
-      dayAddPh:{ko:'이 날에 넣을 장소 검색',en:'Search a place for this day',zh:'搜索当天要加入的地点',ja:'この日に入れる場所を検索',es:'Buscar un lugar para este día',fr:'Search a place for this day'}[lang]||'Search a place for this day',
-      dayAddCloseLabel:{ko:'닫기',en:'Close',zh:'关闭',ja:'閉じる',es:'Cerrar',fr:'Close'}[lang]||'Close',
-      dayAddClearLabel:{ko:'지우기',en:'Clear',zh:'清除',ja:'クリア',es:'Borrar',fr:'Clear'}[lang]||'Clear',
+      regionMoveLabel:{ko:'지역 이동',en:'Transfer',zh:'区域移动',ja:'地域移動',es:'Traslado'}[lang]||'Transfer',
+      dayAddLabel:{ko:'장소 추가',en:'Add place',zh:'添加地点',ja:'スポット追加',es:'Añadir lugar'}[lang]||'Add place',
+      dayAddPh:{ko:'이 날에 넣을 장소 검색',en:'Search a place for this day',zh:'搜索当天要加入的地点',ja:'この日に入れる場所を検索',es:'Buscar un lugar para este día'}[lang]||'Search a place for this day',
+      dayAddCloseLabel:{ko:'닫기',en:'Close',zh:'关闭',ja:'閉じる',es:'Cerrar'}[lang]||'Close',
+      dayAddClearLabel:{ko:'지우기',en:'Clear',zh:'清除',ja:'クリア',es:'Borrar'}[lang]||'Clear',
       dayPlanDisplay:st.tripFrom&&cItems.length?'flex':'none',
       flatDisplay:st.tripFrom&&cItems.length?'none':'flex',
       tripBarDisplay:st.tripFrom?'flex':'none',
       tripHint:(st.tripFrom&&!st.tripTo)
-        ?({ko:'귀가일을 한 번 더 선택하세요.',en:'Now pick your return date.',zh:'请再选择返程日期。',ja:'帰着日をもう一度選んでください。',es:'Ahora elige la fecha de regreso.',fr:'Now pick your return date.'}[lang]||'')
-        :({ko:'출발일과 귀가일을 차례로 선택하면 n박 m일 일정으로 나뉩니다.',en:'Pick a start date, then an end date — the course splits across those days.',zh:'依次选择出发日与返程日，行程将按天分配。',ja:'出発日と帰着日を順に選ぶと、日程が日別に分かれます。',es:'Elige la fecha de salida y la de regreso; la ruta se divide por días.',fr:'Pick a start date, then an end date — the course splits across those days.'}[lang]||''),
+        ?({ko:'귀가일을 한 번 더 선택하세요.',en:'Now pick your return date.',zh:'请再选择返程日期。',ja:'帰着日をもう一度選んでください。',es:'Ahora elige la fecha de regreso.'}[lang]||'')
+        :({ko:'출발일과 귀가일을 차례로 선택하면 n박 m일 일정으로 나뉩니다.',en:'Pick a start date, then an end date — the course splits across those days.',zh:'依次选择出发日与返程日，行程将按天分配。',ja:'出発日と帰着日を順に選ぶと、日程が日別に分かれます。',es:'Elige la fecha de salida y la de regreso; la ruta se divide por días.'}[lang]||''),
       tripRange:(()=>{
         if(!st.tripFrom)return '';
         if(!st.tripTo){
@@ -8724,10 +8724,10 @@ class Component extends DCLogic {
       clearTrip:()=>this.setState({tripFrom:null,tripTo:null}),
       modeDriveBg:mode==='driving'?'#153b3d':'#f2ece0', modeDriveFg:mode==='driving'?'#f2ece0':'#153b3d',
       modeTransitBg:mode==='transit'?'#153b3d':'#f2ece0', modeTransitFg:mode==='transit'?'#f2ece0':'#153b3d',
-      modeDriveLabel:{ko:'자동차 (렌트카)',en:'Driving (rental)',zh:'自驾 (租车)',ja:'車 (レンタカー)',es:'Coche (alquiler)',fr:'Driving (rental)'}[lang]||'Driving (rental)',
-      modeTransitLabel:{ko:'대중교통',en:'Transit',zh:'公共交通',ja:'公共交通',es:'Transporte',fr:'Transit'}[lang]||'Transit',
+      modeDriveLabel:{ko:'자동차 (렌트카)',en:'Driving (rental)',zh:'自驾 (租车)',ja:'車 (レンタカー)',es:'Coche (alquiler)'}[lang]||'Driving (rental)',
+      modeTransitLabel:{ko:'대중교통',en:'Transit',zh:'公共交通',ja:'公共交通',es:'Transporte'}[lang]||'Transit',
       modeOwnBg:mode==='own'?'#153b3d':'#f2ece0', modeOwnFg:mode==='own'?'#f2ece0':'#153b3d',
-      modeOwnLabel:{ko:'자가용',en:'Own car',zh:'私家车',ja:'自家用車',es:'Coche propio',fr:'Own car'}[lang]||'Own car',
+      modeOwnLabel:{ko:'자가용',en:'Own car',zh:'私家车',ja:'自家用車',es:'Coche propio'}[lang]||'Own car',
       setOwn:()=>{this.loadRests();this.setState({travelMode:'own'});},
       setDrive:()=>this.setState({travelMode:'driving'}),
       setTransit:()=>this.setState({travelMode:'transit'}),
@@ -8752,8 +8752,8 @@ class Component extends DCLogic {
         return [row('start',nmOf(sk)||'—',sub(sk)),row('end',ek?nmOf(ek):t('same'),ek?sub(ek):nmOf(sk))];
       })(),
       ownTimeFlex:((st.travelMode!=='own'||(this.isJejuTrip()&&st.jejuResident!==true))&&['bus','rail','air','ship'].indexOf(st.wideMode)>-1)?'0 0 92px':'1 1 0',
-      wideTitle:{ko:'광역교통',en:'Intercity',zh:'城际交通',ja:'広域交通',es:'Interurbano',fr:'Intercity'}[lang]||'Intercity',
-      localTitle:{ko:'현지 이동',en:'Getting around',zh:'当地出行',ja:'現地移動',es:'En destino',fr:'Getting around'}[lang]||'Getting around',
+      wideTitle:{ko:'광역교통',en:'Intercity',zh:'城际交通',ja:'広域交通',es:'Interurbano'}[lang]||'Intercity',
+      localTitle:{ko:'현지 이동',en:'Getting around',zh:'当地出行',ja:'現地移動',es:'En destino'}[lang]||'Getting around',
       wideOpts:(()=>{
         // 제주 여행(전국에서 제주를 고른 경우 포함)은 항공·배·자가용만 — 육로 수단은 닿지 않는다
         const _jeju=st.city==='jeju'||st.scopeLoc==='제주'||st.focusLoc==='제주'||this.courseList().some(p=>(p.locKo||'')==='제주');
@@ -8788,12 +8788,12 @@ class Component extends DCLogic {
       localOwnNoteShow:st.travelMode==='own'?'block':'none',
       localOwnNote:{ko:'자가용을 고르면 현지에서도 같은 차로 이동합니다.',en:'With your own car, you drive it locally too.',zh:'选择私家车时，当地也开同一辆车。',ja:'自家用車の場合、現地も同じ車で移動します。',es:'Con coche propio, también se usa en destino.'}[lang]||'With your own car, you drive it locally too.',
       routeNote:_ulNote+(cItems.length<2?'':(mode==='own'
-        ?({ko:'자가용 기준 — 한국도로공사 고속도로 표정속도(약 92km/h)와 진출입·휴게 시간을 적용한 주행시간입니다. KTX·버스 예매는 필요하지 않습니다.',en:'Own car — driving times use the Korea Expressway Corporation average highway speed (~92 km/h) plus ramp and rest stops. No rail or bus booking needed.',zh:'私家车 — 采用韩国道路公社高速公路平均速度(约92km/h)并计入出入口与休息时间，无需预订火车或客车。',ja:'自家用車 — 韓国道路公社の高速道路平均速度(約92km/h)に出入口・休憩時間を加えた所要時間です。鉄道・バスの予約は不要です。',es:'Coche propio — tiempos según la velocidad media de autopista de Korea Expressway (~92 km/h) más accesos y descansos. No hace falta reservar tren ni autobús.',fr:'Own car — driving times use the Korea Expressway Corporation average highway speed (~92 km/h) plus ramp and rest stops. No rail or bus booking needed.'}[lang]||'')
+        ?({ko:'자가용 기준 — 한국도로공사 고속도로 표정속도(약 92km/h)와 진출입·휴게 시간을 적용한 주행시간입니다. KTX·버스 예매는 필요하지 않습니다.',en:'Own car — driving times use the Korea Expressway Corporation average highway speed (~92 km/h) plus ramp and rest stops. No rail or bus booking needed.',zh:'私家车 — 采用韩国道路公社高速公路平均速度(约92km/h)并计入出入口与休息时间，无需预订火车或客车。',ja:'自家用車 — 韓国道路公社の高速道路平均速度(約92km/h)に出入口・休憩時間を加えた所要時間です。鉄道・バスの予約は不要です。',es:'Coche propio — tiempos según la velocidad media de autopista de Korea Expressway (~92 km/h) más accesos y descansos. No hace falta reservar tren ni autobús.'}[lang]||'')
         :(mode==='driving'
-        ?({ko:'자동차 경로는 카카오모빌리티 길찾기 실측값(소요시간·거리·통행료)입니다. ≈ 표시는 조회 전 추정값입니다.',en:'Driving times, distance and tolls come from Kakao Mobility routing. ≈ marks estimates pending lookup.',zh:'Google在韩国不提供自驾路线，自驾为估算值。切换公共交通可查看实际时间与票价。',ja:'Googleは韓国で車ルートを提供しないため推定値です。公共交通を選ぶと実際の所要時間・運賃が表示されます。',es:'Google no ofrece rutas en coche en Corea; son estimaciones. Cambia a Transporte para tiempos y tarifas reales.',fr:'Driving times, distance and tolls come from Kakao Mobility routing. ≈ marks estimates pending lookup.'}[lang]||'')
+        ?({ko:'자동차 경로는 카카오모빌리티 길찾기 실측값(소요시간·거리·통행료)입니다. ≈ 표시는 조회 전 추정값입니다.',en:'Driving times, distance and tolls come from Kakao Mobility routing. ≈ marks estimates pending lookup.',zh:'Google在韩国不提供自驾路线，自驾为估算值。切换公共交通可查看实际时间与票价。',ja:'Googleは韓国で車ルートを提供しないため推定値です。公共交通を選ぶと実際の所要時間・運賃が表示されます。',es:'Google no ofrece rutas en coche en Corea; son estimaciones. Cambia a Transporte para tiempos y tarifas reales.'}[lang]||'')
         :(allReal
-        ?({ko:'Google 경로 기준 실제 이동 거리·시간',en:'Real driving/transit times via Google',zh:'基于Google路线的实际距离与时间',ja:'Googleルートによる実移動距離・時間',es:'Distancias reales según Google',fr:'Real driving/transit times via Google'}[lang]||'')
-        :({ko:'≈ 표시는 경로 조회 전 추정값입니다',en:'≈ values are estimates pending route lookup',zh:'≈ 为路线查询前的估算值',ja:'≈ はルート取得前の推定値です',es:'≈ son estimaciones pendientes de ruta',fr:'≈ values are estimates pending route lookup'}[lang]||''))))),
+        ?({ko:'Google 경로 기준 실제 이동 거리·시간',en:'Real driving/transit times via Google',zh:'基于Google路线的实际距离与时间',ja:'Googleルートによる実移動距離・時間',es:'Distancias reales según Google'}[lang]||'')
+        :({ko:'≈ 표시는 경로 조회 전 추정값입니다',en:'≈ values are estimates pending route lookup',zh:'≈ 为路线查询前的估算值',ja:'≈ はルート取得前の推定値です',es:'≈ son estimaciones pendientes de ruta'}[lang]||''))))),
       stayPanelLabel:(this.tr('booking')||'숙박 예매')+' ▾',
       stayPanelToggle:()=>this.setState(s=>({stayOpen:s.stayOpen==='panel'?null:'panel'})),
       stayPanelClass:st.stayOpen==='panel'?'rs-bk rs-bk-open':'rs-bk',
@@ -8875,11 +8875,11 @@ class Component extends DCLogic {
         };
         const WD={ko:['일','월','화','수','목','금','토'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],zh:['日','一','二','三','四','五','六'],ja:['日','月','火','水','木','金','土'],es:['Dom','Lun','Mar','Mié','Jue','Vie','Sáb']}[lang]||['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
         const L={
-          day:{ko:'일차',en:'Day',zh:'天',ja:'日目',es:'Día',fr:'Day'}[lang],
-          arrive:{ko:'도착 · ',en:'Arrive · ',zh:'抵达 · ',ja:'到着 · ',es:'Llegada · ',fr:'Arrive · '}[lang],
-          depart:{ko:'귀가 · ',en:'Return · ',zh:'返程 · ',ja:'帰路 · ',es:'Regreso · ',fr:'Return · '}[lang],
-          stay:{ko:'숙박',en:'Overnight',zh:'住宿',ja:'宿泊',es:'Alojamiento',fr:'Overnight'}[lang],
-          book:{ko:'예매',en:'Book',zh:'预订',ja:'予約',es:'Reservar',fr:'Book'}[lang]
+          day:{ko:'일차',en:'Day',zh:'天',ja:'日目',es:'Día'}[lang],
+          arrive:{ko:'도착 · ',en:'Arrive · ',zh:'抵达 · ',ja:'到着 · ',es:'Llegada · '}[lang],
+          depart:{ko:'귀가 · ',en:'Return · ',zh:'返程 · ',ja:'帰路 · ',es:'Regreso · '}[lang],
+          stay:{ko:'숙박',en:'Overnight',zh:'住宿',ja:'宿泊',es:'Alojamiento'}[lang],
+          book:{ko:'예매',en:'Book',zh:'预订',ja:'予約',es:'Reservar'}[lang]
         };
         return Array.from({length:days}).map((_,i)=>{
           const dt=new Date(new Date(lo+'T00:00:00').getTime()+i*864e5);
@@ -8911,7 +8911,7 @@ class Component extends DCLogic {
             const ranked=beds.map(s=>({s,d:km(anchor,s)})).sort((x,y)=>x.d-y.d);
             if(ranked[0].d<=25)bed=ranked[0].s; else far=true;
           }else if(beds.length){bed=beds[i%beds.length];}
-          const genericName=(far?({ko:'숙소 ',en:'Stay ',zh:'住宿 ',ja:'宿 ',es:'Alojamiento ',fr:'Stay '}[lang]||'Stay ')+String.fromCharCode(65+i):'');
+          const genericName=(far?({ko:'숙소 ',en:'Stay ',zh:'住宿 ',ja:'宿 ',es:'Alojamiento '}[lang]||'Stay ')+String.fromCharCode(65+i):'');
           const nearArea=anchor?(anchor[lang]||anchor.ko||''):'';
           const last=i===days-1;
           const mins=dayStops.reduce((s,c)=>s+(c.minutes||0),0);
@@ -9081,14 +9081,14 @@ class Component extends DCLogic {
             stayShow:(!last&&(bed||far))?'flex':'none',
             stayLabel:L.stay,
             stayName:bed?(bed[lang]||bed.ko):genericName,
-            stayMeta:bed?((lang==='ko'?bed.areaKo:bed.areaEn)+' · '+(lang==='ko'?bed.typeKo:bed.typeEn)+' · '+stayPrice(bed,lang)):(nearArea+({ko:' 근처 · 숙소 미지정',en:' area · not assigned',zh:' 附近 · 未指定',ja:' 周辺 · 未指定',es:' zona · sin asignar',fr:' area · not assigned'}[lang]||'')),
+            stayMeta:bed?((lang==='ko'?bed.areaKo:bed.areaEn)+' · '+(lang==='ko'?bed.typeKo:bed.typeEn)+' · '+stayPrice(bed,lang)):(nearArea+({ko:' 근처 · 숙소 미지정',en:' area · not assigned',zh:' 附近 · 未指定',ja:' 周辺 · 未指定',es:' zona · sin asignar'}[lang]||'')),
             stayBook:()=>{
               const ci=dt.toISOString().slice(0,10);
               const co=new Date(dt.getTime()+864e5).toISOString().slice(0,10);
               const q=encodeURIComponent(bed?stayQuery(bed,lang):nearArea);
               window.open('https://www.booking.com/searchresults.html?ss='+q+'&checkin='+ci+'&checkout='+co,'_blank');
             },
-            sgLabel:{ko:'추천',en:'Nearby',zh:'推荐',ja:'おすすめ',es:'Cerca',fr:'Nearby'}[lang]||'Nearby',
+            sgLabel:{ko:'추천',en:'Nearby',zh:'推荐',ja:'おすすめ',es:'Cerca'}[lang]||'Nearby',
             sgToggle:()=>this.setState(s=>({stayOpen:s.stayOpen==='sg'+i?null:'sg'+i})),
             sgShow:(anchor&&(beds.some(s2=>km(anchor,s2)<=25)||this.places().some(p=>p.cat==='stay'&&km(anchor,p)<=25)))?'inline-block':'none',
             sgClass:st.stayOpen==='sg'+i?'rs-bk rs-bk-open':'rs-bk',
@@ -9296,7 +9296,7 @@ class Component extends DCLogic {
         c[s.city]=out.map(p=>p.id);
         c[s.city]=(c[s.city]||[]).filter(id=>_keepStay.indexOf(id)<0).concat(_keepStay);return {course:c,tab:'course',showOff:true};}),
       regionPickShow:st.city==='nation'?'flex':'none',
-      regionPickLabel:{ko:'여행지 선택',en:'Pick destinations',zh:'选择目的地',ja:'行き先を選択',es:'Destinos',fr:'Pick destinations'}[lang]||'Pick destinations',
+      regionPickLabel:{ko:'여행지 선택',en:'Pick destinations',zh:'选择目的地',ja:'行き先を選択',es:'Destinos'}[lang]||'Pick destinations',
       regionGroups:(()=>{
         const g={};
         DATA.nation.places.forEach(p=>{const r=p.locKo||'';if(!r)return;g[r]=(g[r]||0)+1;});
@@ -9344,7 +9344,7 @@ class Component extends DCLogic {
           if(cities.length)out.push(mkGroup(R.key,(lang==='ko'?R.ko:(R[lang]||R.en)),cities));
         });
         const rest=Object.keys(g).filter(k=>!placed[k]);
-        if(rest.length)out.push(mkGroup('etc',{ko:'기타 지역',en:'Other regions',zh:'其他地区',ja:'その他の地域',es:'Otras regiones',fr:'Other regions'}[lang]||'Other regions',rest));
+        if(rest.length)out.push(mkGroup('etc',{ko:'기타 지역',en:'Other regions',zh:'其他地区',ja:'その他の地域',es:'Otras regiones'}[lang]||'Other regions',rest));
         return out;
       })(),
       regionClear:()=>this.setState({regions:[]}),
@@ -9369,8 +9369,8 @@ class Component extends DCLogic {
       d_unShow:dp&&dp.un?'block':'none',
       d_k100Show:dp&&dp.k100?'inline-flex':'none',
       d_bfShow:dp&&dp.bf?'inline-flex':'none',
-      bfLabel:{ko:'열린관광지 (무장애)',en:'Barrier-free site',zh:'无障碍旅游地',ja:'バリアフリー観光地',es:'Sitio accesible',fr:'Barrier-free site'}[lang]||'Barrier-free site',
-      k100Label:{ko:'한국관광 100선',en:'Korea Top 100',zh:'韩国观光100选',ja:'韓国観光100選',es:'Top 100 de Corea',fr:'Korea Top 100'}[lang]||'Korea Top 100',
+      bfLabel:{ko:'열린관광지 (무장애)',en:'Barrier-free site',zh:'无障碍旅游地',ja:'バリアフリー観光地',es:'Sitio accesible'}[lang]||'Barrier-free site',
+      k100Label:{ko:'한국관광 100선',en:'Korea Top 100',zh:'韩国观光100选',ja:'韓国観光100選',es:'Top 100 de Corea'}[lang]||'Korea Top 100',
       d_index:dp?(dp.off?'':String(dp.n).padStart(2,'0')):'',
       d_name:(()=>{
         if(!dp)return '';
@@ -9389,7 +9389,7 @@ class Component extends DCLogic {
         return (lang!=='ko'&&m&&m.title&&m.title!==nm(dp))?'block':'none';
       })(),
       d_officialShow:(()=>{const t=(st.tover||{})[(dp?dp.id:'')+'_'+lang];return t?'block':'none';})(),
-      d_officialKicker:{ko:'공식 소개 · 한국관광공사',en:'Official description · KTO',zh:'官方介绍 · 韩国观光公社',ja:'公式案内 · 韓国観光公社',es:'Descripción oficial · KTO',fr:'Official description · KTO'}[lang]||'Official description · KTO',
+      d_officialKicker:{ko:'공식 소개 · 한국관광공사',en:'Official description · KTO',zh:'官方介绍 · 韩国观光公社',ja:'公式案内 · 韓国観光公社',es:'Descripción oficial · KTO'}[lang]||'Official description · KTO',
       d_officialText:(()=>{
         const t=(st.tover||{})[(dp?dp.id:'')+'_'+lang]||'';
         if(!t)return '';
@@ -9398,13 +9398,13 @@ class Component extends DCLogic {
       })(),
       d_officialMoreShow:(()=>{const t=(st.tover||{})[(dp?dp.id:'')+'_'+lang]||'';return t.length>240?'inline-flex':'none';})(),
       d_officialMoreLabel:(()=>{const full=!!((st.overOpen||{})[dp?dp.id:'']);
-        return full?({ko:'접기',en:'Show less',zh:'收起',ja:'閉じる',es:'Ver menos',fr:'Show less'}[lang]||'Show less'):({ko:'더 읽기',en:'Read more',zh:'展开',ja:'続きを読む',es:'Leer más',fr:'Read more'}[lang]||'Read more');})(),
+        return full?({ko:'접기',en:'Show less',zh:'收起',ja:'閉じる',es:'Ver menos'}[lang]||'Show less'):({ko:'더 읽기',en:'Read more',zh:'展开',ja:'続きを読む',es:'Leer más'}[lang]||'Read more');})(),
       d_officialToggle:()=>this.setState(x=>{const o={...(x.overOpen||{})};const id=dp?dp.id:'';o[id]=!o[id];return {overOpen:o};}),
       d_sub:dp?loc(dp,d.c):'',
       bootShow:!st.booted,
-      bootLabel:{ko:'지도를 준비하는 중',en:'Preparing the map',zh:'正在准备地图',ja:'地図を準備中',es:'Preparando el mapa',fr:'Préparation de la carte'}[lang]||'Preparing the map',
-      wxYesterday:{ko:'어제',en:'Yesterday',zh:'昨天',ja:'昨日',es:'Ayer',fr:'Hier'}[lang]||'Yesterday',
-      wxTomorrow:{ko:'내일',en:'Tomorrow',zh:'明天',ja:'明日',es:'Mañana',fr:'Demain'}[lang]||'Tomorrow',
+      bootLabel:{ko:'지도를 준비하는 중',en:'Preparing the map',zh:'正在准备地图',ja:'地図を準備中',es:'Preparando el mapa'}[lang]||'Preparing the map',
+      wxYesterday:{ko:'어제',en:'Yesterday',zh:'昨天',ja:'昨日',es:'Ayer'}[lang]||'Yesterday',
+      wxTomorrow:{ko:'내일',en:'Tomorrow',zh:'明天',ja:'明日',es:'Mañana'}[lang]||'Tomorrow',
       d_blurb:(()=>{
         if(!dp)return '';
         if(dp['b'+S])return dp['b'+S];
@@ -9425,7 +9425,7 @@ class Component extends DCLogic {
         if(a&&a.script)return 'none';
         return STORY_DB[dp.ko]?'block':'none';
       })(),
-      d_storyKicker:({ko:'관광 스토리텔링 · 한국관광공사',en:'Travel stories · Korea Tourism Organization',zh:'旅游故事 · 韩国观光公社',ja:'観光ストーリー · 韓国観光公社',es:'Historias de viaje · KTO',fr:'Récits touristiques · Office du tourisme coréen'}[st.lang]||'Travel stories · KTO'),
+      d_storyKicker:({ko:'관광 스토리텔링 · 한국관광공사',en:'Travel stories · Korea Tourism Organization',zh:'旅游故事 · 韩国观光公社',ja:'観光ストーリー · 韓国観光公社',es:'Historias de viaje · KTO'}[st.lang]||'Travel stories · KTO'),
       d_storyTitle:(dp&&STORY_DB[dp.ko])?STORY_DB[dp.ko].t:'',
       d_storyText:(()=>{
         if(!dp||!STORY_DB[dp.ko])return '';
@@ -9434,26 +9434,26 @@ class Component extends DCLogic {
         return full?t:(t.length>240?t.slice(0,240)+'…':t);
       })(),
       d_storyMoreShow:(dp&&STORY_DB[dp.ko]&&STORY_DB[dp.ko].s.length>240)?'inline-flex':'none',
-      d_storyMoreLabel:(()=>{const full=!!((st.storyOpen||{})[dp?dp.id:'']);const L0=st.lang||'ko';return full?({ko:'접기',en:'Less',zh:'收起',ja:'閉じる',es:'Menos',fr:'Réduire'}[L0]||'Less'):({ko:'더 읽기',en:'Read more',zh:'阅读更多',ja:'続きを読む',es:'Leer más',fr:'Lire la suite'}[L0]||'Read more');})(),
+      d_storyMoreLabel:(()=>{const full=!!((st.storyOpen||{})[dp?dp.id:'']);const L0=st.lang||'ko';return full?({ko:'접기',en:'Less',zh:'收起',ja:'閉じる',es:'Menos'}[L0]||'Less'):({ko:'더 읽기',en:'Read more',zh:'阅读更多',ja:'続きを読む',es:'Leer más'}[L0]||'Read more');})(),
       d_storyToggle:()=>this.setState(x=>{const o={...(x.storyOpen||{})};const id=dp?dp.id:'';o[id]=!o[id];return {storyOpen:o};}),
       d_audioShow:(()=>{const a=(st.audio||{})[(dp?dp.id:'')+'_'+(ODII_LANG[lang]||'ko')];return (a&&(a.script||a.loading))?'block':'none';})(),
-      d_audioKicker:{ko:'오디오 가이드 해설 · 한국관광공사',en:'Audio guide · KTO',zh:'语音导览 · 韩国观光公社',ja:'音声ガイド · 韓国観光公社',es:'Audioguía · KTO',fr:'Audio guide · KTO'}[lang]||'Audio guide · KTO',
+      d_audioKicker:{ko:'오디오 가이드 해설 · 한국관광공사',en:'Audio guide · KTO',zh:'语音导览 · 韩国观光公社',ja:'音声ガイド · 韓国観光公社',es:'Audioguía · KTO'}[lang]||'Audio guide · KTO',
       d_audioTitle:(()=>{const a=(st.audio||{})[(dp?dp.id:'')+'_'+(ODII_LANG[lang]||'ko')];return a&&a.title?a.title:'';})(),
       d_audioText:(()=>{
         const a=(st.audio||{})[(dp?dp.id:'')+'_'+(ODII_LANG[lang]||'ko')];
         if(!a)return '';
-        if(a.loading)return {ko:'해설을 불러오는 중…',en:'Loading the guide…',zh:'正在加载导览…',ja:'ガイドを読み込み中…',es:'Cargando la audioguía…',fr:'Loading the guide…'}[lang]||'Loading…';
+        if(a.loading)return {ko:'해설을 불러오는 중…',en:'Loading the guide…',zh:'正在加载导览…',ja:'ガイドを読み込み中…',es:'Cargando la audioguía…'}[lang]||'Loading…';
         if(!a.script)return '';
         const full=!!(st.audioOpen||{})[dp.id];
         return full?a.script:(a.script.length>260?a.script.slice(0,260)+'…':a.script);
       })(),
       d_audioMoreShow:(()=>{const a=(st.audio||{})[(dp?dp.id:'')+'_'+(ODII_LANG[lang]||'ko')];return (a&&a.script&&a.script.length>260)?'inline-flex':'none';})(),
       d_audioMoreLabel:(()=>{const full=!!((st.audioOpen||{})[dp?dp.id:'']);
-        return full?({ko:'접기',en:'Show less',zh:'收起',ja:'閉じる',es:'Ver menos',fr:'Show less'}[lang]||'Show less'):({ko:'더 읽기',en:'Read more',zh:'展开',ja:'続きを読む',es:'Leer más',fr:'Read more'}[lang]||'Read more');})(),
+        return full?({ko:'접기',en:'Show less',zh:'收起',ja:'閉じる',es:'Ver menos'}[lang]||'Show less'):({ko:'더 읽기',en:'Read more',zh:'展开',ja:'続きを読む',es:'Leer más'}[lang]||'Read more');})(),
       d_audioToggle:()=>this.setState(x=>{const o={...(x.audioOpen||{})};const id=dp?dp.id:'';o[id]=!o[id];return {audioOpen:o};}),
       d_heroShow:(dp&&(dp.img||dp.yt||(st.photos||{})[dp.id]))?'block':'none',
       d_noMediaShow:(dp&&!dp.img&&!dp.yt&&!(st.photos||{})[dp.id])?'flex':'none',
-      d_noMediaLabel:{ko:'사진·영상 미등록',en:'No photo or clip yet',zh:'暂无照片与影片',ja:'写真・映像 未登録',es:'Sin foto ni vídeo',fr:'No photo or clip yet'}[lang]||'No photo or clip yet',
+      d_noMediaLabel:{ko:'사진·영상 미등록',en:'No photo or clip yet',zh:'暂无照片与影片',ja:'写真・映像 未登録',es:'Sin foto ni vídeo'}[lang]||'No photo or clip yet',
       d_thumb:dp?(dp.img||(((st.photos||{})[dp.id]||{}).src)||''):'',
       d_url:dp&&dp.lat?('https://www.google.com/maps/search/?api=1&query='+dp.lat+','+dp.lng):'#',
       d_videoCta:dp?(dp.img?('© '+(dp.imgCredit||'Wikimedia Commons')):(((st.photos||{})[dp.id])?'© Wikipedia':'')):'',
@@ -9500,10 +9500,7 @@ class Component extends DCLogic {
             fail:'无法加载实时到站信息，请查看官方网站。',near:'附近没有车站'},
           es:{title:'Metro',first:'Primer tren',last:'Último tren',fare:'Tarifa estimada',load:'Cargar llegadas en vivo',loading:'Cargando…',official:'Abrir Seoul Metro Cyber Station ↗',walk:n=>'unos '+n+' min a pie',won:n=>'₩'+n.toLocaleString('es-ES'),
             std:'El primer y el último tren son horarios estándar de la línea.',
-            fail:'No se pudieron cargar las llegadas en vivo.',near:'No hay estación cerca'},
-          fr:{title:'Métro',first:'Premier train',last:'Dernier train',fare:'Tarif estimé',load:'Charger les arrivées en direct',loading:'Chargement…',official:'Ouvrir Seoul Metro Cyber Station ↗',walk:n=>'environ '+n+' min à pied',won:n=>'₩'+n.toLocaleString('fr-FR'),
-            std:'Les premiers et derniers trains sont les horaires standard de la ligne.',
-            fail:'Impossible de charger les arrivées en direct.',near:'Aucune station à proximité'}
+            fail:'No se pudieron cargar las llegadas en vivo.',near:'No hay estación cerca'}
         };
         const t=L[lang]||L.en;
         const blank={d_subShow:'none',d_subTitle:t.title,d_subStation:'',d_subLines:[],d_subWalk:'',d_subFirst:'',d_subLast:'',d_subFare:'',
@@ -9641,15 +9638,15 @@ class Component extends DCLogic {
         const lim=st0.ctLimit||3;
         const hm=v=>{const m=String(v||'').match(/^(\d{1,2}):?(\d{2})/);return m?(+m[1])+':'+m[2]:'';};
         const gap=v=>{const n=+v;return n>1&&n<600?T({ko:n+'분 간격',en:'every '+n+' min',zh:'每'+n+'分钟',ja:n+'分間隔',es:'cada '+n+' min'}):'';};
-        const DF=T({ko:'기본 지역 · ',en:'Default · ',zh:'默认地区 · ',ja:'既定の地域 · ',es:'Predeterminado · ',fr:'Par défaut · '});
-        return {ctShow:'flex',ctTitle:ttl,ctMeta:(_dflt?DF:'')+L.length+T({ko:'개 코스',en:' courses',zh:'条路线',ja:'コース',es:' rutas',fr:' circuits'}),ctEmptyShow:'none',ctEmpty:'',
-          ctList:L.slice(0,lim).map((x,i)=>{const t=[hm(x[5]),hm(x[6])].filter(Boolean).join('–');return {key:'ct'+i,name:x[1],kind:x[2]==='순환형'?T({ko:'순환형',en:'Loop',zh:'循环',ja:'循環',es:'Circular',fr:'En boucle'}):(x[2]==='고정형'?T({ko:'코스형',en:'Fixed',zh:'固定路线',ja:'コース型',es:'Fija',fr:'Itinéraire fixe'}):x[2]||'—'),
-            board:x[3]?T({ko:'탑승 ',en:'Board at ',zh:'上车 ',ja:'乗車 ',es:'Subida: ',fr:'Départ : '})+x[3]:'',course:x[4],
-            info:[t&&(T({ko:'운행 ',en:'Runs ',zh:'运行 ',ja:'運行 ',es:'Horario ',fr:'Service '})+t),gap(x[7]),x[8],x[11]].filter(Boolean).join(' · '),
+        const DF=T({ko:'기본 지역 · ',en:'Default · ',zh:'默认地区 · ',ja:'既定の地域 · ',es:'Predeterminado · '});
+        return {ctShow:'flex',ctTitle:ttl,ctMeta:(_dflt?DF:'')+L.length+T({ko:'개 코스',en:' courses',zh:'条路线',ja:'コース',es:' rutas'}),ctEmptyShow:'none',ctEmpty:'',
+          ctList:L.slice(0,lim).map((x,i)=>{const t=[hm(x[5]),hm(x[6])].filter(Boolean).join('–');return {key:'ct'+i,name:x[1],kind:x[2]==='순환형'?T({ko:'순환형',en:'Loop',zh:'循环',ja:'循環',es:'Circular'}):(x[2]==='고정형'?T({ko:'코스형',en:'Fixed',zh:'固定路线',ja:'コース型',es:'Fija'}):x[2]||'—'),
+            board:x[3]?T({ko:'탑승 ',en:'Board at ',zh:'上车 ',ja:'乗車 ',es:'Subida: '})+x[3]:'',course:x[4],
+            info:[t&&(T({ko:'운행 ',en:'Runs ',zh:'运行 ',ja:'運行 ',es:'Horario '})+t),gap(x[7]),x[8],x[11]].filter(Boolean).join(' · '),
             tel:x[9],telHref:'tel:'+String(x[9]).replace(/[^\d]/g,''),telShow:x[9]?'flex':'none',
-            add:()=>this.addCityTour(x),addLabel:T({ko:'코스빌더에 추가',en:'Add to course',zh:'加入行程',ja:'コースに追加',es:'Añadir a la ruta',fr:'Ajouter au parcours'}),msg:(st0.ctMsg&&st0.ctMsg.k===x[0]+'|'+x[1])?st0.ctMsg.t:'',msgShow:(st0.ctMsg&&st0.ctMsg.k===x[0]+'|'+x[1])?'block':'none',
-            url:x[10]||'#',urlShow:/^https?:/.test(x[10])?'flex':'none',urlLabel:T({ko:'예약·홈페이지',en:'Website',zh:'官网·预约',ja:'予約・公式サイト',es:'Web y reservas',fr:'Site web'})};}),
-          ctMoreShow:L.length>lim?'flex':'none',ctMoreLabel:T({ko:'더 보기',en:'Show more',zh:'查看更多',ja:'もっと見る',es:'Ver más',fr:'Voir plus'})+' ('+lim+' / '+L.length+')',ctMore:()=>this.setState(s=>({ctLimit:(s.ctLimit||3)+6})),
+            add:()=>this.addCityTour(x),addLabel:T({ko:'코스빌더에 추가',en:'Add to course',zh:'加入行程',ja:'コースに追加',es:'Añadir a la ruta'}),msg:(st0.ctMsg&&st0.ctMsg.k===x[0]+'|'+x[1])?st0.ctMsg.t:'',msgShow:(st0.ctMsg&&st0.ctMsg.k===x[0]+'|'+x[1])?'block':'none',
+            url:x[10]||'#',urlShow:/^https?:/.test(x[10])?'flex':'none',urlLabel:T({ko:'예약·홈페이지',en:'Website',zh:'官网·预约',ja:'予約・公式サイト',es:'Web y reservas'})};}),
+          ctMoreShow:L.length>lim?'flex':'none',ctMoreLabel:T({ko:'더 보기',en:'Show more',zh:'查看更多',ja:'もっと見る',es:'Ver más'})+' ('+lim+' / '+L.length+')',ctMore:()=>this.setState(s=>({ctLimit:(s.ctLimit||3)+6})),
           ctSrc:T({ko:'출처: 전국시티투어정보표준데이터 · '+(L[0][12]||'')+' 기준',en:'Source: National city tour standard data · '+(L[0][12]||''),zh:'来源：全国城市观光标准数据 · '+(L[0][12]||''),ja:'出典：全国シティツアー標準データ · '+(L[0][12]||''),es:'Fuente: datos estándar de city tours · '+(L[0][12]||'')})+(ko?'':T({en:' · Course info is in Korean.',zh:' · 路线信息为韩文。',ja:' · コース情報は韓国語です。',es:' · La información está en coreano.'}))};
       })(),
       ...(()=>{
@@ -9659,8 +9656,8 @@ class Component extends DCLogic {
         const none={ticShow:'none',ticList:[],ticMoreShow:'none',ticEmptyShow:'none'};
         if(st0.activeTab!=='channel'||!key)return none;
         const ttl=T({ko:key+' 관광안내소',en:'Tourist info centers · '+CN,zh:CN+' 旅游咨询处',ja:CN+' 観光案内所',es:'Oficinas de turismo · '+CN});
-        const hot={hotLabel:T({ko:'1330 관광통역안내 · 24시간',en:'1330 Korea Travel Hotline · 24 h',zh:'1330 旅游咨询热线 · 24小时',ja:'1330 観光通訳案内 · 24時間',es:'1330 Línea de turismo · 24 h',fr:'1330 Assistance touristique · 24 h'}),
-          hotSub:T({ko:'한국어·영어·일본어·중국어 등 외국어 통역 안내',en:'English, Japanese, Chinese and more',zh:'提供中文、英语、日语等翻译服务',ja:'日本語・英語・中国語などで案内',es:'Inglés, japonés, chino y más',fr:'Anglais, japonais, chinois et plus'}),hotHref:'tel:1330'};
+        const hot={hotLabel:T({ko:'1330 관광통역안내 · 24시간',en:'1330 Korea Travel Hotline · 24 h',zh:'1330 旅游咨询热线 · 24小时',ja:'1330 観光通訳案内 · 24時間',es:'1330 Línea de turismo · 24 h'}),
+          hotSub:T({ko:'한국어·영어·일본어·중국어 등 외국어 통역 안내',en:'English, Japanese, Chinese and more',zh:'提供中文、英语、日语等翻译服务',ja:'日本語・英語・中国語などで案内',es:'Inglés, japonés, chino y más'}),hotHref:'tel:1330'};
         if(!window.__tpTic){if(!this._ticReq){this._ticReq=1;fetch('data/tic.json').then(r=>r.json()).then(a=>{window.__tpTic=a;this.forceUpdate();}).catch(()=>{window.__tpTic=[];this.forceUpdate();});}
           return {...none,...hot,ticShow:'flex',ticTitle:ttl,ticMeta:T({ko:'불러오는 중…',en:'Loading…',zh:'加载中…',ja:'読み込み中…',es:'Cargando…'}),ticSrc:'',ticFltShow:'none'};}
         const LANG={'영':'EN','영어':'EN','일':'JP','일본어':'JP','중':'CN','중국어':'CN','중간':'CN','중번':'CN','러':'RU','러시아어':'RU','베트남어':'VN','태국어':'TH'};
@@ -9672,18 +9669,18 @@ class Component extends DCLogic {
         L.sort((a,b)=>(mine?((langOf(b[7]).indexOf(mine)>-1?1:0)-(langOf(a[7]).indexOf(mine)>-1?1:0)):0)||(/휴게소/.test(a[0])?1:0)-(/휴게소/.test(b[0])?1:0)||a[0].localeCompare(b[0],'ko'));
         const nMine=mine?window.__tpTic.filter(x=>x[1]===key&&langOf(x[7]).indexOf(mine)>-1).length:0;
         const lim=st0.ticLimit||6;
-        const DF=T({ko:'기본 지역 · ',en:'Default · ',zh:'默认地区 · ',ja:'既定の地域 · ',es:'Predeterminado · ',fr:'Par défaut · '});
+        const DF=T({ko:'기본 지역 · ',en:'Default · ',zh:'默认地区 · ',ja:'既定の地域 · ',es:'Predeterminado · '});
         const MYN={EN:{en:'English',es:'inglés'},JP:{ja:'日本語'},CN:{zh:'中文'}}[mine]||{};
         return {...hot,ticShow:'flex',ticTitle:ttl,ticMeta:(_dflt?DF:'')+L.length+T({ko:'곳',en:'',zh:'处',ja:'か所',es:''}),
           ticFltShow:mine?'flex':'none',
           ticFltLabel:T({en:'English-speaking only',zh:'仅显示中文服务',ja:'日本語対応のみ',es:'Solo con inglés'})+' ('+nMine+')',
           ticFltBg:onlyMine?'#153b3d':'transparent',ticFltFg:onlyMine?'#f2ece0':'#153b3d',ticFlt:()=>this.setState(s=>({ticMine:!s.ticMine,ticLimit:6})),
-          ticEmptyShow:L.length?'none':'block',ticEmpty:onlyMine?T({en:'No center here lists English support. Call 1330 for interpretation.',zh:'此地区没有标注中文服务的咨询处，请拨打1330。',ja:'日本語対応の案内所がありません。1330へお電話ください。',es:'Ninguna oficina indica inglés. Llama al 1330.'}):T({ko:'이 지역에 등록된 관광안내소가 없습니다.',en:'No info centers listed for this region.',zh:'该地区没有登记的旅游咨询处。',ja:'この地域の観光案内所は登録されていません。',es:'No hay oficinas registradas en esta región.',fr:'Aucun point d’information touristique dans cette région.'}),
+          ticEmptyShow:L.length?'none':'block',ticEmpty:onlyMine?T({en:'No center here lists English support. Call 1330 for interpretation.',zh:'此地区没有标注中文服务的咨询处，请拨打1330。',ja:'日本語対応の案内所がありません。1330へお電話ください。',es:'Ninguna oficina indica inglés. Llama al 1330.'}):T({ko:'이 지역에 등록된 관광안내소가 없습니다.',en:'No info centers listed for this region.',zh:'该地区没有登记的旅游咨询处。',ja:'この地域の観光案内所は登録されていません。',es:'No hay oficinas registradas en esta región.'}),
           ticList:L.slice(0,lim).map((x,i)=>{const lg=langOf(x[7]);const has=mine&&lg.indexOf(mine)>-1;return {key:'tc'+i,name:x[0],lang:lg.join('·'),langShow:lg.length?'block':'none',langBg:has?'#153b3d':'transparent',langFg:has?'#f2ece0':'#153b3d',
-            info:[x[8],x[5]&&(T({ko:'운영 ',en:'Hours ',zh:'营业 ',ja:'営業 ',es:'Horario ',fr:'Horaires '})+x[5]),x[6]&&(T({ko:'휴무 ',en:'Closed ',zh:'休息 ',ja:'休業 ',es:'Cierre ',fr:'Fermé '})+x[6])].filter(Boolean).join(' · '),
+            info:[x[8],x[5]&&(T({ko:'운영 ',en:'Hours ',zh:'营业 ',ja:'営業 ',es:'Horario '})+x[5]),x[6]&&(T({ko:'휴무 ',en:'Closed ',zh:'休息 ',ja:'休業 ',es:'Cierre '})+x[6])].filter(Boolean).join(' · '),
             tel:x[4],telHref:'tel:'+String(x[4]).replace(/[^\d]/g,''),telShow:x[4]?'flex':'none',mapLabel:T({ko:'지도',en:'Map',zh:'地图',ja:'地図',es:'Mapa'}),map:'https://map.kakao.com/link/map/'+encodeURIComponent(x[0])+','+x[2]+','+x[3]};}),
-          ticMoreShow:L.length>lim?'flex':'none',ticMoreLabel:T({ko:'더 보기',en:'Show more',zh:'查看更多',ja:'もっと見る',es:'Ver más',fr:'Voir plus'})+' ('+lim+' / '+L.length+')',ticMore:()=>this.setState(s=>({ticLimit:(s.ticLimit||6)+10})),
-          ticSrc:T({ko:'출처: 한국관광공사 전국관광안내소 정보 · 좌표 카카오',en:'Source: KTO tourist info centers · Kakao coordinates · Names shown in Korean',zh:'来源：韩国观光公社 · 名称为韩文',ja:'出典：韓国観光公社 · 名称は韓国語表記',es:'Fuente: KTO · Nombres en coreano',fr:'Source : KTO, points d’information touristique · coordonnées Kakao · noms en coréen'})};
+          ticMoreShow:L.length>lim?'flex':'none',ticMoreLabel:T({ko:'더 보기',en:'Show more',zh:'查看更多',ja:'もっと見る',es:'Ver más'})+' ('+lim+' / '+L.length+')',ticMore:()=>this.setState(s=>({ticLimit:(s.ticLimit||6)+10})),
+          ticSrc:T({ko:'출처: 한국관광공사 전국관광안내소 정보 · 좌표 카카오',en:'Source: KTO tourist info centers · Kakao coordinates · Names shown in Korean',zh:'来源：韩国观光公社 · 名称为韩文',ja:'出典：韓国観光公社 · 名称は韓国語表記',es:'Fuente: KTO · Nombres en coreano'})};
       })(),
       ...(()=>{
         const st0=this.state,_L=st0.lang||'ko',ko=_L==='ko',T=o=>o[_L]||o.en;
@@ -9708,7 +9705,7 @@ class Component extends DCLogic {
           cfMeta:(F===undefined?T({ko:'불러오는 중…',en:'Loading…'}):list.length+(ko?'건':' events'))+' · '+md(lo)+'–'+md(hi),
           cfRanges:ranges,cfEmptyShow:(F!==undefined&&!list.length)?'block':'none',
           cfEmpty:T({ko:'이 기간 '+label+' 30km 안에 등록된 행사가 없습니다.',en:'No events listed near '+label+' for these dates.',zh:'此期间'+label+'30公里内没有登记的活动。',ja:'この期間、'+label+'から30km以内のイベントはありません。',es:'No hay eventos cerca de '+label+' en estas fechas.'}),
-          cfList:list.map((x,i)=>({key:'cv'+i,title:x.title,img:x.img||'',addr:x.addr,km:x.km+'km',dates:md(x.start)+(x.end!==x.start?'–'+md(x.end):'')+(x.start<lo?(({ko:' (진행 중)',en:' (ongoing)',zh:' (进行中)',ja:' (開催中)',es:' (en curso)',fr:' (en cours)'}[_L]||' (ongoing)')):''),open:()=>window.open('https://map.kakao.com/?q='+encodeURIComponent(x.title),'_blank')})),
+          cfList:list.map((x,i)=>({key:'cv'+i,title:x.title,img:x.img||'',addr:x.addr,km:x.km+'km',dates:md(x.start)+(x.end!==x.start?'–'+md(x.end):'')+(x.start<lo?(({ko:' (진행 중)',en:' (ongoing)',zh:' (进行中)',ja:' (開催中)',es:' (en curso)'}[_L]||' (ongoing)')):''),open:()=>window.open('https://map.kakao.com/?q='+encodeURIComponent(x.title),'_blank')})),
           cfSrc:T({ko:'출처: 한국관광공사 행사·축제 정보 · 도시 중심 30km · 누르면 카카오맵',en:'Source: Korea Tourism Organization events · 30 km from city centre',zh:'来源：韩国观光公社活动信息 · 市中心30公里',ja:'出典：韓国観光公社イベント情報 · 市中心から30km',es:'Fuente: eventos de la KTO · 30 km del centro'})};
       })(),
       d_wxTitle:({ko:'날씨 · 미세먼지',en:'Weather · Air',zh:'天气 · 空气',ja:'天気 · 大気',es:'Tiempo · Aire'}[this.state.lang||'ko'])||'Weather · Air',
@@ -9763,13 +9760,13 @@ class Component extends DCLogic {
       },
       busLabel:this.tr('bus')||'버스 예매',
       flightBoardShow:(hubAir&&st.travelMode!=='own'&&st.wideMode==='air')?'flex':'none',
-      flightBoardTitle:{ko:'제주 노선 운항 현황',en:'Jeju route flight board',zh:'济州航线运行情况',ja:'済州路線の運航状況',es:'Vuelos a Jeju',fr:'Jeju route flight board'}[lang]||'Jeju route flight board',
+      flightBoardTitle:{ko:'제주 노선 운항 현황',en:'Jeju route flight board',zh:'济州航线运行情况',ja:'済州路線の運航状況',es:'Vuelos a Jeju'}[lang]||'Jeju route flight board',
       flightDepLabel:((st.flightDir||'to')==='to'?{ko:'출발 공항',en:'From',zh:'出发机场',ja:'出発空港',es:'Salida'}:{ko:'도착 공항',en:'To',zh:'到达机场',ja:'到着空港',es:'Destino'})[lang]||'From',
       flightDepValue:st.flightDep||'GMP',
       flightDepOptions:JEJU_AIR_ROUTES.map(r=>({key:r.code,value:r.code,label:((st.flightDir||'to')==='to'?((lang==='ko'?r.ko:r.en)+' ('+r.code+') → CJU'):('CJU → '+(lang==='ko'?r.ko:r.en)+' ('+r.code+')'))})),
       flightDepChange:e=>this.setState({flightDep:e.target.value,flights:null}),
       flightLoad:()=>this.loadFlights(),
-      flightLoadLabel:{ko:'운항 현황 불러오기',en:'Load flights',zh:'加载航班',ja:'運航状況を取得',es:'Cargar vuelos',fr:'Load flights'}[lang]||'Load flights',
+      flightLoadLabel:{ko:'운항 현황 불러오기',en:'Load flights',zh:'加载航班',ja:'運航状況を取得',es:'Cargar vuelos'}[lang]||'Load flights',
       busanAirShow:(()=>{
         const f=cItems[0];
         const reg=f?(f.locKo||city.ko):((DATA[st.city]||{}).ko);
@@ -9777,8 +9774,8 @@ class Component extends DCLogic {
         return ['부산','김해','양산','창원','거제'].indexOf(reg)>-1?'flex':'none';
       })(),
       busanDirValue:st.busanDir||'from',
-      busanDirOptions:[{key:'from',value:'from',label:{ko:'김해 출발 (도착지 선택)',en:'From Gimhae (choose destination)',zh:'金海出发',ja:'金海発',es:'Desde Gimhae',fr:'From Gimhae (choose destination)'}[lang]||'From Gimhae'},
-        {key:'to',value:'to',label:{ko:'김해 도착 (출발지 선택)',en:'To Gimhae (choose origin)',zh:'飞往金海',ja:'金海行き',es:'Hacia Gimhae',fr:'To Gimhae (choose origin)'}[lang]||'To Gimhae'}],
+      busanDirOptions:[{key:'from',value:'from',label:{ko:'김해 출발 (도착지 선택)',en:'From Gimhae (choose destination)',zh:'金海出发',ja:'金海発',es:'Desde Gimhae'}[lang]||'From Gimhae'},
+        {key:'to',value:'to',label:{ko:'김해 도착 (출발지 선택)',en:'To Gimhae (choose origin)',zh:'飞往金海',ja:'金海行き',es:'Hacia Gimhae'}[lang]||'To Gimhae'}],
       busanDirChange:e=>this.setState({busanDir:e.target.value}),
       busanDepLabel:((st.busanDir||'from')==='from'?{ko:'도착 공항',en:'To',zh:'到达机场',ja:'到着空港',es:'Destino'}:{ko:'출발 공항',en:'From',zh:'出发机场',ja:'出発空港',es:'Origen'})[lang]||'To',
       busanDepValue:st.busanDest||'CJU',
@@ -9796,14 +9793,14 @@ class Component extends DCLogic {
           {key:'c',k:lbl('first'),v:r.first},{key:'d',k:lbl('last'),v:r.last},
           {key:'e',k:lbl('dur'),v:r.dur?(r.dur+(lang==='ko'?'분':' min')):'—'}];
       })(),
-      busanSchedNote:{ko:'정기 편성 요약 · 시즌·요일에 따라 달라집니다',en:'Typical schedule · varies by season and weekday',zh:'常规班次概要 · 随季节与星期变化',ja:'定期便の概要 · 季節・曜日で変動',es:'Horario habitual · varía por temporada',fr:'Typical schedule · varies by season and weekday'}[lang]||'Typical schedule',
-      busanAirTitle:{ko:'김해공항 노선 운항 현황',en:'Gimhae Airport flights',zh:'金海机场航班概要',ja:'金海空港の便',es:'Vuelos de Gimhae',fr:'Gimhae Airport flights'}[lang]||'Gimhae Airport flights',
+      busanSchedNote:{ko:'정기 편성 요약 · 시즌·요일에 따라 달라집니다',en:'Typical schedule · varies by season and weekday',zh:'常规班次概要 · 随季节与星期变化',ja:'定期便の概要 · 季節・曜日で変動',es:'Horario habitual · varía por temporada'}[lang]||'Typical schedule',
+      busanAirTitle:{ko:'김해공항 노선 운항 현황',en:'Gimhae Airport flights',zh:'金海机场航班概要',ja:'金海空港の便',es:'Vuelos de Gimhae'}[lang]||'Gimhae Airport flights',
       busanAirRows:BUSAN_AIR.dom.map((r,i)=>({key:'bd'+i,
         route:(lang==='ko'?r.ko:r.en),
         detail:r.air+' · '+r.day+(r.first!=='—'?(' · '+r.first+'–'+r.last):'')+' · '+r.dur+(lang==='ko'?'분':' min')})),
       busanAccessRows:BUSAN_AIR.access.map((r,i)=>({key:'ba'+i,k:(lang==='ko'?r.ko:r.en),v:r.v})),
-      busanAirNote:{ko:'국내선은 제주 노선 중심 · 국제선은 일본·동남아 위주로 운항',en:'Domestic flights are mainly to Jeju; international routes serve Japan and SE Asia',zh:'国内线以济州为主，国际线以日本·东南亚为主',ja:'国内線は済州中心・国際線は日本や東南アジア',es:'Los vuelos nacionales van sobre todo a Jeju',fr:'Domestic flights are mainly to Jeju; international routes serve Japan and SE Asia'}[lang]||'Domestic flights mainly to Jeju',
-      airlineRowsLabel:{ko:'항공사별 운항 개요 (편도 · 추정)',en:'By airline (one-way, approximate)',zh:'各航空公司概要（单程·估算）',ja:'航空会社別の運航概要(片道·概算)',es:'Por aerolínea (aprox.)',fr:'By airline (one-way, approximate)'}[lang]||'By airline',
+      busanAirNote:{ko:'국내선은 제주 노선 중심 · 국제선은 일본·동남아 위주로 운항',en:'Domestic flights are mainly to Jeju; international routes serve Japan and SE Asia',zh:'国内线以济州为主，国际线以日本·东南亚为主',ja:'国内線は済州中心・国際線は日本や東南アジア',es:'Los vuelos nacionales van sobre todo a Jeju'}[lang]||'Domestic flights mainly to Jeju',
+      airlineRowsLabel:{ko:'항공사별 운항 개요 (편도 · 추정)',en:'By airline (one-way, approximate)',zh:'各航空公司概要（单程·估算）',ja:'航空会社別の運航概要(片道·概算)',es:'Por aerolínea (aprox.)'}[lang]||'By airline',
       airlineRows:(()=>{
         const k=(st.flightDep||'GMP')+'-CJU';
         const L=(ROUTE_AIRLINES[k]||[]).map(a=>{const m=String(a.day).match(/(\d+)\D+(\d+)/)||String(a.day).match(/(\d+)/);const lo=m?+m[1]:0,hi=m&&m[2]?+m[2]:lo;return {...a,mid:(lo+hi)/2};});
@@ -9818,10 +9815,10 @@ class Component extends DCLogic {
       })(),
       busanAirlineRowsShow:(ROUTE_AIRLINES['PUS-'+(st.busanDest||'CJU')]||[]).length?'flex':'none',
       airlineLinks:AIRLINE_SCHED.map((a,i)=>({key:'al'+i,label:(lang==='ko'?a.ko:a.en),open:()=>window.open(a.url,'_blank')})),
-      airlineLinksLabel:{ko:'항공사별 공식 시간표',en:'Airline timetables',zh:'各航空公司时刻表',ja:'航空会社別時刻表',es:'Horarios por aerolínea',fr:'Airline timetables'}[lang]||'Airline timetables',
+      airlineLinksLabel:{ko:'항공사별 공식 시간표',en:'Airline timetables',zh:'各航空公司时刻表',ja:'航空会社別時刻表',es:'Horarios por aerolínea'}[lang]||'Airline timetables',
       flightDirValue:st.flightDir||'to',
-      flightDirOptions:[{key:'to',value:'to',label:{ko:'제주 도착 (출발지 선택)',en:'To Jeju (choose origin)',zh:'飞往济州',ja:'済州行き',es:'Hacia Jeju',fr:'To Jeju (choose origin)'}[lang]||'To Jeju'},
-        {key:'from',value:'from',label:{ko:'제주 출발 (도착지 선택)',en:'From Jeju (choose destination)',zh:'济州出发',ja:'済州発',es:'Desde Jeju',fr:'From Jeju (choose destination)'}[lang]||'From Jeju'}],
+      flightDirOptions:[{key:'to',value:'to',label:{ko:'제주 도착 (출발지 선택)',en:'To Jeju (choose origin)',zh:'飞往济州',ja:'済州行き',es:'Hacia Jeju'}[lang]||'To Jeju'},
+        {key:'from',value:'from',label:{ko:'제주 출발 (도착지 선택)',en:'From Jeju (choose destination)',zh:'济州出发',ja:'済州発',es:'Desde Jeju'}[lang]||'From Jeju'}],
       flightDirChange:e=>this.setState({flightDir:e.target.value,flights:null}),
       flightSched:(()=>{
         const r0=JEJU_SCHED[st.flightDep||'GMP'];
@@ -9860,7 +9857,7 @@ class Component extends DCLogic {
           aptProcSteps:st4.map(([k,l])=>({key:'ap'+k,label:ko?l.ko:l.en,v:m[k]+(ko?'분':'m'),pct:Math.round(m[k]/mx*100)+'%',dim:m[k]?'1':'.4'})),
           aptProcNote:(()=>{const L=aptLeadMin(code),fl=m.all+20<30;return ko?('코스 계산에는 수속 '+m.all+'분 + 탑승 마감 여유 20분'+(fl?' (최소 30분 적용)':'')+' = '+L+'분을 씁니다 · 한국공항공사 5분 단위 갱신'):('Planner uses '+m.all+' min processing + 20 min boarding buffer'+(fl?' (30 min minimum)':'')+' = '+L+' min · KAC, updated every 5 min');})()};
       })(),
-      flightSchedNote:{ko:'정기 편성 요약 · 시즌·요일에 따라 달라집니다',en:'Typical schedule · varies by season and weekday',zh:'常规班次概要 · 随季节与星期变化',ja:'定期便の概要 · 季節・曜日で変動',es:'Horario habitual · varía por temporada',fr:'Typical schedule · varies by season and weekday'}[lang]||'Typical schedule',
+      flightSchedNote:{ko:'정기 편성 요약 · 시즌·요일에 따라 달라집니다',en:'Typical schedule · varies by season and weekday',zh:'常规班次概要 · 随季节与星期变化',ja:'定期便の概要 · 季節・曜日で変動',es:'Horario habitual · varía por temporada'}[lang]||'Typical schedule',
       ...(()=>{
         const f=st.flights||{}, all=f.all||[], ko=lang==='ko';
         const hm=m=>m==null?'–':String(Math.floor(m/60)%24).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
@@ -9913,7 +9910,7 @@ class Component extends DCLogic {
         if(k==='failed'&&f.msg)return (L.failed[lang]||L.failed.en)+' ('+f.msg+')';
         return k?(L[k][lang]||L[k].en):'';
       })(),
-      metroBookLabel:{ko:'전철 노선·시간표',en:'Metro timetable',zh:'城铁时刻表',ja:'電車時刻表',es:'Horario de tren',fr:'Metro timetable'}[lang]||'Metro timetable',
+      metroBookLabel:{ko:'전철 노선·시간표',en:'Metro timetable',zh:'城铁时刻表',ja:'電車時刻表',es:'Horario de tren'}[lang]||'Metro timetable',
       metroBooking:()=>window.open('https://www.letskorail.com/ebizbf/EbizBfMetroTimeTable.do','_blank'),
       metroBookShow:(()=>{
         if(mode==='own'||hubAir)return 'none';
@@ -9928,8 +9925,8 @@ class Component extends DCLogic {
       airLabel:(()=>{
         const oM=(ORIGINS[this.oKey(st.origin)]||{}).modes||[];
         const ship=oM.indexOf('ship')>-1;
-        return ship?({ko:'여객선 예매',en:'Book ferry',zh:'预订轮渡',ja:'旅客船予約',es:'Reservar ferry',fr:'Book ferry'}[lang]||'Book ferry')
-                   :({ko:'항공권 예매',en:'Book flight',zh:'预订机票',ja:'航空券予約',es:'Reservar vuelo',fr:'Book flight'}[lang]||'Book flight');
+        return ship?({ko:'여객선 예매',en:'Book ferry',zh:'预订轮渡',ja:'旅客船予約',es:'Reservar ferry'}[lang]||'Book ferry')
+                   :({ko:'항공권 예매',en:'Book flight',zh:'预订机票',ja:'航空券予約',es:'Reservar vuelo'}[lang]||'Book flight');
       })(),
       airBooking:()=>{
         const oM=(ORIGINS[this.oKey(st.origin)]||{}).modes||[];
@@ -9985,7 +9982,7 @@ class Component extends DCLogic {
       ]).map((t,i)=>({key:'h'+i,n:String(i+1),t})),
       infoHub:(()=>{const h=REGION_HUB[st.scopeLoc||(DATA[st.city]||{}).ko];if(h)return (lang==='ko'?h.ko:(h.en||h.ko))+(h.busKo&&h.busKo!==h.ko?' · '+(lang==='ko'?h.busKo:(h.busEn||h.busKo)):'');
       return lang==='ko'?'지역 탭을 고르면 그 지역의 광역 관문과 교통편이 표시됩니다':'Pick a region tab to see its gateway and transport';})(),
-      rentLabel:{ko:'렌트카 예매',en:'Rent a car',zh:'租车预订',ja:'レンタカー予約',es:'Alquiler de coche',fr:'Rent a car'}[lang]||'Rent a car',
+      rentLabel:{ko:'렌트카 예매',en:'Rent a car',zh:'租车预订',ja:'レンタカー予約',es:'Alquiler de coche'}[lang]||'Rent a car',
       rentToggle:()=>this.setState(s=>({stayOpen:s.stayOpen==='rent'?null:'rent'})),
       rentClass:st.stayOpen==='rent'?'rs-bk rs-bk-open':'rs-bk',
       rentSites:(()=>{

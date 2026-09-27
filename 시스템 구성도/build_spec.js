@@ -54,7 +54,7 @@ const children = [
   // 표지
   new Paragraph({ spacing: { before: 2400, after: 200 }, children: [run('Tour Navigator App', { size: 52, bold: true, color: INK })] }),
   new Paragraph({ spacing: { after: 120 }, children: [run('시스템 구성 명세서', { size: 40, bold: true, color: ORANGE })] }),
-  new Paragraph({ spacing: { after: 800 }, children: [run('v1.2 · 2026-09-27', { size: 22, color: '3C5658' })] }),
+  new Paragraph({ spacing: { after: 800 }, children: [run('v1.3 · 2026-09-27', { size: 22, color: '3C5658' })] }),
   table(['항목', '내용'], [
     ['문서 목적', '앱을 이루는 구성 요소, 요소 간 호출 관계, 외부 인터페이스, 배포 구조를 한 장의 구성도와 표로 정리한다.'],
     ['대상 시스템', 'Tour Navigator App — 영상 속 장소를 따라 걷는 여행 계획 웹 앱 (테마 화면 5종 + 통합 플래너 + 홈)'],
@@ -186,7 +186,7 @@ const children = [
   table(['서비스', '용도', '엔드포인트 · 호출 방식', 'config.js 항목', '호출 위치', '제약'], [
     ['Google Maps JavaScript API', '지도 · 마커 · 클러스터', 'maps.googleapis.com/maps/api/js?key=…&libraries=marker&language=…&region=KR (스크립트 주입)', 'googleMaps', '플래너 · 테마 5종', '자동차 경로는 국내 미제공 → 거리 기반 추정'],
     ['YouTube Data API v3', '영상 조회수 · 게시일', 'www.googleapis.com/youtube/v3/videos?part=snippet,statistics', 'youtube', '플래너 · 테마 5종', '하루 1회 갱신, localStorage 캐시'],
-    ['한국관광공사 TourAPI (공공데이터포털)', '장소 정보 · 다국어 표기 · 사진 · 오디오 · 스토리텔링 · 축제·행사(searchFestival2)', 'apis.data.go.kr/B551011/KorService2 등 · serviceKey', 'dataGoKr', '플래너 · 테마 5종', '프랑스어 서비스 없음 → 영어 표시'],
+    ['한국관광공사 TourAPI (공공데이터포털)', '장소 정보 · 다국어 표기 · 사진 · 오디오 · 스토리텔링 · 축제·행사(searchFestival2)', 'apis.data.go.kr/B551011/KorService2 등 · serviceKey', 'dataGoKr', '플래너 · 테마 5종', '국문 · 영 · 중 · 일 · 서 5개 서비스 (앱 지원 언어와 같음)'],
     ['한국관광공사 연관 관광지 (공공데이터포털)', '장소 상세 "함께 많이 가는 관광지"', 'apis.data.go.kr/B551011/TarRlteTarService1 · signguCd 필수 (Kakao coord2regioncode 로 산출)', 'dataGoKr', 'shared.js getRelatedSpots · 6개 화면', '2→3→4개월 전 기준월 순으로 시도'],
     ['기상청 단기예보 (공공데이터포털)', '오늘 · 내일 최고기온 · 강수 · 하늘', 'apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst · 격자 nx,ny', 'dataGoKr', 'shared.js getKmaForecast', '활용신청 필요 · 실패 시 Open-Meteo 값'],
     ['한국환경공단 에어코리아 (공공데이터포털)', '시도별 PM10 · PM2.5 · 등급', 'apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty', 'dataGoKr', '장소 상세 (6개 화면)', '활용신청 필요 · 30분 캐시'],
@@ -233,7 +233,7 @@ const children = [
     ['CDN 의존', 'React · Babel 을 unpkg 에서 받는다. 차단되면 화면이 뜨지 않는다.', '필요 시 저장소에 복사본을 두고 support.js 로더 주소를 바꾼다'],
     ['화면 간 중복', '테마 화면 5종이 구조와 로직 대부분을 공유한다. 수정 시 5곳을 같이 고쳐야 한다.', '화면 런타임 공용 파일로 추출 (향후)'],
     ['재내보내기', 'Claude Design 내보내기본은 공통 코드와 키를 화면 안에 다시 넣는다. GitHub 웹으로 zip 을 올리면 main 에 중복본이 남는다.', '내보내기본을 세션에 첨부해 통합 스크립트로 반영 (4.5 절)'],
-    ['다국어 공백', '프랑스어는 플래너에서 65개 라벨이 영어로 대체되어 있고 테마 화면은 미지원.', 'I18N-TODO 목록 순차 처리'],
+    ['다국어', '지원 언어는 한국어 · 영어 · 중국어 · 일본어 · 스페인어 5개. 새 문구가 한 언어라도 비면 영어로 대체되어 보인다. 프랑스어는 2026-09-27 에 지원 중단.', '새 문구는 다섯 언어를 모두 채우고, 비면 I18N-TODO 에 기록'],
     ['플래너 크기', 'Tour Planner.dc.html 이 2.2MB(장소 데이터 약 860KB 포함). 첫 로드가 무겁다.', '장소 데이터를 화면 밖 파일로 분리 (ROADMAP)'],
   ], [1500, 4338, 3800]),
 
@@ -270,7 +270,7 @@ const doc = new Document({
   },
   sections: [{
     properties: { page: { margin: { top: 1134, bottom: 1134, left: 1134, right: 1134 } } },
-    headers: { default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [run('Tour Navigator App · 시스템 구성 명세서 (v1.2)', { size: 16, color: '3C5658' })] })] }) },
+    headers: { default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [run('Tour Navigator App · 시스템 구성 명세서 (v1.3)', { size: 16, color: '3C5658' })] })] }) },
     footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 16, color: '3C5658' })] })] }) },
     children,
   }],

@@ -2567,10 +2567,10 @@ class Component extends DCLogic {
       courseItems,
       // ── 여러 날 일정 ───────────────────────────────────────────────
       regionMoveLabel:{ko:'지역 이동',en:'Transfer',zh:'区域移动',ja:'地域移動',es:'Traslado'}[lang]||'Transfer',
-      dayAddLabel:{ko:'장소 추가',en:'Add place',zh:'添加地点',ja:'スポット追加',es:'Añadir lugar',fr:'Add place'}[lang]||'Add place',
-      dayAddPh:{ko:'이 날에 넣을 장소 검색',en:'Search a place for this day',zh:'搜索当天要加入的地点',ja:'この日に入れる場所を検索',es:'Buscar un lugar para este día',fr:'Search a place for this day'}[lang]||'Search a place for this day',
-      dayAddCloseLabel:{ko:'닫기',en:'Close',zh:'关闭',ja:'閉じる',es:'Cerrar',fr:'Close'}[lang]||'Close',
-      dayAddClearLabel:{ko:'지우기',en:'Clear',zh:'清除',ja:'クリア',es:'Borrar',fr:'Clear'}[lang]||'Clear',
+      dayAddLabel:{ko:'장소 추가',en:'Add place',zh:'添加地点',ja:'スポット追加',es:'Añadir lugar'}[lang]||'Add place',
+      dayAddPh:{ko:'이 날에 넣을 장소 검색',en:'Search a place for this day',zh:'搜索当天要加入的地点',ja:'この日に入れる場所を検索',es:'Buscar un lugar para este día'}[lang]||'Search a place for this day',
+      dayAddCloseLabel:{ko:'닫기',en:'Close',zh:'关闭',ja:'閉じる',es:'Cerrar'}[lang]||'Close',
+      dayAddClearLabel:{ko:'지우기',en:'Clear',zh:'清除',ja:'クリア',es:'Borrar'}[lang]||'Clear',
       dayPlanDisplay:st.tripFrom&&cItems.length?'flex':'none',
       flatDisplay:st.tripFrom&&cItems.length?'none':'flex',
       tripBarDisplay:st.tripFrom?'flex':'none',
@@ -2603,8 +2603,8 @@ class Component extends DCLogic {
       ownSelShow:(st.travelMode!=='own'&&['bus','rail','air','ship'].indexOf(st.wideMode)>-1)?'flex':'none',
       wideRowShow:(st.travelMode==='own'||st.wideMode)?'flex':'none',
       ownTimeFlex:(st.travelMode!=='own'&&['bus','rail','air','ship'].indexOf(st.wideMode)>-1)?'0 0 92px':'1 1 0',
-      wideTitle:{ko:'광역교통',en:'Intercity',zh:'城际交通',ja:'広域交通',es:'Interurbano',fr:'Intercity'}[lang]||'Intercity',
-      localTitle:{ko:'현지 이동',en:'Getting around',zh:'当地出行',ja:'現地移動',es:'En destino',fr:'Getting around'}[lang]||'Getting around',
+      wideTitle:{ko:'광역교통',en:'Intercity',zh:'城际交通',ja:'広域交通',es:'Interurbano'}[lang]||'Intercity',
+      localTitle:{ko:'현지 이동',en:'Getting around',zh:'当地出行',ja:'現地移動',es:'En destino'}[lang]||'Getting around',
       wideOpts:(()=>{
         const cur=st.travelMode==='own'?'own':((st.wideMode&&st.wideMode!=='own')?st.wideMode:'');
         window.__tpWide=cur||undefined;
