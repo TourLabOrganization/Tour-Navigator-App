@@ -21,7 +21,7 @@
 
 - `assets/open-tour-unmatched.csv` — 열린관광지 중 앱 데이터에 없는 59곳. ROADMAP 의 작업 목록이라 둠.
 - `테마 추천 알고리즘/data/derived/*.json`, `체류시간 산정/*.csv` — 스크립트로 다시 만들 수 있지만 각 폴더 README 가 "결과를 함께 커밋" 하도록 정함.
-- `assets/screenshots/*.png` (12장) — README 용 캡처. 화면이 바뀌면 다시 찍는다 (헤드리스 Chromium, API 응답은 예시 값).
+- `assets/screenshots/*.png` (14장) — README 용 캡처. 화면이 바뀌면 다시 찍는다 (헤드리스 Chromium, API 응답은 예시 값).
 
 ## 3. 규칙
 

@@ -54,11 +54,11 @@ const children = [
   // 표지
   new Paragraph({ spacing: { before: 2400, after: 200 }, children: [run('Tour Navigator App', { size: 52, bold: true, color: INK })] }),
   new Paragraph({ spacing: { after: 120 }, children: [run('시스템 구성 명세서', { size: 40, bold: true, color: ORANGE })] }),
-  new Paragraph({ spacing: { after: 800 }, children: [run('v1.1 · 2026-09-27', { size: 22, color: '3C5658' })] }),
+  new Paragraph({ spacing: { after: 800 }, children: [run('v1.2 · 2026-09-27', { size: 22, color: '3C5658' })] }),
   table(['항목', '내용'], [
     ['문서 목적', '앱을 이루는 구성 요소, 요소 간 호출 관계, 외부 인터페이스, 배포 구조를 한 장의 구성도와 표로 정리한다.'],
     ['대상 시스템', 'Tour Navigator App — 영상 속 장소를 따라 걷는 여행 계획 웹 앱 (테마 화면 5종 + 통합 플래너 + 홈)'],
-    ['기준 저장소', 'GitHub TourLabOrganization/Tour-Navigator-App · 브랜치 claude/brave-dirac-zmdr4p · 2026-09-27 Claude Design 내보내기본 통합(커밋 478f749) 이후'],
+    ['기준 저장소', 'GitHub TourLabOrganization/Tour-Navigator-App · 브랜치 claude/brave-dirac-zmdr4p · 2026-09-27 Claude Design 2차 내보내기본 통합(커밋 4383e9b) 이후'],
     ['문서 상태', '저장소 `시스템 구성도/` 폴더에서 관리. 구성도(구성도.html → render_png.mjs)와 이 문서(build_spec.js)는 스크립트로 다시 만든다.'],
     ['관련 문서', 'README.md · ARCHITECTURE.md · DATA.md · APIS.md · DESIGN.md · STYLES.md · CONTRIBUTING.md · CLEANUP.md · ROADMAP.md · CHANGELOG.md · I18N-TODO.md · 테마 추천 알고리즘/README.md · 체류시간 산정/README.md'],
   ], [1800, 7838]),
@@ -112,7 +112,7 @@ const children = [
   p('각 화면 파일은 <helmet>(폰트 · shared.css 링크 · 화면 고유 @keyframes), 인라인 스타일 템플릿, 그리고 class Component extends DCLogic 로직 클래스로 이루어진다. 화면별 데이터(DATA · REGION_HUB · ORIGINS · TRANSIT · STAYS · I18N)는 화면 안에 남아 있다.'),
   table(['화면', '파일', '내용', '줄 수'], [
     ['홈', 'Tour Navigator Home.dc.html', '자동 회전 배너 5장, 나의 테마 타일, 테마 추천(14문항 → 여행자 유형 → 추천 테마 3개), ME 화면(나의 테마 · 저장 플랜), 인앱 화면 전환', '734'],
-    ['투어 플래너', 'Tour Planner.dc.html', '전국 장소 3,118곳 · 124개 시군, 도시 클러스터, 목록 40곳 + 더 보기, 날짜 범위 코스 계산, 광역교통 2단계 선택과 이동 체인 · TAGO 시각표, 지하철 호선 → 역(수도권 165개 + 이름 검색 추가), 카페리, 일자별 장소 추가, 내 플랜 저장, 도시별 행사, 관광특구 배지', '10,039'],
+    ['투어 플래너', 'Tour Planner.dc.html', '전국 장소 3,118곳 · 124개 시군, 도시 클러스터, 목록 40곳 + 더 보기, 날짜 범위 코스 계산, 광역교통 2단계 선택과 이동 체인 · TAGO 시각표, 지하철 호선 → 역(수도권 165개 + 이름 검색 추가), 카페리, 일자별 장소 추가, 내 플랜 저장, 도시별 행사, 관광특구 배지, 여행 정보 탭의 시티투어 280코스 · 관광안내소 725곳', '10,039'],
     ['RESCENE Route', 'RESCENE Route.dc.html', '경주 · 거제 · 전국 (촬영지 36곳)', '3,191'],
     ['왕과 사는 남자', 'Kings Warden Route.dc.html', '영월 (촬영지 5곳)', '3,077'],
     ['케이팝 데몬 헌터스', 'KPop Demon Hunters Route.dc.html', '서울 (촬영지 11곳)', '3,368'],
@@ -270,7 +270,7 @@ const doc = new Document({
   },
   sections: [{
     properties: { page: { margin: { top: 1134, bottom: 1134, left: 1134, right: 1134 } } },
-    headers: { default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [run('Tour Navigator App · 시스템 구성 명세서 (v1.1)', { size: 16, color: '3C5658' })] })] }) },
+    headers: { default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [run('Tour Navigator App · 시스템 구성 명세서 (v1.2)', { size: 16, color: '3C5658' })] })] }) },
     footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 16, color: '3C5658' })] })] }) },
     children,
   }],

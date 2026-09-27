@@ -83,7 +83,8 @@ python3 -m http.server 8000
 </tr>
 <tr>
 <td align="center"><img src="assets/screenshots/theme-stamp.png" width="200"><br><sub>스탬프 북 (거제 22곳)</sub></td>
-<td></td><td></td>
+<td align="center"><img src="assets/screenshots/planner-info.png" width="200"><br><sub>플래너 여행 정보 · 시티투어 (코스빌더에 추가)</sub></td>
+<td align="center"><img src="assets/screenshots/planner-info-2.png" width="200"><br><sub>플래너 여행 정보 · 관광안내소 · 1330 통역 안내</sub></td>
 </tr>
 </table>
 
