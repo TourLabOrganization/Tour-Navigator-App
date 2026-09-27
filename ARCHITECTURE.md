@@ -6,7 +6,7 @@
 
 ```
 Tour Navigator Home.dc.html     홈 · 배너 · 테마 진입 · 테마 추천 · ME
-Tour Planner.dc.html            전국 통합 플래너 (9,496줄 · 2.0MB, 장소 데이터 포함)
+Tour Planner.dc.html            전국 통합 플래너 (10,039줄 · 2.2MB, 장소 데이터 포함)
 RESCENE Route.dc.html           테마 5종
 Kings Warden Route.dc.html
 KPop Demon Hunters Route.dc.html
@@ -17,6 +17,7 @@ config.js                       API 키 (config.example.js 를 복사해 만듦 
 shared.js                       플래너 + 테마 5종 공용 상수 · 순수 함수 · 키 읽기
 shared.css                      7개 화면 공통 스타일 (리셋 · 스크롤바 · Leaflet · 공용 애니메이션)
 assets/                         원본 데이터 · 이미지
+data/                           시티투어 · 관광안내소 JSON (플래너 여행 정보 탭이 처음 열 때 fetch)
 테마 추천 알고리즘/              선호 문항 → 군집 → 추천 테마 계산 코드 · 근거 데이터 · 설계 문서 (Python)
 체류시간 산정/                  체류 · 일정 시간 산정 로직 모듈, 장소별 체류 CSV, 설명서
 시스템 구성도/                  시스템 구성도 PNG · 구성 명세서 docx · 생성 스크립트

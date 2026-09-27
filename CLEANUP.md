@@ -26,7 +26,7 @@
 ## 3. 규칙
 
 1. **Claude Design 내보내기본은 GitHub 웹에 올리지 않는다.** zip 을 이 저장소 작업 세션에 첨부하면 통합 스크립트가 루트 화면에 반영한다. 내보내기본은 공통 코드와 키를 화면 안에 다시 넣기 때문에 그대로 덮어쓰면 안 된다 (절차는 CONTRIBUTING.md).
-2. **zip · 폴더째 업로드 금지.** 저장소에는 화면 7개와 `support.js` · `shared.js` · `shared.css` · `config.example.js` · `assets/` · `uploads/` · 문서 · 하위 폴더 3개만 둔다.
+2. **zip · 폴더째 업로드 금지.** 저장소에는 화면 7개와 `support.js` · `shared.js` · `shared.css` · `config.example.js` · `assets/` · `uploads/` · `data/` · 문서 · 하위 폴더 3개만 둔다.
 3. **공용 코드는 `shared.js` 하나.** 화면에 같은 이름의 상수·함수를 다시 정의하지 않는다.
 4. **키는 `config.js` 에서만 읽는다.** 화면 · 문서 · 커밋 메시지에 키 문자열을 적지 않는다.
 5. **코드가 읽지 않는 데이터는 저장소에 두지 않는다.** 근거 자료가 필요하면 출처 링크와 이력 커밋을 DATA.md 에 적는다.
