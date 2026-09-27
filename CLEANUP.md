@@ -28,7 +28,7 @@
 3. **공용 코드는 `shared.js` 하나.** 화면에 같은 이름의 상수·함수를 다시 정의하지 않는다.
 4. **키는 `config.js` 에서만 읽는다.** 화면 · 문서 · 커밋 메시지에 키 문자열을 적지 않는다.
 5. **코드가 읽지 않는 데이터는 저장소에 두지 않는다.** 근거 자료가 필요하면 출처 링크와 이력 커밋을 DATA.md 에 적는다.
-6. **브랜치.** 작업은 `claude/brave-dirac-zmdr4p` 에서 하고 PR 로 main 에 합친다. `Claude-Design` 브랜치는 웹 업로드 실수로 생긴 것이라 main 에 합친 뒤 삭제한다.
+6. **브랜치.** 작업은 `claude/brave-dirac-zmdr4p` 에서 하고 PR 로 main 에 합친다. `Claude-Design` 브랜치는 웹 업로드 실수로 생긴 것이라 main 에 합친 뒤 삭제한다 (main 에 없는 커밋은 잘못 올라간 폴더 하나뿐). Claude Design 내보내기본의 README 가 `Claude-Design` 브랜치에 올리라고 해도 따르지 않는다.
 
 ## 4. 점검 명령
 

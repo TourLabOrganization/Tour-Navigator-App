@@ -27,7 +27,7 @@
 | 화면 | 파일 | 내용 |
 | --- | --- | --- |
 | 홈 | `Tour Navigator Home.dc.html` | 자동 회전 배너 5장, 테마 타일, 테마 추천(14문항 → 여행자 유형), ME 화면(나의 테마 · 저장 플랜), 인앱 전환 |
-| 투어 플래너 | `Tour Planner.dc.html` | 전국 장소 1,197곳 · 110여 도시 통합, 도시 클러스터, 코스 계산, 광역교통 2단계 선택 · 이동 체인 · 시각표, 내 플랜 저장 |
+| 투어 플래너 | `Tour Planner.dc.html` | 전국 장소 2,711곳 · 109개 시군 통합, 도시 클러스터, 코스 계산, 광역교통 2단계 선택 · 이동 체인 · 시각표, 지하철 호선·역 선택, 내 플랜 저장 |
 | RESCENE Route | `RESCENE Route.dc.html` | 경주·거제·전국 |
 | 왕과 사는 남자 | `Kings Warden Route.dc.html` | 영월 |
 | 케이팝 데몬 헌터스 | `KPop Demon Hunters Route.dc.html` | 서울 |
