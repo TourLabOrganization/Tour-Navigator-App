@@ -14,8 +14,8 @@ python3 -m http.server 8000
 - 화면은 `*.dc.html` 한 파일. 템플릿과 로직 클래스가 같이 들어 있습니다.
 - 6개 화면(플래너 + 테마 5종)이 함께 쓰는 상수·순수 함수는 `shared.js` 에 둡니다. 각 화면 `<head>` 가 `support.js` → `config.js` → `shared.js` 순으로 읽으므로 화면 안에 같은 이름을 다시 정의하지 마세요. 화면별로 값이 다른 것(`DATA` · `I18N` · `ORIGINS` · `STAYS` · `TRANSIT`)은 각 화면에 남깁니다.
 - 두 화면 이상에서 쓰는 CSS 규칙은 `shared.css` 에 둡니다. 한 화면에서만 쓰는 `@keyframes` 는 그 화면 `<helmet>` 의 `<style>` 에 남깁니다. 자세한 내용은 [STYLES.md](STYLES.md).
-- 키는 `config.js` 에서만 읽습니다(`shared.js` 의 `GMAPS_KEY` · `YT_KEY` · `KAKAO_KEY` · `DATA_GO_KR_KEY` · `EXROAD_KEY`). 화면 파일에 키 문자열을 적지 마세요.
-- Claude Design 내보내기본은 GitHub 웹에 올리지 말고 작업 세션에 첨부합니다 (규칙은 [CLEANUP.md](CLEANUP.md)). 화면을 다시 내보냈다면, 커밋 전에 `<head>` 의 `config.js` · `shared.js` 태그와 `<helmet>` 의 `shared.css` 링크를 다시 넣고, 내보내기본에 딸려 온 공통 상수 · 키 문자열을 지웁니다.
+- 키는 `config.js` 에서만 읽습니다(`shared.js` 의 `GMAPS_KEY` · `YT_KEY` · `KAKAO_KEY` · `DATA_GO_KR_KEY` · `EXROAD_KEY` · `TMDB_KEY`). 화면 파일에 키 문자열이나 `window.APP_CONFIG` 직접 참조를 적지 마세요.
+- Claude Design 내보내기본은 GitHub 웹에 올리지 말고 작업 세션에 첨부합니다 (규칙은 [CLEANUP.md](CLEANUP.md)). 화면을 다시 내보냈다면, 커밋 전에 `<head>` 의 `config.js` · `shared.js` 태그와 `<helmet>` 의 `shared.css` 링크를 다시 넣고, 내보내기본에 딸려 온 공통 상수 · 키 문자열을 지웁니다. 내보내기본의 공용 함수 본문이 `shared.js` 와 달라졌으면 그 변경만 `shared.js` 로 옮깁니다. 통합 뒤 `체류시간 산정/export_stay_csv.js` 로 CSV 를 다시 만들고, `시스템 구성도/` 의 구성도 · 명세서도 바뀐 구성에 맞춰 갱신합니다.
 - 새 전역 상수는 대문자 스네이크(`REGION_HUB`), 함수는 카멜(`stayPrice`).
 
 ## 포매팅

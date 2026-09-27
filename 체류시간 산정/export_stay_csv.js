@@ -30,7 +30,7 @@ vm.runInNewContext(sharedSrc + '\n' + html.slice(from, to + 1).join('\n') + '\n;
 const { DATA, CATS, REGION_HUB, ORIGINS, METRO_CITY } = ctx.__out;
 
 // 장소는 id 당 한 번만 낸다. 도시 화면(서울 · 부산 · 제주 · 영월)에 있는 장소는 그 화면으로, 나머지는 nation 으로 적는다.
-// (nation 목록은 도시 화면 장소를 전부 포함하고, 조립 단계에서 경주 · 거제가 한 번 더 붙어 id 62개가 겹친다.
+// (nation 목록은 도시 화면 장소를 전부 포함하고, 조립 단계에서 경주 · 거제가 한 번 더 붙어 id 61개가 겹친다.
 //  앱의 courseList 도 id 로 첫 레코드를 찾으므로 첫 레코드만 남긴다.)
 const CITY_ORDER = ['seoul', 'busan', 'jeju', 'yeongwol', 'nation'];
 const seen = new Set();
