@@ -99,7 +99,7 @@ const children = [
   ], [2600, 7038]),
   h2('2.2 구성 요소 그룹'),
   table(['그룹', '구성', '실행 위치'], [
-    ['정적 웹 앱', '화면 7개 · support.js · config.js · shared.js · shared.css · image-slot.js · assets/ · uploads/', '사용자 브라우저'],
+    ['정적 웹 앱', '화면 7개 · support.js · config.js · shared.js · shared.css · assets/ · uploads/', '사용자 브라우저'],
     ['외부 서비스', 'Google Maps · YouTube Data · 공공데이터포털(한국관광공사 · 기상청 · 에어코리아 · 국토부 TAGO · 한국공항공사 · 부산시 · 부산교통공사) · Kakao REST · 카카오모빌리티 · 한국도로공사 · TMDB · 키 없는 서비스 · 예매 링크', '각 서비스 제공자'],
     ['테마 추천 알고리즘', 'run_all.py 와 src/ 스크립트 6개, 입력 조사 자료, 출력 data/derived/*.json', '개발자 PC (Python 3)'],
     ['체류시간 산정', '플래너의 체류 · 이동 · 일자 창 · 배정 로직을 분리한 stay_schedule.js, 장소별 CSV 생성기, 설명서', '개발자 PC (Node)'],
@@ -127,7 +127,6 @@ const children = [
     ['config.js', 'window.APP_CONFIG 로 API 키 보관. config.example.js 를 복사해 만들며 git 제외', '없으면 404 한 줄만 찍히고 키 기능이 꺼짐'],
     ['shared.js', '플래너 + 테마 5종 공용: 키 상수(GMAPS_KEY · YT_KEY · KAKAO_KEY · DATA_GO_KR_KEY · EXROAD_KEY · TMDB_KEY), 팔레트 · 지도 스킨 · 카테고리 표 · 달력 문자열 · cityName · vNum · vDate · stayPrice · stayQuery · hav, 조회 함수 getWeather(Open-Meteo + 기상청 단기예보 getKmaForecast · 격자별 1시간 캐시) · getAirQuality(에어코리아) · getFestivals(TourAPI 축제) · getRelatedSpots(연관 관광지 · getSignguCd) · getTitleMeta(TMDB)', '<head> 에서 support.js → config.js → shared.js 순으로 로드'],
     ['shared.css', '7개 화면 공통 스타일: 리셋 · 폰트 · 링크 색 · 포커스 · Leaflet · 스크롤바 · 공용 애니메이션', '화면 고유 @keyframes 만 각 화면 <style> 에 남김'],
-    ['image-slot.js', '이미지 슬롯 웹 컴포넌트', ''],
   ], [1700, 5038, 2900]),
   h2('3.3 데이터 파일 (assets/)'),
   table(['파일', '내용', '쓰는 곳'], [

@@ -14,6 +14,8 @@
 | 키 문자열 | Google · Kakao · 공공데이터포털 · 한국도로공사 · KRIC 키 | 전부 `config.js` 로 이동. 이력에 남은 키는 재발급 필요 | `0572f24`~`a02da69` |
 | 낡은 문서 | README 의 데이터 · 구조 · 디자인 절, STYLES 이력 절, APIS 옛 키 설명, standalone 참조, `테마 추천 알고리즘/CLAUDE.md` 의 GitHub 절 | 다른 문서와 중복이거나 사실과 다름 | — |
 | 중복 행 | `체류시간 산정/체류시간_장소별.csv` 262행 | 도시 화면과 전국 목록에 같은 장소가 두 번 실림 → id 당 한 행 | `ccdd88d` 이전 |
+| 쓰지 않는 코드 | `image-slot.js` (65KB) | Claude Design 편집기용 이미지 자리 컴포넌트. 어떤 화면도 `<image-slot>` 을 쓰거나 이 파일을 읽지 않음 | `b40212f` |
+| 브랜치 | `Claude-Design` | 웹 업로드 실수로 생긴 브랜치. main 에 없는 커밋은 잘못 올라간 폴더뿐 | 삭제됨 |
 
 ## 2. 남긴 것과 이유
 
@@ -24,11 +26,11 @@
 ## 3. 규칙
 
 1. **Claude Design 내보내기본은 GitHub 웹에 올리지 않는다.** zip 을 이 저장소 작업 세션에 첨부하면 통합 스크립트가 루트 화면에 반영한다. 내보내기본은 공통 코드와 키를 화면 안에 다시 넣기 때문에 그대로 덮어쓰면 안 된다 (절차는 CONTRIBUTING.md).
-2. **zip · 폴더째 업로드 금지.** 저장소에는 화면 7개와 `support.js` · `shared.js` · `shared.css` · `image-slot.js` · `config.example.js` · `assets/` · `uploads/` · 문서 · 하위 폴더 3개만 둔다.
+2. **zip · 폴더째 업로드 금지.** 저장소에는 화면 7개와 `support.js` · `shared.js` · `shared.css` · `config.example.js` · `assets/` · `uploads/` · 문서 · 하위 폴더 3개만 둔다.
 3. **공용 코드는 `shared.js` 하나.** 화면에 같은 이름의 상수·함수를 다시 정의하지 않는다.
 4. **키는 `config.js` 에서만 읽는다.** 화면 · 문서 · 커밋 메시지에 키 문자열을 적지 않는다.
 5. **코드가 읽지 않는 데이터는 저장소에 두지 않는다.** 근거 자료가 필요하면 출처 링크와 이력 커밋을 DATA.md 에 적는다.
-6. **브랜치.** 작업은 `claude/brave-dirac-zmdr4p` 에서 하고 PR 로 main 에 합친다. `Claude-Design` 브랜치는 웹 업로드 실수로 생긴 것이라 main 에 합친 뒤 삭제한다 (main 에 없는 커밋은 잘못 올라간 폴더 하나뿐). Claude Design 내보내기본의 README 가 `Claude-Design` 브랜치에 올리라고 해도 따르지 않는다.
+6. **브랜치.** 작업은 `claude/brave-dirac-zmdr4p` 에서 하고 PR 로 main 에 합친다. 웹 업로드 실수로 생겼던 `Claude-Design` 브랜치는 main 에 합친 뒤 2026-09-27 에 삭제했다. Claude Design 내보내기본의 README 가 그 브랜치에 올리라고 해도 따르지 않는다.
 
 ## 4. 점검 명령
 

@@ -16,7 +16,6 @@ support.js                      런타임 (템플릿 + 로직 클래스 실행)
 config.js                       API 키 (config.example.js 를 복사해 만듦 · git 제외)
 shared.js                       플래너 + 테마 5종 공용 상수 · 순수 함수 · 키 읽기
 shared.css                      7개 화면 공통 스타일 (리셋 · 스크롤바 · Leaflet · 공용 애니메이션)
-image-slot.js                   이미지 슬롯 웹 컴포넌트
 assets/                         원본 데이터 · 이미지
 테마 추천 알고리즘/              선호 문항 → 군집 → 추천 테마 계산 코드 · 근거 데이터 · 설계 문서 (Python)
 체류시간 산정/                  체류 · 일정 시간 산정 로직 모듈, 장소별 체류 CSV, 설명서

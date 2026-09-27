@@ -219,7 +219,7 @@ python3 -m http.server 8000
 
 ```
 *.dc.html                 화면 7개
-support.js · shared.js · shared.css · image-slot.js · config.example.js
+support.js · shared.js · shared.css · config.example.js
 assets/                   장소 마스터 CSV · 배지 이미지 · README 캡처
 uploads/                  홈 배너 · 테마 타일 이미지
 테마 추천 알고리즘/         선호 문항 → 군집 → 추천 테마 계산 (Python)
