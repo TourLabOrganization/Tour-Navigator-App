@@ -10,6 +10,14 @@
 <body>
 <x-dc>
 <helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* Home 고유 애니메이션 (스플래시 · 배너) */
+html[data-lang="zh"] body, html[data-lang="zh"] body *{font-family:"Archivo","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif !important}
+</style>
+
 <meta name="ext-resource-dependency" content="uploads/images (17).jpg">
 <meta name="ext-resource-dependency" content="uploads/images (18).jpg">
 <meta name="ext-resource-dependency" content="uploads/images (19).jpg">
@@ -17,12 +25,14 @@
 <meta name="ext-resource-dependency" content="assets/busan-tile.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css">
 <style>
-/* Home 고유 애니메이션 (스플래시 · 배너) */
+html,body{margin:0;padding:0;background:#cdc4b0;font-family:"Archivo","Gowun Dodum",system-ui,sans-serif;color:#153b3d;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#b8431c;text-underline-offset:3px}a:hover{color:#8f3413}
 @keyframes rsFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
 @keyframes rsHour{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes rsMin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+      @keyframes rsMin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+ }
 @keyframes rsSplashOut { 0%,86% { opacity:1 } 100% { opacity:0 } }
 @keyframes rsProgress { from { width:0% } to { width:100% } }
 </style>
@@ -36,6 +46,14 @@
       <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:0 12px;min-width:0">
         <div style="font-size:14px;font-weight:800;letter-spacing:-.02em;line-height:1">TOUR NAVIGATOR</div>
       </div>
+<div sc-camel-on-mouse-enter="{{ langOpen }}" sc-camel-on-mouse-leave="{{ langClose }}" style="position:relative;flex:none;align-self:stretch;display:flex;border-left:2px solid rgba(21,59,61,.4)">
+<button sc-camel-on-click="{{ langOpen }}" style="width:76px;border:0;background:transparent;font-size:9.5px;font-weight:800;letter-spacing:.06em;line-height:1.15;cursor:pointer;color:#153b3d;text-transform:uppercase;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:1px;padding:0 8px" style-hover="background:rgba(184,67,28,.12)" type="button"><span>Multi</span><span>Language</span></button>
+<div style="display:{{ langMenu }};position:absolute;top:100%;right:0;z-index:60;border:2px solid #153b3d;background:#f2ece0;min-width:104px">
+<sc-for list="{{ langItems }}" as="l" hint-placeholder-count="5">
+<button sc-camel-on-click="{{ l.pick }}" style="display:block;width:100%;height:30px;border:0;border-bottom:1px solid rgba(21,59,61,.2);background:{{ l.bg }};color:{{ l.fg }};font-size:11px;font-weight:800;text-align:left;padding:0 10px;cursor:pointer" style-hover="background:rgba(184,67,28,.14)" type="button">{{ l.label }}</button>
+</sc-for>
+</div>
+</div>
       <button style="width:44px;border:0;border-left:2px solid rgba(21,59,61,.4);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#153b3d" style-hover="background:rgba(184,67,28,.12)" type="button">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
       </button>
@@ -45,8 +63,8 @@
       </button>
     </div>
     <div style="display:flex;border-top:2px solid rgba(21,59,61,.4)">
-      <button style="flex:1;height:36px;border:0;border-right:2px solid rgba(21,59,61,.4);cursor:pointer;text-align:left;padding:0 9px;font-size:11.5px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;background:#b8431c;color:#f2ece0" type="button">내 테마</button>
-      <button onClick="{{ openPlanner }}" style="flex:1;height:36px;border:0;border-right:2px solid rgba(21,59,61,.4);cursor:pointer;text-align:left;padding:0 9px;font-size:11.5px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;background:transparent;color:#153b3d" style-hover="background:rgba(184,67,28,.12)" type="button">투어 플래너</button>
+      <button style="flex:1;height:36px;border:0;border-right:2px solid rgba(21,59,61,.4);cursor:pointer;text-align:left;padding:0 9px;font-size:11.5px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;background:#b8431c;color:#f2ece0" type="button">{{ tx.k0 }}</button>
+      <button onClick="{{ openPlanner }}" style="flex:1;height:36px;border:0;border-right:2px solid rgba(21,59,61,.4);cursor:pointer;text-align:left;padding:0 9px;font-size:11.5px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;background:transparent;color:#153b3d" style-hover="background:rgba(184,67,28,.12)" type="button">{{ tx.k1 }}</button>
     </div>
   </header>
 
@@ -56,44 +74,44 @@
       <div style="display:flex;width:100%;transform:{{ bannerShift }};transition:transform .55s cubic-bezier(.4,0,.2,1)">
       <div style="flex:0 0 100%;box-sizing:border-box;padding:18px 12px 26px;position:relative">
         <span style="display:inline-block;background:#f2ece0;color:#b8431c;font-size:9px;font-weight:800;letter-spacing:.14em;padding:4px 7px">RESCENE ROUTE</span>
-        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">영상 속 그 길을<br>그대로 걷다</h2>
-        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">촬영지와 이동 경로를 한 번에 계획해 보세요</p>
+        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">{{ tx.k2 }}<br>{{ tx.k3 }}</h2>
+        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">{{ tx.k4 }}</p>
         <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between">
           <span style="font-size:11px;font-weight:800;border:2px solid rgba(242,236,224,.7);padding:3px 8px;letter-spacing:.06em">1 / 5</span>
           <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(242,236,224,.55)" stroke-width="1" stroke-linecap="square" style="margin:-22px -2px -8px 0"><path d="M3 11.5 21 4l-7.5 17-2-7.5z"></path><path d="M11.5 13.5 21 4"></path></svg>
         </div>
       </div>
       <div style="flex:0 0 100%;box-sizing:border-box;padding:18px 12px 26px;position:relative">
-        <span style="display:inline-block;background:#f2ece0;color:#b8431c;font-size:9px;font-weight:800;letter-spacing:.14em;padding:4px 7px">왕과 사는 남자</span>
-        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">단종이 걸은 길을<br>영월에서 만나다</h2>
-        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">청령포에서 장릉까지, 유배의 동선을 따라</p>
+        <span style="display:inline-block;background:#f2ece0;color:#b8431c;font-size:9px;font-weight:800;letter-spacing:.14em;padding:4px 7px">{{ tx.k5 }}</span>
+        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">{{ tx.k6 }}<br>{{ tx.k7 }}</h2>
+        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">{{ tx.k8 }}</p>
         <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between">
           <span style="font-size:11px;font-weight:800;border:2px solid rgba(242,236,224,.7);padding:3px 8px;letter-spacing:.06em">2 / 5</span>
           <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(242,236,224,.55)" stroke-width="1" stroke-linecap="square" style="margin:-22px -2px -8px 0"><path d="M3 11.5 21 4l-7.5 17-2-7.5z"></path><path d="M11.5 13.5 21 4"></path></svg>
         </div>
       </div>
       <div style="flex:0 0 100%;box-sizing:border-box;padding:18px 12px 26px;position:relative">
-        <span style="display:inline-block;background:#f2ece0;color:#b8431c;font-size:9px;font-weight:800;letter-spacing:.14em;padding:4px 7px">케이팝 데몬 헌터스</span>
-        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">헌트릭스의 서울을<br>발로 따라가다</h2>
-        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">낙산공원 성곽길에서 잠실 최종 무대까지</p>
+        <span style="display:inline-block;background:#f2ece0;color:#b8431c;font-size:9px;font-weight:800;letter-spacing:.14em;padding:4px 7px">{{ tx.k9 }}</span>
+        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">{{ tx.k10 }}<br>{{ tx.k11 }}</h2>
+        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">{{ tx.k12 }}</p>
         <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between">
           <span style="font-size:11px;font-weight:800;border:2px solid rgba(242,236,224,.7);padding:3px 8px;letter-spacing:.06em">3 / 5</span>
           <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(242,236,224,.55)" stroke-width="1" stroke-linecap="square" style="margin:-22px -2px -8px 0"><path d="M3 11.5 21 4l-7.5 17-2-7.5z"></path><path d="M11.5 13.5 21 4"></path></svg>
         </div>
       </div>
       <div style="flex:0 0 100%;box-sizing:border-box;padding:18px 12px 26px;position:relative">
-        <span style="display:inline-block;background:#f2ece0;color:#b8431c;font-size:9px;font-weight:800;letter-spacing:.14em;padding:4px 7px">제주 K-DRAMA</span>
-        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">두 편의 드라마가<br>지나간 해안선</h2>
-        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">폭싹 속았수다와 우리들의 블루스, 같은 섬 다른 시간</p>
+        <span style="display:inline-block;background:#f2ece0;color:#b8431c;font-size:9px;font-weight:800;letter-spacing:.14em;padding:4px 7px">{{ tx.k13 }}</span>
+        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">{{ tx.k14 }}<br>{{ tx.k15 }}</h2>
+        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">{{ tx.k16 }}</p>
         <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between">
           <span style="font-size:11px;font-weight:800;border:2px solid rgba(242,236,224,.7);padding:3px 8px;letter-spacing:.06em">4 / 5</span>
           <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(242,236,224,.55)" stroke-width="1" stroke-linecap="square" style="margin:-22px -2px -8px 0"><path d="M3 11.5 21 4l-7.5 17-2-7.5z"></path><path d="M11.5 13.5 21 4"></path></svg>
         </div>
       </div>
       <div style="flex:0 0 100%;box-sizing:border-box;padding:18px 12px 26px;position:relative">
-        <span style="display:inline-block;background:#f2ece0;color:#b8431c;font-size:9px;font-weight:800;letter-spacing:.14em;padding:4px 7px">부산 영화 기행</span>
-        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">영화가 가장 많이<br>찍힌 도시</h2>
-        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">감천에서 해운대까지, 스크린 속 부산을 걷다</p>
+        <span style="display:inline-block;background:#f2ece0;color:#b8431c;font-size:9px;font-weight:800;letter-spacing:.14em;padding:4px 7px">{{ tx.k17 }}</span>
+        <h2 style="margin:12px 0 0;font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.02em">{{ tx.k18 }}<br>{{ tx.k19 }}</h2>
+        <p style="margin:9px 0 0;font-size:12.5px;line-height:1.5;opacity:.92">{{ tx.k20 }}</p>
         <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between">
           <span style="font-size:11px;font-weight:800;border:2px solid rgba(242,236,224,.7);padding:3px 8px;letter-spacing:.06em">5 / 5</span>
           <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(242,236,224,.55)" stroke-width="1" stroke-linecap="square" style="margin:-22px -2px -8px 0"><path d="M3 11.5 21 4l-7.5 17-2-7.5z"></path><path d="M11.5 13.5 21 4"></path></svg>
@@ -101,88 +119,88 @@
       </div>
       </div>
       <div style="position:absolute;left:12px;bottom:12px;display:flex;gap:5px">
-        <button sc-camel-on-click="{{ goto0 }}" aria-label="1번 배너" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot0 }}" type="button"></button>
-        <button sc-camel-on-click="{{ goto1 }}" aria-label="2번 배너" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot1 }}" type="button"></button>
-        <button sc-camel-on-click="{{ goto2 }}" aria-label="3번 배너" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot2 }}" type="button"></button>
-        <button sc-camel-on-click="{{ goto3 }}" aria-label="4번 배너" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot3 }}" type="button"></button>
-        <button sc-camel-on-click="{{ goto4 }}" aria-label="5번 배너" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot4 }}" type="button"></button>
+        <button sc-camel-on-click="{{ goto0 }}" aria-label="{{ tx.k52 }}" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot0 }}" type="button"></button>
+        <button sc-camel-on-click="{{ goto1 }}" aria-label="{{ tx.k53 }}" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot1 }}" type="button"></button>
+        <button sc-camel-on-click="{{ goto2 }}" aria-label="{{ tx.k54 }}" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot2 }}" type="button"></button>
+        <button sc-camel-on-click="{{ goto3 }}" aria-label="{{ tx.k55 }}" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot3 }}" type="button"></button>
+        <button sc-camel-on-click="{{ goto4 }}" aria-label="{{ tx.k56 }}" style="width:18px;height:4px;border:0;padding:0;cursor:pointer;background:{{ dot4 }}" type="button"></button>
       </div>
     </div>
 
     <div style="display:flex;align-items:center;justify-content:space-between;height:40px;border-bottom:2px solid rgba(21,59,61,.4);padding:0 0 0 12px">
-      <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#b8431c">나의 테마</span>
+      <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#b8431c">{{ tx.k21 }}</span>
       <button style="width:44px;height:40px;border:0;border-left:2px solid rgba(21,59,61,.4);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#153b3d" style-hover="background:rgba(184,67,28,.12)" type="button">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 4v16M4 12h16"></path></svg>
       </button>
     </div>
 
-    <div style="padding:14px 12px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px 12px;border-bottom:2px solid rgba(21,59,61,.4)">
+    <div style="padding:14px 12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 12px;border-bottom:2px solid rgba(21,59,61,.4)">
 
-      <a href="RESCENE Route.dc.html" onClick="{{ openRescene }}" style="display:flex;flex-direction:column;gap:7px;text-decoration:none;color:#153b3d" style-hover="color:#b8431c">
+      <a href="RESCENE Route.dc.html" onClick="{{ openRescene }}" style="display:flex;flex-direction:column;gap:7px;min-width:0;text-decoration:none;color:#153b3d" style-hover="color:#b8431c">
         <span style="position:relative;display:block;width:100%;aspect-ratio:1;border:2px solid #153b3d;overflow:hidden">
           <img src="uploads/images (18).jpg" alt="RESCENE" style="width:100%;height:100%;object-fit:cover;display:block">
         </span>
-        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em;white-space:nowrap">RESCENE Route</span>
+        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em;white-space:pre-line;overflow-wrap:anywhere;min-width:0">RESCENE Route</span>
       </a>
 
-      <a href="Kings Warden Route.dc.html" onClick="{{ openWarden }}" style="display:flex;flex-direction:column;gap:7px;text-decoration:none;color:#153b3d" style-hover="color:#b8431c">
+      <a href="Kings Warden Route.dc.html" onClick="{{ openWarden }}" style="display:flex;flex-direction:column;gap:7px;min-width:0;text-decoration:none;color:#153b3d" style-hover="color:#b8431c">
         <span style="position:relative;display:block;width:100%;aspect-ratio:1;border:2px solid #153b3d;overflow:hidden">
-          <img loading="lazy" decoding="async" src="uploads/images (17).jpg" alt="왕과 사는 남자" style="width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block">
+          <img loading="lazy" decoding="async" src="uploads/images (17).jpg" alt="{{ tx.k5 }}" style="width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block">
         </span>
-        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em;white-space:nowrap">왕과 사는 남자</span>
+        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em;white-space:pre-line;overflow-wrap:anywhere;min-width:0">{{ tx.k5 }}</span>
       </a>
 
-      <a href="KPop Demon Hunters Route.dc.html" onClick="{{ openKdh }}" style="display:flex;flex-direction:column;gap:7px;text-decoration:none;color:#153b3d" style-hover="color:#b8431c">
+      <a href="KPop Demon Hunters Route.dc.html" onClick="{{ openKdh }}" style="display:flex;flex-direction:column;gap:7px;min-width:0;text-decoration:none;color:#153b3d" style-hover="color:#b8431c">
         <span style="position:relative;display:block;width:100%;aspect-ratio:1;border:2px solid #153b3d;overflow:hidden">
-          <img loading="lazy" decoding="async" src="uploads/images (19).jpg" alt="케이팝 데몬 헌터스" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:172%;max-width:none;height:auto;display:block">
+          <img loading="lazy" decoding="async" src="uploads/images (19).jpg" alt="{{ tx.k9 }}" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:172%;max-width:none;height:auto;display:block">
         </span>
-        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em;white-space:nowrap">케데헌 서울</span>
+        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em;white-space:pre-line;overflow-wrap:anywhere;min-width:0">{{ tx.k22 }}</span>
       </a>
 
-      <a href="Jeju K-Drama Route.dc.html" onClick="{{ openJeju }}" style="display:flex;flex-direction:column;gap:7px;text-decoration:none;color:#153b3d" style-hover="color:#b8431c">
+      <a href="Jeju K-Drama Route.dc.html" onClick="{{ openJeju }}" style="display:flex;flex-direction:column;gap:7px;min-width:0;text-decoration:none;color:#153b3d" style-hover="color:#b8431c">
         <span style="position:relative;display:grid;grid-template-rows:1fr 1fr;gap:3px;width:100%;aspect-ratio:1;border:2px solid #153b3d;background:#1c1916;padding:0 11px;overflow:hidden">
           <span aria-hidden="true" style="position:absolute;left:3px;top:0;bottom:0;width:5px;background:repeating-linear-gradient(to bottom,transparent 0 3px,#f2ece0 3px 8px,transparent 8px 11px)"></span>
           <span aria-hidden="true" style="position:absolute;right:3px;top:0;bottom:0;width:5px;background:repeating-linear-gradient(to bottom,transparent 0 3px,#f2ece0 3px 8px,transparent 8px 11px)"></span>
           <span style="position:relative;display:block;min-height:0;overflow:hidden;background:#153b3d">
-            <img loading="lazy" decoding="async" src="uploads/images (20).jpg" alt="폭싹 속았수다" style="position:absolute;left:50%;top:-50%;transform:translateX(-50%);height:180%;width:auto;max-width:none;display:block">
+            <img loading="lazy" decoding="async" src="uploads/images (20).jpg" alt="{{ tx.k57 }}" style="position:absolute;left:50%;top:-50%;transform:translateX(-50%);height:180%;width:auto;max-width:none;display:block">
           </span>
           <span style="position:relative;display:block;min-height:0;overflow:hidden;background:#153b3d">
-            <img loading="lazy" decoding="async" src="uploads/images (21).jpg" alt="우리들의 블루스" style="position:absolute;left:50%;top:-74%;transform:translateX(-50%);height:180%;width:auto;max-width:none;display:block">
+            <img loading="lazy" decoding="async" src="uploads/images (21).jpg" alt="{{ tx.k58 }}" style="position:absolute;left:50%;top:-74%;transform:translateX(-50%);height:180%;width:auto;max-width:none;display:block">
           </span>
         </span>
-        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em;white-space:nowrap">제주 K-Drama</span>
+        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em;white-space:pre-line;overflow-wrap:anywhere;min-width:0">{{ tx.k23 }}</span>
       </a>
 
-      <a href="Busan Cinema Route.dc.html" onClick="{{ openBusan }}" style="display:flex;flex-direction:column;gap:7px;text-decoration:none;color:#153b3d" style-hover="color:#b8431c">
+      <a href="Busan Cinema Route.dc.html" onClick="{{ openBusan }}" style="display:flex;flex-direction:column;gap:7px;min-width:0;text-decoration:none;color:#153b3d" style-hover="color:#b8431c">
         <span style="position:relative;display:grid;grid-template-rows:1fr 1fr;gap:3px;width:100%;aspect-ratio:1;border:2px solid #153b3d;background:#1c1916;padding:0 11px;overflow:hidden">
           <span aria-hidden="true" style="position:absolute;left:3px;top:0;bottom:0;width:5px;background:repeating-linear-gradient(to bottom,transparent 0 3px,#f2ece0 3px 8px,transparent 8px 11px)"></span>
           <span aria-hidden="true" style="position:absolute;right:3px;top:0;bottom:0;width:5px;background:repeating-linear-gradient(to bottom,transparent 0 3px,#f2ece0 3px 8px,transparent 8px 11px)"></span>
           <span style="position:relative;display:block;min-height:0;overflow:hidden;background:#153b3d">
-            <img loading="lazy" decoding="async" src="uploads/images (23).jpg" alt="국제시장" style="width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block">
+            <img loading="lazy" decoding="async" src="uploads/images (23).jpg" alt="{{ tx.k59 }}" style="width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block">
           </span>
           <span style="position:relative;display:block;min-height:0;overflow:hidden;background:#153b3d">
-            <img loading="lazy" decoding="async" src="uploads/images (24).jpg" alt="범죄와의 전쟁" style="width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block">
+            <img loading="lazy" decoding="async" src="uploads/images (24).jpg" alt="{{ tx.k60 }}" style="width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block">
           </span>
         </span>
-        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em;white-space:nowrap">부산 영화 기행</span>
+        <span style="font-size:11px;font-weight:800;line-height:1.25;letter-spacing:-.01em;white-space:pre-line;overflow-wrap:anywhere;min-width:0">{{ tx.k17 }}</span>
       </a>
 
       <div style="display:flex;flex-direction:column;gap:7px">
         <div style="width:100%;aspect-ratio:1;border:2px solid #153b3d;background:#f2ece0;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:rgba(184,67,28,.12)">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b8431c" stroke-width="2" stroke-linecap="square"><path d="M12 4v16M4 12h16"></path></svg>
         </div>
-        <span style="font-size:11px;font-weight:800">테마 추가</span>
+        <span style="font-size:11px;font-weight:800">{{ tx.k24 }}</span>
       </div>
     </div>
 
     <div style="display:flex;align-items:center;height:40px;border-bottom:2px solid rgba(21,59,61,.4);padding:0 12px;gap:8px">
       <span style="flex:none;display:block;width:8px;height:8px;background:#b8431c"></span>
-      <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">테마 추천</span>
+      <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">{{ tx.k25 }}</span>
     </div>
     <div style="padding:12px;border-bottom:2px solid rgba(21,59,61,.4)">
       <sc-if value="{{ hasSaved }}" hint-placeholder-val="{{ false }}">
         <button onClick="{{ openRecResult }}" style="width:100%;border:2px solid #153b3d;background:#fff;padding:12px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:6px;color:#153b3d;font-family:inherit" style-hover="background:rgba(184,67,28,.08)" type="button">
-          <span style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#b8431c">나의 여행자 유형</span>
+          <span style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#b8431c">{{ tx.k26 }}</span>
           <span style="font-size:16px;font-weight:800;letter-spacing:-.02em">{{ savedName }}</span>
           <span style="font-size:11px;font-weight:600;color:rgba(21,59,61,.72)">추천: {{ savedThemes }}</span>
         </button>
@@ -190,8 +208,8 @@
       <sc-if value="{{ noSaved }}" hint-placeholder-val="{{ true }}">
         <button onClick="{{ openRec }}" style="width:100%;border:2px solid #153b3d;background:#153b3d;color:#f2ece0;padding:12px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:10px;font-family:inherit" style-hover="background:#b8431c" type="button">
           <span style="flex:1;display:flex;flex-direction:column;gap:5px">
-            <span style="font-size:14px;font-weight:800;letter-spacing:-.01em">당신의 테마를 추천드려요</span>
-            <span style="font-size:11px;font-weight:600;opacity:.8">14개 문항 · 필수 3개 · 약 1분</span>
+            <span style="font-size:14px;font-weight:800;letter-spacing:-.01em">{{ tx.k27 }}</span>
+            <span style="font-size:11px;font-weight:600;opacity:.8">{{ tx.k28 }}</span>
           </span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
         </button>
@@ -200,19 +218,19 @@
 
     <div style="display:flex;align-items:center;height:40px;border-bottom:2px solid rgba(21,59,61,.4);padding:0 12px;gap:8px">
       <span style="flex:none;display:block;width:8px;height:8px;background:#b8431c"></span>
-      <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">지금 인기 코스</span>
+      <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">{{ tx.k29 }}</span>
     </div>
 
     <div style="display:flex;gap:10px;padding:12px">
       <div style="flex:1;border:2px solid rgba(21,59,61,.4);padding:10px;background:#fff">
         <div style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#b8431c">UNESCO</div>
-        <div style="margin-top:6px;font-size:13px;font-weight:800;letter-spacing:-.01em">경주 2박 3일</div>
-        <div style="margin-top:4px;font-size:10.5px;font-weight:600;color:rgba(21,59,61,.72)">촬영지 9곳 · KTX</div>
+        <div style="margin-top:6px;font-size:13px;font-weight:800;letter-spacing:-.01em">{{ tx.k30 }}</div>
+        <div style="margin-top:4px;font-size:10.5px;font-weight:600;color:rgba(21,59,61,.72)">{{ tx.k31 }}</div>
       </div>
       <div style="flex:1;border:2px solid rgba(21,59,61,.4);padding:10px;background:#fff">
         <div style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#b8431c">COAST</div>
-        <div style="margin-top:6px;font-size:13px;font-weight:800;letter-spacing:-.01em">거제 1박 2일</div>
-        <div style="margin-top:4px;font-size:10.5px;font-weight:600;color:rgba(21,59,61,.72)">촬영지 6곳 · 자가용</div>
+        <div style="margin-top:6px;font-size:13px;font-weight:800;letter-spacing:-.01em">{{ tx.k32 }}</div>
+        <div style="margin-top:4px;font-size:10.5px;font-weight:600;color:rgba(21,59,61,.72)">{{ tx.k33 }}</div>
       </div>
     </div>
   </div>
@@ -224,7 +242,7 @@
     </button>
     <button onClick="{{ openRec }}" style="flex:1;height:56px;border:0;border-right:1px solid rgba(21,59,61,.25);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:0 10px;background:transparent;color:#153b3d" style-hover="background:rgba(184,67,28,.12)" type="button">
       <span style="display:block;width:14px;height:14px;border:2px solid currentColor;background:transparent"></span>
-      <span style="font-size:8.5px;font-weight:800;letter-spacing:.02em;line-height:1">테마 추천</span>
+      <span style="font-size:8.5px;font-weight:800;letter-spacing:.02em;line-height:1">{{ tx.k25 }}</span>
     </button>
     <button onClick="{{ openMe }}" style="flex:1;height:56px;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:0 10px;background:{{ meBg }};color:{{ meFg }}" type="button">
       <span style="display:block;width:14px;height:14px;border:2px solid currentColor;background:{{ meMark }}"></span>
@@ -263,8 +281,8 @@
       <div style="position:absolute;left:12px;right:12px;bottom:104px;color:#f2ece0">
         <div style="font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase">Tour Navigator</div>
         <div style="height:2px;background:rgba(242,236,224,.6);margin:12px 0 20px"></div>
-        <h1 style="margin:0;font-size:36px;line-height:1.1;font-weight:800;letter-spacing:-.03em">우리 이제<br>같이 떠나는 사이!</h1>
-        <p style="margin:16px 0 0;font-size:15px;line-height:1.5;font-weight:500;opacity:.92">영상 속 그 장면으로,<br>테마별 여행을 시작해 보세요!</p>
+        <h1 style="margin:0;font-size:36px;line-height:1.1;font-weight:800;letter-spacing:-.03em">{{ tx.k34 }}<br>{{ tx.k35 }}</h1>
+        <p style="margin:16px 0 0;font-size:15px;line-height:1.5;font-weight:500;opacity:.92">{{ tx.k36 }}<br>{{ tx.k37 }}</p>
       </div>
 
       <div style="position:absolute;left:12px;right:12px;bottom:56px">
@@ -278,16 +296,16 @@
   <sc-if value="{{ meOpen }}" hint-placeholder-val="{{ false }}">
     <div style="position:absolute;left:0;right:0;top:0;bottom:58px;z-index:860;display:flex;flex-direction:column;background:#f2ece0">
       <div style="flex:none;height:46px;display:flex;align-items:stretch;border-bottom:2px solid rgba(21,59,61,.4)">
-        <button onClick="{{ goHome }}" aria-label="홈으로" style="flex:none;width:44px;border:0;border-right:2px solid rgba(21,59,61,.4);background:transparent;color:#153b3d;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(184,67,28,.12)" type="button">
+        <button onClick="{{ goHome }}" aria-label="{{ tx.k51 }}" style="flex:none;width:44px;border:0;border-right:2px solid rgba(21,59,61,.4);background:transparent;color:#153b3d;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(184,67,28,.12)" type="button">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M15 5 8 12l7 7"></path></svg>
         </button>
         <span style="flex:1;display:flex;align-items:center;padding:0 12px;font-size:14px;font-weight:800;letter-spacing:-.02em">ME</span>
-        <button onClick="{{ goHome }}" style="flex:none;border:0;border-left:2px solid rgba(21,59,61,.4);background:transparent;color:#153b3d;cursor:pointer;padding:0 12px;font-family:inherit;font-size:11px;font-weight:800;text-align:left" style-hover="background:rgba(184,67,28,.12)" type="button">홈</button>
+        <button onClick="{{ goHome }}" style="flex:none;border:0;border-left:2px solid rgba(21,59,61,.4);background:transparent;color:#153b3d;cursor:pointer;padding:0 12px;font-family:inherit;font-size:11px;font-weight:800;text-align:left" style-hover="background:rgba(184,67,28,.12)" type="button">{{ tx.k38 }}</button>
       </div>
       <div style="flex:1;overflow-y:auto">
         <div style="display:flex;align-items:center;height:40px;border-bottom:2px solid rgba(21,59,61,.4);padding:0 12px;gap:8px">
           <span style="flex:none;display:block;width:8px;height:8px;background:#b8431c"></span>
-          <span style="font-size:10px;font-weight:800;letter-spacing:.1em">추천받은 나의 테마</span>
+          <span style="font-size:10px;font-weight:800;letter-spacing:.1em">{{ tx.k39 }}</span>
         </div>
         <sc-if value="{{ hasSaved }}" hint-placeholder-val="{{ false }}">
           <div style="padding:12px;display:flex;flex-direction:column;gap:6px;border-bottom:2px solid rgba(21,59,61,.4)">
@@ -307,21 +325,21 @@
             </button>
           </sc-for>
           <div style="padding:10px 12px;border-bottom:2px solid rgba(21,59,61,.4)">
-            <button onClick="{{ openRec }}" style="height:34px;border:2px solid #153b3d;background:transparent;color:#153b3d;cursor:pointer;text-align:left;padding:0 10px;font-family:inherit;font-size:11px;font-weight:800" style-hover="background:rgba(184,67,28,.12)" type="button">다시 추천받기</button>
+            <button onClick="{{ openRec }}" style="height:34px;border:2px solid #153b3d;background:transparent;color:#153b3d;cursor:pointer;text-align:left;padding:0 10px;font-family:inherit;font-size:11px;font-weight:800" style-hover="background:rgba(184,67,28,.12)" type="button">{{ tx.k40 }}</button>
           </div>
         </sc-if>
         <sc-if value="{{ noSaved }}" hint-placeholder-val="{{ true }}">
           <div style="padding:12px;border-bottom:2px solid rgba(21,59,61,.4)">
             <button onClick="{{ openRec }}" style="width:100%;border:2px solid #153b3d;background:#153b3d;color:#f2ece0;padding:12px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:5px;font-family:inherit" style-hover="background:#b8431c" type="button">
-              <span style="font-size:14px;font-weight:800">당신의 테마를 추천드려요</span>
-              <span style="font-size:11px;font-weight:600;opacity:.8">아직 추천받은 테마가 없어요 · 14개 문항</span>
+              <span style="font-size:14px;font-weight:800">{{ tx.k27 }}</span>
+              <span style="font-size:11px;font-weight:600;opacity:.8">{{ tx.k41 }}</span>
             </button>
           </div>
         </sc-if>
 
         <div style="display:flex;align-items:center;height:40px;border-bottom:2px solid rgba(21,59,61,.4);padding:0 12px;gap:8px">
           <span style="flex:none;display:block;width:8px;height:8px;background:#b8431c"></span>
-          <span style="flex:1;font-size:10px;font-weight:800;letter-spacing:.1em">저장된 플랜</span>
+          <span style="flex:1;font-size:10px;font-weight:800;letter-spacing:.1em">{{ tx.k42 }}</span>
           <span style="font-size:10px;font-weight:800">{{ planCount }}</span>
         </div>
         <sc-for list="{{ myPlans }}" as="p" hint-placeholder-count="0">
@@ -331,15 +349,15 @@
               <span style="font-size:13px;font-weight:800;letter-spacing:-.01em">{{ p.name }}</span>
               <span style="font-size:10.5px;font-weight:600;color:rgba(21,59,61,.72)">{{ p.meta }}</span>
             </button>
-            <button onClick="{{ p.del }}" aria-label="삭제" style="flex:none;width:44px;border:0;border-left:2px solid rgba(21,59,61,.4);background:transparent;color:#153b3d;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(184,67,28,.12)" type="button">
+            <button onClick="{{ p.del }}" aria-label="{{ tx.k61 }}" style="flex:none;width:44px;border:0;border-left:2px solid rgba(21,59,61,.4);background:transparent;color:#153b3d;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(184,67,28,.12)" type="button">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M6 6l12 12M18 6 6 18"></path></svg>
             </button>
           </div>
         </sc-for>
         <sc-if value="{{ noPlans }}" hint-placeholder-val="{{ true }}">
           <div style="padding:14px 12px;display:flex;flex-direction:column;gap:10px">
-            <span style="font-size:11.5px;font-weight:600;color:rgba(21,59,61,.72)">저장된 플랜이 없어요. 플래너나 테마의 코스 탭에서 [코스 저장]을 눌러보세요.</span>
-            <button onClick="{{ openPlanner }}" style="align-self:flex-start;height:34px;border:2px solid #153b3d;background:transparent;color:#153b3d;cursor:pointer;text-align:left;padding:0 10px;font-family:inherit;font-size:11px;font-weight:800" style-hover="background:rgba(184,67,28,.12)" type="button">투어 플래너 열기</button>
+            <span style="font-size:11.5px;font-weight:600;color:rgba(21,59,61,.72)">{{ tx.k43 }}</span>
+            <button onClick="{{ openPlanner }}" style="align-self:flex-start;height:34px;border:2px solid #153b3d;background:transparent;color:#153b3d;cursor:pointer;text-align:left;padding:0 10px;font-family:inherit;font-size:11px;font-weight:800" style-hover="background:rgba(184,67,28,.12)" type="button">{{ tx.k44 }}</button>
           </div>
         </sc-if>
       </div>
@@ -352,7 +370,7 @@
         <button sc-camel-on-click="{{ closeRec }}" style="flex:none;width:40px;height:38px;border:0;background:transparent;color:#f2ece0;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#b8431c" type="button">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M15 5 8 12l7 7"></path></svg>
         </button>
-        <span style="flex:1;font-size:11px;font-weight:800;letter-spacing:.04em">테마 추천</span>
+        <span style="flex:1;font-size:11px;font-weight:800;letter-spacing:.04em">{{ tx.k25 }}</span>
         <span style="flex:none;font-size:10px;font-weight:800;letter-spacing:.1em;padding-right:12px;opacity:.7">{{ stepLabel }}</span>
       </div>
       <div style="flex:none;height:4px;background:rgba(21,59,61,.15)">
@@ -380,9 +398,9 @@
           </div>
         </div>
         <div style="flex:none;display:flex;border-top:2px solid #153b3d">
-          <button sc-camel-on-click="{{ prevQ }}" style="flex:1;height:52px;border:0;border-right:2px solid rgba(21,59,61,.4);background:transparent;color:#153b3d;cursor:pointer;text-align:left;padding:0 12px;font-family:inherit;font-size:12px;font-weight:800;opacity:{{ prevOpacity }}" style-hover="background:rgba(184,67,28,.12)" type="button">이전</button>
+          <button sc-camel-on-click="{{ prevQ }}" style="flex:1;height:52px;border:0;border-right:2px solid rgba(21,59,61,.4);background:transparent;color:#153b3d;cursor:pointer;text-align:left;padding:0 12px;font-family:inherit;font-size:12px;font-weight:800;opacity:{{ prevOpacity }}" style-hover="background:rgba(184,67,28,.12)" type="button">{{ tx.k45 }}</button>
           <sc-if value="{{ q.canSkip }}" hint-placeholder-val="{{ false }}">
-            <button sc-camel-on-click="{{ skipQ }}" style="flex:1;height:52px;border:0;border-right:2px solid rgba(21,59,61,.4);background:transparent;color:#153b3d;cursor:pointer;text-align:left;padding:0 12px;font-family:inherit;font-size:12px;font-weight:800" style-hover="background:rgba(184,67,28,.12)" type="button">건너뛰기</button>
+            <button sc-camel-on-click="{{ skipQ }}" style="flex:1;height:52px;border:0;border-right:2px solid rgba(21,59,61,.4);background:transparent;color:#153b3d;cursor:pointer;text-align:left;padding:0 12px;font-family:inherit;font-size:12px;font-weight:800" style-hover="background:rgba(184,67,28,.12)" type="button">{{ tx.k46 }}</button>
           </sc-if>
           <button sc-camel-on-click="{{ nextQ }}" style="flex:1.4;height:52px;border:0;background:#b8431c;color:#f2ece0;cursor:pointer;text-align:left;padding:0 12px;font-family:inherit;font-size:12px;font-weight:800;opacity:{{ nextOpacity }}" style-hover="background:#8f3413" type="button">{{ nextLabel }}</button>
         </div>
@@ -392,7 +410,7 @@
         <div style="flex:1;overflow-y:auto">
           <div style="background:#b8431c;color:#f2ece0;padding:20px 12px 22px;border-bottom:2px solid #153b3d;display:flex;flex-direction:column;gap:10px">
             <span style="font-size:9px;font-weight:800;letter-spacing:.14em">RESULT · {{ res.code }}</span>
-            <h2 style="margin:0;font-size:26px;line-height:1.16;font-weight:800;letter-spacing:-.02em">당신은<br>{{ res.name }} 여행자</h2>
+            <h2 style="margin:0;font-size:26px;line-height:1.16;font-weight:800;letter-spacing:-.02em">{{ tx.k47 }}<br>{{ res.name }} 여행자</h2>
             <p style="margin:0;font-size:12.5px;line-height:1.5;font-weight:500">{{ res.desc }}</p>
             <div style="display:flex;gap:6px;flex-wrap:wrap">
               <span style="font-size:10px;font-weight:800;background:#f2ece0;color:#b8431c;padding:4px 7px;white-space:nowrap">대표 {{ res.code }} · {{ res.pts }}</span>
@@ -403,7 +421,7 @@
 
           <div style="display:flex;align-items:center;height:40px;border-bottom:2px solid rgba(21,59,61,.4);padding:0 12px;gap:8px">
             <span style="flex:none;display:block;width:8px;height:8px;background:#b8431c"></span>
-            <span style="font-size:10px;font-weight:800;letter-spacing:.1em">추천 테마</span>
+            <span style="font-size:10px;font-weight:800;letter-spacing:.1em">{{ tx.k48 }}</span>
           </div>
           <sc-for list="{{ res.themes }}" as="t" hint-placeholder-count="0">
             <button onClick="{{ t.open }}" style="width:100%;border:0;border-bottom:2px solid rgba(21,59,61,.4);background:transparent;padding:12px;display:flex;align-items:center;gap:12px;cursor:pointer;text-align:left;color:#153b3d;font-family:inherit" style-hover="background:rgba(184,67,28,.08)" type="button">
@@ -420,7 +438,7 @@
 
           <sc-if value="{{ res.hasFilter }}" hint-placeholder-val="{{ false }}">
             <div style="padding:12px;border-bottom:2px solid rgba(21,59,61,.4);display:flex;gap:6px;flex-wrap:wrap;align-items:center">
-              <span style="font-size:10px;font-weight:800;letter-spacing:.06em;margin-right:4px">코스 필터</span>
+              <span style="font-size:10px;font-weight:800;letter-spacing:.06em;margin-right:4px">{{ tx.k49 }}</span>
               <sc-for list="{{ res.filters }}" as="f" hint-placeholder-count="2">
                 <span style="font-size:10px;font-weight:800;border:2px solid #153b3d;padding:2px 6px">{{ f }}</span>
               </sc-for>
@@ -428,8 +446,8 @@
           </sc-if>
 
           <div style="display:flex;padding:12px;gap:8px">
-            <button sc-camel-on-click="{{ restartRec }}" style="flex:1;height:44px;border:2px solid #153b3d;background:transparent;color:#153b3d;cursor:pointer;text-align:left;padding:0 12px;font-family:inherit;font-size:12px;font-weight:800" style-hover="background:rgba(184,67,28,.12)" type="button">다시 하기</button>
-            <button sc-camel-on-click="{{ closeRec }}" style="flex:1;height:44px;border:2px solid #153b3d;background:#153b3d;color:#f2ece0;cursor:pointer;text-align:left;padding:0 12px;font-family:inherit;font-size:12px;font-weight:800" style-hover="background:#b8431c" type="button">홈으로</button>
+            <button sc-camel-on-click="{{ restartRec }}" style="flex:1;height:44px;border:2px solid #153b3d;background:transparent;color:#153b3d;cursor:pointer;text-align:left;padding:0 12px;font-family:inherit;font-size:12px;font-weight:800" style-hover="background:rgba(184,67,28,.12)" type="button">{{ tx.k50 }}</button>
+            <button sc-camel-on-click="{{ closeRec }}" style="flex:1;height:44px;border:2px solid #153b3d;background:#153b3d;color:#f2ece0;cursor:pointer;text-align:left;padding:0 12px;font-family:inherit;font-size:12px;font-weight:800" style-hover="background:#b8431c" type="button">{{ tx.k51 }}</button>
           </div>
         </div>
       </sc-if>
@@ -449,19 +467,19 @@
         <iframe src="RESCENE Route.dc.html" title="RESCENE Route" allow="geolocation *" style="flex:1;width:100%;border:0;display:block"></iframe>
       </sc-if>
       <sc-if value="{{ isWarden }}" hint-placeholder-val="{{ false }}">
-        <iframe src="Kings Warden Route.dc.html" title="왕과 사는 남자" allow="geolocation *" style="flex:1;width:100%;border:0;display:block"></iframe>
+        <iframe src="Kings Warden Route.dc.html" title="{{ tx.k5 }}" allow="geolocation *" style="flex:1;width:100%;border:0;display:block"></iframe>
       </sc-if>
       <sc-if value="{{ isKdh }}" hint-placeholder-val="{{ false }}">
-        <iframe src="KPop Demon Hunters Route.dc.html" title="케이팝 데몬 헌터스" allow="geolocation *" style="flex:1;width:100%;border:0;display:block"></iframe>
+        <iframe src="KPop Demon Hunters Route.dc.html" title="{{ tx.k9 }}" allow="geolocation *" style="flex:1;width:100%;border:0;display:block"></iframe>
       </sc-if>
       <sc-if value="{{ isJeju }}" hint-placeholder-val="{{ false }}">
-        <iframe src="Jeju K-Drama Route.dc.html" title="제주 K-Drama" allow="geolocation *" style="flex:1;width:100%;border:0;display:block"></iframe>
+        <iframe src="Jeju K-Drama Route.dc.html" title="{{ tx.k23 }}" allow="geolocation *" style="flex:1;width:100%;border:0;display:block"></iframe>
       </sc-if>
       <sc-if value="{{ isBusan }}" hint-placeholder-val="{{ false }}">
-        <iframe src="Busan Cinema Route.dc.html" title="부산 영화 기행" allow="geolocation *" style="flex:1;width:100%;border:0;display:block"></iframe>
+        <iframe src="Busan Cinema Route.dc.html" title="{{ tx.k17 }}" allow="geolocation *" style="flex:1;width:100%;border:0;display:block"></iframe>
       </sc-if>
       <sc-if value="{{ isPlanner }}" hint-placeholder-val="{{ false }}">
-        <iframe src="Tour Planner.dc.html" title="투어 플래너" allow="geolocation *" style="flex:1;width:100%;border:0;display:block"></iframe>
+        <iframe src="Tour Planner.dc.html" title="{{ tx.k1 }}" allow="geolocation *" style="flex:1;width:100%;border:0;display:block"></iframe>
       </sc-if>
     </div>
   </sc-if>
@@ -471,6 +489,25 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{}">
+const TX_DICT={k0:{"ko":"내 테마","en":"My themes","zh":"我的主题","ja":"マイテーマ","es":"Mis temas"},k1:{"ko":"투어 플래너","en":"Tour planner","zh":"行程规划","ja":"ツアープランナー","es":"Planificador"},k2:{"ko":"영상 속 그 길을","en":"Walk the road","zh":"走进影像中的","ja":"映像の中の道を","es":"Recorre el camino"},k3:{"ko":"그대로 걷다","en":"from the screen","zh":"那条路","ja":"そのまま歩く","es":"de la pantalla"},k4:{"ko":"촬영지와 이동 경로를 한 번에 계획해 보세요","en":"Plan filming locations and routes in one place","zh":"一次规划拍摄地与移动路线","ja":"ロケ地と移動ルートをまとめて計画","es":"Planifica rodajes y rutas en un solo lugar"},k5:{"ko":"왕과 사는 남자","en":"The King's Warden","zh":"与王同住的男人","ja":"王と生きる男","es":"The King's Warden"},k6:{"ko":"단종이 걸은 길을","en":"The road King Danjong walked,","zh":"端宗走过的路","ja":"端宗が歩いた道を","es":"El camino del rey Danjong,"},k7:{"ko":"영월에서 만나다","en":"found in Yeongwol","zh":"在宁越相遇","ja":"寧越で出会う","es":"en Yeongwol"},k8:{"ko":"청령포에서 장릉까지, 유배의 동선을 따라","en":"From Cheongnyeongpo to Jangneung, along the path of exile","zh":"从清泠浦到庄陵，沿着流放之路","ja":"清泠浦から荘陵まで、流配の道をたどる","es":"De Cheongnyeongpo a Jangneung, por la ruta del exilio"},k9:{"ko":"케이팝 데몬 헌터스","en":"KPop Demon Hunters","zh":"K-POP猎魔女团","ja":"KPOPガールズ！デーモン・ハンターズ","es":"KPop Demon Hunters"},k10:{"ko":"헌트릭스의 서울을","en":"HUNTR/X's Seoul,","zh":"跟随HUNTR/X","ja":"HUNTR/Xのソウルを","es":"El Seúl de HUNTR/X,"},k11:{"ko":"발로 따라가다","en":"on foot","zh":"走遍首尔","ja":"歩いてたどる","es":"a pie"},k12:{"ko":"낙산공원 성곽길에서 잠실 최종 무대까지","en":"From the Naksan Park fortress wall to the final stage in Jamsil","zh":"从骆山公园城郭路到蚕室最终舞台","ja":"駱山公園の城郭道から蚕室の最終ステージまで","es":"Del muro de Naksan al escenario final en Jamsil"},k13:{"ko":"제주 K-DRAMA","en":"JEJU K-DRAMA","zh":"济州 K-DRAMA","ja":"済州 K-DRAMA","es":"JEJU K-DRAMA"},k14:{"ko":"두 편의 드라마가","en":"The coastline","zh":"两部剧","ja":"二つのドラマが","es":"La costa por donde"},k15:{"ko":"지나간 해안선","en":"two dramas passed","zh":"走过的海岸线","ja":"通り過ぎた海岸線","es":"pasaron dos dramas"},k16:{"ko":"폭싹 속았수다와 우리들의 블루스, 같은 섬 다른 시간","en":"When Life Gives You Tangerines and Our Blues: one island, two eras","zh":"《苦尽柑来遇见你》与《我们的蓝调》，同一座岛，不同时光","ja":"『おつかれさま』と『私たちのブルース』、同じ島の違う時間","es":"When Life Gives You Tangerines y Our Blues: una isla, dos épocas"},k17:{"ko":"부산 영화 기행","en":"Busan film trail","zh":"釜山电影之旅","ja":"釜山映画紀行","es":"Ruta de cine en Busan"},k18:{"ko":"영화가 가장 많이","en":"The city most","zh":"拍摄电影","ja":"映画が最も多く","es":"La ciudad más"},k19:{"ko":"찍힌 도시","en":"filmed in Korea","zh":"最多的城市","ja":"撮られた街","es":"filmada de Corea"},k20:{"ko":"감천에서 해운대까지, 스크린 속 부산을 걷다","en":"From Gamcheon to Haeundae, walk Busan on screen","zh":"从甘川到海云台，走进银幕中的釜山","ja":"甘川から海雲台まで、スクリーンの釜山を歩く","es":"De Gamcheon a Haeundae, recorre el Busan del cine"},k21:{"ko":"나의 테마","en":"My themes","zh":"我的主题","ja":"マイテーマ","es":"Mis temas"},k22:{"ko":"케데헌 서울","en":"KDH Seoul","zh":"猎魔女团 首尔","ja":"デーモンハンターズ\nソウル","es":"KDH Seúl"},k23:{"ko":"제주 K-Drama","en":"Jeju K-Drama","zh":"济州 K-Drama","ja":"済州 K-Drama","es":"Jeju K-Drama"},k24:{"ko":"테마 추가","en":"Add theme","zh":"添加主题","ja":"テーマ追加","es":"Añadir tema"},k25:{"ko":"테마 추천","en":"Theme finder","zh":"主题推荐","ja":"テーマ推薦","es":"Recomendador"},k26:{"ko":"나의 여행자 유형","en":"My traveler type","zh":"我的旅行者类型","ja":"私の旅行者タイプ","es":"Mi tipo de viajero"},k27:{"ko":"당신의 테마를 추천드려요","en":"We'll recommend a theme for you","zh":"为您推荐主题","ja":"あなたにぴったりのテーマを","es":"Te recomendamos un tema"},k28:{"ko":"14개 문항 · 필수 3개 · 약 1분","en":"14 questions · 3 required · about 1 min","zh":"14道题 · 必答3道 · 约1分钟","ja":"14問 · 必須3問 · 約1分","es":"14 preguntas · 3 obligatorias · 1 min"},k29:{"ko":"지금 인기 코스","en":"Popular routes now","zh":"当前热门路线","ja":"いま人気のコース","es":"Rutas populares"},k30:{"ko":"경주 2박 3일","en":"Gyeongju · 3 days","zh":"庆州 3天2夜","ja":"慶州 2泊3日","es":"Gyeongju · 3 días"},k31:{"ko":"촬영지 9곳 · KTX","en":"9 locations · KTX","zh":"9处拍摄地 · KTX","ja":"ロケ地9か所 · KTX","es":"9 lugares · KTX"},k32:{"ko":"거제 1박 2일","en":"Geoje · 2 days","zh":"巨济 2天1夜","ja":"巨済 1泊2日","es":"Geoje · 2 días"},k33:{"ko":"촬영지 6곳 · 자가용","en":"6 locations · by car","zh":"6处拍摄地 · 自驾","ja":"ロケ地6か所 · 車","es":"6 lugares · en coche"},k34:{"ko":"우리 이제","en":"Now we're","zh":"现在我们","ja":"さあ、一緒に","es":"Ahora somos"},k35:{"ko":"같이 떠나는 사이!","en":"travel buddies!","zh":"一起出发吧！","ja":"旅に出よう！","es":"compañeros de viaje"},k36:{"ko":"영상 속 그 장면으로,","en":"Into the scenes you watched —","zh":"走进影像中的那一幕，","ja":"映像のあの場面へ、","es":"A las escenas que viste:"},k37:{"ko":"테마별 여행을 시작해 보세요!","en":"start a themed trip!","zh":"开始主题旅行吧！","ja":"テーマ別の旅を始めよう！","es":"¡empieza un viaje temático!"},k38:{"ko":"홈","en":"Home","zh":"首页","ja":"ホーム","es":"Inicio"},k39:{"ko":"추천받은 나의 테마","en":"My recommended themes","zh":"为我推荐的主题","ja":"おすすめされたテーマ","es":"Mis temas recomendados"},k40:{"ko":"다시 추천받기","en":"Try again","zh":"重新推荐","ja":"もう一度診断","es":"Repetir"},k41:{"ko":"아직 추천받은 테마가 없어요 · 14개 문항","en":"No recommendation yet · 14 questions","zh":"还没有推荐主题 · 14道题","ja":"まだ推薦テーマがありません · 14問","es":"Aún sin recomendación · 14 preguntas"},k42:{"ko":"저장된 플랜","en":"Saved plans","zh":"已保存的行程","ja":"保存したプラン","es":"Planes guardados"},k43:{"ko":"저장된 플랜이 없어요. 플래너나 테마의 코스 탭에서 [코스 저장]을 눌러보세요.","en":"No saved plans. Tap [Save course] in the course tab of the planner or a theme.","zh":"没有保存的行程。请在规划或主题的路线页点击[保存路线]。","ja":"保存したプランはありません。プランナーやテーマのコースタブで[コース保存]を押してください。","es":"No hay planes. Pulsa [Guardar ruta] en la pestaña de ruta."},k44:{"ko":"투어 플래너 열기","en":"Open tour planner","zh":"打开行程规划","ja":"ツアープランナーを開く","es":"Abrir planificador"},k45:{"ko":"이전","en":"Back","zh":"上一步","ja":"前へ","es":"Atrás"},k46:{"ko":"건너뛰기","en":"Skip","zh":"跳过","ja":"スキップ","es":"Omitir"},k47:{"ko":"당신은","en":"You are","zh":"您是","ja":"あなたは","es":"Eres"},k48:{"ko":"추천 테마","en":"Recommended themes","zh":"推荐主题","ja":"おすすめテーマ","es":"Temas recomendados"},k49:{"ko":"코스 필터","en":"Course filter","zh":"路线筛选","ja":"コースフィルター","es":"Filtro de ruta"},k50:{"ko":"다시 하기","en":"Retake","zh":"重新测试","ja":"もう一度","es":"Repetir"},k51:{"ko":"홈으로","en":"Home","zh":"返回首页","ja":"ホームへ","es":"Inicio"},k52:{"ko":"1번 배너","en":"Banner 1","zh":"横幅1","ja":"バナー1","es":"Banner 1"},k53:{"ko":"2번 배너","en":"Banner 2","zh":"横幅2","ja":"バナー2","es":"Banner 2"},k54:{"ko":"3번 배너","en":"Banner 3","zh":"横幅3","ja":"バナー3","es":"Banner 3"},k55:{"ko":"4번 배너","en":"Banner 4","zh":"横幅4","ja":"バナー4","es":"Banner 4"},k56:{"ko":"5번 배너","en":"Banner 5","zh":"横幅5","ja":"バナー5","es":"Banner 5"},k57:{"ko":"폭싹 속았수다","en":"When Life Gives You Tangerines","zh":"苦尽柑来遇见你","ja":"おつかれさま","es":"When Life Gives You Tangerines"},k58:{"ko":"우리들의 블루스","en":"Our Blues","zh":"我们的蓝调","ja":"私たちのブルース","es":"Our Blues"},k59:{"ko":"국제시장","en":"Ode to My Father","zh":"国际市场","ja":"国際市場で逢いましょう","es":"Ode to My Father"},k60:{"ko":"범죄와의 전쟁","en":"Nameless Gangster","zh":"与犯罪的战争","ja":"悪いやつら","es":"Nameless Gangster"},k61:{"ko":"삭제","en":"Delete","zh":"删除","ja":"削除","es":"Eliminar"}};
+const TX_DICT_TITLES={"왕과 사는 남자":{"en":"The King's Warden","zh":"与王同住的男人","ja":"王と生きる男","es":"The King's Warden"},"케이팝 데몬 헌터스":{"en":"KPop Demon Hunters","zh":"K-POP猎魔女团","ja":"KPOPガールズ！デーモン・ハンターズ","es":"KPop Demon Hunters"},"우리들의 블루스":{"en":"Our Blues","zh":"我们的蓝调","ja":"私たちのブルース","es":"Our Blues"},"폭싹 속았수다":{"en":"When Life Gives You Tangerines","zh":"苦尽柑来遇见你","ja":"おつかれさま","es":"When Life Gives You Tangerines"},"국제시장":{"en":"Ode to My Father","zh":"国际市场","ja":"国際市場で逢いましょう","es":"Ode to My Father"},"범죄와의 전쟁":{"en":"Nameless Gangster","zh":"与犯罪的战争","ja":"悪いやつら","es":"Nameless Gangster"},"영화 촬영지 · 다수 작품":{"en":"Film locations · multiple titles","zh":"电影拍摄地 · 多部作品","ja":"映画ロケ地 · 複数作品","es":"Lugares de rodaje · varias obras"}};
+
+const TX_LANGS=['ko','en','zh','ja','es'];
+function txPost(v,L){if(L==='ko')return v;
+  const VW={en:n=>n+' views',zh:n=>n+'次观看',ja:n=>n+'回視聴',es:n=>n+' vistas'}[L]||(n=>n+' views');
+  const TT=TX_DICT_TITLES;const tr=s=>{let o=String(s);Object.keys(TT).forEach(k=>{if(o.indexOf(k)>-1)o=o.split(k).join(TT[k][L]||TT[k].en);});return o;};
+  const CM={'경주':['Gyeongju','庆州','慶州','Gyeongju'],'거제':['Geoje','巨济','巨済','Geoje'],'전국':['Nationwide','全国','全国','Todo el país'],'서울':['Seoul','首尔','ソウル','Seúl'],'영월':['Yeongwol','宁越','寧越','Yeongwol'],'제주':['Jeju','济州','済州','Jeju'],'서귀포':['Seogwipo','西归浦','西帰浦','Seogwipo'],'부산':['Busan','釜山','釜山','Busan']};
+  const li={en:0,zh:1,ja:2,es:3}[L];const city=c=>(typeof cityLabel==='function'&&cityLabel(c,L)!==c)?cityLabel(c,L):(CM[c]?CM[c][li]:c);
+  const VZ={en:{'관광특구':'Special Tourist Zone','관광단지':'Tourist Complex','관광지':'Designated tourist site',d:y=>'designated '+y},zh:{'관광특구':'旅游特区','관광단지':'旅游园区','관광지':'指定景区',d:y=>y+'年指定'},ja:{'관광특구':'観光特区','관광단지':'観光団地','관광지':'指定観光地',d:y=>y+'年指定'},es:{'관광특구':'Zona turística especial','관광단지':'Complejo turístico','관광지':'Sitio turístico',d:y=>'designado en '+y}}[L];
+  const vz=t=>{const m=String(t||'').match(/^(\S+)\s+(.*?)\s*\((?:designated |designado en )?(\d{4})(?:年指定| 지정)?\)?\s*\)?$/);if(!t)return t;let type=(String(t).match(/관광특구|관광단지|관광지|Special Tourist Zone|Tourist Complex|Designated tourist site|旅游特区|旅游园区|指定景区|観光特区|観光団地|指定観光地|Zona turística especial|Complejo turístico|Sitio turístico/)||[''])[0];if(VZ[type])type=VZ[type];const y=(String(t).match(/(\d{4})/)||[])[1];return [type,y?VZ.d(y):''].filter(Boolean).join(' · ');};
+  const map=(k,f,fn)=>{if(Array.isArray(v[k]))v[k]=v[k].map(it=>it&&typeof it==='object'&&typeof it[f]==='string'?{...it,[f]:fn(it[f])}:it);};
+  map('videoItems','views',s=>s.replace(/조회수\s*([\d,]+)\s*회/,(m,n)=>VW(n)));
+  map('videoItems','spots',tr);
+  map('regionChips','label',s=>s.replace(/^([가-힣]+)(\s+\d+)$/,(m,c,n)=>city(c)+n));
+  map('visiblePlaces','vzTitle',s=>/[가-힣]/.test(s)?vz(s):s);
+  if(typeof v.nextLabel==='string')v.nextLabel=({'다음':{en:'Next',zh:'下一步',ja:'次へ',es:'Siguiente'},'결과 보기':{en:'See result',zh:'查看结果',ja:'結果を見る',es:'Ver resultado'}}[v.nextLabel]||{})[L]||v.nextLabel;
+  if(typeof v.planCount==='string')v.planCount=v.planCount.replace(/(\d+)개/,(m,n)=>({en:n,zh:n+'个',ja:n+'件',es:n}[L]||n));
+  return v;}
 class Component extends DCLogic {
   state = { splash: true, slide: 0, view: null, ans: {}, step: 0, recOpen: false, result: null, saved: null, meOpen: false, plans: [] };
 
@@ -527,11 +564,11 @@ class Component extends DCLogic {
   // pr: 장소 재분류 후 구성비 (역사·힐링·액티비티·먹거리·해양), night: 야경 태그 비중
   // rl: 연령대별 테마 지역 방문 lift (10대…70대+), fr: 외래객 군집별 지역 보정 (C7~C10)
   TH = [
-    { k: 'warden', name: '왕과 사는 남자', region: '영월', img: 'uploads/images (17).jpg', pr: [.4,.311,.233,.056,0], night: .056, rl: [.88,1.03,1.03,1.02,1.01,.99,.85], fr: [-.038,.002,-.05,.05] },
-    { k: 'kdh', name: '케이팝 데몬 헌터스', region: '서울', img: 'uploads/images (19).jpg', pr: [.293,.228,.216,.253,.009], night: .128, rl: [2.91,1.76,1.04,.82,.73,.6,.62], fr: [.016,.015,-.032,.003] },
-    { k: 'rescene', name: 'RESCENE Route', region: '경주·거제', img: 'uploads/images (18).jpg', pr: [.328,.165,.13,.193,.184], night: .058, rl: [.77,.84,.92,1.03,1.07,1.16,1.06], fr: [-.05,-.05,-.05,.05] },
-    { k: 'jeju', name: '제주 K-Drama', region: '제주', img: 'uploads/images (20).jpg', pr: [.165,.437,.084,.052,.262], night: .037, rl: [.68,.82,1.11,.98,1.11,1.14,.7], fr: [-.05,-.05,.05,-.048] },
-    { k: 'busan', name: '부산 영화 기행', region: '부산', img: 'assets/busan-tile.jpg', pr: [.141,.245,.152,.265,.197], night: .141, rl: [1.17,1.47,1.19,1,.89,.66,.6], fr: [-.023,-.029,-.03,.05] }
+    { k: 'warden', name: '왕과 사는 남자', region: '영월', img: 'uploads/images (17).jpg', pr: [.4,.311,.233,.056,0], night: .056, rl: [.88,1.03,1.03,1.02,1.01,.99,.85] },
+    { k: 'kdh', name: '케이팝 데몬 헌터스', region: '서울', img: 'uploads/images (19).jpg', pr: [.293,.228,.216,.253,.009], night: .128, rl: [2.91,1.76,1.04,.82,.73,.6,.62] },
+    { k: 'rescene', name: 'RESCENE Route', region: '경주·거제', img: 'uploads/images (18).jpg', pr: [.328,.165,.13,.193,.184], night: .058, rl: [.77,.84,.92,1.03,1.07,1.16,1.06] },
+    { k: 'jeju', name: '제주 K-Drama', region: '제주', img: 'uploads/images (20).jpg', pr: [.165,.437,.084,.052,.262], night: .037, rl: [.68,.82,1.11,.98,1.11,1.14,.7] },
+    { k: 'busan', name: '부산 영화 기행', region: '부산', img: 'assets/busan-tile.jpg', pr: [.141,.245,.152,.265,.197], night: .141, rl: [1.17,1.47,1.19,1,.89,.66,.6] }
   ];
   optsOf = i => { const q = this.QS[i]; return q.oF && (this.state.ans || {})[5] === 1 ? q.oF : q.o; };
 
@@ -661,7 +698,9 @@ class Component extends DCLogic {
     }, 60);
   };
 
-  renderVals() {
+  _langSync(){if(!this._lsInit){this._lsInit=1;try{const s=localStorage.getItem('tn_lang');if(s&&s!==(this.state.lang||'ko')&&TX_LANGS.indexOf(s)>-1){this.state.lang=s;setTimeout(()=>this.setState({lang:s}),0);}}catch(e){}}else if((this.state.lang||'ko')!==this._lsLast){try{localStorage.setItem('tn_lang',this.state.lang||'ko');}catch(e){}}this._lsLast=this.state.lang||'ko';}
+  renderVals(){this._langSync();const v=this._rvTx();const _L=this.state.lang||'ko';v.tx={};try{if(document.documentElement.getAttribute('data-lang')!==_L)document.documentElement.setAttribute('data-lang',_L);}catch(e){}Object.keys(TX_DICT).forEach(k=>{const d=TX_DICT[k];v.tx[k]=_L==='ko'?d.ko:(d[_L]||d.en);});v.langMenu=this.state.langOpen?'block':'none';v.langOpen=()=>this.setState({langOpen:true});v.langClose=()=>this.setState({langOpen:false});v.langItems=[['ko','한국어'],['en','ENGLISH'],['zh','简体中文'],['ja','日本語'],['es','ESPAÑOL']].map(([id,label])=>({key:id,label,bg:_L===id?'#153b3d':'transparent',fg:_L===id?'#f2ece0':'#153b3d',pick:()=>this.setState({lang:id,langOpen:false})}));return txPost(v,_L);}
+  _rvTx(){
     const i = this.state.slide;
     const dot = n => (n === i ? '#f2ece0' : 'rgba(242,236,224,.35)');
     const v = this.state.view ? this.VIEWS[this.state.view] : null;

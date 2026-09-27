@@ -33,7 +33,7 @@
 <header style="flex:none;border-bottom:2px solid rgba(21,59,61,.4)">
 <div style="display:flex;align-items:stretch;height:46px">
 <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 12px;min-width:0">
-<div style="font-size:14px;font-weight:800;letter-spacing:-.02em;line-height:1">부산 영화 기행</div>
+<div style="font-size:14px;font-weight:800;letter-spacing:-.02em;line-height:1">{{ tx.k17 }}</div>
 
 </div>
 <div sc-camel-on-mouse-enter="{{ langOpen }}" sc-camel-on-mouse-leave="{{ langClose }}" style="position:relative;flex:none;align-self:stretch;display:flex;border-left:2px solid rgba(21,59,61,.4)">
@@ -67,7 +67,7 @@
 </div>
 <div style="flex:1;position:relative">
 <div data-map-container="" style="position: absolute; inset: 0; left: 0; top: 0"></div>
-<button sc-camel-on-click="{{ locate }}" title="내 위치" style="position:absolute;right:10px;top:10px;z-index:520;width:38px;height:38px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0" style-hover="background:#b8431c;color:#f2ece0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><circle cx="12" cy="12" r="6"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path></svg></button>
+<button sc-camel-on-click="{{ locate }}" title="{{ tx.k62 }}" style="position:absolute;right:10px;top:10px;z-index:520;width:38px;height:38px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0" style-hover="background:#b8431c;color:#f2ece0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><circle cx="12" cy="12" r="6"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path></svg></button>
 <div style="position:absolute;left:0;bottom:0;right:0;height:{{ sheetHeight }};background:#f2ece0;border-top:2px solid #153b3d;display:flex;flex-direction:column;z-index:500">
 <div style="flex:none;height:44px;display:flex;align-items:stretch;border-bottom:2px solid rgba(21,59,61,.35)">
 <button sc-camel-on-click="{{ toggleSheet }}" style="flex:1;min-width:0;border:0;background:transparent;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 12px;cursor:pointer">
@@ -484,7 +484,7 @@
 </form>
 <sc-for list="{{ videoItems }}" as="v" hint-placeholder-count="3">
 <article style="border-bottom:2px solid rgba(21,59,61,.4)">
-<div style="display:{{ v.photoShow }};width:100%;height:160px;background-color:#cdc4b0;background-image:url('{{ v.thumb }}');background-size:cover;background-position:center;border-bottom:2px solid #153b3d"></div>
+<div style="display:{{ v.photoShow }};width:100%;height:160px;background-color:#cdc4b0;background-image:{{ v.thumb__bg }};background-size:cover;background-position:center;border-bottom:2px solid #153b3d"></div>
 <a href="{{ v.url }}" target="_blank" style="display:flex;align-items:flex-end;gap:12px;text-decoration:none;background:#b8431c;color:#f2ece0;padding:14px 12px 12px;min-height:86px">
 <span style="font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:.9">{{ v.views }}</span>
 <span style="flex:1;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding-bottom:4px">{{ v.date }}</span>
@@ -565,7 +565,7 @@
 <button sc-camel-on-click="{{ closeDetail }}" style="width:44px;height:40px;border:0;border-left:2px solid rgba(21,59,61,.4);background:transparent;cursor:pointer;font-size:14px;font-weight:800" style-hover="background:rgba(184,67,28,.12)">✕</button>
 </div>
 <a href="{{ d_url }}" target="_blank" style="display:{{ d_heroShow }};position:relative;text-decoration:none">
-<div style="width:100%;height:196px;background-color:#cdc4b0;background-image:url('{{ d_thumb }}');background-size:cover;background-position:center;"></div>
+<div style="width:100%;height:196px;background-color:#cdc4b0;background-image:{{ d_thumb__bg }};background-size:cover;background-position:center;"></div>
 <span style="position:absolute;left:0;bottom:0;background:#b8431c;color:#f2ece0;font-size:11px;font-weight:800;letter-spacing:.08em;padding:8px 12px">{{ d_videoCta }}</span>
 </a>
 <div style="display:{{ d_noMediaShow }};flex-direction:column;justify-content:flex-end;gap:4px;height:96px;padding:0 12px 12px;background:#e6e4e1;border-bottom:2px solid rgba(21,59,61,.4)">
@@ -643,7 +643,7 @@
 <div style="display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory">
 <sc-for list="{{ d_gal }}" as="gp" hint-placeholder-count="3">
 <a href="{{ gp.src }}" target="_blank" style="flex:none;width:132px;display:flex;flex-direction:column;gap:3px;text-decoration:none;color:#153b3d;scroll-snap-align:start">
-<div style="width:132px;height:92px;border:2px solid #153b3d;background:#e6e4e1 url('{{ gp.src }}') center/cover"></div>
+<div style="width:132px;height:92px;border:2px solid #153b3d;background:#e6e4e1 center/cover;background-image:{{ gp.src__bg }}"></div>
 <span style="font-size:9.5px;font-weight:700;line-height:1.35;color:rgba(21,59,61,.75);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ gp.cap }}</span>
 </a>
 </sc-for>
@@ -757,11 +757,11 @@
 </sc-if>
 
 <section class="rs-scroll rs-col" style="display:{{ channelDisplay }};flex-direction:column;position:absolute;inset:0;min-height:0;background:#f2ece0;color:#153b3d;padding:12px;gap:12px;overflow-y:auto">
-<div style="font-size:18px;font-weight:800;letter-spacing:-.02em;line-height:1.2">여행 정보</div>
+<div style="font-size:18px;font-weight:800;letter-spacing:-.02em;line-height:1.2">{{ tx.k66 }}</div>
 <div style="display:{{ worksShow }};flex-direction:column;gap:8px">
 <sc-for list="{{ works }}" as="wk" hint-placeholder-count="1">
 <button sc-camel-on-click="{{ wk.open }}" style="display:flex;gap:12px;align-items:flex-start;text-align:left;border:2px solid #153b3d;background:#fff;padding:10px;cursor:pointer;color:#153b3d;font-family:inherit" type="button">
-<div style="width:56px;height:84px;flex:none;background:#e6e4e1 url('{{ wk.poster }}') center/cover"></div>
+<div style="width:56px;height:84px;flex:none;background:#e6e4e1 center/cover;background-image:{{ wk.poster__bg }}"></div>
 <div style="flex:1;min-width:0">
 <div style="font-size:13px;font-weight:800;line-height:1.3">{{ wk.title }}</div>
 <div style="font-size:10px;color:#b8431c;font-weight:800;margin:2px 0 4px">{{ wk.sub }}</div>
@@ -783,7 +783,7 @@
 <span style="display:{{ cfEmptyShow }};padding:0 12px 10px;font-size:11px;font-weight:600;line-height:1.5;color:rgba(21,59,61,.7)">{{ cfEmpty }}</span>
 <sc-for list="{{ cfList }}" as="cv" hint-placeholder-count="3">
 <button sc-camel-on-click="{{ cv.open }}" style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 12px;border:0;border-top:1px solid rgba(21,59,61,.15);background:transparent;color:#153b3d;text-align:left;cursor:pointer;font-family:inherit" style-hover="background:rgba(184,67,28,.06)" type="button">
-<div style="width:56px;height:56px;border:2px solid #153b3d;background:#e6e4e1 url('{{ cv.img }}') center/cover"></div>
+<div style="width:56px;height:56px;border:2px solid #153b3d;background:#e6e4e1 center/cover;background-image:{{ cv.img__bg }}"></div>
 <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
 <span style="font-size:12.5px;font-weight:800;line-height:1.3;letter-spacing:-.01em;text-wrap:pretty">{{ cv.title }}</span>
 <span style="font-size:10px;font-weight:800;color:#b8431c;font-variant-numeric:tabular-nums">{{ cv.dates }}</span>
@@ -810,22 +810,22 @@
 </div>
 </div>
 <div style="border:2px solid #153b3d;background:#b8431c;color:#f2ece0;padding:12px">
-<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.85">부산국제영화제</div>
-<div style="font-size:15px;font-weight:800;margin-top:6px;line-height:1.3">매년 10월 초, 영화의전당 일원</div>
-<div style="font-size:12px;line-height:1.6;margin-top:6px;opacity:.92">영화의전당과 센텀시티 극장가에서 열흘간 열린다. 야외극장 상영과 남포동 BIFF광장 행사가 함께 돌아가므로, 이 기간에는 두 권역을 하루씩 나눠 잡는 편이 낫다.</div>
+<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.85">{{ tx.k92 }}</div>
+<div style="font-size:15px;font-weight:800;margin-top:6px;line-height:1.3">{{ tx.k93 }}</div>
+<div style="font-size:12px;line-height:1.6;margin-top:6px;opacity:.92">{{ tx.k94 }}</div>
 </div>
 <div style="border:2px solid #153b3d;background:#fff;padding:12px">
-<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#b8431c">이동 요령</div>
+<div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#b8431c">{{ tx.k78 }}</div>
 <div style="font-size:12px;line-height:1.7;margin-top:8px">
-촬영지가 원도심(남포·영도·감천)과 동부 해안(해운대·기장)으로 크게 갈린다. 원도심은 1호선과 도보로 묶이고, 해운대 권역은 2호선과 동해선으로 이어진다. 감천문화마을과 흰여울마을은 언덕이라 마을버스를 타는 편이 낫다. 부산역에서 시작하면 남포·영도를 먼저 돌고 이튿날 동쪽 해안으로 넘어가는 동선이 짧다.
+{{ tx.k95 }}
 </div>
 </div>
-<div style="font-size:13px;line-height:1.6;opacity:.8"><div style="font-size:13px;line-height:1.6;opacity:.8"><div style="font-size:13px;line-height:1.6;opacity:.8">부산 관광 안내와 영화제 정보.</div>
+<div style="font-size:13px;line-height:1.6;opacity:.8"><div style="font-size:13px;line-height:1.6;opacity:.8"><div style="font-size:13px;line-height:1.6;opacity:.8">{{ tx.k96 }}</div>
 <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px">
-<a href="https://www.visitbusan.net/" target="_blank" style="height:40px;line-height:36px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;text-align:center;padding:0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-decoration:none;display:block" style-hover="background:#b8431c;color:#f2ece0">비짓부산</a>
-<a href="https://www.biff.kr/" target="_blank" style="height:40px;line-height:36px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;text-align:center;padding:0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-decoration:none;display:block" style-hover="background:#b8431c;color:#f2ece0">부산국제영화제</a>
-<a href="https://www.youtube.com/results?search_query=%EB%B6%80%EC%82%B0+%EC%98%81%ED%99%94+%EC%B4%AC%EC%98%81%EC%A7%80" target="_blank" style="height:40px;line-height:36px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;text-align:center;padding:0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-decoration:none;display:block" style-hover="background:#b8431c;color:#f2ece0">예고편</a>
-<a href="https://www.bfc.or.kr/" target="_blank" style="height:40px;line-height:36px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;text-align:center;padding:0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-decoration:none;display:block" style-hover="background:#b8431c;color:#f2ece0">부산영상위원회</a>
+<a href="https://www.visitbusan.net/" target="_blank" style="height:40px;line-height:36px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;text-align:center;padding:0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-decoration:none;display:block" style-hover="background:#b8431c;color:#f2ece0">{{ tx.k97 }}</a>
+<a href="https://www.biff.kr/" target="_blank" style="height:40px;line-height:36px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;text-align:center;padding:0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-decoration:none;display:block" style-hover="background:#b8431c;color:#f2ece0">{{ tx.k92 }}</a>
+<a href="https://www.youtube.com/results?search_query=%EB%B6%80%EC%82%B0+%EC%98%81%ED%99%94+%EC%B4%AC%EC%98%81%EC%A7%80" target="_blank" style="height:40px;line-height:36px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;text-align:center;padding:0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-decoration:none;display:block" style-hover="background:#b8431c;color:#f2ece0">{{ tx.k73 }}</a>
+<a href="https://www.bfc.or.kr/" target="_blank" style="height:40px;line-height:36px;border:2px solid #153b3d;background:#f2ece0;color:#153b3d;text-align:center;padding:0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-decoration:none;display:block" style-hover="background:#b8431c;color:#f2ece0">{{ tx.k98 }}</a>
 </div>
 </section>
 
@@ -1340,6 +1340,7 @@ sea:['海洋·自然景观','海洋·自然景観'],
     '매장 주소 기반 좌표':['基于门店地址的坐标','店舗住所ベースの座標'],'시장 대표 좌표':['市场代表坐标','市場の代表座標'],
     'WGS84 / EPSG:4326 실좌표':['WGS84 / EPSG:4326 实测坐标','WGS84 / EPSG:4326 実座標']},
   names:{
+    'bcx41':['釜山会展中心(BEXCO) (BEXCO)','BEXCO'],'bcx43':['海上城市Marine City','マリンシティ'],'bcx45':['虚心厅','虚心庁'],'bcx48':['釜山社稷综合运动场 社稷棒球场','釜山社稷総合競技場社稷野球場'],'bcx50':['釜山亚运会主赛场','釜山アジアード主競技場'],'bcx53':['168 Stairs','168階段'],'bcx54':['Busan Chinatown','釜山チャイナタウン特区（上海門、上海通り）'],'bcx55':['太宗台温泉汗蒸房','太宗台温泉チムジルバン'],'bcx56':['Starfield City Myeongji','Olive Young・スターフィールドシティミョンジ（鳴旨）店'],'bcx61':['CAMBRIDGE MEMBERS新世界百货商店Centum City店','ALEXANDER McQUEEN（アレキサンダー・マックイーン）・新世界百貨店センタムシティ店'],
     gj1:['孝友堂','孝友堂'],gj2:['Jjoksaem 44号新罗公主墓','チョクセム44号 新羅公主墓'],
     gj3:['东宫与月池','東宮と月池'],gj4:['皇理团路','ファンリダン通り'],gj5:['庆州世界游乐园','慶州ワールド'],
     gj6:['庆州罗园 媒体艺术','慶州ラウォン(メディアアート)'],gj7:['回忆的月亮村(鬼屋)','思い出の月の町(お化け屋敷)'],
@@ -1503,6 +1504,160 @@ Object.keys(DATA).forEach(c=>{
 });
 
 const PLAN_NS='busan-cinema-route';
+const TX_DICT={k17:{"ko":"부산 영화 기행","en":"Busan film trail","zh":"釜山电影之旅","ja":"釜山映画紀行","es":"Ruta de cine en Busan"},k66:{"ko":"여행 정보","en":"Travel info","zh":"旅游信息","ja":"旅行情報","es":"Info de viaje"},k92:{"ko":"부산국제영화제","en":"Busan International Film Festival","zh":"釜山国际电影节","ja":"釜山国際映画祭","es":"Festival de Cine de Busan"},k93:{"ko":"매년 10월 초, 영화의전당 일원","en":"Early October every year, around the Busan Cinema Center","zh":"每年10月初，电影殿堂一带","ja":"毎年10月初め、映画の殿堂一帯","es":"Principios de octubre, en el Busan Cinema Center"},k94:{"ko":"영화의전당과 센텀시티 극장가에서 열흘간 열린다. 야외극장 상영과 남포동 BIFF광장 행사가 함께 돌아가므로, 이 기간에는 두 권역을 하루씩 나눠 잡는 편이 낫다.","en":"Ten days at the Busan Cinema Center and Centum City theaters, with outdoor screenings and BIFF Square events in Nampo-dong. Split the two areas into separate days during the festival.","zh":"在电影殿堂与Centum City影院区举办十天，露天放映与南浦洞BIFF广场活动同时进行，此期间建议两个区域各安排一天。","ja":"映画の殿堂とセンタムシティの劇場街で10日間開催。野外上映と南浦洞BIFF広場のイベントが同時に行われるので、期間中は二つのエリアを一日ずつ分けるとよい。","es":"Diez días en el Busan Cinema Center y Centum City, con proyecciones al aire libre y actos en la plaza BIFF de Nampo-dong. Reparte ambas zonas en días distintos."},k78:{"ko":"이동 요령","en":"Getting around","zh":"出行要领","ja":"移動のコツ","es":"Cómo moverse"},k95:{"ko":"촬영지가 원도심(남포·영도·감천)과 동부 해안(해운대·기장)으로 크게 갈린다. 원도심은 1호선과 도보로 묶이고, 해운대 권역은 2호선과 동해선으로 이어진다. 감천문화마을과 흰여울마을은 언덕이라 마을버스를 타는 편이 낫다. 부산역에서 시작하면 남포·영도를 먼저 돌고 이튿날 동쪽 해안으로 넘어가는 동선이 짧다.","en":"Locations split between the old town (Nampo, Yeongdo, Gamcheon) and the east coast (Haeundae, Gijang). The old town works with Line 1 and walking; Haeundae is on Line 2 and the Donghae Line. Gamcheon and Huinnyeoul are hilly — take the village bus. From Busan Station, do Nampo and Yeongdo first and the east coast the next day.","zh":"拍摄地分为旧城区(南浦·影岛·甘川)和东部海岸(海云台·机张)。旧城区可乘1号线加步行，海云台一带乘2号线和东海线。甘川文化村与白浅滩村在山坡上，建议乘社区巴士。从釜山站出发先游南浦·影岛，次日再去东海岸最顺。","ja":"ロケ地は旧市街(南浦・影島・甘川)と東部海岸(海雲台・機張)に分かれる。旧市街は1号線と徒歩、海雲台は2号線と東海線。甘川文化村と白浅灘村は坂道なのでマウルバスが便利。釜山駅から南浦・影島を先に回り、翌日東海岸へ移る動線が短い。","es":"Los lugares se dividen entre el centro antiguo (Nampo, Yeongdo, Gamcheon) y la costa este (Haeundae, Gijang). El centro con la línea 1 y a pie; Haeundae con la 2 y la Donghae. Gamcheon y Huinnyeoul son cuestas: toma el bus local. Desde la estación, Nampo y Yeongdo primero, y la costa al día siguiente."},k96:{"ko":"부산 관광 안내와 영화제 정보.","en":"Busan tourism and festival info.","zh":"釜山旅游指南与电影节信息。","ja":"釜山観光案内と映画祭情報。","es":"Turismo de Busan e info del festival."},k97:{"ko":"비짓부산","en":"Visit Busan","zh":"Visit Busan","ja":"Visit Busan","es":"Visit Busan"},k73:{"ko":"예고편","en":"Trailer","zh":"预告片","ja":"予告編","es":"Tráiler"},k98:{"ko":"부산영상위원회","en":"Busan Film Commission","zh":"釜山影像委员会","ja":"釜山フィルムコミッション","es":"Busan Film Commission"},k62:{"ko":"내 위치","en":"My location","zh":"我的位置","ja":"現在地","es":"Mi ubicación"}};
+const TX_DICT_TITLES={"벨리곰 콜라보":{"en":"Bellygom collab","zh":"Bellygom联名","ja":"ベリーゴム コラボ","es":"Colab. con Bellygom"},"KBS 마이데이트립":{"en":"KBS My Day Trip","zh":"KBS 我的一日游","ja":"KBS マイデイトリップ","es":"KBS My Day Trip"},"국가유산청 공식 유튜브":{"en":"Korea Heritage Service official YouTube","zh":"国家遗产厅官方YouTube","ja":"国家遺産庁公式YouTube","es":"YouTube oficial del Servicio de Patrimonio"},"해운대":{"en":"Haeundae","zh":"海云台","ja":"TSUNAMI","es":"Haeundae"},"변호인":{"en":"The Attorney","zh":"辩护人","ja":"弁護人","es":"The Attorney"},"부산 영화 기행":{"en":"Busan film trail","zh":"釜山电影之旅","ja":"釜山映画紀行","es":"Ruta de cine en Busan"},"부산국제영화제":{"en":"Busan International Film Festival","zh":"釜山国际电影节","ja":"釜山国際映画祭","es":"Festival de Cine de Busan"},"왕과 사는 남자":{"en":"The King's Warden","zh":"与王同住的男人","ja":"王と生きる男","es":"The King's Warden"},"케이팝 데몬 헌터스":{"en":"KPop Demon Hunters","zh":"K-POP猎魔女团","ja":"KPOPガールズ！デーモン・ハンターズ","es":"KPop Demon Hunters"},"우리들의 블루스":{"en":"Our Blues","zh":"我们的蓝调","ja":"私たちのブルース","es":"Our Blues"},"폭싹 속았수다":{"en":"When Life Gives You Tangerines","zh":"苦尽柑来遇见你","ja":"おつかれさま","es":"When Life Gives You Tangerines"},"국제시장":{"en":"Ode to My Father","zh":"国际市场","ja":"国際市場で逢いましょう","es":"Ode to My Father"},"범죄와의 전쟁":{"en":"Nameless Gangster","zh":"与犯罪的战争","ja":"悪いやつら","es":"Nameless Gangster"},"영화 촬영지 · 다수 작품":{"en":"Film locations · multiple titles","zh":"电影拍摄地 · 多部作品","ja":"映画ロケ地 · 複数作品","es":"Lugares de rodaje · varias obras"}};
+
+const TX_CITY={
+  '화성':{en:'Hwaseong',zh:'华城',ja:'華城',es:'Hwaseong'},
+  '평택':{en:'Pyeongtaek',zh:'平泽',ja:'平沢',es:'Pyeongtaek'},
+  '안산':{en:'Ansan',zh:'安山',ja:'安山',es:'Ansan'},
+  '연천':{en:'Yeoncheon',zh:'涟川',ja:'漣川',es:'Yeoncheon'},
+  '안성':{en:'Anseong',zh:'安城',ja:'安城',es:'Anseong'},
+  '의정부':{en:'Uijeongbu',zh:'议政府',ja:'議政府',es:'Uijeongbu'},
+  '경산':{en:'Gyeongsan',zh:'庆山',ja:'慶山',es:'Gyeongsan'},
+  '청도':{en:'Cheongdo',zh:'清道',ja:'清道',es:'Cheongdo'},
+  '진도':{en:'Jindo',zh:'珍岛',ja:'珍島',es:'Jindo'},
+  '영광':{en:'Yeonggwang',zh:'灵光',ja:'霊光',es:'Yeonggwang'},
+  '나주':{en:'Naju',zh:'罗州',ja:'羅州',es:'Naju'},
+  '양구':{en:'Yanggu',zh:'杨口',ja:'楊口',es:'Yanggu'},
+  '홍천':{en:'Hongcheon',zh:'洪川',ja:'洪川',es:'Hongcheon'},
+  '화천':{en:'Hwacheon',zh:'华川',ja:'華川',es:'Hwacheon'},
+  '곡성':{en:'Gokseong',zh:'谷城',ja:'谷城',es:'Gokseong'},
+  '성남':{en:'Seongnam',zh:'城南',ja:'城南',es:'Seongnam'},
+  '부천':{en:'Bucheon',zh:'富川',ja:'富川',es:'Bucheon'},
+  '김포':{en:'Gimpo',zh:'金浦',ja:'金浦',es:'Gimpo'},
+  '구례':{en:'Gurye',zh:'求礼',ja:'求礼',es:'Gurye'},
+  '무안':{en:'Muan',zh:'务安',ja:'務安',es:'Muan'},
+  '옥천':{en:'Okcheon',zh:'沃川',ja:'沃川',es:'Okcheon'},
+  '영천':{en:'Yeongcheon',zh:'永川',ja:'永川',es:'Yeongcheon'},
+  '서울':{en:'Seoul',zh:'首尔',ja:'ソウル',es:'Seúl'},
+  '인천':{en:'Incheon',zh:'仁川',ja:'仁川',es:'Incheon'},
+  '수원':{en:'Suwon',zh:'水原',ja:'水原',es:'Suwon'},
+  '강릉':{en:'Gangneung',zh:'江陵',ja:'江陵',es:'Gangneung'},
+  '속초':{en:'Sokcho',zh:'束草',ja:'束草',es:'Sokcho'},
+  '철원':{en:'Cheorwon',zh:'铁原',ja:'鉄原',es:'Cheorwon'},
+  '정선':{en:'Jeongseon',zh:'旌善',ja:'旌善',es:'Jeongseon'},
+  '영월':{en:'Yeongwol',zh:'宁越',ja:'寧越',es:'Yeongwol'},
+  '동해':{en:'Donghae',zh:'东海',ja:'東海',es:'Donghae'},
+  '대전':{en:'Daejeon',zh:'大田',ja:'大田',es:'Daejeon'},
+  '충주':{en:'Chungju',zh:'忠州',ja:'忠州',es:'Chungju'},
+  '대구':{en:'Daegu',zh:'大邱',ja:'大邱',es:'Daegu'},
+  '경주':{en:'Gyeongju',zh:'庆州',ja:'慶州',es:'Gyeongju'},
+  '안동':{en:'Andong',zh:'安东',ja:'安東',es:'Andong'},
+  '부산':{en:'Busan',zh:'釜山',ja:'釜山',es:'Busan'},
+  '거제':{en:'Geoje',zh:'巨济',ja:'巨済',es:'Geoje'},
+  '통영':{en:'Tongyeong',zh:'统营',ja:'統営',es:'Tongyeong'},
+  '전주':{en:'Jeonju',zh:'全州',ja:'全州',es:'Jeonju'},
+  '여수':{en:'Yeosu',zh:'丽水',ja:'麗水',es:'Yeosu'},
+  '제주':{en:'Jeju',zh:'济州',ja:'済州',es:'Jeju'},
+  '서귀포':{en:'Seogwipo',zh:'西归浦',ja:'西帰浦',es:'Seogwipo'},
+  '진주':{en:'Jinju',zh:'晋州',ja:'晋州',es:'Jinju'},
+  '순천':{en:'Suncheon',zh:'顺天',ja:'順天',es:'Suncheon'},
+  '목포':{en:'Mokpo',zh:'木浦',ja:'木浦',es:'Mokpo'},
+  '영주':{en:'Yeongju',zh:'荣州',ja:'栄州',es:'Yeongju'},
+  '포항':{en:'Pohang',zh:'浦项',ja:'浦項',es:'Pohang'},
+  '춘천':{en:'Chuncheon',zh:'春川',ja:'春川',es:'Chuncheon'},
+  '울릉':{en:'Ulleung',zh:'郁陵',ja:'鬱陵',es:'Ulleung'},
+  '남원':{en:'Namwon',zh:'南原',ja:'南原',es:'Namwon'},
+  '남해':{en:'Namhae',zh:'南海',ja:'南海',es:'Namhae'},
+  '합천':{en:'Hapcheon',zh:'陕川',ja:'陜川',es:'Hapcheon'},
+  '광주':{en:'Gwangju',zh:'光州',ja:'光州',es:'Gwangju'},
+  '천안':{en:'Cheonan',zh:'天安',ja:'天安',es:'Cheonan'},
+  '공주':{en:'Gongju',zh:'公州',ja:'公州',es:'Gongju'},
+  '부여':{en:'Buyeo',zh:'扶余',ja:'扶余',es:'Buyeo'},
+  '군산':{en:'Gunsan',zh:'群山',ja:'群山',es:'Gunsan'},
+  '용인':{en:'Yongin',zh:'龙仁',ja:'龍仁',es:'Yongin'},
+  '창원':{en:'Changwon',zh:'昌原',ja:'昌原',es:'Changwon'},
+  '울산':{en:'Ulsan',zh:'蔚山',ja:'蔚山',es:'Ulsan'},
+  '태안':{en:'Taean',zh:'泰安',ja:'泰安',es:'Taean'},
+  '양평':{en:'Yangpyeong',zh:'杨平',ja:'楊平',es:'Yangpyeong'},
+  '여주':{en:'Yeoju',zh:'骊州',ja:'驪州',es:'Yeoju'},
+  '가평':{en:'Gapyeong',zh:'加平',ja:'加平',es:'Gapyeong'},
+  '양산':{en:'Yangsan',zh:'梁山',ja:'梁山',es:'Yangsan'},
+  '보은':{en:'Boeun',zh:'报恩',ja:'報恩',es:'Boeun'},
+  '해남':{en:'Haenam',zh:'海南',ja:'海南',es:'Haenam'},
+  '함양':{en:'Hamyang',zh:'咸阳',ja:'咸陽',es:'Hamyang'},
+  '장성':{en:'Jangseong',zh:'长城',ja:'長城',es:'Jangseong'},
+  '정읍':{en:'Jeongeup',zh:'井邑',ja:'井邑',es:'Jeongeup'},
+  '논산':{en:'Nonsan',zh:'论山',ja:'論山',es:'Nonsan'},
+  '경기광주':{en:'Gwangju-si',zh:'京畿广州',ja:'京畿広州',es:'Gwangju-si'},
+  '익산':{en:'Iksan',zh:'益山',ja:'益山',es:'Iksan'},
+  '고창':{en:'Gochang',zh:'高敞',ja:'高敞',es:'Gochang'},
+  '화순':{en:'Hwasun',zh:'和顺',ja:'和順',es:'Hwasun'},
+  '김해':{en:'Gimhae',zh:'金海',ja:'金海',es:'Gimhae'},
+  '양주':{en:'Yangju',zh:'杨州',ja:'楊州',es:'Yangju'},
+  '시흥':{en:'Siheung',zh:'始兴',ja:'始興',es:'Siheung'},
+  '완주':{en:'Wanju',zh:'完州',ja:'完州',es:'Wanju'},
+  '진안':{en:'Jinan',zh:'镇安',ja:'鎮安',es:'Jinan'},
+  '장수':{en:'Jangsu',zh:'长水',ja:'長水',es:'Jangsu'},
+  '순창':{en:'Sunchang',zh:'淳昌',ja:'淳昌',es:'Sunchang'},
+  '장흥':{en:'Jangheung',zh:'长兴',ja:'長興',es:'Jangheung'},
+  '곡성':{en:'Gokseong',zh:'谷城',ja:'谷城',es:'Gokseong'},
+  '산청':{en:'Sancheong',zh:'山清',ja:'山清',es:'Sancheong'},
+  '횡성':{en:'Hoengseong',zh:'横城',ja:'横城',es:'Hoengseong'},
+  '임실':{en:'Imsil',zh:'任实',ja:'任実',es:'Imsil'},
+  '봉화':{en:'Bonghwa',zh:'奉化',ja:'奉化',es:'Bonghwa'},
+  '광양':{en:'Gwangyang',zh:'光阳',ja:'光陽',es:'Gwangyang'},
+  '하동':{en:'Hadong',zh:'河东',ja:'河東',es:'Hadong'},
+  '함안':{en:'Haman',zh:'咸安',ja:'咸安',es:'Haman'},
+  '창녕':{en:'Changnyeong',zh:'昌宁',ja:'昌寧',es:'Changnyeong'},
+  '고령':{en:'Goryeong',zh:'高灵',ja:'高霊',es:'Goryeong'},
+  '고성':{en:'Goseong',zh:'固城',ja:'固城',es:'Goseong'},
+  '서천':{en:'Seocheon',zh:'舒川',ja:'舒川',es:'Seocheon'},
+  '신안':{en:'Sinan',zh:'新安',ja:'新安',es:'Sinan'},
+  '보성':{en:'Boseong',zh:'宝城',ja:'宝城',es:'Boseong'},
+  '사천':{en:'Sacheon',zh:'泗川',ja:'泗川',es:'Sacheon'},
+  '문경':{en:'Mungyeong',zh:'闻庆',ja:'聞慶',es:'Mungyeong'},
+  '울진':{en:'Uljin',zh:'蔚珍',ja:'蔚珍',es:'Uljin'},
+  '원주':{en:'Wonju',zh:'原州',ja:'原州',es:'Wonju'},
+  '평창':{en:'Pyeongchang',zh:'平昌',ja:'平昌',es:'Pyeongchang'},
+  '파주':{en:'Paju (DMZ)',zh:'坡州 (DMZ)',ja:'坡州 (DMZ)',es:'Paju (DMZ)'},
+  '고양':{en:'Goyang',zh:'高阳',ja:'高陽',es:'Goyang'},
+  '포천':{en:'Pocheon',zh:'抱川',ja:'抱川',es:'Pocheon'},
+  '이천':{en:'Icheon',zh:'利川',ja:'利川',es:'Icheon'},
+  '남양주':{en:'Namyangju',zh:'南杨州',ja:'南楊州',es:'Namyangju'},
+  '양양':{en:'Yangyang',zh:'襄阳',ja:'襄陽',es:'Yangyang'},
+  '삼척':{en:'Samcheok',zh:'三陟',ja:'三陟',es:'Samcheok'},
+  '인제':{en:'Inje',zh:'麟蹄',ja:'麟蹄',es:'Inje'},
+  '태백':{en:'Taebaek',zh:'太白',ja:'太白',es:'Taebaek'},
+  '청주':{en:'Cheongju',zh:'清州',ja:'清州',es:'Cheongju'},
+  '제천':{en:'Jecheon',zh:'堤川',ja:'堤川',es:'Jecheon'},
+  '단양':{en:'Danyang',zh:'丹阳',ja:'丹陽',es:'Danyang'},
+  '보령':{en:'Boryeong',zh:'保宁',ja:'保寧',es:'Boryeong'},
+  '아산':{en:'Asan',zh:'牙山',ja:'牙山',es:'Asan'},
+  '담양':{en:'Damyang',zh:'潭阳',ja:'潭陽',es:'Damyang'},
+  '무주':{en:'Muju',zh:'茂朱',ja:'茂朱',es:'Muju'},
+  '부안':{en:'Buan',zh:'扶安',ja:'扶安',es:'Buan'},
+  '완도':{en:'Wando',zh:'莞岛',ja:'莞島',es:'Wando'},
+  '밀양':{en:'Miryang',zh:'密阳',ja:'密陽',es:'Miryang'},
+  '청송':{en:'Cheongsong',zh:'青松',ja:'青松',es:'Cheongsong'},
+  '영덕':{en:'Yeongdeok',zh:'盈德',ja:'盈德',es:'Yeongdeok'},
+  '구미':{en:'Gumi',zh:'龟尾',ja:'亀尾',es:'Gumi'},
+  '세종':{en:'Sejong',zh:'世宗',ja:'世宗',es:'Sejong'},
+  '거창':{en:'Geochang',zh:'居昌',ja:'居昌',es:'Geochang'},
+  '상주':{en:'Sangju',zh:'尚州',ja:'尚州',es:'Sangju'},
+  '당진':{en:'Dangjin',zh:'唐津',ja:'唐津',es:'Dangjin'},
+  '서산':{en:'Seosan',zh:'瑞山',ja:'瑞山',es:'Seosan'},
+  '홍성':{en:'Hongseong',zh:'洪城',ja:'洪城',es:'Hongseong'},
+  '예산':{en:'Yesan',zh:'礼山',ja:'礼山',es:'Yesan'},
+  '고성(강원)':{en:'Goseong (Gangwon)',zh:'高城 (江原)',ja:'高城 (江原)',es:'Goseong (Gangwon)'}
+};
+const TX_LANGS=['ko','en','zh','ja','es'];
+function txPost(v,L){if(L==='ko')return v;
+  const VW={en:n=>n+' views',zh:n=>n+'次观看',ja:n=>n+'回視聴',es:n=>n+' vistas'}[L]||(n=>n+' views');
+  const TT=TX_DICT_TITLES;const tr=s=>{let o=String(s);Object.keys(TT).forEach(k=>{if(o.indexOf(k)>-1)o=o.split(k).join(TT[k][L]||TT[k].en);});return o;};
+  const CM={'경주':['Gyeongju','庆州','慶州','Gyeongju'],'거제':['Geoje','巨济','巨済','Geoje'],'전국':['Nationwide','全国','全国','Todo el país'],'서울':['Seoul','首尔','ソウル','Seúl'],'영월':['Yeongwol','宁越','寧越','Yeongwol'],'제주':['Jeju','济州','済州','Jeju'],'서귀포':['Seogwipo','西归浦','西帰浦','Seogwipo'],'부산':['Busan','釜山','釜山','Busan']};
+  const li={en:0,zh:1,ja:2,es:3}[L];const city=c=>(typeof cityLabel==='function'&&cityLabel(c,L)!==c)?cityLabel(c,L):(typeof TX_CITY!=='undefined'&&TX_CITY[c]&&TX_CITY[c][L])?TX_CITY[c][L]:(CM[c]?CM[c][li]:c);
+  const VZ={en:{'관광특구':'Special Tourist Zone','관광단지':'Tourist Complex','관광지':'Designated tourist site',d:y=>'designated '+y},zh:{'관광특구':'旅游特区','관광단지':'旅游园区','관광지':'指定景区',d:y=>y+'年指定'},ja:{'관광특구':'観光特区','관광단지':'観光団地','관광지':'指定観光地',d:y=>y+'年指定'},es:{'관광특구':'Zona turística especial','관광단지':'Complejo turístico','관광지':'Sitio turístico',d:y=>'designado en '+y}}[L];
+  const vz=t=>{const m=String(t||'').match(/^(\S+)\s+(.*?)\s*\((?:designated |designado en )?(\d{4})(?:年指定| 지정)?\)?\s*\)?$/);if(!t)return t;let type=(String(t).match(/관광특구|관광단지|관광지|Special Tourist Zone|Tourist Complex|Designated tourist site|旅游特区|旅游园区|指定景区|観光特区|観光団地|指定観光地|Zona turística especial|Complejo turístico|Sitio turístico/)||[''])[0];if(VZ[type])type=VZ[type];const y=(String(t).match(/(\d{4})/)||[])[1];return [type,y?VZ.d(y):''].filter(Boolean).join(' · ');};
+  const map=(k,f,fn)=>{if(Array.isArray(v[k]))v[k]=v[k].map(it=>it&&typeof it==='object'&&typeof it[f]==='string'?{...it,[f]:fn(it[f])}:it);};
+  map('videoItems','views',s=>s.replace(/^조회수\s*—$/,({en:'Views —',zh:'观看 —',ja:'視聴 —',es:'Vistas —'}[L]||'Views —')).replace(/조회수\s*([\d,]+)\s*회/,(m,n)=>VW(n)).replace(/^장면\s*(\d+)/,(m,n)=>({en:'Scene ',zh:'场景 ',ja:'シーン ',es:'Escena '}[L]||'Scene ')+n));
+  map('videoItems','spots',tr);
+  map('regionChips','label',s=>s.replace(/^([가-힣]+)(\s+\d+)$/,(m,c,n)=>city(c)+n));
+  map('visiblePlaces','vzTitle',s=>/[가-힣]/.test(s)?vz(s):s);
+  if(typeof v.nextLabel==='string')v.nextLabel=({'다음':{en:'Next',zh:'下一步',ja:'次へ',es:'Siguiente'},'결과 보기':{en:'See result',zh:'查看结果',ja:'結果を見る',es:'Ver resultado'}}[v.nextLabel]||{})[L]||v.nextLabel;
+  if(typeof v.planCount==='string')v.planCount=v.planCount.replace(/(\d+)개/,(m,n)=>({en:n,zh:n+'个',ja:n+'件',es:n}[L]||n));
+  return v;}
 class Component extends DCLogic {
   planKey(){return 'dc_plans:'+PLAN_NS;}
   planList(){if(!this._plans){try{this._plans=JSON.parse(localStorage.getItem(this.planKey())||'[]')||[];}catch(e){this._plans=[];}}return this._plans;}
@@ -2295,7 +2450,9 @@ class Component extends DCLogic {
       if(pv.markerStyle!==this.props.markerStyle||pv.catPalette!==this.props.catPalette)this.draw();
     }
   }
-  renderVals(){
+  _langSync(){if(!this._lsInit){this._lsInit=1;try{const s=localStorage.getItem('tn_lang');if(s&&s!==(this.state.lang||'ko')&&TX_LANGS.indexOf(s)>-1){this.state.lang=s;setTimeout(()=>this.setState({lang:s}),0);}}catch(e){}}else if((this.state.lang||'ko')!==this._lsLast){try{localStorage.setItem('tn_lang',this.state.lang||'ko');}catch(e){}}this._lsLast=this.state.lang||'ko';}
+  renderVals(){this._langSync();const v=this._rvTx();const _L=this.state.lang||'ko';v.tx={};try{if(document.documentElement.getAttribute('data-lang')!==_L)document.documentElement.setAttribute('data-lang',_L);}catch(e){}Object.keys(TX_DICT).forEach(k=>{const d=TX_DICT[k];v.tx[k]=_L==='ko'?d.ko:(d[_L]||d.en);});{const _bg=u=>u?'url("'+String(u).replace(/"/g,'%22')+'")':'none';[["videoItems","thumb"],["","d_thumb"],["d_gal","src"],["works","poster"],["cfList","img"]].forEach(([k,fd])=>{if(!k){v[fd+'__bg']=_bg(v[fd]);return;}if(Array.isArray(v[k]))v[k]=v[k].map(it=>it&&typeof it==='object'?{...it,[fd+'__bg']:_bg(it[fd])}:it);});}return txPost(v,_L);}
+  _rvTx(){
     this.sync();
     const st=this.state, lang=st.lang, a=this.accent(), on=a.base==='#f2ece0'?'#153b3d':'#f2ece0';
     const city=DATA[st.city], list=this.filtered(), course=st.course[st.city];
