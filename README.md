@@ -24,21 +24,37 @@
 
 ## 화면 둘러보기
 
-캡처는 API 키 없이 헤드리스 브라우저에서 찍은 것이라 지도 타일은 비어 있고, 외부 API 응답은 예시 값입니다. 각 화면의 실제 동작은 아래 [기능 상세](#기능-상세) 에 있습니다.
+캡처는 헤드리스 브라우저에서 찍었고 외부 API 응답은 예시 값입니다. Google Maps 는 키 없이는 타일을 내려주지 않아 지도 영역이 비어 있으며, 지도 탭 캡처는 키가 있는 환경에서 찍어 `assets/screenshots/map-*.png` 로 넣을 자리입니다. 각 화면의 실제 동작은 아래 [기능 상세](#기능-상세) 에 있습니다.
 
 <table>
 <tr>
 <td align="center"><img src="assets/screenshots/home-recommend.png" width="200"><br><sub>홈 · 테마 추천 (14문항)</sub></td>
 <td align="center"><img src="assets/screenshots/planner-course.png" width="200"><br><sub>플래너 · 코스 빌더 (날짜 → n박 m일, 권역별 여행지)</sub></td>
-<td align="center"><img src="assets/screenshots/theme-detail.png" width="200"><br><sub>테마 화면 · 장소 상세 (운영시간 · 요금 · 체류 · 좌표 근거)</sub></td>
+<td align="center"><img src="assets/screenshots/theme-detail.png" width="200"><br><sub>테마 화면(RESCENE Route · 거제) · 장소 상세</sub></td>
 </tr>
 <tr>
-<td align="center"><img src="assets/screenshots/theme-detail-2.png" width="200"><br><sub>장소 상세 아래쪽 · 연관 관광지 · 날씨 · 미세먼지 · 코스 추가</sub></td>
-<td align="center"><img src="assets/screenshots/theme-info.png" width="200"><br><sub>여행 정보 · 작품 카드 · 지역 행사 · 축제</sub></td>
-<td align="center"><img src="assets/screenshots/theme-film.png" width="200"><br><sub>영화 · 장면별 촬영지</sub></td>
+<td align="center"><img src="assets/screenshots/theme-detail-2.png" width="200"><br><sub>장소 상세 아래쪽 · 함께 많이 가는 관광지 · 날씨 · 미세먼지</sub></td>
+<td align="center"><img src="assets/screenshots/theme-info.png" width="200"><br><sub>팬소통 탭 · 거제 행사 · 축제</sub></td>
+<td align="center"><img src="assets/screenshots/theme-film.png" width="200"><br><sub>영상 탭 · 장면별 촬영지</sub></td>
 </tr>
 <tr>
-<td align="center"><img src="assets/screenshots/theme-stamp.png" width="200"><br><sub>스탬프 북 · 저장한 장소</sub></td>
+<td align="center"><img src="assets/screenshots/theme-stamp.png" width="200"><br><sub>스탬프 북 (거제 22곳)</sub></td>
+<td></td><td></td>
+</tr>
+</table>
+
+### 관광지별 정보
+
+테마마다 장소 상세의 표 항목이 조금씩 다릅니다. 전화번호가 있는 곳은 전화 행이, 유네스코 세계유산은 이름 옆에 배지가 붙습니다.
+
+<table>
+<tr>
+<td align="center"><img src="assets/screenshots/place-busan.png" width="200"><br><sub>부산 영화 기행 · 감천문화마을 (운영시간 · 요금 · 전화 · 작품)</sub></td>
+<td align="center"><img src="assets/screenshots/place-jeju-2.png" width="200"><br><sub>제주 K-Drama · 성산일출봉 (유네스코 배지 · 연관 관광지 · 날씨)</sub></td>
+<td align="center"><img src="assets/screenshots/place-seoul.png" width="200"><br><sub>케데헌 서울 · 낙산공원 성곽길 (장면 설명 · 접근 팁)</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="assets/screenshots/place-gyeongju-2.png" width="200"><br><sub>RESCENE Route · 경주 동궁과 월지 (연관 관광지 · 미세먼지 등급)</sub></td>
 <td></td><td></td>
 </tr>
 </table>
@@ -110,16 +126,16 @@
 - **저장한 장소** — 장소 상세의 **저장**으로 북마크한 장소 목록. 스탬프 탭 아래쪽에 있습니다.
 - **스탬프 북** — 테마 도시의 장소마다 칸이 있고 **스탬프 찍기**는 현재 위치(HTTPS 에서만)를 확인해 찍습니다. 수집 진행률을 막대로 보여줍니다.
 
-### 영화 속 장면 (테마 화면 · 영화 탭)
+### 영화 속 장면 (테마 화면 · 영화 / 영상 탭)
 
-- 작품의 장면을 순서대로(장면순 · 역순) 나열하고, 장면마다 등장 장소와 **▶ 장면 찾아보기**(YouTube 검색)를 붙입니다. 장면 · 장소 검색이 됩니다.
+- 영화 · 드라마 테마는 작품의 장면을 순서대로(장면순 · 역순) 나열하고, 장면마다 등장 장소와 **▶ 장면 찾아보기**(YouTube 검색)를 붙입니다. RESCENE 은 로케이션 클립을 인기순 · 최신순으로 나열하고 조회수 · 게시일 · 등장 장소를 보여줍니다. 장면 · 장소 검색이 됩니다.
 - 영상 채널은 지연 로드하고, YouTube 조회수 · 게시일은 하루 1회 갱신해 캐시합니다(YouTube 키 필요).
 
 ### 여행 정보 (여행 정보 탭)
 
 - **작품 카드** — TMDB 에서 영화 · 드라마 포스터 · 개봉년 · 평점 · 줄거리를 가져옵니다(TMDB 키 필요, 7일 캐시).
 - **지역 행사 · 축제** — 도시 중심 30km 안의 한국관광공사 행사를 "이번 주 / 30일"로 나눠 거리와 함께 보여주고, 누르면 카카오맵으로 엽니다. 플래너 코스 탭에는 여행 기간에 열리는 행사가 따로 붙습니다.
-- 달력, 지역 대표 축제 안내(예: 단종문화제), 지역 관광 안내 링크. 부산 화면은 부산시 테마여행정보(도보여행 · 이색여행 241곳)를 함께 보여줍니다.
+- 달력, 지역 대표 축제 안내, 지역 관광 안내 링크. RESCENE 화면은 이 탭이 **팬소통 채널**이고 작품 카드 대신 영상 아카이브 링크가 있습니다. 부산 화면은 부산시 테마여행정보(도보여행 · 이색여행 241곳)를 함께 보여줍니다.
 
 ### 다국어
 
