@@ -53,7 +53,7 @@ for (const ck of CITY_ORDER) {
   for (const p of city.places) {
     const oh = S.openHours(p);
     rows.push([
-      ck, city.ko, p.locKo || city.ko, p.n, p.id, p.ko, p.en,
+      p.id, ck, city.ko, p.locKo || city.ko, typeof p.n === 'number' ? p.n : '', p.ko, p.en,
       p.cat, (CATS[p.cat] || {}).ko || p.cat,
       p.lat, p.lng,
       S.stayMin(p), S.fmtStay(S.stayMin(p)),
@@ -65,9 +65,9 @@ for (const ck of CITY_ORDER) {
   }
 }
 writeCsv('체류시간_장소별.csv', [
-  '화면', '도시', '시군', '순번', 'id', '장소명', '장소명(영문)', '분류코드', '분류',
+  'id', '화면', '도시', '시군', '순번', '장소명', '장소명(영문)', '분류코드', '분류',
   '위도', '경도', '권장체류(분)', '체류표기', '운영시간(원문)', '개장(파싱)', '폐장(파싱)', '운영시간적용',
-  '영상장소', '확장장소', '한국관광100선', '유네스코', '무장애', '자동코스후보', '좌표근거',
+  '영상장소', '목록외', '한국관광100선', '유네스코', '열린관광지', '자동코스후보', '좌표근거',
 ], rows);
 
 // ── 2. 분류별 요약 ──────────────────────────────────────────────────

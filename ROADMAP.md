@@ -28,6 +28,7 @@
 - [ ] 시티투어 · 관광안내소(`data/*.json`)를 서버 엔드포인트로 제공
 - [ ] 서버 일정 계산에 `REGION_HUB` · `METRO_NET` 반영 — 지금은 시군을 넘는 구간이 모두 고속버스로 계산됨
 - [ ] 추천 코드 단일화 — 이 레포 `테마 추천 알고리즘/` 과 data-server `recommend/` 중 하나를 원본으로
+- [ ] 추천 재분류 입력을 옛 `assets/tour-places.csv`(1,197행, `id` 없음)에서 `파생 데이터/장소.csv`(3,118곳)로 바꾸고 결과 재계산 — data-server `recommend/` 도 같이
 - [ ] 앱 화면이 자기 `DATA` 대신 backend API 를 쓰도록 전환할지 결정
 
 ## 화면

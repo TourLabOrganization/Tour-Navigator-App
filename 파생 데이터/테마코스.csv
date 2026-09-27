@@ -1,0 +1,73 @@
+﻿테마,화면파일,블록,순번,id,플래너에있음,장소명,장소명(영문),분류코드,분류,위도,경도,권장체류(분),운영시간(원문),작품,장면,영상ID
+RESCENE,RESCENE Route.dc.html,gyeongju,1,gj1,Y,효우당,Hyowoodang,stay,숙박,35.8923,129.1786,180,15:00 IN / 11:00 OUT,,,4m9eLr-NofA
+RESCENE,RESCENE Route.dc.html,gyeongju,2,gj2,Y,쪽샘 44호 신라공주묘,Jjoksaem Tomb No. 44,herit,문화유산·전통체험,35.8397,129.2163,40,09:00–18:00,,,4m9eLr-NofA
+RESCENE,RESCENE Route.dc.html,gyeongju,3,gj3,Y,동궁과 월지,Donggung & Wolji,herit,문화유산·전통체험,35.8348,129.2266,70,09:00–22:00,,,4m9eLr-NofA
+RESCENE,RESCENE Route.dc.html,gyeongju,4,gj4,Y,황리단길,Hwangnidan-gil,food,로컬상권·먹거리,35.8377,129.2097,120,11:00–22:00,,,WTdyA5N4K0k
+RESCENE,RESCENE Route.dc.html,gyeongju,5,gj5,Y,경주월드,Gyeongju World,activity,테마파크·액티비티,35.8368,129.282,240,10:00–21:00,,,hqSzEdrSpno
+RESCENE,RESCENE Route.dc.html,gyeongju,6,gj6,Y,경주 라원(미디어아트),Gyeongju Rawon Media Art,activity,테마파크·액티비티,35.847,129.2619,60,10:00–20:00,,,QHomm66dhL0
+RESCENE,RESCENE Route.dc.html,gyeongju,7,gj7,Y,추억의 달동네 (귀신의집),Memory Hill Village (Haunted House),activity,테마파크·액티비티,35.8036,129.3123,70,10:00–19:00,,,hqSzEdrSpno
+RESCENE,RESCENE Route.dc.html,geoje,1,gz1,Y,덕포해수욕장,Deokpo Beach,sea,해양·자연경관,34.9131,128.7126,70,상시 개방,,,SF29doLuBfc
+RESCENE,RESCENE Route.dc.html,geoje,2,gz2,Y,매미성,Maemi Fortress,sea,해양·자연경관,34.9682513,128.7051193,50,상시 개방,,,_GKSineBozo
+RESCENE,RESCENE Route.dc.html,geoje,3,gz3,Y,해금강,Haegeumgang,sea,해양·자연경관,34.7333355,128.6839246,90,유람선 09:00–16:00,,,Gdez_IKDK-I
+RESCENE,RESCENE Route.dc.html,geoje,4,gz4,Y,바람의 언덕,Windy Hill,sea,해양·자연경관,34.7447,128.6631,60,상시 개방,,,YV9Q9fBNzLs
+RESCENE,RESCENE Route.dc.html,geoje,5,gz5,Y,오션뷰 카페 씨야드,Seayard Ocean-view Cafe,sea,해양·자연경관,34.8552,128.5772,60,10:00–21:00,,,SF29doLuBfc
+RESCENE,RESCENE Route.dc.html,geoje,6,gz6,Y,거제식물원,Geoje Botanic Garden,heal,힐링·생태·체험,34.8568,128.5782,80,09:00–18:00,,,Gdez_IKDK-I
+RESCENE,RESCENE Route.dc.html,geoje,7,gz7,Y,거제 파노라마 케이블카,Geoje Panorama Cable Car,heal,힐링·생태·체험,34.7868,128.6327,70,09:30–17:30,,,_GKSineBozo
+RESCENE,RESCENE Route.dc.html,geoje,8,gz8,Y,동부저수지,Dongbu Reservoir,heal,힐링·생태·체험,34.8125,128.6239,40,상시 개방,,,YV9Q9fBNzLs
+RESCENE,RESCENE Route.dc.html,geoje,9,gz9,Y,고현동 상권,Gohyeon-dong District,food,로컬상권·먹거리,34.8863,128.6239,90,11:00–23:00,,,
+RESCENE,RESCENE Route.dc.html,geoje,10,gz10,Y,거제 고현시장,Gohyeon Market,food,로컬상권·먹거리,34.8863,128.6239,50,08:00–20:00,,,aFhYXNCn-g8
+RESCENE,RESCENE Route.dc.html,geoje,11,gz11,Y,원조거제굴구이,Wonjo Geoje Grilled Oyster,food,로컬상권·먹거리,34.84311,128.56209,80,11:00–21:00,,,aFhYXNCn-g8
+RESCENE,RESCENE Route.dc.html,geoje,12,gz12,Y,거제 전통 양곱창 전골,Geoje Gopchang Hot Pot,food,로컬상권·먹거리,34.8927675,128.6264102,70,16:00–24:00,,,_GKSineBozo
+RESCENE,RESCENE Route.dc.html,geoje,13,gz13,Y,금농갈비,Geumnong Galbi,food,로컬상권·먹거리,34.8895,128.6922,75,11:30–21:30,,,YV9Q9fBNzLs
+RESCENE,RESCENE Route.dc.html,geoje,14,gz14,Y,농소몽돌해수욕장,Nongso Mongdol Beach,sea,해양·자연경관,35.005,128.7011,60,상시 개방,RESCENE 공식 유튜브,고기다리고 고기다리셨습니다🏃‍♀️✨ | 메이의 걸어서 거제 속으로,mD2pNO7mbbg
+RESCENE,RESCENE Route.dc.html,nation,1,na1,Y,수원화성,Suwon Hwaseong,herit,문화유산·전통체험,37.2818,127.0135,120,09:00–18:00,국가유산청 공식 유튜브,리센느와 함께 알아보는 수원 화성 상생정책,3kzZaHU72Ps
+RESCENE,RESCENE Route.dc.html,nation,22,na22,Y,수원화성 국궁체험장,Suwon Hwaseong Archery Range,herit,문화유산·전통체험,37.2885,127.023,90,10:00–18:00,,,AprhNzAcfdc
+RESCENE,RESCENE Route.dc.html,nation,23,na23,Y,화홍문,Hwahongmun,herit,문화유산·전통체험,37.2875,127.0178,40,상시 개방,,,AprhNzAcfdc
+RESCENE,RESCENE Route.dc.html,nation,2,na2,Y,수원전통문화관,Suwon Traditional Culture Center,herit,문화유산·전통체험,37.2878,127.0146,70,10:00–18:00,국가유산청 공식 유튜브,리센느와 함께 알아보는 수원 화성 상생정책,3kzZaHU72Ps
+RESCENE,RESCENE Route.dc.html,nation,3,na3,Y,행리단길,Haengridan-gil,food,로컬상권·먹거리,37.2851,127.0142,100,11:00–22:00,국가유산청 공식 유튜브,리센느와 함께 알아보는 수원 화성 상생정책,3kzZaHU72Ps
+RESCENE,RESCENE Route.dc.html,nation,4,na4,Y,정선 하이원 스키장 / 워터월드,High1 Ski & Water World,activity,테마파크·액티비티,37.2055,128.8377,300,시즌별 상이,KBS 마이데이트립,찐으로 놀고 먹는 리센느의 첫 여름휴가🏖️ 마이마이 주이소,rsEpyq1Lzc4
+RESCENE,RESCENE Route.dc.html,nation,5,na5,Y,하이원 리조트 (동물농장 / 알파인코스터),High1 Resort (Animal Farm & Alpine Coaster),stay,숙박,37.2053,128.8402,180,10:00–17:00,KBS 마이데이트립,1화보다 더 재밌을걸?😆 리센느의 스릴 넘치는 여름휴가 보러 오이데~⭐️,L16ezTKcwrY
+RESCENE,RESCENE Route.dc.html,nation,6,na6,Y,성심당,Sungsimdang,food,로컬상권·먹거리,36.3277,127.4273,60,08:00–22:00,벨리곰 콜라보,갸루 출신 일본인에게 대전 빵투어를 시켜준다면? (feat. 대전 빵택시),yMeBhxSGvVw
+RESCENE,RESCENE Route.dc.html,nation,8,na8,Y,충주 악어다리,Chungju Crocodile Bridge,heal,힐링·생태·체험,36.924,128.0481,50,상시 개방,벨리곰 콜라보,충주맨 없는 충주시 다녀왔습니다 (feat. 최지호 주무관),W0cpLR0rz0Q
+RESCENE,RESCENE Route.dc.html,nation,9,na9,Y,충주 무학시장,Chungju Muhak Market,food,로컬상권·먹거리,36.9741,127.9281,60,09:00–20:00,벨리곰 콜라보,충주맨 없는 충주시 다녀왔습니다 (feat. 최지호 주무관),W0cpLR0rz0Q
+RESCENE,RESCENE Route.dc.html,nation,10,na10,Y,망상해수욕장,Mangsang Beach,sea,해양·자연경관,37.5922,129.0897,90,상시 개방 (해수욕 기간 07/01–08/31),RESCENE 공식 유튜브,덜컹 덜컹 달려간다 동해 버스야~🚌 | 리센느닷없이 EP.01,Tl8f4RWJnUc
+RESCENE,RESCENE Route.dc.html,nation,11,na11,Y,동해망상해변한옥촌,Donghae Mangsang Beach Hanok Village,stay,숙박,37.5927,129.0908,180,15:00 IN / 11:00 OUT,,,Tl8f4RWJnUc
+왕과 사는 남자,Kings Warden Route.dc.html,yeongwol,1,yw1,Y,청령포,Cheongnyeongpo,herit,문화유산·전통체험,37.175028,128.444056,90,"09:00–18:00 (입장 마감 17:00) · 어른 3,000원 · 1577-0545",왕과 사는 남자 (2026),강을 건너 유배지로 들어가다,sc1
+왕과 사는 남자,Kings Warden Route.dc.html,yeongwol,2,yw3,Y,관풍헌,Gwanpungheon,herit,문화유산·전통체험,37.1834,128.4652,30,상시 개방 · 무료,왕과 사는 남자 (2026),마지막 날,sc3
+왕과 사는 남자,Kings Warden Route.dc.html,yeongwol,3,yw2,Y,영월 장릉,Jangneung Royal Tomb,herit,문화유산·전통체험,37.1974,128.4529,70,"09:00–18:00 · 어른 2,000원 · 033-372-3088",왕과 사는 남자 (2026),거두어 묻다,sc4
+왕과 사는 남자,Kings Warden Route.dc.html,yeongwol,4,yw4,Y,선돌,Seondol Standing Rock,heal,힐링·생태·체험,37.2139,128.4339,40,상시 개방 · 무료,왕과 사는 남자 (2026),유배길 위에서,sc2
+왕과 사는 남자,Kings Warden Route.dc.html,yeongwol,5,yw5,Y,어라연,Eorayeon,heal,힐링·생태·체험,37.2483,128.5236,180,상시 개방 · 래프팅 5–10월 · 거운분교 탐방안내소,왕과 사는 남자 (2026),물길,sc5
+케이팝 데몬 헌터스,KPop Demon Hunters Route.dc.html,seoul,1,kd1,Y,낙산공원 성곽길,Naksan Park City Wall,herit,문화유산·전통체험,37.58,127.0075,70,상시 개방 · 무료 · 02-743-7985,케이팝 데몬 헌터스 (2025),루미와 진우의 밤 — 낙산공원,sc1
+케이팝 데몬 헌터스,KPop Demon Hunters Route.dc.html,seoul,2,kd2,Y,북촌한옥마을,Bukchon Hanok Village,herit,문화유산·전통체험,37.5826,126.985,90,상시 개방 · 주민 거주 구역 17:00 이후 관람 제한,케이팝 데몬 헌터스 (2025),골목과 지붕 위 — 프리(Free),sc2
+케이팝 데몬 헌터스,KPop Demon Hunters Route.dc.html,seoul,3,kd3,Y,명동거리,Myeongdong Street,food,로컬상권·먹거리,37.5636,126.985,110,상점 10:30–22:00 · 노점 17:00 이후,케이팝 데몬 헌터스 (2025),사자보이즈 첫 등장 — 소다팝,sc3
+케이팝 데몬 헌터스,KPop Demon Hunters Route.dc.html,seoul,4,kd4,Y,남산서울타워,N Seoul Tower,activity,테마파크·액티비티,37.5512,126.9882,120,"10:30–23:00 · 전망대 어른 21,000원 · 02-3455-9277",케이팝 데몬 헌터스 (2025),서울의 스카이라인,sc4
+케이팝 데몬 헌터스,KPop Demon Hunters Route.dc.html,seoul,5,kd5,Y,롯데월드타워 서울스카이,Lotte World Tower Seoul Sky,activity,테마파크·액티비티,37.5125,127.1025,120,"10:00–22:00 · 전망대 어른 29,000원 · 1661-2000",케이팝 데몬 헌터스 (2025),헌트릭스의 숙소,sc5
+케이팝 데몬 헌터스,KPop Demon Hunters Route.dc.html,seoul,6,kd6,Y,서울올림픽주경기장,Seoul Olympic Stadium,activity,테마파크·액티비티,37.5159,127.0728,80,외부 상시 · 내부는 행사일에 따름,케이팝 데몬 헌터스 (2025),최종 무대,sc6
+케이팝 데몬 헌터스,KPop Demon Hunters Route.dc.html,seoul,7,kd7,Y,청담대교 · 자양역,Cheongdam Bridge & Jayang Stn,heal,힐링·생태·체험,37.5343,127.0678,40,상시,케이팝 데몬 헌터스 (2025),한강을 건너는 7호선,sc7
+케이팝 데몬 헌터스,KPop Demon Hunters Route.dc.html,seoul,8,kd8,Y,K-POP SQUARE (삼성역 전광판),K-POP SQUARE Media,activity,테마파크·액티비티,37.5115,127.0595,40,상시 · 영상 10:00–23:00,케이팝 데몬 헌터스 (2025),도시를 덮는 화면,sc8
+케이팝 데몬 헌터스,KPop Demon Hunters Route.dc.html,seoul,9,kd9,Y,서울한방진흥센터,Seoul Oriental Medicine Center,heal,힐링·생태·체험,37.5825,127.0374,70,10:00–18:00 · 월요일 휴관 · 02-969-9241,케이팝 데몬 헌터스 (2025),한의원,sc9
+케이팝 데몬 헌터스,KPop Demon Hunters Route.dc.html,seoul,10,kd10,Y,경복궁,Gyeongbokgung Palace,herit,문화유산·전통체험,37.5796,126.977,100,"09:00–18:00 · 화요일 휴궁 · 어른 3,000원 · 02-3700-3900",케이팝 데몬 헌터스 (2025),전통의 결,sc10
+케이팝 데몬 헌터스,KPop Demon Hunters Route.dc.html,seoul,11,kd11,Y,뚝섬한강공원,Ttukseom Hangang Park,heal,힐링·생태·체험,37.5295,127.07,80,상시 개방 · 무료,케이팝 데몬 헌터스 (2025),한강을 건너는 7호선,sc7
+제주 K-Drama,Jeju K-Drama Route.dc.html,jeju,1,jd1,Y,성산일출봉,Seongsan Ilchulbong,herit,문화유산·전통체험,33.4581,126.9425,110,"07:00–20:00 · 어른 5,000원 · 첫째 월요일 휴무",폭싹 속았수다 (2025),애순이네 동네,ps1
+제주 K-Drama,Jeju K-Drama Route.dc.html,jeju,2,jd2,Y,김녕해수욕장,Gimnyeong Beach,heal,힐링·생태·체험,33.5591,126.757,80,상시 개방 · 여름 감시요원 배치,폭싹 속았수다 (2025),엄마를 기다리던 바다,ps2
+제주 K-Drama,Jeju K-Drama Route.dc.html,jeju,3,jd3,Y,제주목 관아,Jeju Mokgwana,herit,문화유산·전통체험,33.5136,126.5218,70,"09:00–18:00 · 어른 1,500원 · 064-710-6714",폭싹 속았수다 (2025),백일장,ps3
+제주 K-Drama,Jeju K-Drama Route.dc.html,jeju,4,jd4,Y,오라동 메밀꽃밭,Ora-dong Buckwheat Fields,heal,힐링·생태·체험,33.4602,126.4938,60,개화기 5–6월·9–10월 · 사유지 통제 구간 있음,폭싹 속았수다 (2025),메밀밭을 걷다,ps4
+제주 K-Drama,Jeju K-Drama Route.dc.html,jeju,5,jd5,Y,협재해수욕장,Hyeopjae Beach,heal,힐링·생태·체험,33.394,126.2396,90,상시 개방 · 7–8월 개장 · 064-796-2404,폭싹 속았수다 (2025),서쪽 바다,ps5
+제주 K-Drama,Jeju K-Drama Route.dc.html,jeju,6,jd6,Y,금능포구 돌담길,Geumneung Harbour Stone Walls,heal,힐링·생태·체험,33.3897,126.2296,60,상시 개방 · 무료,우리들의 블루스 (2022),금능 돌담 해변길,ob1
+제주 K-Drama,Jeju K-Drama Route.dc.html,jeju,7,jd7,Y,제주 동문재래시장,Dongmun Market,food,로컬상권·먹거리,33.5117,126.5272,80,08:00–21:00 · 야시장 18:00–24:00,우리들의 블루스 (2022),시장 사람들,ob2
+제주 K-Drama,Jeju K-Drama Route.dc.html,jeju,8,jd8,Y,광치기해변,Gwangchigi Beach,heal,힐링·생태·체험,33.4497,126.9276,50,상시 개방 · 물때 확인 필요,우리들의 블루스 (2022),썰물의 바다,ob3
+제주 K-Drama,Jeju K-Drama Route.dc.html,jeju,9,jd9,Y,종달리 해안도로,Jongdal-ri Coastal Road,heal,힐링·생태·체험,33.4936,126.913,50,상시 · 렌터카 권장,우리들의 블루스 (2022),해안도로 드라이브,ob4
+제주 K-Drama,Jeju K-Drama Route.dc.html,jeju,10,jd10,Y,우도,Udo Island,activity,테마파크·액티비티,33.5067,126.9527,240,"성산항 도선 07:00–18:00 · 왕복 10,500원",우리들의 블루스 (2022),섬 속의 섬,ob5
+제주 K-Drama,Jeju K-Drama Route.dc.html,jeju,11,jd11,Y,함덕해수욕장,Hamdeok Beach,heal,힐링·생태·체험,33.5434,126.6696,80,상시 개방 · 7–8월 개장,우리들의 블루스 (2022),서우봉 아래,ob6
+부산 영화 기행,Busan Cinema Route.dc.html,busan,1,bc1,Y,감천문화마을,Gamcheon Culture Village,herit,문화유산·전통체험,35.0975,129.0107,110,09:00–18:00 · 무료 · 051-204-1444,영화 촬영지 · 다수 작품,비탈을 덮은 색색의 집들,bf1
+부산 영화 기행,Busan Cinema Route.dc.html,busan,2,bc2,Y,자갈치시장,Jagalchi Market,food,로컬상권·먹거리,35.0966,129.0306,90,05:00–22:00 · 둘째·넷째 화요일 휴무,영화 촬영지 · 다수 작품,비린내 나는 부둣가 시장,bf2
+부산 영화 기행,Busan Cinema Route.dc.html,busan,3,bc3,Y,해운대해수욕장,Haeundae Beach,heal,힐링·생태·체험,35.1587,129.1604,90,상시 개방 · 7–8월 개장 · 051-749-7621,해운대 (2009),쓰나미가 덮치는 백사장,bf3
+부산 영화 기행,Busan Cinema Route.dc.html,busan,4,bc4,Y,광안리해변 · 광안대교,Gwangalli Beach & Diamond Bridge,heal,힐링·생태·체험,35.1531,129.1187,80,상시 개방 · 다리 조명 일몰–24:00,영화 촬영지 · 다수 작품,다리가 무너지는 밤,bf4
+부산 영화 기행,Busan Cinema Route.dc.html,busan,5,bc5,Y,부산 국제시장,Gukje Market,food,로컬상권·먹거리,35.1013,129.0288,80,09:00–20:00 · 첫째·셋째 일요일 휴무,국제시장 (2014),꽃분이네와 전후의 부산,bf5
+부산 영화 기행,Busan Cinema Route.dc.html,busan,6,bc6,Y,흰여울문화마을,Huinnyeoul Culture Village,heal,힐링·생태·체험,35.0783,129.043,70,상시 개방 · 무료 · 주민 거주 구역,변호인 (2013),절벽 위 흰 담벼락 길,bf6
+부산 영화 기행,Busan Cinema Route.dc.html,busan,7,bc7,Y,영도대교,Yeongdo Bridge,herit,문화유산·전통체험,35.0977,129.0356,50,도개 매일 14:00 (약 15분),영화 촬영지 · 다수 작품,들어 올려지는 다리,bf7
+부산 영화 기행,Busan Cinema Route.dc.html,busan,8,bc8,Y,부산영화체험박물관,Busan Museum of Movies,activity,테마파크·액티비티,35.1017,129.0338,90,"10:00–18:00 · 월요일 휴관 · 어른 10,000원 · 051-715-4200",부산 영화 기행,영화 도시의 기록,bf8
+부산 영화 기행,Busan Cinema Route.dc.html,busan,9,bc9,Y,영화의전당,Busan Cinema Center,activity,테마파크·액티비티,35.1712,129.1289,80,상영 시간별 · 야외극장 계절 운영 · 051-780-6000,부산국제영화제,거대한 지붕 아래 야외 상영,bf9
+부산 영화 기행,Busan Cinema Route.dc.html,busan,10,bc10,Y,부산 BIFF 광장,BIFF Square,food,로컬상권·먹거리,35.0988,129.027,60,상시 · 상점 11:00–22:00,부산국제영화제,배우의 핸드프린팅 거리,bf10
+부산 영화 기행,Busan Cinema Route.dc.html,busan,11,bc11,Y,청사포 · 미포 철길,Cheongsapo & Mipo Rail Path,heal,힐링·생태·체험,35.1608,129.1897,90,해변열차 09:30–18:30 · 구간별 요금 상이,영화 촬영지 · 다수 작품,바다를 따라가는 폐선로,bf11
+부산 영화 기행,Busan Cinema Route.dc.html,busan,12,bc12,Y,태종대,Taejongdae,heal,힐링·생태·체험,35.0533,129.087,110,04:00–24:00 · 무료 · 다누비열차 유료,영화 촬영지 · 다수 작품,절벽과 등대,bf12
