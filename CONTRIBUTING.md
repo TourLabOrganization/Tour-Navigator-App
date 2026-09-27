@@ -46,6 +46,19 @@ npx prettier --write "Tour Planner.dc.html"
 4. 헤드리스 브라우저로 7개 화면을 열어 스크립트 오류가 없는지 봅니다.
 5. 체류 CSV, I18N-TODO 줄 번호, 구성도 · 명세서, CHANGELOG 를 갱신합니다.
 
+**서버 데이터 맞추기** — 플래너나 테마 화면의 장소를 추가 · 삭제하거나 `id` · 좌표 · 분류를 바꿨다면, 앱 PR 이 머지된 뒤 data-server 에서 다시 만들어 PR 을 올립니다. 이 레포와 data-server 를 같은 상위 폴더에 받아 두었다고 가정합니다.
+
+```bash
+cd ../data-server
+git checkout -b chore/sync-app-<요약> origin/develop
+python -m pipeline.places     # 장소 수 · 지역 수가 앱과 같은지 확인
+python -m pipeline.courses    # 코스 5개 · 마스터 연결 100%
+# 추천 재분류에 쓰는 assets/tour-places.csv 나 테마 화면을 바꿨다면
+(cd recommend && APP_REPO=../../Tour-Navigator-App python run_all.py)
+```
+
+data-server 규칙(커밋 메시지 `<타입>: <한국어 요약>`, 베이스 `develop`, 푸시 전 확인)은 그 레포의 `CLAUDE.md` 를 따릅니다. `develop` 머지가 곧 운영 배포입니다. 레코드 형식 자체(따옴표 · 들여쓰기 · 중첩 객체)를 바꾸면 파싱이 깨지므로, 그 경우 [ARCHITECTURE.md](ARCHITECTURE.md) 의 "data-server 가 읽는 부분"을 먼저 확인합니다.
+
 ## 커밋 전 확인
 
 ```bash
