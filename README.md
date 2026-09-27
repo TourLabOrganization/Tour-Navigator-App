@@ -24,7 +24,7 @@
 
 ## 화면 둘러보기
 
-캡처는 API 키 없이 헤드리스 브라우저에서 찍은 것이라 지도 타일은 비어 있고, 외부 API 응답은 예시 값입니다. 각 화면의 실제 동작은 아래 [기능 상세](#기능-상세) 에 있습니다.
+캡처는 헤드리스 브라우저에서 찍었고 외부 API 응답은 예시 값입니다. Google Maps 는 키 없이는 타일을 내려주지 않아 지도 영역이 비어 있으며, 지도 탭 캡처는 키가 있는 환경에서 찍어 `assets/screenshots/map-*.png` 로 넣을 자리입니다. 각 화면의 실제 동작은 아래 [기능 상세](#기능-상세) 에 있습니다.
 
 <table>
 <tr>
@@ -39,6 +39,22 @@
 </tr>
 <tr>
 <td align="center"><img src="assets/screenshots/theme-stamp.png" width="200"><br><sub>스탬프 북 (거제 22곳)</sub></td>
+<td></td><td></td>
+</tr>
+</table>
+
+### 관광지별 정보
+
+테마마다 장소 상세의 표 항목이 조금씩 다릅니다. 전화번호가 있는 곳은 전화 행이, 유네스코 세계유산은 이름 옆에 배지가 붙습니다.
+
+<table>
+<tr>
+<td align="center"><img src="assets/screenshots/place-busan.png" width="200"><br><sub>부산 영화 기행 · 감천문화마을 (운영시간 · 요금 · 전화 · 작품)</sub></td>
+<td align="center"><img src="assets/screenshots/place-jeju-2.png" width="200"><br><sub>제주 K-Drama · 성산일출봉 (유네스코 배지 · 연관 관광지 · 날씨)</sub></td>
+<td align="center"><img src="assets/screenshots/place-seoul.png" width="200"><br><sub>케데헌 서울 · 낙산공원 성곽길 (장면 설명 · 접근 팁)</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="assets/screenshots/place-gyeongju-2.png" width="200"><br><sub>RESCENE Route · 경주 동궁과 월지 (연관 관광지 · 미세먼지 등급)</sub></td>
 <td></td><td></td>
 </tr>
 </table>
