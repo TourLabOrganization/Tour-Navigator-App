@@ -37,7 +37,7 @@ python run_all.py
 
 - 이 폴더를 **앱 레포 루트 바로 아래**(`Tour-Navigator-App/테마 추천 알고리즘/`)에 두면 `classify.py`가 앱의 `assets/tour-places.csv`와 `*.dc.html`을 자동으로 찾습니다. 다른 위치면 `APP_REPO=/경로/Tour-Navigator-App python run_all.py`.
 - 외래관광객조사 원자료가 `data/raw/`에 있으면 외래객 단계까지 다시 계산하고, 없으면 기존 결과를 씁니다.
-- 현재 `data/derived/`의 결과는 위 명령으로 똑같이 재현됩니다(검증 완료).
+- `data/derived/`의 결과는 위 명령으로 똑같이 재현됩니다.
 
 ## 핵심 식
 

@@ -1,6 +1,6 @@
 // Tour Navigator — 화면 공용 코드
-// 홈을 제외한 6개 화면(플래너 + 테마 5종)이 함께 쓰는 상수와 순수 함수.
-// config.js 다음, 화면 파일보다 먼저 로드된다.
+// 플래너와 테마 5종이 함께 쓰는 상수 · 순수 함수 · 조회 함수. 홈은 키 상수만 쓴다.
+// 7개 화면 모두 <head> 에서 support.js → config.js → shared.js 순으로 읽는다.
 // 화면별로 값이 다른 것(DATA · I18N · ORIGINS · STAYS · TRANSIT)은 각 화면 파일에 남아 있다.
 
 // API 키 — 전부 config.js(window.APP_CONFIG)에서 읽는다. 비어 있으면 해당 기능만 비활성화된다.
@@ -10,9 +10,9 @@ const GMAPS_KEY=_CFG.googleMaps||'';
 // YouTube Data API v3 키. 조회수·게시일을 하루 1회 실제 값으로 갱신하는 데 쓴다.
 // 지도 키와 같은 키를 쓰려면 콘솔에서 해당 키의 'API 제한'에 YouTube Data API v3를 추가해야 한다.
 const YT_KEY=_CFG.youtube||'';
-// Kakao REST 키 (날씨·로컬)
+// Kakao REST 키 — 로컬 검색 · 좌표→행정구역(연관 관광지) · 카카오모빌리티 길찾기
 const KAKAO_KEY=_CFG.kakao||'';
-// 공공데이터포털 서비스키 — 한국관광공사 TourAPI · 한국공항공사 공용
+// 공공데이터포털 서비스키 — 한국관광공사 TourAPI · 기상청 · 에어코리아 · 국토부 TAGO · 한국공항공사 · 부산시 · 부산교통공사 공용
 const DATA_GO_KR_KEY=_CFG.dataGoKr||'';
 // 한국도로공사 공공데이터 (휴게소 목록)
 const EXROAD_KEY=_CFG.exRoad||'';
@@ -81,7 +81,7 @@ const CAT_SHORT={
   es:{sea:'MAR',heal:'ECO',herit:'HIS',activity:'OCIO',stay:'HOTEL',food:'COMER'}
 };
 
-// 카테고리 스페인어 라벨
+// 카테고리 스페인어 라벨 (다른 언어는 각 화면의 CATS)
 const CATS_ES={stay:'Alojamiento',sea:'Paisaje costero',heal:'Naturaleza y ecoturismo',herit:'Patrimonio y tradición',food:'Comercio y gastronomía',activity:'Parques y actividades',station:'Estación',terminal:'Terminal'};
 
 // 달력 월 이름 (언어별)
