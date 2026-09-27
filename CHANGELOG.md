@@ -12,6 +12,7 @@
 - 체류 시간 CSV 3종 재생성(2,711곳), I18N-TODO 줄 번호 재계산, README · DATA · APIS 갱신. 플래너는 9,496줄 · 2.0MB — 장소 데이터 분리는 ROADMAP 항목
 
 ### 문서
+- README 앞부분 보강 — 앱이 푸는 문제, 한눈에 보기 표, 빠른 시작, 거제 1박 2일 사용 흐름, 기술 구성, 알려진 제약, 폴더, 데이터 출처, 기여 절 추가. 홈 설명을 현재 화면(3열 타일 · 하단 탭 HOME / 테마 추천 / ME)에 맞추고, RESCENE 탭 이름(영상 · 팬소통) 차이를 적음
 - DATA 전면 개정 — 코드에 없는 필드명(`name` · `nameEn` · `unesco` · `top100` 등)으로 적혀 있던 장소 레코드 예시를 실제 필드(`ko` · `en` · `cat` · `min` · `hrs` · `bKo` · `un` · `k100` · `bf` · `vz` · `off`)로 교체, 분류별 장소 수 · 배지 수(유네스코 69 · 100선 99 · 열린관광지 99 · 지정구역 210) 실측, 숙소 `STAYS` 가 샘플 데이터임을 명시, 교통 상수 표 추가
 - "잔여 12곳"으로 적혀 있던 `open-tour-unmatched.csv` 를 실제 내용(열린관광지 중 앱 데이터에 없는 59곳)으로 정정 — DATA · ROADMAP · CLEANUP · 명세서
 - ARCHITECTURE 에 로드 순서와 `support.js` 런타임, `shared.js` 함수 표, `localStorage` 키 표 추가
