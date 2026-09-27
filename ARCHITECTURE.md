@@ -6,7 +6,7 @@
 
 ```
 Tour Navigator Home.dc.html     홈 · 배너 · 테마 진입 · 테마 추천 · ME
-Tour Planner.dc.html            전국 통합 플래너 (10,095줄 · 2.2MB, 장소 데이터 포함)
+Tour Planner.dc.html            전국 통합 플래너 (10,060줄 · 2.2MB, 장소 데이터 포함)
 RESCENE Route.dc.html           테마 5종
 Kings Warden Route.dc.html
 KPop Demon Hunters Route.dc.html
@@ -52,7 +52,7 @@ unpkg 가 막히면 화면이 뜨지 않습니다. 오프라인 배포가 필요
 
 ## shared.js
 
-플래너와 테마 5종이 함께 쓰는 것만 둡니다. 홈은 키만 읽습니다.
+플래너와 테마 5종이 함께 쓰는 것만 둡니다. 홈도 로드 순서를 맞추려고 불러오지만 여기 정의는 쓰지 않습니다.
 
 | 구분 | 이름 | 내용 |
 | --- | --- | --- |
@@ -80,6 +80,8 @@ unpkg 가 막히면 화면이 뜨지 않습니다. 오프라인 배포가 필요
 | `tp_metro_user_v1` | 이름 검색으로 추가한 지하철역 |
 | `tago_bus_v1` · `tago_sttn_v1` · `tago_sub_v1` | TAGO 시각표 · 역 코드 캐시 |
 | `tp_ytstats` · `rs_ytstats` | YouTube 조회수 · 게시일 캐시 (하루 1회 갱신) |
+| `rs_tmdb:<언어>:<유형>:<제목>` | TMDB 작품 정보 캐시 (7일) |
+| `bthm_v2_<서비스>` | 부산테마여행정보 캐시 (3일, 플래너 · 부산 화면) |
 
 저장 · 스탬프 · 선택 도시 같은 화면 상태도 같은 방식으로 남습니다. 초기화하려면 브라우저 개발자 도구에서 해당 사이트의 저장소를 지웁니다.
 
