@@ -41,11 +41,11 @@ svg{position:absolute;left:0;top:0;width:1600px;height:1225px}
 </head>
 <body>
 <div id="c">
-<div class="title">Tour Navigator App · 시스템 구성도<small>2026-09-26 · 브랜치 claude/brave-dirac-zmdr4p (fc511ca) 기준 · 빌드 과정 없는 정적 웹 앱 + 오프라인 Python 파이프라인</small></div>
+<div class="title">Tour Navigator App · 시스템 구성도<small>2026-09-27 · 브랜치 claude/brave-dirac-zmdr4p (09-27 내보내기본 통합, 478f749 이후) 기준 · 빌드 과정 없는 정적 웹 앱 + 오프라인 Python 파이프라인</small></div>
 <div class="legend"><span><b class="ink"></b>런타임·핵심</span><span><b></b>구성 요소</span><span><b class="data"></b>데이터·파일</span><span><b class="orange"></b>외부 서비스(키 필요)</span><span><b class="plan"></b>계획</span><span><i></i>호출·로드</span><span><i class="o"></i>키 사용 호출</span><span><i class="d"></i>계획·수동 단계</span></div>
 <svg id="arrows"></svg>
 <div id="boxes"></div>
-<div class="foot">키 6개는 config.js(APP_CONFIG) 한 곳에서만 읽고 git 에서 제외됩니다. 비어 있으면 해당 기능만 비활성화됩니다. · 브라우저 직접 호출 불가(CORS) 항목(한국공항공사 · 국가유산청 · KOBIS)은 프록시 배치 후 연결 예정(ROADMAP).</div>
+<div class="foot">키 6개는 config.js(APP_CONFIG) 한 곳에서만 읽고 git 에서 제외됩니다. 비어 있으면 해당 기능만 비활성화됩니다. dataGoKr 하나로 공공데이터포털 서비스 전부를 부르며 서비스마다 활용신청이 필요합니다. · 브라우저 직접 호출 불가(CORS) 항목(국가유산청 · KOBIS · 한국공항공사 구 주소)은 프록시 배치 후 연결 예정(ROADMAP).</div>
 </div>
 <script>
 const B = [
@@ -53,25 +53,25 @@ const B = [
  {id:'user', x:40,y:110,w:250,h:96, cls:'ink', t:'사용자 · 모바일 브라우저', s:'390×844 프레임 기준 · 한국어·English·中文·日本語·Español · 페이지 이동 없는 화면 전환'},
 
  // 앱 그룹
- {id:'gApp', x:40,y:270,w:930,h:430, cls:'group gr', g:'정적 웹 앱 (GitHub 저장소 그대로 정적 호스팅 · 빌드 없음)'},
- {id:'screens', x:60,y:290,w:280,h:176, t:'화면 7개 (.dc.html)', s:'Home (테마 추천 14문항 · ME) · Tour Planner (광역교통 체인 · 내 플랜)<br>RESCENE · Kings Warden · KPop Demon Hunters · Jeju K-Drama · Busan Cinema Route<br><span style="color:#b8431c">각 파일 = 템플릿 + DATA/I18N/STAYS/TRANSIT + class Component extends DCLogic</span>'},
+ {id:'gApp', x:40,y:270,w:930,h:480, cls:'group gr', g:'정적 웹 앱 (GitHub 저장소 그대로 정적 호스팅 · 빌드 없음)'},
+ {id:'screens', x:60,y:290,w:280,h:215, t:'화면 7개 (.dc.html)', s:'Home (테마 추천 14문항 · ME) · Tour Planner (장소 2,711곳 · 광역교통 체인 · 지하철 호선·역 · 내 플랜)<br>RESCENE · Kings Warden · KPop Demon Hunters · Jeju K-Drama · Busan Cinema Route<br><span style="color:#b8431c">각 파일 = 템플릿 + DATA/I18N/STAYS/TRANSIT + class Component extends DCLogic</span>'},
  {id:'support', x:360,y:290,w:290,h:80, cls:'ink', t:'support.js — DC 런타임', s:'&lt;x-dc&gt; 템플릿 컴파일 · &lt;helmet&gt; 처리 · 로직 클래스 실행(new Function) · React·Babel 로드'},
- {id:'shared', x:360,y:385,w:290,h:115, t:'config.js → shared.js', s:'APP_CONFIG 키 6개 (googleMaps · youtube · kakao · dataGoKr · exRoad · tmdb) · 공용 상수·함수 · 조회: getWeather · getAirQuality · getFestivals · getRelatedSpots · getTitleMeta'},
+ {id:'shared', x:360,y:385,w:290,h:142, t:'config.js → shared.js', s:'APP_CONFIG 키 6개 (googleMaps · youtube · kakao · dataGoKr · exRoad · tmdb) · 공용 상수·함수 · 조회: getWeather(Open-Meteo + 기상청) · getAirQuality · getFestivals · getRelatedSpots · getTitleMeta'},
  {id:'css', x:670,y:290,w:280,h:80, t:'shared.css · image-slot.js', s:'7개 화면 공통 스타일(리셋·스크롤바·Leaflet·애니메이션) · 이미지 슬롯 웹 컴포넌트'},
- {id:'assets', x:670,y:385,w:280,h:105, cls:'data', t:'assets/', s:'tour-places.csv(장소 1,197곳 · 좌표·카테고리·근거) · open-tour-unmatched.csv · unesco.png · 이미지'},
- {id:'flow', x:60,y:520,w:890,h:165, cls:'data', t:'화면 안 처리 흐름 (브라우저에서 전부 실행)', s:'① 도시·카테고리 필터 → 지도 마커·클러스터 &nbsp;&nbsp; ② 장소 상세: 좌표 기준 한국관광공사 DB 조회 → 다국어 표기·운영시간·요금·사진·오디오·스토리 + 날씨(기상청) · 미세먼지(에어코리아)<br>③ 코스 계산: 날짜 범위 → 일자 창(720분/일) → 도시 단위 묶기 → 광역교통 체인(출발지 → 환승 관문 → 도착 관문) → 도시 안 최근접 순회 → 일자별 카드 + 예매 버튼 · 내 플랜 저장<br>④ 숙박: 동선 25km 내 STAYS 추천 → 날짜 채운 OTA 링크 &nbsp;&nbsp; ⑤ 교통: 항공 요약(하드코딩) · 도로 ETA(거리 추정) — 프록시 후 실시간 전환 &nbsp;&nbsp; ⑥ 영상: YouTube 조회수 하루 1회 갱신 · TMDB 작품 카드 &nbsp;&nbsp; ⑦ 여행 기간 축제·행사 목록 (코스 30km 안)'},
+ {id:'assets', x:670,y:385,w:280,h:142, cls:'data', t:'assets/', s:'tour-places.csv(장소 마스터 1,197곳 · 테마 추천 알고리즘 입력) · open-tour-unmatched.csv · unesco.png · busan-tile.jpg · uploads/ 이미지 — 화면은 내장 DATA 사용'},
+ {id:'flow', x:60,y:540,w:890,h:190, cls:'data', t:'화면 안 처리 흐름 (브라우저에서 전부 실행)', s:'① 도시·카테고리 필터 → 지도 마커·클러스터 (첫 화면 40곳 + 더 보기) &nbsp;&nbsp; ② 장소 상세: 좌표 기준 한국관광공사 DB 조회 → 다국어 표기·운영시간·요금·사진·오디오·스토리 + 날씨(기상청) · 미세먼지(에어코리아) · 함께 많이 가는 관광지(연관 관광지) · 관광특구·관광단지 배지<br>③ 코스 계산: 날짜 범위 → 일자 창(720분/일) → 도시 단위 묶기 → 광역교통 체인(출발지 → 환승 관문 → 도착 관문 · TAGO 시각표 · 공항 수속 소요시간) → 도시 안 최근접 순회(자동차는 카카오모빌리티 실측) → 일자별 카드 + 예매 버튼 · 내 플랜 저장<br>④ 숙박: 동선 25km 내 STAYS 추천 → 날짜 채운 OTA 링크 &nbsp;&nbsp; ⑤ 교통: 국내선 편성 요약(하드코딩 · KAC_ENDPOINT 입력 시 실시간) · 지하철 호선·역 165개 + 실시간 도착 &nbsp;&nbsp; ⑥ 영상: YouTube 조회수 하루 1회 · TMDB 작품 카드 &nbsp;&nbsp; ⑦ 여행 기간 축제·행사 (도시별 · 코스 30km 안)'},
 
  // 외부 서비스
- {id:'gExt', x:1090,y:110,w:470,h:660, cls:'group', g:'외부 서비스'},
+ {id:'gExt', x:1090,y:110,w:470,h:685, cls:'group', g:'외부 서비스'},
  {id:'gmaps', x:1110,y:130,w:215,h:78, cls:'orange', t:'Google Maps JS API', s:'지도·마커·클러스터 · 언어별 로더 · key=GMAPS_KEY'},
  {id:'yt', x:1335,y:130,w:205,h:78, cls:'orange', t:'YouTube Data API v3', s:'영상 조회수·게시일 · key=YT_KEY'},
- {id:'datago', x:1110,y:222,w:430,h:154, cls:'orange', t:'공공데이터포털 (apis.data.go.kr) · DATA_GO_KR_KEY', s:'한국관광공사 TourAPI: 국문·영/중/일/서 서비스 · 사진 · 오디오 가이드 · 스토리텔링 · 축제·행사 · 연관 관광지<br>기상청 단기예보(오늘·내일 덮어쓰기) · 한국환경공단 에어코리아(시도별 PM10·PM2.5)<br>한국공항공사 국내선 · 인천교통공사 · 부산관광공사 (키 미입력 · 비활성)'},
- {id:'kakao', x:1110,y:386,w:140,h:92, cls:'orange', t:'Kakao REST', s:'로컬 검색 (KakaoAK 헤더)'},
- {id:'exroad', x:1255,y:386,w:140,h:92, cls:'orange', t:'한국도로공사', s:'휴게소 목록 · EXROAD_KEY'},
- {id:'tmdb', x:1400,y:386,w:140,h:92, cls:'orange', t:'TMDB', s:'작품 포스터·줄거리·평점 · TMDB_KEY · 7일 캐시'},
- {id:'nokey', x:1110,y:492,w:430,h:92, t:'키 없이 쓰는 서비스', s:'Open-Meteo 날씨(어제 · 기상청 실패 시 오늘·내일) · Wikimedia Commons 장소 사진 · unpkg CDN(React 18.3 · ReactDOM · Babel) · Google Fonts · 부산 도시철도(Humetro, 키 미입력)'},
- {id:'links', x:1110,y:598,w:430,h:95, t:'외부 링크 (새 창 · 호출 없음)', s:'코레일·SRT·티머니 고속/시외버스 예매 · Booking·Agoda·Airbnb·야놀자·여기어때·Trip.com · 렌터카(롯데·SK·쏘카·Rentalcars) · 카카오T · 네이버/카카오 지도'},
- {id:'proxy', x:1110,y:707,w:430,h:60, cls:'plan', t:'CORS 프록시 (계획) — Cloudflare Workers / Vercel Function → 한국공항공사 노선·시간표 · 실시간 도로 ETA'},
+ {id:'datago', x:1110,y:222,w:430,h:154, cls:'orange', t:'공공데이터포털 (apis.data.go.kr) · DATA_GO_KR_KEY', s:'한국관광공사 TourAPI: 국문·영/중/일/서 · 사진 · 오디오 가이드 · 스토리텔링 · 축제·행사 · 연관 관광지 · 관광지 집중률<br>기상청 단기예보(오늘·내일 덮어쓰기) · 에어코리아(시도별 PM10·PM2.5) · 국토부 TAGO(열차·지하철·고속버스 시각표) · 한국공항공사 공항 수속 소요시간<br>부산시 테마여행정보 · 부산교통공사 열차시각표 · 한국공항공사 국내선 운항(KAC_ENDPOINT 미설정 → 요약 하드코딩)'},
+ {id:'kakao', x:1110,y:386,w:190,h:92, cls:'orange', t:'Kakao REST · 모빌리티', s:'로컬 검색 · 좌표→행정구역 · 자동차 길찾기(실측 시간·택시 요금)'},
+ {id:'exroad', x:1305,y:386,w:115,h:92, cls:'orange', t:'한국도로공사', s:'휴게소 목록 · EXROAD_KEY'},
+ {id:'tmdb', x:1425,y:386,w:115,h:92, cls:'orange', t:'TMDB', s:'작품 포스터·줄거리·평점 · 7일 캐시'},
+ {id:'nokey', x:1110,y:492,w:430,h:92, t:'키 없이 쓰는 서비스', s:'Open-Meteo 날씨(어제 · 기상청 실패 시 오늘·내일) · 서울 지하철 실시간 도착(서울열린데이터광장 샘플 키 URL) · Wikimedia Commons 장소 사진 · unpkg CDN(React 18.3 · ReactDOM · Babel) · Google Fonts'},
+ {id:'links', x:1110,y:598,w:430,h:95, t:'외부 링크 (새 창 · 호출 없음)', s:'코레일·SRT·티머니 고속/시외버스 · 네이버 항공 · 해운 여객선 · 부산/인천 도시철도 시간표 · Booking·Agoda·Airbnb·야놀자·여기어때·Trip.com · 렌터카(롯데·SK·쏘카·Rentalcars) · 카카오T · 네이버/카카오 지도'},
+ {id:'proxy', x:1110,y:707,w:430,h:78, cls:'plan', t:'CORS 프록시 (계획) — Cloudflare Workers / Vercel Function', s:'국가유산청 · KOBIS · 한국공항공사 구 주소 · 브이월드 지정구역'},
 
  // 오프라인 파이프라인
  {id:'gPy', x:40,y:830,w:1000,h:325, cls:'group', g:'테마 추천 알고리즘/ — 오프라인 계산 파이프라인 (Python · run_all.py)'},
@@ -87,7 +87,7 @@ const B = [
  // 개발·배포
  {id:'gDev', x:1090,y:830,w:470,h:325, cls:'group', g:'설계 · 저장소 · 배포'},
  {id:'cdesign', x:1110,y:850,w:430,h:80, t:'Claude Design', s:'화면 설계 · .dc.html 내보내기 → 세션에 첨부 → 통합 스크립트가 shared.css · config/shared.js 연결과 키 분리를 재적용'},
- {id:'github', x:1110,y:945,w:430,h:105, cls:'ink', t:'GitHub · TourLabOrganization/Tour-Navigator-App', s:'화면 · 런타임 · assets · 문서 9종 · 테마 추천 알고리즘/ · 체류시간 산정/(JS 로직 모듈 · CSV) · 시스템 구성도/ · .gitignore (config.js · data/raw)'},
+ {id:'github', x:1110,y:945,w:430,h:105, cls:'ink', t:'GitHub · TourLabOrganization/Tour-Navigator-App', s:'화면 7개 · 런타임 · assets · 문서 11종 · 테마 추천 알고리즘/ · 체류시간 산정/(JS 로직 모듈 · CSV) · 시스템 구성도/ · .gitignore (config.js · data/raw)'},
  {id:'host', x:1110,y:1060,w:430,h:93, t:'정적 호스팅 (GitHub Pages 등 · 로컬은 python -m http.server)', s:'config.js 는 배포 환경에만 둠(config.example.js 복사) · 키 6개 · HTTP 리퍼러 제한 권장'},
 ];
 const bx=document.getElementById('boxes');
@@ -110,12 +110,12 @@ const A = [
  // 서비스별 세로선 (x 954~1032), 위→아래 순으로 교차 없이 배치
  ['support','nokey','t','r','#153b3d',0,'React · Babel (unpkg)',[[530,280],[954,280],[954,70],[1568,70],[1568,538]],3],
  ['screens','gmaps','t','t','#b8431c',0,'',[[330,225],[967,225],[967,116],[1217,116]]],
- ['flow','yt','r','t','#b8431c',0,'',[[980,530],[980,124],[1440,124]]],
- ['flow','datago','r','l','#b8431c',0,'',[[993,553],[993,297]]],
- ['flow','exroad','r','t','#b8431c',0,'',[[1006,576],[1006,381],[1325,381]]],
- ['flow','kakao','r','l','#b8431c',0,'',[[1019,599],[1019,432]]],
- ['flow','links','r','l','#153b3d',0,'',[[1032,622],[1032,645]]],
- ['flow','tmdb','r','r','#b8431c',0,'',[[1045,645],[1045,796],[1576,796],[1576,432]]],
+ ['flow','yt','r','t','#b8431c',0,'',[[980,555],[980,124],[1440,124]]],
+ ['flow','datago','r','l','#b8431c',0,'',[[993,575],[993,297]]],
+ ['flow','exroad','r','t','#b8431c',0,'',[[1006,595],[1006,381],[1325,381]]],
+ ['flow','kakao','r','l','#b8431c',0,'',[[1019,615],[1019,432]]],
+ ['flow','links','r','l','#153b3d',0,'',[[1032,635],[1032,645]]],
+ ['flow','tmdb','r','r','#b8431c',0,'',[[1045,655],[1045,810],[1576,810],[1576,432]]],
  ['proxy','datago','r','r','#153b3d',1,'',[[1552,737],[1552,297]]],
  ['in1','py1','r','l','#153b3d',0,''],
  ['in1','py2','r','l','#153b3d',0,'',[[305,900],[305,880],[480,880]]],
@@ -126,7 +126,7 @@ const A = [
  ['py4','out','r','l','#153b3d',0,'',[[675,1072],[675,960]]],
  ['py2','out','r','l','#153b3d',0,''],
  ['out','future','b','t','#153b3d',1,'결과 통일 예정'],
- ['assets','in2','b','t','#153b3d',1,'상위 폴더의 assets · *.dc.html 읽기',[[810,508],[50,508],[50,790],[175,790]],1],
+ ['assets','in2','b','t','#153b3d',1,'상위 폴더의 assets · *.dc.html 읽기',[[810,533],[50,533],[50,790],[175,790]],1],
  ['cdesign','github','b','t','#153b3d',1,'내보내기 · 커밋'],
  ['github','host','b','t','#153b3d',0,''],
  ['host','user','r','t','#153b3d',0,'배포된 앱 접속',[[1584,1106],[1584,96],[165,96]],2],

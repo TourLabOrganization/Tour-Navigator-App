@@ -6,7 +6,7 @@
 
 ```
 Tour Navigator Home.dc.html     홈 · 배너 · 테마 진입 · 테마 추천 · ME
-Tour Planner.dc.html            전국 통합 플래너 (가장 큼)
+Tour Planner.dc.html            전국 통합 플래너 (9,496줄 · 2.0MB, 장소 데이터 포함)
 RESCENE Route.dc.html           테마 5종
 Kings Warden Route.dc.html
 KPop Demon Hunters Route.dc.html
@@ -41,7 +41,7 @@ class Component extends DCLogic
 | `REGION_HUB` | 지역별 광역 관문 (KTX역 · 공항 · 터미널 · 항구) |
 | `ORIGINS` | 출발지 후보 |
 | `TRANSIT` | 관문 간 이동 수단 · 소요 시간 · 예매 링크 |
-| `METRO` | 도시철도 노선·역, 수도권 전철권 17개 도시 간 경로 |
+| `METRO` | 도시철도 노선·역(수도권 165개 역 + 사용자가 검색으로 추가한 역은 기기에 저장), 수도권 전철권 17개 도시 간 경로 |
 | `STAYS` | 동선 25km 내 숙소 후보 |
 | `I18N` | 한국어 · 영어 원본 위에 얹는 언어별 레이블 레이어. 카테고리 · 버튼 · 안내문 |
 
@@ -49,8 +49,8 @@ class Component extends DCLogic
 
 1. 날짜 범위 → 일수 산출 (하루 9~12시간 예산)
 2. 선택 장소를 도시 단위로 묶고, 도시 간은 `REGION_HUB` / `TRANSIT` 로 연결
-3. 도시 내부는 좌표 기준 최근접 순회로 정렬, 체류 시간 가산
-4. 수도권 전철권이면 `METRO` 기반 경로와 출발역 선택으로 대체
+3. 도시 내부는 좌표 기준 최근접 순회로 정렬, 체류 시간 가산. 자동차 구간은 카카오모빌리티 실측 시간, 없으면 직선거리 × 1.35 추정
+4. 수도권 전철권이면 `METRO` 기반 경로와 호선 → 역 선택으로 대체. 광역 이동 체인은 TAGO 열차 · 고속버스 시각표와 공항 수속 소요시간을 반영
 5. 일자별로 잘라 카드로 렌더, 각 구간에 이동 수단·시간·예매 버튼 부착
 
 체류 시간 · 이동 추정식 · 일자 창 · 자동 코스의 실제 규칙과 식은 [체류시간 산정/README.md](체류시간%20산정/README.md) 와 그 안의 설명서에 있습니다.
