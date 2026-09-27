@@ -324,6 +324,435 @@ nation,전국,거제,·,gzx5,구조라해수욕장,Gujora Beach,sea,해양·자�
 nation,전국,거제,·,gzx6,지심도,Jisimdo Island,heal,힐링·생태·체험,34.8215,128.7501,240,4h,"장승포항 도선 08:30–17:00 · 왕복 19,000원",08:30,17:00,Y,N,Y,N,N,N,Y,거제시 관광 안내 · 일운면 지심도길 31-2 지오코딩 확인
 nation,전국,거제,·,gzx7,거제 포로수용소 유적공원,Geoje POW Camp Park,herit,문화유산·전통체험,34.8756,128.6247,110,1h 50m,"09:00–18:00 · 어른 7,000원 · 055-639-8125",09:00,18:00,Y,N,Y,N,N,Y,Y,거제시 관광 안내 · 계룡로 61 지오코딩 확인
 nation,전국,거제,·,gzx8,여차·홍포 전망대,Yeocha–Hongpo Lookout,sea,해양·자연경관,34.7038,128.6101,40,40m,상시 개방 · 무료,,,N,N,Y,N,N,N,Y,거제시 관광 안내 · 남부면 다포리 산38-145 지오코딩 확인
+nation,전국,부산,·,ctu1,대변항,Daebyeonhang,sea,해양·자연경관,35.22053,129.23087,40,40m,,,,N,N,Y,N,N,N,Y,부산 기장군 기장읍 대변리 274-17 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부산,·,ctu2,국회부산도서관,Gukhoebusandoseogwan,herit,문화유산·전통체험,35.10346,128.90441,60,1h,,,,N,N,Y,N,N,N,Y,부산 강서구 명지국제1로 161 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,제주,·,ctu3,오래물광장,Oraemulgwangjang,heal,힐링·생태·체험,33.50493,126.46676,60,1h,,,,N,N,Y,N,N,N,Y,제주특별자치도 제주시 도두일동 2605-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,제주,·,ctu4,산지천,Sanjicheon,heal,힐링·생태·체험,33.51336,126.5274,60,1h,,,,N,N,Y,N,N,N,Y,제주특별자치도 제주시 일도일동 1498 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctu5,화원동산,Hwawondongsan,heal,힐링·생태·체험,35.81168,128.48133,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 화원읍 사문진로1길 40-14 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,해남,·,ctu6,산이정원,Sanijeongwon,heal,힐링·생태·체험,34.70906,126.38648,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 해남군 산이면 구성리 664 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctu7,광양향교,Gwangyanghyanggyo,herit,문화유산·전통체험,34.98247,127.58819,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 광양읍 향교길 67 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctu8,배알도 섬정원,Baealdo Seomjeongwon,heal,힐링·생태·체험,34.96356,127.75975,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 태인동 산 1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctu9,전남도립미술관,Jeonnamdoripmisulgwan,activity,테마파크·액티비티,34.96775,127.58887,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 광양읍 순광로 660 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctu10,광양예술창고,Gwangyangyesulchanggo,activity,테마파크·액티비티,34.96822,127.58831,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 광양읍 순광로 664 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctu11,해오름육교,Haeoreumyukgyo,heal,힐링·생태·체험,34.9359,127.70984,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 마동 1125 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctu12,국동어항단지,Gukdongeohangdanji,heal,힐링·생태·체험,34.72982,127.72511,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 봉산동 100 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctu13,돌산대교,Dolsandaegyo,sea,해양·자연경관,34.73074,127.7347,40,40m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 남산동 56-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctu14,거북선대교,Geobukseondaegyo,sea,해양·자연경관,34.73385,127.74854,40,40m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 돌산읍 우두리 758-11 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctu15,만성리형제묘,Manseongrihyeongjemyo,herit,문화유산·전통체험,34.76902,127.75,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 만흥동 산 269-2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctu16,여순사건희생자위령비,Yeosunsageonhuisaengjawiryeongbi,herit,문화유산·전통체험,34.76786,127.75065,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 만흥동 149-6 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctu17,둔병대교,Dunbyeongdaegyo,sea,해양·자연경관,34.63042,127.55574,40,40m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 화정면 조발리 산 70 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctu18,팔영대교,Palyeongdaegyo,sea,해양·자연경관,34.63142,127.50363,40,40m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 화정면 적금리 813 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctu19,서틀러다육식물원,Seoteulreodayuksikmulwon,activity,테마파크·액티비티,34.75305,127.61243,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 소라면 현천리 1071-3 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctu20,민들레연극마을,Mindeulreyeongeukmaeul,activity,테마파크·액티비티,37.03965,126.7979,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 우정읍 이화뱅곳길 22 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctu21,융릉 건릉 역사문화관,Yungreung Geonreung Yeoksamunhwagwan,herit,문화유산·전통체험,37.20825,126.98899,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 병점구 효행로481번길 21 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,밀양,·,ctu24,천주교명례성지,Cheonjugyomyeongryeseongji,heal,힐링·생태·체험,35.35069,128.76556,60,1h,,,,N,N,Y,N,N,N,Y,경남 밀양시 하남읍 명례안길 44-3 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,밀양,·,ctu25,밀양강둔치 야외공연장,Milyanggangdunchi Yaoegongyeonjang,activity,테마파크·액티비티,35.48975,128.75426,90,1h 30m,,,,N,N,Y,N,N,N,Y,경남 밀양시 삼문동 253-2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,사천,·,ctu26,사천항공우주과학관,Sacheonhanggongujugwahakgwan,activity,테마파크·액티비티,35.07084,128.06356,90,1h 30m,,,,N,N,Y,N,N,N,Y,경남 사천시 사남면 공단1로 108 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,사천,·,ctu27,대방진굴항,Daebangjingulhang,sea,해양·자연경관,34.92891,128.05676,40,40m,,,,N,N,Y,N,N,N,Y,경남 사천시 대방동 251 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,사천,·,ctu28,노을전망교,Noeuljeonmanggyo,sea,해양·자연경관,34.93343,128.04949,40,40m,,,,N,N,Y,N,N,N,Y,경남 사천시 대방동 758-2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,영주,·,ctu29,영주호 용마루공원2 평은역사,Yeongjuho Yongmarugongwon2 Pyeongeunyeoksa,activity,테마파크·액티비티,36.7199,128.6694,90,1h 30m,,,,N,N,Y,N,N,N,Y,경북 영주시 평은면 수변로 114-126 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,익산,·,ctu30,원불교 중앙총부,Wonbulgyo Jungangchongbu,heal,힐링·생태·체험,35.97102,126.95212,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 익산시 익산대로 501 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서산,·,ctu31,간월도,Ganwoldo,sea,해양·자연경관,36.60913,126.41859,40,40m,,,,N,N,Y,N,N,N,Y,충남 서산시 부석면 간월도리 61-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서산,·,ctu32,삼길포항,Samgilpohang,sea,해양·자연경관,37.00354,126.45279,40,40m,,,,N,N,Y,N,N,N,Y,충남 서산시 대산읍 화곡리 1891 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,연천,·,ctu33,연천국악사랑방 서울경서도,Yeoncheongukaksarangbang Seoulgyeongseodo,heal,힐링·생태·체험,38.02769,127.06849,60,1h,,,,N,N,Y,N,N,N,Y,경기 연천군 전곡읍 은전로78번길 14 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctu35,팽성읍객사,Paengseongeupgaeksa,herit,문화유산·전통체험,36.96485,127.06342,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 팽성읍 동서촌로 101-3 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,의정부,·,ctu37,자일 산림욕장,Jail Sanrimyokjang,heal,힐링·생태·체험,37.76905,127.10949,60,1h,,,,N,N,Y,N,N,N,Y,경기 의정부시 자일동 산 87 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,의정부,·,ctu38,백영수미술관,Baekyeongsumisulgwan,activity,테마파크·액티비티,37.7137,127.0444,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 의정부시 안말로58번안길 55-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,봉화,·,ctu41,오전약수관광지,Ojeonyaksugwangwangji,heal,힐링·생태·체험,37.013,128.74873,60,1h,,,,N,N,Y,N,N,N,Y,경북 봉화군 물야면 오전약수탕길 18-24 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,정선,·,ctu42,아리랑센터,Arirangsenteo,heal,힐링·생태·체험,37.37638,128.67154,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 정선군 정선읍 애산로 51 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,가평,·,ctu43,공유양조벤처센터 술지움,Gongyuyangjobencheosenteo Suljium,heal,힐링·생태·체험,37.75492,127.40763,60,1h,,,,N,N,Y,N,N,N,Y,경기 가평군 상면 청군로 248 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,가평,·,ctu44,가평크루즈,Gapyeongkeurujeu,heal,힐링·생태·체험,37.69002,127.51899,60,1h,,,,N,N,Y,N,N,N,Y,경기 가평군 설악면 미사리로 267-19 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,시흥,·,ctu46,배곧천,Baegotcheon,heal,힐링·생태·체험,37.36555,126.72884,60,1h,,,,N,N,Y,N,N,N,Y,경기 시흥시 배곧동 256-3 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,시흥,·,ctu47,배다리선착장,Baedariseonchakjang,sea,해양·자연경관,37.34851,126.69334,40,40m,,,,N,N,Y,N,N,N,Y,경기 시흥시 정왕동 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,인천,·,ctu48,석모도수목원,Seokmodosumokwon,heal,힐링·생태·체험,37.69119,126.32649,60,1h,,,,N,N,Y,N,N,N,Y,인천 강화군 삼산면 삼산북로449번길 161 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctu49,방아머리선착장,Bangameoriseonchakjang,sea,해양·자연경관,37.29636,126.57442,40,40m,,,,N,N,Y,N,N,N,Y,경기 안산시 단원구 대부황금로 1567-3 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctu50,그랑꼬또와이너리,Geurangkkottowaineori,heal,힐링·생태·체험,37.25734,126.58216,60,1h,,,,N,N,Y,N,N,N,Y,경기 안산시 단원구 뻐꾹산길 107 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,세종,·,ctu51,정부세종컨벤션센터 홍보동 출입구,Jeongbusejongkeonbensyeonsenteo Hongbodong Chulipgu,heal,힐링·생태·체험,36.50063,127.27213,60,1h,,,,N,N,Y,N,N,N,Y,세종특별자치시 어진동 34-44 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화순,·,ctu52,이서커뮤니티센터,Iseokeomyunitisenteo,heal,힐링·생태·체험,35.11074,127.0794,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 화순군 이서면 백아로 3114 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,춘천,·,ctu53,소양아트서클,Soyangateuseokeul,heal,힐링·생태·체험,37.89398,127.72687,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 춘천시 소양로1가 47-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,춘천,·,ctu54,KT플라자 춘천점,KTpeulraja Chuncheonjeom,heal,힐링·생태·체험,37.88229,127.72407,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 춘천시 금강로 11 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,김해,·,ctu55,대성동고분박물관,Daeseongdonggobunbakmulgwan,herit,문화유산·전통체험,35.23647,128.87309,60,1h,,,,N,N,Y,N,N,N,Y,경남 김해시 가야의길 126 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,영광,·,ctu56,숲쟁이꽃동산,Supjaengikkotdongsan,heal,힐링·생태·체험,35.36393,126.43367,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 영광군 법성면 진내리 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,영광,·,ctu57,영광물무산행복숲 질퍽질퍽맨발황톳길,Yeonggwangmulmusanhaengboksup Jilpeokjilpeokmaenbalhwangtotgil,heal,힐링·생태·체험,35.27682,126.53579,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 영광군 묘량면 덕흥리 615 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,완주,·,ctu58,플리커책방 두베점,Peulrikeochaekbang Dubejeom,heal,힐링·생태·체험,35.90406,127.24279,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 완주군 소양면 송광수만로 500 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,곡성,·,ctu59,곡성기차마을전통시장 저온저장고,Gokseonggichamaeuljeontongsijang Jeoonjeojanggo,heal,힐링·생태·체험,35.27953,127.29893,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 곡성군 곡성읍 곡성로 856 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctu60,낙조,Nakjo,heal,힐링·생태·체험,36.31988,127.42482,60,1h,,,,N,N,Y,N,N,N,Y,대전 중구 수도산로 3 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,홍천,·,ctu61,홍천무궁화수목원,Hongcheonmugunghwasumokwon,heal,힐링·생태·체험,37.72248,127.83396,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 홍천군 북방면 능평리 산 57 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctu62,계룡산국립공원 수통골,Gyeryongsangukripgongwon Sutonggol,heal,힐링·생태·체험,36.34532,127.28856,60,1h,,,,N,N,Y,N,N,N,Y,대전 유성구 수통골로 47-3 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,경산,·,ctu63,갓바위탐방지원센터,Gatbawitambangjiwonsenteo,heal,힐링·생태·체험,35.98552,128.7488,60,1h,,,,N,N,Y,N,N,N,Y,경북 경산시 와촌면 갓바위로 595 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,경산,·,ctu64,경산의삽살개육종연구소,Gyeongsanuisapsalgaeyukjongyeonguso,heal,힐링·생태·체험,35.95246,128.80298,60,1h,,,,N,N,Y,N,N,N,Y,경북 경산시 와촌면 삽살개공원길 37 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,울산,·,ctu65,태화강국가정원 십리대숲,Taehwaganggukgajeongwon Sipridaesup,heal,힐링·생태·체험,35.54564,129.29655,60,1h,,,,N,N,Y,N,N,N,Y,울산 중구 태화동 636 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서울,·,ctu66,DMZ관광,DMZgwangwang,heal,힐링·생태·체험,37.54623,126.95217,60,1h,,,,N,N,Y,N,N,N,Y,서울 마포구 마포대로 127 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서울,·,ctu67,스노우피크 롯데아울렛서울역점,Seunoupikeu Rotdeaulretseoulyeokjeom,activity,테마파크·액티비티,37.55466,126.97046,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 중구 한강대로 405 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서울,·,ctu68,황금텃밭농장,Hwanggeumteotbatnongjang,activity,테마파크·액티비티,37.5807,126.79135,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 강서구 개화동 497-2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서울,·,ctu69,별빛남문시장 6번 게이트,Byeolbitnammunsijang 6beon Geiteu,heal,힐링·생태·체험,37.47497,126.90088,60,1h,,,,N,N,Y,N,N,N,Y,서울 금천구 독산동 997-15 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부산,·,ctt1,낙동강하구에코센터,Nakdongganghaguekosenteo,herit,문화유산·전통체험,35.10439,128.94583,60,1h,,,,N,N,Y,N,N,N,Y,부산 사하구 낙동남로 1240 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부산,·,ctt2,송도구름산책로 송도365,Songdogureumsanchaekro Songdo365,heal,힐링·생태·체험,35.07534,129.02229,60,1h,,,,N,N,Y,N,N,N,Y,부산 서구 암남동 129-4 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부산,·,ctt3,암남공원,Amnamgongwon,heal,힐링·생태·체험,35.05859,129.01568,60,1h,,,,N,N,Y,N,N,N,Y,부산 서구 암남동 산 193-4 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부산,·,ctt4,동아대학교 석당박물관,Dongadaehakgyo Seokdangbakmulgwan,herit,문화유산·전통체험,35.10485,129.01946,60,1h,,,,N,N,Y,N,N,N,Y,부산 서구 구덕로 225 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부산,·,ctt5,천마산하늘전망대,Cheonmasanhaneuljeonmangdae,activity,테마파크·액티비티,35.09357,129.01733,90,1h 30m,,,,N,N,Y,N,N,N,Y,부산 서구 해돋이로183번길 17-4 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부산,·,ctt6,평화공원,Pyeonghwagongwon,heal,힐링·생태·체험,35.1258,129.10031,60,1h,,,,N,N,Y,N,N,N,Y,부산 남구 대연동 706-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부산,·,ctt7,BIFF광장,BIFFgwangjang,food,로컬상권·먹거리,35.09887,129.02905,50,50m,,,,N,N,Y,N,N,N,Y,부산 중구 남포동3가 15-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부산,·,ctt8,UN기념공원 안내소,UNginyeomgongwon Annaeso,heal,힐링·생태·체험,35.1268,129.09596,60,1h,,,,N,N,Y,N,N,N,Y,부산 남구 유엔평화로 93 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt9,군위한밤마을 돌담길,Gunwihanbammaeul Doldamgil,food,로컬상권·먹거리,36.05926,128.655,50,50m,,,,N,N,Y,N,N,N,Y,대구 군위군 부계면 한티로 2137-3 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt10,삼국유사테마파크,Samgukyusatemapakeu,activity,테마파크·액티비티,36.16423,128.69612,90,1h 30m,,,,N,N,Y,N,N,N,Y,대구 군위군 의흥면 일연테마로 100 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt11,사라온이야기마을,Saraoniyagimaeul,activity,테마파크·액티비티,36.23623,128.56742,90,1h 30m,,,,N,N,Y,N,N,N,Y,대구 군위군 군위읍 동서길 49 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt12,영화 리틀포레스트 촬영지,Yeonghwa Riteulporeseuteu Chwalyeongji,heal,힐링·생태·체험,36.17973,128.66452,60,1h,,,,N,N,Y,N,N,N,Y,대구 군위군 우보면 미성5길 58-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt13,도동서원,Dodongseowon,herit,문화유산·전통체험,35.70102,128.37193,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 구지면 도동서원로 1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt14,송해공원,Songhaegongwon,heal,힐링·생태·체험,35.76858,128.4874,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 옥포읍 기세리 969-44 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt15,비슬산자연휴양림,Biseulsanjayeonhyuyangrim,heal,힐링·생태·체험,35.68963,128.51362,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 유가읍 일연선사길 99 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt16,대구수목원,Daegusumokwon,heal,힐링·생태·체험,35.79972,128.52202,60,1h,,,,N,N,Y,N,N,N,Y,대구 달서구 화암로 342 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt17,마비정벽화마을,Mabijeongbyeokhwamaeul,herit,문화유산·전통체험,35.77877,128.54161,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 화원읍 마비정길 262-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt18,화원자연휴양림,Hwawonjayeonhyuyangrim,heal,힐링·생태·체험,35.77223,128.53561,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 화원읍 화원휴양림길 126 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt19,대명유수지,Daemyeongyusuji,heal,힐링·생태·체험,35.82237,128.49105,60,1h,,,,N,N,Y,N,N,N,Y,대구 달서구 대천동 816 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt20,삼존석굴모전석탑,Samjonseokgulmojeonseoktap,herit,문화유산·전통체험,36.04872,128.64091,60,1h,,,,N,N,Y,N,N,N,Y,대구 군위군 부계면 남산4길 24 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt21,김수환추기경사랑과나눔공원,Gimsuhwanchugigyeongsaranggwananumgongwon,heal,힐링·생태·체험,36.23237,128.59964,60,1h,,,,N,N,Y,N,N,N,Y,대구 군위군 군위읍 군위금성로 270 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt22,엄마아빠어렸을적에,Eommaappaeoryeoteuljeoke,activity,테마파크·액티비티,36.1278,128.69667,90,1h 30m,,,,N,N,Y,N,N,N,Y,대구 군위군 산성면 산성가음로 722 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt23,화원유원지,Hwawonyuwonji,heal,힐링·생태·체험,35.81306,128.48236,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 화원읍 사문진로1길 40-14 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt24,달성습지,Dalseongseupji,heal,힐링·생태·체험,35.82333,128.4834,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 화원읍 구라리 1769 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt25,디아크문화관,Diakeumunhwagwan,heal,힐링·생태·체험,35.83885,128.46807,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 다사읍 강정본길 57 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt26,봉무공원,Bongmugongwon,heal,힐링·생태·체험,35.9194,128.65018,60,1h,,,,N,N,Y,N,N,N,Y,대구 동구 팔공로50길 66 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt27,갓바위 자생식물원,Gatbawi Jasaengsikmulwon,heal,힐링·생태·체험,35.97083,128.72554,60,1h,,,,N,N,Y,N,N,N,Y,대구 동구 갓바위로 223-7 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt28,대구방짜유기박물관,Daegubangjjayugibakmulgwan,herit,문화유산·전통체험,35.96561,128.70127,60,1h,,,,N,N,Y,N,N,N,Y,대구 동구 도장길 29 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt29,대구중구골목투어 근대문화골목(2코스),Daegujunggugolmoktueo Geundaemunhwagolmok(2koseu),heal,힐링·생태·체험,35.86787,128.5903,60,1h,,,,N,N,Y,N,N,N,Y,대구 중구 장관동 55-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt30,두류공원,Duryugongwon,heal,힐링·생태·체험,35.84863,128.55903,60,1h,,,,N,N,Y,N,N,N,Y,대구 달서구 두류동 산 310-9 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt31,앞산해넘이전망대,Apsanhaeneomijeonmangdae,activity,테마파크·액티비티,35.83181,128.5657,90,1h 30m,,,,N,N,Y,N,N,N,Y,대구 남구 대명동 산 218-15 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt32,대구앞산공원,Daeguapsangongwon,heal,힐링·생태·체험,35.82722,128.58766,60,1h,,,,N,N,Y,N,N,N,Y,대구 남구 대명동 산 227-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt33,고산골공룡공원,Gosangolgongryonggongwon,activity,테마파크·액티비티,35.83004,128.60345,90,1h 30m,,,,N,N,Y,N,N,N,Y,대구 남구 용두2길 43 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt34,메타세콰이어길,Metasekwaieogil,heal,힐링·생태·체험,35.84998,128.48,60,1h,,,,N,N,Y,N,N,N,Y,대구 달서구 호산로 126 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt35,동촌유원지,Dongchonyuwonji,heal,힐링·생태·체험,35.88262,128.65047,60,1h,,,,N,N,Y,N,N,N,Y,대구 동구 효동로6길 73 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctt36,광양김시식지,Gwangyanggimsisikji,herit,문화유산·전통체험,34.94686,127.75171,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 김시식지1길 57-6 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctt37,섬진강망덕포구먹거리타운,Seomjingangmangdeokpogumeokgeoritaun,food,로컬상권·먹거리,34.97072,127.75931,50,50m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 진월면 망덕리 845-82 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctt38,조선수군지 선소기념관,Joseonsugunji Seonsoginyeomgwan,herit,문화유산·전통체험,34.97867,127.7584,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 진월면 선소중앙길 31 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctt39,백운산자연휴양림,Baekunsanjayeonhyuyangrim,heal,힐링·생태·체험,35.05372,127.59743,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 옥룡면 백계로 337 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctt40,백운산산림박물관,Baekunsansanrimbakmulgwan,herit,문화유산·전통체험,35.05314,127.5974,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 옥룡면 백계로 337-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctt41,광양불고기특화거리,Gwangyangbulgogiteukhwageori,food,로컬상권·먹거리,34.96946,127.57905,50,50m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 광양읍 칠성리 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctt42,광양시관광안내소,Gwangyangsigwangwangannaeso,heal,힐링·생태·체험,34.93646,127.69846,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 중마중앙로 70 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,광양,·,ctt43,이순신대교 먹거리타운,Isunsindaegyo Meokgeoritaun,food,로컬상권·먹거리,34.93427,127.69997,50,50m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 광양시 중동 1800 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt44,소호동동다리,Sohodongdongdari,heal,힐링·생태·체험,34.74088,127.65075,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 소호동 498-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt45,여수선소유적,Yeosuseonsoyujeok,herit,문화유산·전통체험,34.75501,127.66322,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 시전동 708 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt46,하멜전시관,Hameljeonsigwan,activity,테마파크·액티비티,34.7367,127.74854,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 하멜로 96 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt47,여수국가산업단지전망대,Yeosugukgasaneopdanjijeonmangdae,activity,테마파크·액티비티,34.80127,127.64843,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 화치동 산 183-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt48,여수충민사,Yeosuchungminsa,herit,문화유산·전통체험,34.75858,127.73482,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 충민사길 52-23 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt49,고소대,Gosodae,herit,문화유산·전통체험,34.74011,127.73872,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 고소3길 13 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt50,이충무공 어머니 사시던 곳,Ichungmugong Eomeoni Sasideon Got,herit,문화유산·전통체험,34.74188,127.68483,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 신월로 195 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt51,여순사건 기념관,Yeosunsageon Ginyeomgwan,herit,문화유산·전통체험,34.74542,127.76606,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 오동도로 242 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt52,낭도,Nangdo,sea,해양·자연경관,34.60745,127.547,40,40m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 화정면 낭도리 산 197 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt53,적금도,Jeokgeumdo,sea,해양·자연경관,34.62887,127.51411,40,40m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 화정면 적금리 378 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt54,적금도전망공원,Jeokgeumdojeonmanggongwon,heal,힐링·생태·체험,34.62335,127.51526,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 화정면 적금리 158 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt55,가사리생태공원,Gasarisaengtaegongwon,heal,힐링·생태·체험,34.74739,127.59619,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 소라면 현천리 1038-2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여수,·,ctt56,전남광주통합특별시해양수산과학관,Jeonnamgwangjutonghapteukbyeolsihaeyangsusangwahakgwan,heal,힐링·생태·체험,34.68375,127.77598,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 여수시 돌산읍 돌산로 2876 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,목포,·,ctt57,유달유원지,Yudalyuwonji,heal,힐링·생태·체험,34.78745,126.36745,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 목포시 죽교동 465-142 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,목포,·,ctt58,목포스카이워크,Mokposeukaiwokeu,heal,힐링·생태·체험,34.78773,126.36728,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 목포시 해양대학로 59 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,목포,·,ctt59,가톨릭목포성지 역사박물관,Gatolrikmokposeongji Yeoksabakmulgwan,herit,문화유산·전통체험,34.79956,126.386,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 목포시 노송길 35 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,목포,·,ctt60,김대중노벨평화상기념관,Gimdaejungnobelpyeonghwasangginyeomgwan,herit,문화유산·전통체험,34.78291,126.39219,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 목포시 삼학로92번길 68 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,목포,·,ctt61,목포자연사박물관,Mokpojayeonsabakmulgwan,herit,문화유산·전통체험,34.79373,126.42107,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 목포시 남농로 135 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt62,화성요트,Hwaseongyoteu,activity,테마파크·액티비티,37.1856,126.65105,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 서신면 전곡항로 5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt63,화성시공예문화관,Hwaseongsigongyemunhwagwan,heal,힐링·생태·체험,37.04313,126.75413,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 우정읍 고온리안길 24-9 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt64,예랑도예원,Yerangdoyewon,heal,힐링·생태·체험,37.21649,126.93479,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 효행구 봉담읍 삼봉길 100-11 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt65,소다미술관,Sodamisulgwan,activity,테마파크·액티비티,37.2016,127.00615,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 화성시 병점구 효행로707번길 30 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt66,진주목장,Jinjumokjang,heal,힐링·생태·체험,37.24127,126.87933,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 효행구 비봉면 일묵동길 24 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt67,라바팜스토리,Rabapamseutori,activity,테마파크·액티비티,37.16821,126.81752,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 남양읍 남양로368번길 127 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt68,백미리어촌체험휴양마을,Baekmirieochoncheheomhyuyangmaeul,activity,테마파크·액티비티,37.14346,126.68014,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 서신면 백미길 210-35 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt69,제부마리나 클럽하우스,Jebumarina Keulreophauseu,heal,힐링·생태·체험,37.17549,126.62798,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 서신면 해안길 467 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt70,궁평관광지,Gungpyeonggwangwangji,heal,힐링·생태·체험,37.12844,126.68324,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 서신면 궁평리 513-9 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt71,전곡항 층상 응회암,Jeongokhang Cheungsang Eunghoeam,heal,힐링·생태·체험,37.1829,126.6513,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 서신면 장외리 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt72,화성황금해안길 3구간 궁평관광길,Hwaseonghwanggeumhaeangil 3gugan Gungpyeonggwangwanggil,heal,힐링·생태·체험,37.14066,126.6795,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 서신면 백미리 352-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt73,화성융릉과건릉,Hwaseongyungreunggwageonreung,herit,문화유산·전통체험,37.21172,126.99097,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 병점구 효행로481번길 21 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt74,제부도,Jebudo,sea,해양·자연경관,37.17221,126.62402,40,40m,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 서신면 제부리 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt75,공룡알화석산지 방문자센터,Gongryongalhwaseoksanji Bangmunjasenteo,heal,힐링·생태·체험,37.26235,126.74706,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 송산면 공룡로 659 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt76,제부도해상케이블카 서해랑 전곡정류장,Jebudohaesangkeibeulka Seohaerang Jeongokjeongryujang,activity,테마파크·액티비티,37.18391,126.65009,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 서신면 전곡항로 1-10 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt77,화성시우리꽃식물원,Hwaseongsiurikkotsikmulwon,heal,힐링·생태·체험,37.11543,126.88287,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 팔탄면 3.1만세로 777-17 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt78,서해랑길 87코스,Seohaeranggil 87koseu,heal,힐링·생태·체험,37.05855,126.75314,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 우정읍 매향리 976 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt79,남양성모성지,Namyangseongmoseongji,herit,문화유산·전통체험,37.20504,126.81676,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 남양읍 남양성지로 112 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt80,용주사,Yongjusa,herit,문화유산·전통체험,37.21217,127.00508,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 병점구 용주로 136 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt81,화성시독립운동기념관,Hwaseongsidokripundongginyeomgwan,herit,문화유산·전통체험,37.125,126.89032,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 만세구 향남읍 제암고주로 34 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화성,·,ctt82,정조효공원,Jeongjohyogongwon,heal,힐링·생태·체험,37.20623,126.99651,60,1h,,,,N,N,Y,N,N,N,Y,경기 화성시 병점구 안녕동 228 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,합천,·,ctt83,핫들생태공원,Hatdeulsaengtaegongwon,heal,힐링·생태·체험,35.57494,128.16933,60,1h,,,,N,N,Y,N,N,N,Y,경남 합천군 율곡면 임북리 810-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,밀양,·,ctt84,만어사,Maneosa,herit,문화유산·전통체험,35.45489,128.84607,60,1h,,,,N,N,Y,N,N,N,Y,경남 밀양시 삼랑진읍 만어로 776 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,밀양,·,ctt85,수산제역사공원,Susanjeyeoksagongwon,heal,힐링·생태·체험,35.38195,128.71698,60,1h,,,,N,N,Y,N,N,N,Y,경남 밀양시 하남읍 양동리 671 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,밀양,·,ctt86,밀양아리랑 우주천문대,Milyangarirang Ujucheonmundae,heal,힐링·생태·체험,35.50258,128.76108,60,1h,,,,N,N,Y,N,N,N,Y,경남 밀양시 밀양대공원로 86 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,밀양,·,ctt87,밀양향교,Milyanghyanggyo,herit,문화유산·전통체험,35.50654,128.75475,60,1h,,,,N,N,Y,N,N,N,Y,경남 밀양시 밀양향교3길 19 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,밀양,·,ctt88,밀양아리랑아트센터,Milyangarirangateusenteo,activity,테마파크·액티비티,35.50436,128.75838,90,1h 30m,,,,N,N,Y,N,N,N,Y,경남 밀양시 밀양대공원로 112 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,사천,·,ctt89,사천시 우주항공청 홍보관,Sacheonsi Ujuhanggongcheong Hongbogwan,activity,테마파크·액티비티,35.00372,128.06421,90,1h 30m,,,,N,N,Y,N,N,N,Y,경남 사천시 용현면 시청로 77 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,사천,·,ctt90,무지갯빛해안도로,Mujigaetbithaeandoro,heal,힐링·생태·체험,35.00946,128.04704,60,1h,,,,N,N,Y,N,N,N,Y,경남 사천시 용현면 금문리 212-3 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,사천,·,ctt91,다솔사 봉일암,Dasolsa Bongilam,herit,문화유산·전통체험,35.0846,127.91956,60,1h,,,,N,N,Y,N,N,N,Y,경남 사천시 곤명면 다솔사길 424 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,사천,·,ctt92,사천조명군총,Sacheonjomyeonggunchong,herit,문화유산·전통체험,35.04147,128.04777,60,1h,,,,N,N,Y,N,N,N,Y,경남 사천시 용현면 선진리 402 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,사천,·,ctt93,모충공원,Mochunggongwon,heal,힐링·생태·체험,34.9685,128.0479,60,1h,,,,N,N,Y,N,N,N,Y,경남 사천시 송포동 산 161-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,사천,·,ctt94,사천케이블카자연휴양림,Sacheonkeibeulkajayeonhyuyangrim,heal,힐링·생태·체험,34.95017,128.05761,60,1h,,,,N,N,Y,N,N,N,Y,경남 사천시 실안길 242-45 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,영주,·,ctt95,영주금성대군신단,Yeongjugeumseongdaegunsindan,herit,문화유산·전통체험,36.92729,128.57854,60,1h,,,,N,N,Y,N,N,N,Y,경북 영주시 순흥면 소백로2767번길 5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,영주,·,ctt96,관사골 부용대,Gwansagol Buyongdae,heal,힐링·생태·체험,36.83011,128.6177,60,1h,,,,N,N,Y,N,N,N,Y,경북 영주시 영주동 150-11 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,영주,·,ctt97,영주댐전망대,Yeongjudaemjeonmangdae,activity,테마파크·액티비티,36.73205,128.67451,90,1h 30m,,,,N,N,Y,N,N,N,Y,경북 영주시 평은면 수변로 50-61 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,영주,·,ctt98,용마루2공원,Yongmaru2gongwon,heal,힐링·생태·체험,36.72939,128.67321,60,1h,,,,N,N,Y,N,N,N,Y,경북 영주시 평은면 금광리 1401 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,익산,·,ctt99,무왕릉,Muwangreung,herit,문화유산·전통체험,35.98,127.03325,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 익산시 석왕동 산 55 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,익산,·,ctt100,나바위성지 성당,Nabawiseongji Seongdang,herit,문화유산·전통체험,36.13826,126.99944,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 익산시 망성면 나바위1길 146 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,익산,·,ctt101,익산문화예술의거리,Iksanmunhwayesuluigeori,food,로컬상권·먹거리,35.93912,126.94806,50,50m,,,,N,N,Y,N,N,N,Y,전북특별자치도 익산시 중앙동1가 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,홍성,·,ctt102,광천토굴새우젓 홍보전시관,Gwangcheontogulsaeujeot Hongbojeonsigwan,activity,테마파크·액티비티,36.4873,126.61644,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 홍성군 광천읍 광천로 119 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,홍성,·,ctt103,광천 새우젓토굴 테마공원,Gwangcheon Saeujeottogul Temagongwon,heal,힐링·생태·체험,36.48763,126.61759,60,1h,,,,N,N,Y,N,N,N,Y,충남 홍성군 광천읍 옹암리 475 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,홍성,·,ctt104,그림같은수목원,Geurimgateunsumokwon,heal,힐링·생태·체험,36.5195,126.6279,60,1h,,,,N,N,Y,N,N,N,Y,충남 홍성군 광천읍 충서로400번길 102-36 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,홍성,·,ctt105,남당노을전망대,Namdangnoeuljeonmangdae,activity,테마파크·액티비티,36.54434,126.46558,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 홍성군 서부면 남당리 767-18 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,홍성,·,ctt106,어사리 노을공원,Eosari Noeulgongwon,heal,힐링·생태·체험,36.5557,126.4685,60,1h,,,,N,N,Y,N,N,N,Y,충남 홍성군 서부면 어사리 490-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,홍성,·,ctt107,이응노의집,Ieungnouijip,herit,문화유산·전통체험,36.62248,126.63176,60,1h,,,,N,N,Y,N,N,N,Y,충남 홍성군 홍북읍 이응노로 61-7 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서산,·,ctt108,서산버드랜드,Seosanbeodeuraendeu,heal,힐링·생태·체험,36.6311,126.3784,60,1h,,,,N,N,Y,N,N,N,Y,충남 서산시 부석면 천수만로 655-73 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서산,·,ctt109,천수만,Cheonsuman,heal,힐링·생태·체험,36.59108,126.41393,60,1h,,,,N,N,Y,N,N,N,Y,충남 서산시 부석면 간월도리 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서산,·,ctt110,서산시광역자원회수시설 전망대,Seosansigwangyeokjawonhoesusiseol Jeonmangdae,activity,테마파크·액티비티,36.72282,126.45596,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 서산시 양대11로 34 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서산,·,ctt111,서산동부전통시장 쌈지공원,Seosandongbujeontongsijang Ssamjigongwon,heal,힐링·생태·체험,36.78274,126.45536,60,1h,,,,N,N,Y,N,N,N,Y,충남 서산시 동문동 900 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서산,·,ctt112,황금산,Hwanggeumsan,heal,힐링·생태·체험,36.99016,126.33062,60,1h,,,,N,N,Y,N,N,N,Y,충남 서산시 대산읍 독곶리 산 230-2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서산,·,ctt113,안견기념관,Angyeonginyeomgwan,herit,문화유산·전통체험,36.86403,126.43854,60,1h,,,,N,N,Y,N,N,N,Y,충남 서산시 지곡면 안견관길 15-17 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서산,·,ctt114,해미 국제성지,Haemi Gukjeseongji,herit,문화유산·전통체험,36.71287,126.53775,60,1h,,,,N,N,Y,N,N,N,Y,충남 서산시 해미면 성지1로 13 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,천안,·,ctt115,충청남도안전체험관,Chungcheongnamdoanjeoncheheomgwan,activity,테마파크·액티비티,36.82172,127.1916,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 천안시 동남구 태조산길 267-17 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,천안,·,ctt116,태조산공원,Taejosangongwon,heal,힐링·생태·체험,36.8237,127.1913,60,1h,,,,N,N,Y,N,N,N,Y,충남 천안시 동남구 태조산길 261 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,천안,·,ctt117,유관순열사사적지,Yugwansunyeolsasajeokji,herit,문화유산·전통체험,36.75966,127.30782,60,1h,,,,N,N,Y,N,N,N,Y,충남 천안시 동남구 병천면 유관순길 38 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,충주,·,ctt118,중원문화길 1코스(생태탐방길),Jungwonmunhwagil 1koseu(saengtaetambanggil),heal,힐링·생태·체험,37.01578,127.91822,60,1h,,,,N,N,Y,N,N,N,Y,충북 충주시 목행동 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,충주,·,ctt119,비내길 2코스,Binaegil 2koseu,heal,힐링·생태·체험,37.09961,127.81594,60,1h,,,,N,N,Y,N,N,N,Y,충북 충주시 앙성면 조천리 산 40 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,태백,·,ctt120,철암탄광역사촌,Cheolamtangwangyeoksachon,heal,힐링·생태·체험,37.11415,129.03715,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 태백시 동태백로 402 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,원주,·,ctt121,빙하미술관,Binghamisulgwan,activity,테마파크·액티비티,37.39361,127.78905,90,1h 30m,,,,N,N,Y,N,N,N,Y,강원특별자치도 원주시 지정면 구재로 66 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,연천,·,ctt122,숭의전,Sunguijeon,herit,문화유산·전통체험,38.02372,126.97307,60,1h,,,,N,N,Y,N,N,N,Y,경기 연천군 미산면 숭의전로 382-27 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,연천,·,ctt123,은대리문화벽돌공장,Eundaerimunhwabyeokdolgongjang,heal,힐링·생태·체험,38.05119,127.07134,60,1h,,,,N,N,Y,N,N,N,Y,경기 연천군 전곡읍 평화로940번길 72-27 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,연천,·,ctt124,재인폭포,Jaeinpokpo,heal,힐링·생태·체험,38.07693,127.14337,60,1h,,,,N,N,Y,N,N,N,Y,경기 연천군 연천읍 부곡리 산 235 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,연천,·,ctt125,태풍전망대,Taepungjeonmangdae,activity,테마파크·액티비티,38.12595,126.97302,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 연천군 중면 횡산리 산 108-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,연천,·,ctt126,한탄강 베개용암 출렁다리,Hantangang Begaeyongam Chulreongdari,heal,힐링·생태·체험,38.03965,127.11367,60,1h,,,,N,N,Y,N,N,N,Y,경기 연천군 전곡읍 신답리 산 98 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,연천,·,ctt127,임진강자연센터,Imjingangjayeonsenteo,heal,힐링·생태·체험,38.01903,127.01421,60,1h,,,,N,N,Y,N,N,N,Y,경기 연천군 미산면 마동로196번길 226-23 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,연천,·,ctt128,연천 경순왕릉,Yeoncheon Gyeongsunwangreung,herit,문화유산·전통체험,37.99069,126.84361,60,1h,,,,N,N,Y,N,N,N,Y,경기 연천군 장남면 장남로 288 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,연천,·,ctt129,고랑포구역사공원,Gorangpoguyeoksagongwon,heal,힐링·생태·체험,37.98762,126.84684,60,1h,,,,N,N,Y,N,N,N,Y,경기 연천군 장남면 고랑포리 209-2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,연천,·,ctt130,연천호로고루,Yeoncheonhorogoru,herit,문화유산·전통체험,37.98619,126.85856,60,1h,,,,N,N,Y,N,N,N,Y,경기 연천군 장남면 원당리 1257-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,이천,·,ctt131,도예촌쌀밥거리,Doyechonssalbapgeori,food,로컬상권·먹거리,37.3111,127.40103,50,50m,,,,N,N,Y,N,N,N,Y,경기 이천시 신둔면 수광리 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,이천,·,ctt132,이천산수유마을,Icheonsansuyumaeul,heal,힐링·생태·체험,37.34078,127.4623,60,1h,,,,N,N,Y,N,N,N,Y,경기 이천시 백사면 원적로775번길 17 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,이천,·,ctt133,서경들마을,Seogyeongdeulmaeul,activity,테마파크·액티비티,37.1619,127.4811,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 이천시 모가면 진상미로1178번길 13 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,이천,·,ctt134,자채방아마을,Jachaebangamaeul,activity,테마파크·액티비티,37.19115,127.50704,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 이천시 대월면 대월로358번길 168-24 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt135,진위향교,Jinwihyanggyo,herit,문화유산·전통체험,37.09933,127.09481,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 진위면 진위로 49 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt136,원릉군기념관,Wonreunggunginyeomgwan,herit,문화유산·전통체험,37.05484,127.10675,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 원릉군길 96-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt137,정도전사당,Jeongdojeonsadang,herit,문화유산·전통체험,37.08001,127.12252,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 진위면 은산길 80-15 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt138,만기사,Mangisa,herit,문화유산·전통체험,37.10806,127.10065,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 진위면 진위로 181-82 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt139,평택향교,Pyeongtaekhyanggyo,herit,문화유산·전통체험,36.96548,127.05604,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 팽성읍 부용로17번길 40 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt140,농성,Nongseong,herit,문화유산·전통체험,36.96519,127.04476,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 팽성읍 안정리 78-30 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt141,수도사,Sudosa,herit,문화유산·전통체험,37.00262,126.82171,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 포승읍 호암길 58 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt142,심복사,Simboksa,herit,문화유산·전통체험,36.95048,126.9654,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 현덕면 심복사길 22 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt143,이대원장군묘및신도비,Idaewonjanggunmyomitsindobi,herit,문화유산·전통체험,36.96919,126.87466,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 포승읍 희곡리 산 83-6 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt144,오썸플랙스,Osseompeulraekseu,activity,테마파크·액티비티,37.02946,127.01459,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 평택시 고덕면 도시지원1길 91 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt145,신당근린공원 평택항홍보관,Sindanggeunringongwon Pyeongtaekhanghongbogwan,activity,테마파크·액티비티,36.97009,126.84742,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 평택시 포승읍 평택항로 98 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt146,평택문화원 웃다리문화촌,Pyeongtaekmunhwawon Utdarimunhwachon,heal,힐링·생태·체험,37.06879,127.00822,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 서탄면 용소금각로 438-14 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt147,팽성생활사박물관,Paengseongsaenghwalsabakmulgwan,herit,문화유산·전통체험,36.96061,127.04728,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 팽성읍 안정로39번길 21 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt148,원평나루,Wonpyeongnaru,heal,힐링·생태·체험,36.98487,127.08037,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 평택동 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt149,내리문화공원,Naerimunhwagongwon,heal,힐링·생태·체험,36.97493,127.03098,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 팽성읍 내리 260 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt150,안정리예술인광장,Anjeongriyesulingwangjang,heal,힐링·생태·체험,36.95956,127.04399,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 팽성읍 안정쇼핑로 11 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt151,평택시농업생태원,Pyeongtaeksinongeopsaengtaewon,activity,테마파크·액티비티,37.01313,126.98365,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 평택시 오성면 청오로 33-34 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평택,·,ctt152,평택호관광단지,Pyeongtaekhogwangwangdanji,heal,힐링·생태·체험,36.92144,126.92223,60,1h,,,,N,N,Y,N,N,N,Y,경기 평택시 현덕면 평택호길 159 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,청주,·,ctt153,청주체육관,Cheongjucheyukgwan,activity,테마파크·액티비티,36.63657,127.47345,90,1h 30m,,,,N,N,Y,N,N,N,Y,충북 청주시 서원구 사직대로 229 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,청주,·,ctt154,옥화9경 제1경 청석굴,Okhwa9gyeong Je1gyeong Cheongseokgul,heal,힐링·생태·체험,36.61374,127.68571,60,1h,,,,N,N,Y,N,N,N,Y,충북 청주시 상당구 미원면 운암리 산 22 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,청주,·,ctt155,성안길,Seongangil,food,로컬상권·먹거리,36.63585,127.48901,50,50m,,,,N,N,Y,N,N,N,Y,충북 청주시 상당구 북문로1가 210-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여주,·,ctt156,대신섬,Daesinseom,sea,해양·자연경관,37.39505,127.54257,40,40m,,,,N,N,Y,N,N,N,Y,경기 여주시 대신면 천서리 545-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여주,·,ctt157,이포보전망대,Ipobojeonmangdae,activity,테마파크·액티비티,37.40538,127.54374,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 여주시 대신면 여양로 2001 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여주,·,ctt158,파사성,Pasaseong,herit,문화유산·전통체험,37.41122,127.54931,60,1h,,,,N,N,Y,N,N,N,Y,경기 여주시 대신면 천서리 산 9 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여주,·,ctt159,대로사,Daerosa,herit,문화유산·전통체험,37.29929,127.63313,60,1h,,,,N,N,Y,N,N,N,Y,경기 여주시 청심로 113 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,여주,·,ctt160,금은모래캠핑장 어린이물놀이장,Geumeunmoraekaempingjang Eorinimulnolijang,activity,테마파크·액티비티,37.29392,127.66733,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 여주시 강변유원지길 105 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,양산,·,ctt161,창기마을체험휴양관,Changgimaeulcheheomhyuyanggwan,activity,테마파크·액티비티,35.33486,129.12025,90,1h 30m,,,,N,N,Y,N,N,N,Y,경남 양산시 동면 창기1길 15-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,양산,·,ctt162,한국궁중꽃박물관,Hangukgungjungkkotbakmulgwan,herit,문화유산·전통체험,35.36667,129.1758,60,1h,,,,N,N,Y,N,N,N,Y,경남 양산시 매곡외산로 232 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,양산,·,ctt163,법기수원지,Beopgisuwonji,heal,힐링·생태·체험,35.34797,129.1063,60,1h,,,,N,N,Y,N,N,N,Y,경남 양산시 동면 법기로 198-13 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,봉화,·,ctt164,가평리계서당,Gapyeongrigyeseodang,herit,문화유산·전통체험,36.94975,128.73346,60,1h,,,,N,N,Y,N,N,N,Y,경북 봉화군 물야면 계서당길 34-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,봉화,·,ctt165,봉화닭실마을,Bonghwadaksilmaeul,activity,테마파크·액티비티,36.90483,128.74282,90,1h 30m,,,,N,N,Y,N,N,N,Y,경북 봉화군 봉화읍 충재길 42 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,봉화,·,ctt166,봉화목재문화체험장,Bonghwamokjaemunhwacheheomjang,activity,테마파크·액티비티,36.9042,128.79951,90,1h 30m,,,,N,N,Y,N,N,N,Y,경북 봉화군 봉성면 구절로 151 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,봉화,·,ctt167,오전약수탕,Ojeonyaksutang,heal,힐링·생태·체험,37.0134,128.75016,60,1h,,,,N,N,Y,N,N,N,Y,경북 봉화군 물야면 문수로 1601 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,청도,·,ctt168,새마을운동발상지 기념관,Saemaeulundongbalsangji Ginyeomgwan,herit,문화유산·전통체험,35.60021,128.76616,60,1h,,,,N,N,Y,N,N,N,Y,경북 청도군 청도읍 새마을1길 34 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,청도,·,ctt169,청도소싸움미디어체험관,Cheongdosossaummidieocheheomgwan,activity,테마파크·액티비티,35.68521,128.72419,90,1h 30m,,,,N,N,Y,N,N,N,Y,경북 청도군 화양읍 남성현로 346 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,청도,·,ctt170,와인터널,Wainteoneol,heal,힐링·생태·체험,35.71439,128.72028,60,1h,,,,N,N,Y,N,N,N,Y,경북 청도군 화양읍 송금리 907-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안동,·,ctt171,하회세계탈박물관 하회장터,Hahoesegyetalbakmulgwan Hahoejangteo,heal,힐링·생태·체험,36.54951,128.52762,60,1h,,,,N,N,Y,N,N,N,Y,경북 안동시 풍천면 전서로 214-6 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안동,·,ctt172,탈놀이전수관,Talnolijeonsugwan,activity,테마파크·액티비티,36.54092,128.52433,90,1h 30m,,,,N,N,Y,N,N,N,Y,경북 안동시 풍천면 하회종가길 3-15 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안동,·,ctt173,영호루,Yeonghoru,herit,문화유산·전통체험,36.55269,128.72195,60,1h,,,,N,N,Y,N,N,N,Y,경북 안동시 강남로 187-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안동,·,ctt174,웅부공원,Ungbugongwon,heal,힐링·생태·체험,36.5662,128.73321,60,1h,,,,N,N,Y,N,N,N,Y,경북 안동시 서동문로 193 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,예산,·,ctt175,덕산 메타세쿼이아길,Deoksan Metasekwoiagil,food,로컬상권·먹거리,36.68705,126.65962,50,50m,,,,N,N,Y,N,N,N,Y,충남 예산군 덕산면 시량리 27-31 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,예산,·,ctt176,덕산온천족욕장,Deoksanoncheonjokyokjang,heal,힐링·생태·체험,36.69076,126.65937,60,1h,,,,N,N,Y,N,N,N,Y,충남 예산군 덕산면 온천단지2로 11 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부여,·,ctt177,사비수체육공원 축구장6,Sabisucheyukgongwon Chukgujang6,activity,테마파크·액티비티,36.27705,126.89677,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 부여군 부여읍 구교리 281 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부여,·,ctt178,충남종합관광안내소,Chungnamjonghapgwangwangannaeso,heal,힐링·생태·체험,36.28405,126.91453,60,1h,,,,N,N,Y,N,N,N,Y,충남 부여군 부여읍 성왕로 247-9 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부여,·,ctt179,신동엽문학관,Sindongyeopmunhakgwan,activity,테마파크·액티비티,36.27767,126.90936,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 부여군 부여읍 신동엽길 12 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,부여,·,ctt180,백강문화관,Baekgangmunhwagwan,heal,힐링·생태·체험,36.28084,126.91018,60,1h,,,,N,N,Y,N,N,N,Y,충남 부여군 부여읍 사비로 91 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,정선,·,ctt181,정선아리랑 창작센터,Jeongseonarirang Changjaksenteo,activity,테마파크·액티비티,37.3629,128.60159,90,1h 30m,,,,N,N,Y,N,N,N,Y,강원특별자치도 정선군 정선읍 정선로 411 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,정선,·,ctt182,정선아라리촌,Jeongseonararichon,heal,힐링·생태·체험,37.3746,128.67191,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 정선군 정선읍 애산로 37 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,정선,·,ctt183,정선가리왕산케이블카 숙암역,Jeongseongariwangsankeibeulka Sukamyeok,activity,테마파크·액티비티,37.47413,128.60982,90,1h 30m,,,,N,N,Y,N,N,N,Y,강원특별자치도 정선군 북평면 중봉길 41-35 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,가평,·,ctt184,가평레일파크,Gapyeongreilpakeu,activity,테마파크·액티비티,37.82897,127.51584,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 가평군 가평읍 장터길 14 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,가평,·,ctt185,가평빠지아토믹워터파크,Gapyeongppajiatomikwoteopakeu,activity,테마파크·액티비티,37.7998,127.52328,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 가평군 가평읍 북한강변로 970-9 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,가평,·,ctt186,신비동물원,Sinbidongmulwon,activity,테마파크·액티비티,37.68814,127.51315,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 가평군 설악면 미사리로 189 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,파주,·,ctt187,DMZ 평화의 길 5코스,DMZ Pyeonghwaui Gil 5koseu,heal,힐링·생태·체험,37.72113,126.68775,60,1h,,,,N,N,Y,N,N,N,Y,경기 파주시 문발동 211-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,파주,·,ctt188,파주혜음원지,Pajuhyeeumwonji,herit,문화유산·전통체험,37.73538,126.89189,60,1h,,,,N,N,Y,N,N,N,Y,경기 파주시 광탄면 용미리 234-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,파주,·,ctt189,국립민속박물관 파주,Gukripminsokbakmulgwan Paju,herit,문화유산·전통체험,37.78664,126.6939,60,1h,,,,N,N,Y,N,N,N,Y,경기 파주시 탄현면 헤이리로 30 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,파주,·,ctt190,파주장단콩웰빙마루,Pajujangdankongwelbingmaru,activity,테마파크·액티비티,37.77723,126.68448,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 파주시 탄현면 필승로 396 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,파주,·,ctt191,파주임진각평화곤돌라,Pajuimjingakpyeonghwagondolra,activity,테마파크·액티비티,37.89146,126.74029,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 파주시 문산읍 임진각로 148-73 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,파주,·,ctt192,임진각관광지,Imjingakgwangwangji,activity,테마파크·액티비티,37.89002,126.74054,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 파주시 문산읍 마정리 1325-2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,파주,·,ctt193,황희선생유적지,Hwanghuiseonsaengyujeokji,herit,문화유산·전통체험,37.86745,126.75317,60,1h,,,,N,N,Y,N,N,N,Y,경기 파주시 문산읍 반구정로85번길 3 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,파주,·,ctt194,황포돛배,Hwangpodotbae,heal,힐링·생태·체험,37.965,126.88968,60,1h,,,,N,N,Y,N,N,N,Y,경기 파주시 적성면 율곡로 1857 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,파주,·,ctt195,국립극장 무대예술지원센터,Gukripgeukjang Mudaeyesuljiwonsenteo,heal,힐링·생태·체험,37.78333,126.69451,60,1h,,,,N,N,Y,N,N,N,Y,경기 파주시 탄현면 헤이리로 16 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,시흥,·,ctt196,관곡지,Gwangokji,heal,힐링·생태·체험,37.40237,126.80443,60,1h,,,,N,N,Y,N,N,N,Y,경기 시흥시 하중동 208 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,시흥,·,ctt197,물왕호수,Mulwanghosu,heal,힐링·생태·체험,37.38118,126.83673,60,1h,,,,N,N,Y,N,N,N,Y,경기 시흥시 산현동 188 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,시흥,·,ctt198,거북섬,Geobukseom,sea,해양·자연경관,37.32081,126.67881,40,40m,,,,N,N,Y,N,N,N,Y,경기 시흥시 거북섬로 120 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,시흥,·,ctt199,패밀리테마파크,Paemilritemapakeu,activity,테마파크·액티비티,37.35422,126.7013,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 시흥시 해송십리로 61 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,시흥,·,ctt200,거북섬홍보관,Geobukseomhongbogwan,heal,힐링·생태·체험,37.32363,126.68204,60,1h,,,,N,N,Y,N,N,N,Y,경기 시흥시 거북섬4길 2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,시흥,·,ctt201,해양생태과학관,Haeyangsaengtaegwahakgwan,heal,힐링·생태·체험,37.32958,126.67727,60,1h,,,,N,N,Y,N,N,N,Y,경기 시흥시 거북섬서로 35 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,시흥,·,ctt202,시흥오이도박물관,Siheungoidobakmulgwan,herit,문화유산·전통체험,37.33554,126.69091,60,1h,,,,N,N,Y,N,N,N,Y,경기 시흥시 정왕동 2202-6 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt203,비슬산 유가사,Biseulsan Yugasa,herit,문화유산·전통체험,35.71472,128.50736,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 유가읍 유가사길 161 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt204,달성화석박물관,Dalseonghwaseokbakmulgwan,herit,문화유산·전통체험,35.6844,128.46455,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 유가읍 테크노대로6길 66 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt205,달성현풍 석빙고,Dalseonghyeonpung Seokbinggo,herit,문화유산·전통체험,35.69757,128.45162,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 현풍읍 현풍동로 92 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대구,·,ctt206,현풍향교,Hyeonpunghyanggyo,herit,문화유산·전통체험,35.70149,128.4518,60,1h,,,,N,N,Y,N,N,N,Y,대구 달성군 현풍읍 현풍동로20길 27-8 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,군산,·,ctt207,동국사,Dongguksa,herit,문화유산·전통체험,35.98277,126.70743,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 군산시 동국사길 16 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,군산,·,ctt208,신흥동일본식가옥,Sinheungdongilbonsikgaok,heal,힐링·생태·체험,35.98617,126.70606,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 군산시 구영1길 17 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,동해,·,ctt209,관동팔경녹색경관길 동해2코스(묵호역~옥계시장),Gwandongpalgyeongnoksaekgyeonggwangil Donghae2koseu(mukhoyeok~okgyesijang),heal,힐링·생태·체험,37.58106,129.08114,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 동해시 망상동 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctt210,안산갈대습지,Ansangaldaeseupji,heal,힐링·생태·체험,37.27372,126.83974,60,1h,,,,N,N,Y,N,N,N,Y,경기 안산시 상록구 갈대습지로 76 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctt211,안산산업역사박물관,Ansansaneopyeoksabakmulgwan,herit,문화유산·전통체험,37.32293,126.81719,60,1h,,,,N,N,Y,N,N,N,Y,경기 안산시 단원구 화랑로 265 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctt212,안산식물원,Ansansikmulwon,heal,힐링·생태·체험,37.31375,126.86107,60,1h,,,,N,N,Y,N,N,N,Y,경기 안산시 상록구 성호로 113 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctt213,안산다문화거리,Ansandamunhwageori,food,로컬상권·먹거리,37.32963,126.79054,50,50m,,,,N,N,Y,N,N,N,Y,경기 안산시 단원구 다문화길 16 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctt214,시화조력문화관,Sihwajoryeokmunhwagwan,activity,테마파크·액티비티,37.31279,126.60962,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 안산시 단원구 대부황금로 1927 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctt215,종이미술관,Jongimisulgwan,activity,테마파크·액티비티,37.22451,126.57599,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 안산시 단원구 대남로 233 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctt216,유리섬,Yuriseom,activity,테마파크·액티비티,37.21971,126.60237,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 안산시 단원구 부흥로 254 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctt217,바다향기수목원,Badahyanggisumokwon,heal,힐링·생태·체험,37.22502,126.64653,60,1h,,,,N,N,Y,N,N,N,Y,경기 안산시 단원구 대부황금로 399 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctt218,안산대부광산 퇴적암층,Ansandaebugwangsan Toejeokamcheung,heal,힐링·생태·체험,37.1987,126.64847,60,1h,,,,N,N,Y,N,N,N,Y,경기 안산시 단원구 선감동 산 147-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctt219,방아머리해변,Bangameorihaebyeon,sea,해양·자연경관,37.28915,126.57677,40,40m,,,,N,N,Y,N,N,N,Y,경기 안산시 단원구 대부북동 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안산,·,ctt220,반달섬,Bandalseom,sea,해양·자연경관,37.30079,126.73685,40,40m,,,,N,N,Y,N,N,N,Y,경기 안산시 단원구 시화벤처로 704 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,세종,·,ctt221,도시상징광장,Dosisangjinggwangjang,heal,힐링·생태·체험,36.48606,127.26395,60,1h,,,,N,N,Y,N,N,N,Y,세종특별자치시 나성동 697-4 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,세종,·,ctt222,방축천 음악분수,Bangchukcheon Eumakbunsu,heal,힐링·생태·체험,36.49945,127.25712,60,1h,,,,N,N,Y,N,N,N,Y,세종특별자치시 어진동 761 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,세종,·,ctt223,초려역사공원,Choryeoyeoksagongwon,heal,힐링·생태·체험,36.50201,127.25453,60,1h,,,,N,N,Y,N,N,N,Y,세종특별자치시 도움1로 40 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,세종,·,ctt224,아침뜰근린공원 역사공원,Achimtteulgeunringongwon Yeoksagongwon,heal,힐링·생태·체험,36.47848,127.25445,60,1h,,,,N,N,Y,N,N,N,Y,세종특별자치시 한솔동 1247 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,세종,·,ctt225,세종전통문화체험관,Sejongjeontongmunhwacheheomgwan,heal,힐링·생태·체험,36.50684,127.29185,60,1h,,,,N,N,Y,N,N,N,Y,세종특별자치시 모롱지로 94 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,세종,·,ctt226,미래엔교과서박물관,Miraeengyogwaseobakmulgwan,herit,문화유산·전통체험,36.54846,127.33748,60,1h,,,,N,N,Y,N,N,N,Y,세종특별자치시 연동면 청연로 492-14 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,세종,·,ctt227,세종홍판서댁,Sejonghongpanseodaek,herit,문화유산·전통체험,36.53406,127.3652,60,1h,,,,N,N,Y,N,N,N,Y,세종특별자치시 부강면 용포동촌길 43-19 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,세종,·,ctt228,숭모각,Sungmogak,herit,문화유산·전통체험,36.5045,127.29185,60,1h,,,,N,N,Y,N,N,N,Y,세종특별자치시 세종동 88-4 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,세종,·,ctt229,조천변벚꽃길,Jocheonbyeonbeotkkotgil,food,로컬상권·먹거리,36.60489,127.30343,50,50m,,,,N,N,Y,N,N,N,Y,세종특별자치시 조치원읍 평리 120 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화순,·,ctt230,세량제,Seryangje,heal,힐링·생태·체험,35.07864,126.91998,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 화순군 화순읍 세량리 98 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,태안,·,ctt231,유류피해극복기념관,Yuryupihaegeukbokginyeomgwan,herit,문화유산·전통체험,36.79267,126.14834,60,1h,,,,N,N,Y,N,N,N,Y,충남 태안군 소원면 천리포1길 120 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,태안,·,ctt232,팜카밀레허브농원,Pamkamilreheobeunongwon,heal,힐링·생태·체험,36.68669,126.28288,60,1h,,,,N,N,Y,N,N,N,Y,충남 태안군 남면 우운길 56-19 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,태안,·,ctt233,안면도수목원,Anmyeondosumokwon,heal,힐링·생태·체험,36.49689,126.35498,60,1h,,,,N,N,Y,N,N,N,Y,충남 태안군 안면읍 안면대로 3195-6 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,태안,·,ctt234,태안해양유물전시관,Taeanhaeyangyumuljeonsigwan,activity,테마파크·액티비티,36.6772,126.15141,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 태안군 근흥면 신진대교길 94-33 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,춘천,·,ctt235,공지천,Gongjicheon,heal,힐링·생태·체험,37.87502,127.70787,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 춘천시 근화동 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,춘천,·,ctt236,춘천삼악산호수케이블카,Chuncheonsamaksanhosukeibeulka,activity,테마파크·액티비티,37.86433,127.69129,90,1h 30m,,,,N,N,Y,N,N,N,Y,강원특별자치도 춘천시 스포츠타운길 245 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,춘천,·,ctt237,강원특별자치도립화목원,Gangwonteukbyeoljachidoriphwamokwon,heal,힐링·생태·체험,37.92303,127.72569,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 춘천시 화목원길 24 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,춘천,·,ctt238,K-water 소양강댐물문화관,K-water Soyanggangdaemmulmunhwagwan,activity,테마파크·액티비티,37.94879,127.81507,90,1h 30m,,,,N,N,Y,N,N,N,Y,강원특별자치도 춘천시 신북읍 신샘밭로 1128 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,춘천,·,ctt239,책과인쇄박물관,Chaekgwainswaebakmulgwan,herit,문화유산·전통체험,37.8194,127.72484,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 춘천시 신동면 풍류1길 156 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,춘천,·,ctt240,춘천사이로248,Chuncheonsairo248,heal,힐링·생태·체험,37.87449,127.70709,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 춘천시 수변공원길 18 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,춘천,·,ctt241,구봉산전망대카페거리,Gubongsanjeonmangdaekapegeori,food,로컬상권·먹거리,37.89264,127.77704,50,50m,,,,N,N,Y,N,N,N,Y,강원특별자치도 춘천시 동면 장학리 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,창원,·,ctt242,창원스포츠파크 만남의광장,Changwonseupocheupakeu Mannamuigwangjang,heal,힐링·생태·체험,35.23363,128.66698,60,1h,,,,N,N,Y,N,N,N,Y,경남 창원시 성산구 원이대로 450 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,창원,·,ctt243,창원가로수길,Changwongarosugil,food,로컬상권·먹거리,35.23768,128.68188,50,50m,,,,N,N,Y,N,N,N,Y,경남 창원시 성산구 용호동 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,창원,·,ctt244,창원의집,Changwonuijip,herit,문화유산·전통체험,35.24446,128.68158,60,1h,,,,N,N,Y,N,N,N,Y,경남 창원시 의창구 사림로16번길 59 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,창원,·,ctt245,상상길,Sangsanggil,food,로컬상권·먹거리,35.20658,128.57628,50,50m,,,,N,N,Y,N,N,N,Y,경남 창원시 마산합포구 중성동 169-4 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,창원,·,ctt246,장복산,Jangboksan,heal,힐링·생태·체험,35.17984,128.65993,60,1h,,,,N,N,Y,N,N,N,Y,경남 창원시 진해구 태백동 산 52-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,경기광주,·,ctt247,영은미술관,Yeongeunmisulgwan,activity,테마파크·액티비티,37.41305,127.26901,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 광주시 청석로 300 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,경기광주,·,ctt248,신익희 생가,Sinikhui Saengga,herit,문화유산·전통체험,37.43244,127.30699,60,1h,,,,N,N,Y,N,N,N,Y,경기 광주시 초월읍 서하길 6-25 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,김해,·,ctt249,김해탄소중립체험관,Gimhaetansojungripcheheomgwan,activity,테마파크·액티비티,35.20729,128.79629,90,1h 30m,,,,N,N,Y,N,N,N,Y,경남 김해시 부곡로 33 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,김해,·,ctt250,김해목재문화박물관,Gimhaemokjaemunhwabakmulgwan,herit,문화유산·전통체험,35.18006,128.80813,60,1h,,,,N,N,Y,N,N,N,Y,경남 김해시 관동로27번길 5-49 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,김해,·,ctt251,율하유적전시관,Yulhayujeokjeonsigwan,activity,테마파크·액티비티,35.17571,128.81128,90,1h 30m,,,,N,N,Y,N,N,N,Y,경남 김해시 율하1로 63 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,김해,·,ctt252,수로왕비릉,Surowangbireung,herit,문화유산·전통체험,35.24326,128.87762,60,1h,,,,N,N,Y,N,N,N,Y,경남 김해시 가락로190번길 1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,김해,·,ctt253,김해구지봉,Gimhaegujibong,herit,문화유산·전통체험,35.24304,128.87609,60,1h,,,,N,N,Y,N,N,N,Y,경남 김해시 구산동 산 81-2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,김해,·,ctt254,진영역사공원,Jinyeongyeoksagongwon,heal,힐링·생태·체험,35.30385,128.73028,60,1h,,,,N,N,Y,N,N,N,Y,경남 김해시 진영읍 진영리 275-94 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,김해,·,ctt255,화포천습지 과학관,Hwapocheonseupji Gwahakgwan,heal,힐링·생태·체험,35.3081,128.77792,60,1h,,,,N,N,Y,N,N,N,Y,경남 김해시 진영읍 진영로265번길 330 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,김해,·,ctt256,김해시 수도박물관,Gimhaesi Sudobakmulgwan,herit,문화유산·전통체험,35.28475,128.82259,60,1h,,,,N,N,Y,N,N,N,Y,경남 김해시 한림면 김해대로 1347 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt257,장항6080음식골목 맛나로,Janghang6080eumsikgolmok Matnaro,food,로컬상권·먹거리,36.01059,126.69615,50,50m,,,,N,N,Y,N,N,N,Y,충남 서천군 장항읍 창선1리 165 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt258,장항 송림 자연휴양림,Janghang Songrim Jayeonhyuyangrim,heal,힐링·생태·체험,36.01844,126.66556,60,1h,,,,N,N,Y,N,N,N,Y,충남 서천군 장항읍 장항산단로34번길 122-16 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt259,조류생태전시관,Joryusaengtaejeonsigwan,activity,테마파크·액티비티,36.02281,126.74268,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 서천군 마서면 장산로 916 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt260,금강하구둑관광지,Geumganghagudukgwangwangji,heal,힐링·생태·체험,36.01977,126.7364,60,1h,,,,N,N,Y,N,N,N,Y,충남 서천군 마서면 장산로855번길 56-2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt261,문헌서원,Munheonseowon,herit,문화유산·전통체험,36.0917,126.78556,60,1h,,,,N,N,Y,N,N,N,Y,충남 서천군 기산면 서원로172번길 66 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt262,봉선저수지,Bongseonjeosuji,heal,힐링·생태·체험,36.13872,126.77771,60,1h,,,,N,N,Y,N,N,N,Y,충남 서천군 시초면 후암리 33-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt263,이상재선생 생가,Isangjaeseonsaeng Saengga,herit,문화유산·전통체험,36.09984,126.80619,60,1h,,,,N,N,Y,N,N,N,Y,충남 서천군 한산면 종단길 71 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt264,한산모시관,Hansanmosigwan,activity,테마파크·액티비티,36.08034,126.79913,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 서천군 한산면 충절로 1089 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt265,이하복고택전시관,Ihabokgotaekjeonsigwan,activity,테마파크·액티비티,36.08087,126.75965,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 서천군 기산면 신막로57번길 지하 32-11 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt266,성경전래지기념관,Seonggyeongjeonraejiginyeomgwan,herit,문화유산·전통체험,36.13145,126.50046,60,1h,,,,N,N,Y,N,N,N,Y,충남 서천군 서면 서인로 89-16 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt267,서천치유의숲 치유센터,Seocheonchiyuuisup Chiyusenteo,heal,힐링·생태·체험,36.11491,126.65995,60,1h,,,,N,N,Y,N,N,N,Y,충남 서천군 종천면 충서로302번길 88-81 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt268,국립해양생물자원관,Gukriphaeyangsaengmuljawongwan,activity,테마파크·액티비티,36.01798,126.67009,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 서천군 장항읍 장산로101번길 75 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,영광,·,ctt269,백수해안도로,Baeksuhaeandoro,heal,힐링·생태·체험,35.36356,126.39595,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 영광군 백수읍 대신리 산 234-11 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,영광,·,ctt270,원불교 영산성지,Wonbulgyo Yeongsanseongji,herit,문화유산·전통체험,35.32741,126.44326,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 영광군 백수읍 성지로 1345 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,영광,·,ctt271,매간당,Maegandang,herit,문화유산·전통체험,35.24108,126.474,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 영광군 군남면 동간길2길 83-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,영광,·,ctt272,불갑사,Bulgapsa,herit,문화유산·전통체험,35.20068,126.54972,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 영광군 불갑면 불갑사로 450 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평창,·,ctt273,평창돌문화체험관,Pyeongchangdolmunhwacheheomgwan,activity,테마파크·액티비티,37.3766,128.4095,90,1h 30m,,,,N,N,Y,N,N,N,Y,강원특별자치도 평창군 평창읍 바위공원길 111 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,삼척,·,ctt274,삼척해양레일바이크 용화정거장,Samcheokhaeyangreilbaikeu Yonghwajeonggeojang,heal,힐링·생태·체험,37.28966,129.30434,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 삼척시 근덕면 용화해변길 23 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,삼척,·,ctt275,삼척해상케이블카 용화역,Samcheokhaesangkeibeulka Yonghwayeok,activity,테마파크·액티비티,37.28912,129.30826,90,1h 30m,,,,N,N,Y,N,N,N,Y,강원특별자치도 삼척시 근덕면 삼척로 2154-31 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,삼척,·,ctt276,삼척활기치유의숲,Samcheokhwalgichiyuuisup,heal,힐링·생태·체험,37.38523,129.05401,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 삼척시 미로면 준경길 651-230 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,완주,·,ctt277,오성제저수지,Oseongjejeosuji,heal,힐링·생태·체험,35.90453,127.23888,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 완주군 소양면 대흥리 412 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,완주,·,ctt278,아원고택,Awongotaek,herit,문화유산·전통체험,35.90352,127.24462,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 완주군 소양면 송광수만로 516-7 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,완주,·,ctt279,위봉산성,Wibongsanseong,herit,문화유산·전통체험,35.90527,127.25221,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 완주군 소양면 대흥리 1-32 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,완주,·,ctt280,위봉폭포,Wibongpokpo,heal,힐링·생태·체험,35.90964,127.26201,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 완주군 소양면 대흥리 산 1-32 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,완주,·,ctt281,공기마을 편백나무숲,Gonggimaeul Pyeonbaeknamusup,heal,힐링·생태·체험,35.73357,127.19335,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 완주군 상관면 죽림리 산 214-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,완주,·,ctt282,대한민국 술테마박물관,Daehanminguk Sultemabakmulgwan,herit,문화유산·전통체험,35.72617,127.13623,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 완주군 구이면 덕천전원길 232-58 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,평창,·,ctt283,2018평창동계올림픽대회 및 동계패럴림픽대회기념관,2018pyeongchangdonggyeolrimpikdaehoe Mit Donggyepaereolrimpikdaehoeginyeomgwan,herit,문화유산·전통체험,37.66684,128.70672,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 평창군 대관령면 올림픽로 220 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,완도,·,ctt284,장보고기념관,Jangbogoginyeomgwan,herit,문화유산·전통체험,34.35512,126.73018,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 완도군 완도읍 청해진로 1455 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,진도,·,ctt285,진도개테마파크,Jindogaetemapakeu,activity,테마파크·액티비티,34.4828,126.27992,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 진도군 진도읍 성죽골길 37 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,진도,·,ctt286,운림산방,Unrimsanbang,herit,문화유산·전통체험,34.46637,126.30853,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 진도군 의신면 운림산방로 315 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,진도,·,ctt287,진도타워,Jindotawo,activity,테마파크·액티비티,34.56602,126.30242,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 진도군 군내면 만금길 112-41 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,진도,·,ctt288,명량해상케이블카 진도스테이션,Myeongryanghaesangkeibeulka Jindoseuteisyeon,activity,테마파크·액티비티,34.56653,126.30255,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 진도군 군내면 만금길 112-31 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,진도,·,ctt289,진도 용장성,Jindo Yongjangseong,herit,문화유산·전통체험,34.51419,126.33748,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 진도군 군내면 용장리 101 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,양주,·,ctt290,양주초록지기마을,Yangjuchorokjigimaeul,activity,테마파크·액티비티,37.92277,126.99745,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 양주시 남면 양연로173번길 26 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,양주,·,ctt291,조명박물관,Jomyeongbakmulgwan,herit,문화유산·전통체험,37.83614,126.96755,60,1h,,,,N,N,Y,N,N,N,Y,경기 양주시 광적면 광적로 235-48 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,양주,·,ctt292,온릉,Onreung,herit,문화유산·전통체험,37.72017,126.95098,60,1h,,,,N,N,Y,N,N,N,Y,경기 양주시 장흥면 호국로 255-41 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,양구,·,ctt293,DMZ펀치볼둘레길,DMZpeonchiboldulregil,heal,힐링·생태·체험,38.29013,128.14542,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 양구군 해안면 해안서화로 35 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,양구,·,ctt294,을지전망대,Euljijeonmangdae,activity,테마파크·액티비티,38.32913,128.12674,90,1h 30m,,,,N,N,Y,N,N,N,Y,강원특별자치도 양구군 해안면 이현리 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,양구,·,ctt295,한반도섬,Hanbandoseom,sea,해양·자연경관,38.13061,127.98276,40,40m,,,,N,N,Y,N,N,N,Y,강원특별자치도 양구군 양구읍 한반도섬길 76 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,양구,·,ctt296,양구수목원,Yanggusumokwon,heal,힐링·생태·체험,38.18996,128.07403,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 양구군 동면 숨골로310번길 131 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,양구,·,ctt297,두타연,Dutayeon,heal,힐링·생태·체험,38.23276,127.98194,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 양구군 방산면 고방산리 391 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,양구,·,ctt298,양구백자박물관,Yanggubaekjabakmulgwan,herit,문화유산·전통체험,38.20746,127.95168,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 양구군 방산면 평화로 5182 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,곡성,·,ctt299,곡성섬진강기차마을,Gokseongseomjinganggichamaeul,heal,힐링·생태·체험,35.27956,127.30787,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 곡성군 오곡면 오지리 770-5 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,곡성,·,ctt300,섬진강레일바이크,Seomjingangreilbaikeu,activity,테마파크·액티비티,35.23018,127.3682,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 곡성군 오곡면 섬진강로 1465 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,곡성,·,ctt301,6070청춘공작소,6070cheongchungongjakso,heal,힐링·생태·체험,35.28253,127.3018,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 곡성군 곡성읍 낙동원로 8-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,곡성,·,ctt302,스트리트갤러리 107,Seuteuriteugaelreori 107,activity,테마파크·액티비티,35.28097,127.29449,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 곡성군 곡성읍 중앙로 107-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,곡성,·,ctt303,곡성성당,Gokseongseongdang,herit,문화유산·전통체험,35.28237,127.29296,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 곡성군 곡성읍 읍내11길 20 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,곡성,·,ctt304,기차당뚝방마켓,Gichadangttukbangmaket,heal,힐링·생태·체험,35.2814,127.30127,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 곡성군 곡성읍 곡성로 898 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt305,대동하늘공원,Daedonghaneulgongwon,heal,힐링·생태·체험,36.33198,127.4521,60,1h,,,,N,N,Y,N,N,N,Y,대전 동구 용운동 산 40-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt306,만인산자연휴양림,Maninsanjayeonhyuyangrim,heal,힐링·생태·체험,36.20218,127.45511,60,1h,,,,N,N,Y,N,N,N,Y,대전 동구 산내로 106 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt307,우암사적공원,Uamsajeokgongwon,heal,힐링·생태·체험,36.34786,127.45824,60,1h,,,,N,N,Y,N,N,N,Y,대전 동구 충정로 53 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt308,뿌리공원 한국족보박물관,Ppurigongwon Hangukjokbobakmulgwan,herit,문화유산·전통체험,36.28402,127.38689,60,1h,,,,N,N,Y,N,N,N,Y,대전 중구 뿌리공원로 79 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt309,한국지질자원연구원 지질박물관,Hangukjijiljawonyeonguwon Jijilbakmulgwan,herit,문화유산·전통체험,36.37755,127.36228,60,1h,,,,N,N,Y,N,N,N,Y,대전 유성구 과학로 124 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt310,대전시민천문대,Daejeonsimincheonmundae,heal,힐링·생태·체험,36.3816,127.35367,60,1h,,,,N,N,Y,N,N,N,Y,대전 유성구 과학로 213-48 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt311,대청호자연생태관,Daecheonghojayeonsaengtaegwan,herit,문화유산·전통체험,36.37335,127.47078,60,1h,,,,N,N,Y,N,N,N,Y,대전 동구 천개동로 41 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt312,구대전형무소망루,Gudaejeonhyeongmusomangru,herit,문화유산·전통체험,36.33668,127.4107,60,1h,,,,N,N,Y,N,N,N,Y,대전 중구 중촌동 16-11 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt313,목동성당,Mokdongseongdang,herit,문화유산·전통체험,36.33169,127.40802,60,1h,,,,N,N,Y,N,N,N,Y,대전 중구 동서대로1365번길 19 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt314,국립대전현충원 현충문,Gukripdaejeonhyeonchungwon Hyeonchungmun,herit,문화유산·전통체험,36.36906,127.29571,60,1h,,,,N,N,Y,N,N,N,Y,대전 유성구 현충원로 251 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,아산,·,ctt315,피나클랜드 수목원,Pinakeulraendeu Sumokwon,heal,힐링·생태·체험,36.87371,126.92728,60,1h,,,,N,N,Y,N,N,N,Y,충남 아산시 영인면 월선길 20-42 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,아산,·,ctt316,영인산자연휴양림,Yeonginsanjayeonhyuyangrim,heal,힐링·생태·체험,36.84105,126.95014,60,1h,,,,N,N,Y,N,N,N,Y,충남 아산시 영인면 아산온천로 16-26 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,아산,·,ctt317,신정호지방정원,Sinjeonghojibangjeongwon,heal,힐링·생태·체험,36.77109,126.97977,60,1h,,,,N,N,Y,N,N,N,Y,충남 아산시 방축동 459 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,아산,·,ctt318,아산맹씨행단,Asanmaengssihaengdan,herit,문화유산·전통체험,36.74648,127.04175,60,1h,,,,N,N,Y,N,N,N,Y,충남 아산시 배방읍 행단길 25 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,아산,·,ctt319,온양민속박물관,Onyangminsokbakmulgwan,herit,문화유산·전통체험,36.79204,127.0063,60,1h,,,,N,N,Y,N,N,N,Y,충남 아산시 충무로 123 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt320,유성온천공원 족욕체험장,Yuseongoncheongongwon Jokyokcheheomjang,activity,테마파크·액티비티,36.35478,127.34785,90,1h 30m,,,,N,N,Y,N,N,N,Y,대전 유성구 봉명동 574-6 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt321,한밭교육박물관,Hanbatgyoyukbakmulgwan,herit,문화유산·전통체험,36.33744,127.42885,60,1h,,,,N,N,Y,N,N,N,Y,대전 동구 우암로 96 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt322,대청호반길 3-2코스(청남대조망길),Daecheonghobangil 3-2koseu(cheongnamdaejomanggil),heal,힐링·생태·체험,36.43006,127.48147,60,1h,,,,N,N,Y,N,N,N,Y,대전 동구 직동 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt323,테미오래,Temiorae,heal,힐링·생태·체험,36.3206,127.42309,60,1h,,,,N,N,Y,N,N,N,Y,대전 중구 보문로205번길 13 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt324,대전아쿠아리움,Daejeonakuarium,activity,테마파크·액티비티,36.31011,127.42107,90,1h 30m,,,,N,N,Y,N,N,N,Y,대전 중구 보문산공원로 469 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt325,주교좌대흥동성당,Jugyojwadaeheungdongseongdang,herit,문화유산·전통체험,36.32657,127.42647,60,1h,,,,N,N,Y,N,N,N,Y,대전 중구 대종로 471 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,태안,·,ctt326,태안해양치유센터,Taeanhaeyangchiyusenteo,heal,힐링·생태·체험,36.64785,126.29995,60,1h,,,,N,N,Y,N,N,N,Y,충남 태안군 남면 달산포로 85-59 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt327,이동백소리솔바람길,Idongbaeksorisolbaramgil,heal,힐링·생태·체험,36.1122,126.6767,60,1h,,,,N,N,Y,N,N,N,Y,충남 서천군 종천면 지석리 산 40-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt328,마량리동백나무숲,Maryangridongbaeknamusup,heal,힐링·생태·체험,36.1368,126.49394,60,1h,,,,N,N,Y,N,N,N,Y,충남 서천군 서면 마량리 313-4 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서천,·,ctt329,서천군문화예술창작공간,Seocheongunmunhwayesulchangjakgonggan,heal,힐링·생태·체험,36.00829,126.69589,60,1h,,,,N,N,Y,N,N,N,Y,충남 서천군 장항읍 장산로 323 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,홍천,·,ctt330,척야산문화수목원,Cheokyasanmunhwasumokwon,heal,힐링·생태·체험,37.78197,128.15838,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 홍천군 내촌면 동창로 282 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,홍천,·,ctt331,수타사농촌테마공원,Sutasanongchontemagongwon,heal,힐링·생태·체험,37.69485,127.9522,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 홍천군 영귀미면 덕치리 614 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,홍천,·,ctt332,수타사,Sutasa,herit,문화유산·전통체험,37.6985,127.9591,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 홍천군 영귀미면 수타사로 473 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화천,·,ctt333,산천어커피박물관,Sancheoneokeopibakmulgwan,herit,문화유산·전통체험,38.10598,127.70377,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 화천군 화천읍 상승로2길 21 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화천,·,ctt334,화천박물관,Hwacheonbakmulgwan,herit,문화유산·전통체험,38.09788,127.70416,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 화천군 하남면 춘화로 3337 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,화천,·,ctt335,K-water 평화의댐 물문화관,K-water Pyeonghwauidaem Mulmunhwagwan,activity,테마파크·액티비티,38.214,127.84636,90,1h 30m,,,,N,N,Y,N,N,N,Y,강원특별자치도 화천군 화천읍 동촌리 2922-2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,순천,·,ctt336,상사호,Sangsaho,heal,힐링·생태·체험,34.94401,127.41259,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 순천시 상사면 용계리 620 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,순천,·,ctt337,순천전통야생차체험관,Suncheonjeontongyasaengchacheheomgwan,activity,테마파크·액티비티,34.99471,127.33442,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 순천시 승주읍 선암사길 450-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,순천,·,ctt338,순천왜성,Suncheonwaeseong,herit,문화유산·전통체험,34.90726,127.58116,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 순천시 해룡면 신성리 산 1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,순천,·,ctt339,순천만국가정원 스페이스브릿지,Suncheonmangukgajeongwon Seupeiseubeuritji,heal,힐링·생태·체험,34.92772,127.50338,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 순천시 풍덕동 610 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,나주,·,ctt340,국립나주박물관,Gukripnajubakmulgwan,herit,문화유산·전통체험,34.91482,126.65905,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 나주시 반남면 고분로 747 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,나주,·,ctt341,전남광주통합특별시산림연구원 토피어리,Jeonnamgwangjutonghapteukbyeolsisanrimyeonguwon Topieori,heal,힐링·생태·체험,35.00646,126.82509,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 나주시 산포면 다도로 7 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,아산,·,ctt342,옹기발효음식 전시체험관,Onggibalhyoeumsik Jeonsicheheomgwan,activity,테마파크·액티비티,36.75485,126.88051,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 아산시 도고면 도고산로 810 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,아산,·,ctt343,도고아트홀,Dogoateuhol,activity,테마파크·액티비티,36.7587,126.86787,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 아산시 도고면 아산만로 171 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,아산,·,ctt344,세계꽃식물원,Segyekkotsikmulwon,heal,힐링·생태·체험,36.74971,126.86058,60,1h,,,,N,N,Y,N,N,N,Y,충남 아산시 도고면 아산만로 37-37 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt345,유림공원,Yurimgongwon,heal,힐링·생태·체험,36.35997,127.35744,60,1h,,,,N,N,Y,N,N,N,Y,대전 유성구 어은로 27 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt346,진잠향교,Jinjamhyanggyo,herit,문화유산·전통체험,36.3038,127.31529,60,1h,,,,N,N,Y,N,N,N,Y,대전 유성구 교촌로 67 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안성,·,ctt347,안성맞춤박물관,Anseongmatchumbakmulgwan,herit,문화유산·전통체험,37.01125,127.22835,60,1h,,,,N,N,Y,N,N,N,Y,경기 안성시 대덕면 서동대로 4726-15 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안성,·,ctt348,농협안성팜랜드,Nonghyeopanseongpamraendeu,activity,테마파크·액티비티,36.99132,127.19352,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 안성시 공도읍 대신두길 28 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안성,·,ctt349,안성맞춤랜드,Anseongmatchumraendeu,activity,테마파크·액티비티,37.03305,127.31017,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 안성시 보개면 남사당로 198 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,안성,·,ctt350,청룡사,Cheongryongsa,herit,문화유산·전통체험,36.91371,127.28875,60,1h,,,,N,N,Y,N,N,N,Y,경기 안성시 서운면 청룡길 140 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,대전,·,ctt351,식장산문화공원,Sikjangsanmunhwagongwon,heal,힐링·생태·체험,36.30379,127.48355,60,1h,,,,N,N,Y,N,N,N,Y,대전 동구 세천동 산 43-3 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,경산,·,ctt352,임당동고분군,Imdangdonggobungun,herit,문화유산·전통체험,35.83983,128.74967,60,1h,,,,N,N,Y,N,N,N,Y,경북 경산시 임당동 676-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,경산,·,ctt353,경산시립박물관,Gyeongsansiripbakmulgwan,herit,문화유산·전통체험,35.81406,128.76321,60,1h,,,,N,N,Y,N,N,N,Y,경북 경산시 박물관로 46 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,경산,·,ctt354,삼성현역사문화공원,Samseonghyeonyeoksamunhwagongwon,heal,힐링·생태·체험,35.80159,128.79675,60,1h,,,,N,N,Y,N,N,N,Y,경북 경산시 남산면 삼성현공원로 59 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,경산,·,ctt355,경산동의한방촌,Gyeongsandonguihanbangchon,activity,테마파크·액티비티,35.79937,128.80015,90,1h 30m,,,,N,N,Y,N,N,N,Y,경북 경산시 남산면 삼성현공원로 38 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,경산,·,ctt356,반곡지,Bangokji,heal,힐링·생태·체험,35.78042,128.8066,60,1h,,,,N,N,Y,N,N,N,Y,경북 경산시 남산면 반곡리 246 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,울산,·,ctt357,장생포고래박물관,Jangsaengpogoraebakmulgwan,herit,문화유산·전통체험,35.50277,129.38077,60,1h,,,,N,N,Y,N,N,N,Y,울산 남구 장생포고래로 244 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,울산,·,ctt358,태화강국가정원 태화강전망대,Taehwaganggukgajeongwon Taehwagangjeonmangdae,activity,테마파크·액티비티,35.54506,129.29385,90,1h 30m,,,,N,N,Y,N,N,N,Y,울산 남구 남산로 223 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,울산,·,ctt359,울산문화예술회관,Ulsanmunhwayesulhoegwan,activity,테마파크·액티비티,35.54296,129.32734,90,1h 30m,,,,N,N,Y,N,N,N,Y,울산 남구 번영로 200 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,공주,·,ctt360,계룡도예,Gyeryongdoye,heal,힐링·생태·체험,36.37905,127.26083,60,1h,,,,N,N,Y,N,N,N,Y,충남 공주시 반포면 온천사기소길 27-1 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,공주,·,ctt361,공주산림휴양마을 산림문화휴양관,Gongjusanrimhyuyangmaeul Sanrimmunhwahyuyanggwan,heal,힐링·생태·체험,36.42438,127.11943,60,1h,,,,N,N,Y,N,N,N,Y,충남 공주시 수원지공원길 222 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,공주,·,ctt362,유구전통시장 광장,Yugujeontongsijang Gwangjang,heal,힐링·생태·체험,36.55306,126.95215,60,1h,,,,N,N,Y,N,N,N,Y,충남 공주시 유구읍 석남리 279-3 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,공주,·,ctt363,충청남도역사박물관,Chungcheongnamdoyeoksabakmulgwan,herit,문화유산·전통체험,36.4537,127.12667,60,1h,,,,N,N,Y,N,N,N,Y,충남 공주시 국고개길 24 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,공주,·,ctt364,공주 반죽동 당간지주,Gongju Banjukdong Dangganjiju,herit,문화유산·전통체험,36.45171,127.12242,60,1h,,,,N,N,Y,N,N,N,Y,충남 공주시 반죽동 300-2 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,공주,·,ctt365,백제오감체험관,Baekjeogamcheheomgwan,activity,테마파크·액티비티,36.46247,127.11119,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 공주시 고마나루길 30 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서울,·,ctt366,익스트림스포츠디엠지,Ikseuteurimseupocheudiemji,activity,테마파크·액티비티,37.57248,127.00393,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 종로구 종로35길 28 · 전국시티투어 경유지 · 카카오 좌표
+nation,전국,서울,·,ctt367,JSA어패럴,JSAeopaereol,sea,해양·자연경관,37.53834,126.8262,40,40m,,,,N,N,Y,N,N,N,Y,서울 양천구 남부순환로 316 · 전국시티투어 경유지 · 카카오 좌표
 nation,전국,양평,·,ro116,스타벅스 더양평DT점,스타벅스 더양평DT점,food,로컬상권·먹거리,37.49703,127.4817,50,50m,,,,N,N,Y,N,N,N,Y,경기 양평군 양평읍 양근로 76 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,경주,·,ro117,분황사,분황사,herit,문화유산·전통체험,35.84057,129.23364,60,1h,,,,N,N,Y,N,N,N,Y,경북 경주시 분황로 94-11 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,양평,·,ro366,사나사계곡,사나사계곡,sea,해양·자연경관,37.53852,127.50632,40,40m,,,,N,N,Y,N,N,N,Y,경기 양평군 옥천면 사나사길 329 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -886,7 +1315,6 @@ nation,전국,인천,·,ro553,송도컨벤시아,송도컨벤시아,herit,문화
 nation,전국,인천,·,ro554,구월동로데오거리,구월동로데오거리,activity,테마파크·액티비티,37.44508,126.70206,90,1h 30m,,,,N,N,Y,N,N,N,Y,인천 남동구 구월동 1409-25 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,순천,·,ro555,아랫장,아랫장,food,로컬상권·먹거리,34.94567,127.49465,50,50m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 순천시 장평로 60 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,인천,·,ro556,모래내시장,모래내시장,food,로컬상권·먹거리,37.45369,126.721,50,50m,,,,N,N,Y,N,N,N,Y,인천 남동구 구월동 1323-5 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,순천,·,ro557,CGV 순천신대,CGV 순천신대,activity,테마파크·액티비티,34.92598,127.55237,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 순천시 해룡면 해광로 199 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,안동,·,ro558,안동호 선성수상길,안동호 선성수상길,activity,테마파크·액티비티,36.69797,128.81497,90,1h 30m,,,,N,N,Y,N,N,N,Y,경북 안동시 도산면 서부리 172 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,인제,·,ro559,백담계곡,백담계곡,sea,해양·자연경관,38.17929,128.37054,40,40m,,,,N,N,Y,N,N,N,Y,강원특별자치도 인제군 북면 용대리 산 12-21 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,안동,·,ro560,체화정,체화정,herit,문화유산·전통체험,36.579,128.57823,60,1h,,,,N,N,Y,N,N,N,Y,경북 안동시 풍산읍 풍산태사로 1123-10 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -949,7 +1377,6 @@ nation,전국,수원,·,ro617,북수원온천,북수원온천,heal,힐링·생�
 nation,전국,수원,·,ro618,화서시장,화서시장,food,로컬상권·먹거리,37.27857,127.00207,50,50m,,,,N,N,Y,N,N,N,Y,경기 수원시 팔달구 동말로 72 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,수원,·,ro619,방화수류정,방화수류정,herit,문화유산·전통체험,37.28757,127.01813,60,1h,,,,N,N,Y,N,N,N,Y,경기 수원시 팔달구 화성성곽길 233 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,대구,·,ro620,수성유원지,수성유원지,activity,테마파크·액티비티,35.82894,128.61678,90,1h 30m,,,,N,N,Y,N,N,N,Y,대구 수성구 무학로 78 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,대구,·,ro621,CGV 대구월성,CGV 대구월성,activity,테마파크·액티비티,35.82457,128.52681,90,1h 30m,,,,N,N,Y,N,N,N,Y,대구 달서구 조암로 29 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,완주,·,ro622,전북특별자치도립미술관,전북특별자치도립미술관,herit,문화유산·전통체험,35.72764,127.10709,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 완주군 구이면 모악산길 111-6 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,대구,·,ro623,수성시장,수성시장,food,로컬상권·먹거리,35.85559,128.61682,50,50m,,,,N,N,Y,N,N,N,Y,대구 수성구 들안로 285-50 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,인천,·,ro624,토지금고시장,토지금고시장,food,로컬상권·먹거리,37.45101,126.63846,50,50m,,,,N,N,Y,N,N,N,Y,인천 미추홀구 낙섬중로32번길 21 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -992,7 +1419,6 @@ nation,전국,인제,·,ro660,십이선녀탕계곡,십이선녀탕계곡,sea,�
 nation,전국,서울,·,ro661,진관사,진관사,herit,문화유산·전통체험,37.63804,126.94689,60,1h,,,,N,N,Y,N,N,N,Y,서울 은평구 진관길 73 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro662,신창시장,신창시장,food,로컬상권·먹거리,37.63943,127.03746,50,50m,,,,N,N,Y,N,N,N,Y,서울 도봉구 덕릉로57길 17 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro663,우림시장,우림시장,food,로컬상권·먹거리,37.59701,127.09825,50,50m,,,,N,N,Y,N,N,N,Y,서울 중랑구 망우로62길 48 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,서울,·,ro664,메가박스 코엑스,메가박스 코엑스,activity,테마파크·액티비티,37.51275,127.05884,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 강남구 영동대로 513 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro665,초안산 수국동산,초안산 수국동산,heal,힐링·생태·체험,37.62958,127.04718,60,1h,,,,N,N,Y,N,N,N,Y,서울 노원구 월계로45가길 57 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro666,서울스카이,서울스카이,activity,테마파크·액티비티,37.51251,127.10244,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 송파구 올림픽로 300 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro667,홍법사,홍법사,herit,문화유산·전통체험,35.30383,129.11041,60,1h,,,,N,N,Y,N,N,N,Y,부산 금정구 두구로33번길 202 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -1020,7 +1446,6 @@ nation,전국,부산,·,ro688,이재모피자 명지대방점,이재모피자 �
 nation,전국,서울,·,ro689,서울물빛나루 1호 홍제천 카페폭포,서울물빛나루 1호 홍제천 카페폭포,food,로컬상권·먹거리,37.5813,126.93705,50,50m,,,,N,N,Y,N,N,N,Y,서울 서대문구 연희로 262-24 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,대전,·,ro690,대전컨벤션센터 제2전시장,대전컨벤션센터 제2전시장,herit,문화유산·전통체험,36.37514,127.38932,60,1h,,,,N,N,Y,N,N,N,Y,대전 유성구 엑스포로 87 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,충주,·,ro691,수주팔봉,수주팔봉,sea,해양·자연경관,36.89826,127.92429,40,40m,,,,N,N,Y,N,N,N,Y,충북 충주시 살미면 토계리 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,수원,·,ro692,메가박스 수원인계,메가박스 수원인계,activity,테마파크·액티비티,37.26102,127.03245,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 수원시 팔달구 효원로 278 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,용인,·,ro693,기흥호수공원,기흥호수공원,heal,힐링·생태·체험,37.25409,127.0957,60,1h,,,,N,N,Y,N,N,N,Y,경기 용인시 기흥구 하갈동 127 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,충주,·,ro694,계명산자연휴양림,계명산자연휴양림,heal,힐링·생태·체험,36.97932,127.99509,60,1h,,,,N,N,Y,N,N,N,Y,충북 충주시 충주호수로 1170 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,수원,·,ro695,수원박물관,수원박물관,herit,문화유산·전통체험,37.29774,127.03541,60,1h,,,,N,N,Y,N,N,N,Y,경기 수원시 영통구 창룡대로 265 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -1058,7 +1483,6 @@ nation,전국,포천,·,ro726,도마치계곡,도마치계곡,sea,해양·자연
 nation,전국,경기광주,·,ro727,팔당전망대,팔당전망대,activity,테마파크·액티비티,37.49958,127.30311,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 광주시 남종면 산수로 1692 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,여주,·,ro728,여주시립 폰박물관,여주시립 폰박물관,herit,문화유산·전통체험,37.29368,127.6663,60,1h,,,,N,N,Y,N,N,N,Y,경기 여주시 강변유원지길 105 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,가평,·,ro729,명지계곡,명지계곡,sea,해양·자연경관,37.93594,127.48624,40,40m,,,,N,N,Y,N,N,N,Y,경기 가평군 북면 도대리 623 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,이천,·,ro730,CGV 이천,CGV 이천,activity,테마파크·액티비티,37.27964,127.44416,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 이천시 중리천로 58 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,함양,·,ro731,지안재,지안재,sea,해양·자연경관,35.47352,127.70252,40,40m,,,,N,N,Y,N,N,N,Y,경남 함양군 함양읍 구룡리 산 119-3 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,담양,·,ro732,담양관방제림,담양관방제림,herit,문화유산·전통체험,35.32387,126.986,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 담양군 담양읍 객사리 1 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,담양,·,ro733,플레이펫,플레이펫,activity,테마파크·액티비티,35.31642,126.99051,90,1h 30m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 담양군 담양읍 죽향대로 1290 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -1074,7 +1498,6 @@ nation,전국,완도,·,ro742,화흥포항 대합실,화흥포항 대합실,sea,
 nation,전국,서울,·,ro743,대림시장,대림시장,food,로컬상권·먹거리,37.58681,126.91774,50,50m,,,,N,N,Y,N,N,N,Y,서울 은평구 응암로4길 22 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,홍성,·,ro744,용봉산자연휴양림,용봉산자연휴양림,heal,힐링·생태·체험,36.64472,126.65681,60,1h,,,,N,N,Y,N,N,N,Y,충남 홍성군 홍북읍 용봉산2길 87 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro745,보라매공원,보라매공원,heal,힐링·생태·체험,37.49328,126.92052,60,1h,,,,N,N,Y,N,N,N,Y,서울 동작구 신대방동 722 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,서울,·,ro746,롯데시네마 월드타워,롯데시네마 월드타워,activity,테마파크·액티비티,37.51392,127.10489,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 송파구 올림픽로 300 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro747,용산용문시장,용산용문시장,food,로컬상권·먹거리,37.53662,126.9598,50,50m,,,,N,N,Y,N,N,N,Y,서울 용산구 효창원로40길 13 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro748,태종사,태종사,herit,문화유산·전통체험,35.05599,129.08812,60,1h,,,,N,N,Y,N,N,N,Y,부산 영도구 전망로 119 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro749,명일전통시장 청춘마켓,명일전통시장 청춘마켓,food,로컬상권·먹거리,37.54966,127.14498,50,50m,,,,N,N,Y,N,N,N,Y,서울 강동구 명일동 324-20 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -1086,7 +1509,6 @@ nation,전국,부산,·,ro754,장림포구,장림포구,sea,해양·자연경관
 nation,전국,부산,·,ro755,칠암방파제,칠암방파제,sea,해양·자연경관,35.29858,129.26213,40,40m,,,,N,N,Y,N,N,N,Y,부산 기장군 일광읍 칠암리 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro756,신평소공원,신평소공원,heal,힐링·생태·체험,35.29379,129.26056,60,1h,,,,N,N,Y,N,N,N,Y,부산 기장군 일광읍 신평리 11-1 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro757,충렬사,충렬사,herit,문화유산·전통체험,35.20121,129.0958,60,1h,,,,N,N,Y,N,N,N,Y,부산 동래구 충렬대로 345 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,부산,·,ro758,CGV 정관,CGV 정관,activity,테마파크·액티비티,35.32141,129.17839,90,1h 30m,,,,N,N,Y,N,N,N,Y,부산 기장군 정관읍 정관중앙로 45 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,횡성,·,ro759,국립청태산자연휴양림,국립청태산자연휴양림,heal,힐링·생태·체험,37.52169,128.29133,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 횡성군 둔내면 청태산로 610 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro760,민락어민활어직판장,민락어민활어직판장,food,로컬상권·먹거리,35.1542,129.12785,50,50m,,,,N,N,Y,N,N,N,Y,부산 수영구 광안해변로312번길 60 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro761,감지해변,감지해변,sea,해양·자연경관,35.06059,129.077,40,40m,,,,N,N,Y,N,N,N,Y,부산 영도구 동삼동 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -1141,7 +1563,6 @@ nation,전국,합천,·,ro809,오도산자연휴양림,오도산자연휴양림,
 nation,전국,합천,·,ro810,황강군민체육공원 축구장,황강군민체육공원 축구장,activity,테마파크·액티비티,35.56186,128.16895,90,1h 30m,,,,N,N,Y,N,N,N,Y,경남 합천군 합천읍 합천리 1364-75 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,담양,·,ro811,한재골,한재골,sea,해양·자연경관,35.29935,126.87702,40,40m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 담양군 대전면 평장리 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,홍성,·,ro812,광천전통시장,광천전통시장,food,로컬상권·먹거리,36.50095,126.62571,50,50m,,,,N,N,Y,N,N,N,Y,충남 홍성군 광천읍 광천리 237-60 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,홍성,·,ro814,메가박스 홍성내포,메가박스 홍성내포,activity,테마파크·액티비티,36.65938,126.67898,90,1h 30m,,,,N,N,Y,N,N,N,Y,충남 홍성군 홍북읍 청사로174번길 2 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,담양,·,ro815,담양호,담양호,sea,해양·자연경관,35.39875,127.006,40,40m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 담양군 용면 월계리 411-6 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,창원,·,ro816,굿데이뮤지엄,굿데이뮤지엄,herit,문화유산·전통체험,35.21862,128.59777,60,1h,,,,N,N,Y,N,N,N,Y,경남 창원시 마산회원구 봉암공단2길 22 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,창원,·,ro817,소계시장,소계시장,food,로컬상권·먹거리,35.25682,128.59901,50,50m,,,,N,N,Y,N,N,N,Y,경남 창원시 의창구 소계로 83-6 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -1162,21 +1583,15 @@ nation,전국,무주,·,ro831,무주반디랜드 무주곤충박물관,무주반
 nation,전국,인제,·,ro832,하추자연휴양림,하추자연휴양림,heal,힐링·생태·체험,38.03472,128.32017,60,1h,,,,N,N,Y,N,N,N,Y,강원특별자치도 인제군 인제읍 하추로 686 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro833,노룬산골목시장,노룬산골목시장,food,로컬상권·먹거리,37.53687,127.06472,50,50m,,,,N,N,Y,N,N,N,Y,서울 광진구 자양동 816-79 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro834,구로리어린이공원,구로리어린이공원,heal,힐링·생태·체험,37.49083,126.8916,60,1h,,,,N,N,Y,N,N,N,Y,서울 구로구 구로중앙로 13 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,서울,·,ro835,CGV 미아,CGV 미아,activity,테마파크·액티비티,37.61206,127.03072,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 강북구 도봉로 34 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,서울,·,ro836,CGV 상봉,CGV 상봉,activity,테마파크·액티비티,37.59748,127.09216,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 중랑구 상봉로 131 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro837,솔밭근린공원,솔밭근린공원,heal,힐링·생태·체험,37.6528,127.01177,60,1h,,,,N,N,Y,N,N,N,Y,서울 강북구 삼양로 561 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,서울,·,ro838,롯데시네마 건대입구,롯데시네마 건대입구,activity,테마파크·액티비티,37.53861,127.07292,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 광진구 아차산로 272 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro839,청량리 청과물 도매시장,청량리 청과물 도매시장,food,로컬상권·먹거리,37.57986,127.04214,50,50m,,,,N,N,Y,N,N,N,Y,서울 동대문구 제기동 854-2 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,구미,·,ro840,구미코,구미코,herit,문화유산·전통체험,36.14154,128.44248,60,1h,,,,N,N,Y,N,N,N,Y,경북 구미시 산동읍 첨단기업1로 49 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro841,망원유수지체육공원,망원유수지체육공원,heal,힐링·생태·체험,37.55778,126.89724,60,1h,,,,N,N,Y,N,N,N,Y,서울 마포구 방울내로11길 198 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,서울,·,ro842,메가박스 상암월드컵경기장점,메가박스 상암월드컵경기장점,activity,테마파크·액티비티,37.56919,126.89822,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 마포구 월드컵로 240 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro843,국립부산국악원,국립부산국악원,activity,테마파크·액티비티,35.17126,129.05425,90,1h 30m,,,,N,N,Y,N,N,N,Y,부산 부산진구 국악로 2 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro844,장림골목시장,장림골목시장,food,로컬상권·먹거리,35.08023,128.9677,50,50m,,,,N,N,Y,N,N,N,Y,부산 사하구 장림동 640-1 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,서울,·,ro845,CGV 등촌,CGV 등촌,activity,테마파크·액티비티,37.55786,126.85599,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 강서구 공항대로45길 63 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro846,부산해양자연사박물관,부산해양자연사박물관,herit,문화유산·전통체험,35.22181,129.07584,60,1h,,,,N,N,Y,N,N,N,Y,부산 동래구 우장춘로 175 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro847,봉원사,봉원사,herit,문화유산·전통체험,37.57201,126.94782,60,1h,,,,N,N,Y,N,N,N,Y,서울 서대문구 봉원사길 120 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro848,스포원파크,스포원파크,heal,힐링·생태·체험,35.29119,129.10522,60,1h,,,,N,N,Y,N,N,N,Y,부산 금정구 체육공원로399번길 324 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,부산,·,ro849,롯데시네마 부산장림,롯데시네마 부산장림,activity,테마파크·액티비티,35.08095,128.97574,90,1h 30m,,,,N,N,Y,N,N,N,Y,부산 사하구 장림번영로 97 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,예산,·,ro850,충의사,충의사,herit,문화유산·전통체험,36.68841,126.6528,60,1h,,,,N,N,Y,N,N,N,Y,충남 예산군 덕산면 덕산온천로 183-5 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,수원,·,ro851,백세삼계탕 본점,백세삼계탕 본점,food,로컬상권·먹거리,37.31804,126.98893,50,50m,,,,N,N,Y,N,N,N,Y,경기 수원시 장안구 경수대로 1200 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,청주,·,ro852,쫄쫄호떡 중앙공원본점,쫄쫄호떡 중앙공원본점,food,로컬상권·먹거리,36.633,127.48845,50,50m,,,,N,N,Y,N,N,N,Y,충북 청주시 상당구 상당로55번길 40-1 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -1193,7 +1608,6 @@ nation,전국,서울,·,ro862,신토불이떡볶이 본점,신토불이떡볶이
 nation,전국,서울,·,ro863,어머니대성집,어머니대성집,food,로컬상권·먹거리,37.57742,127.02858,50,50m,,,,N,N,Y,N,N,N,Y,서울 동대문구 왕산로11길 4 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,대전,·,ro864,동춘당역사공원,동춘당역사공원,heal,힐링·생태·체험,36.36563,127.44188,60,1h,,,,N,N,Y,N,N,N,Y,대전 대덕구 동춘당로 90 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,수원,·,ro865,영흥수목원,영흥수목원,activity,테마파크·액티비티,37.26325,127.07101,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 수원시 영통구 영통로 435 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,수원,·,ro866,롯데시네마 광교,롯데시네마 광교,activity,테마파크·액티비티,37.28666,127.05592,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 수원시 영통구 도청로 10 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,수원,·,ro867,수원시립만석전시관,수원시립만석전시관,herit,문화유산·전통체험,37.29703,126.99945,60,1h,,,,N,N,Y,N,N,N,Y,경기 수원시 장안구 송정로 19 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,보은,·,ro868,속리산CC,속리산CC,activity,테마파크·액티비티,36.44718,127.78215,90,1h 30m,,,,N,N,Y,N,N,N,Y,충북 보은군 탄부면 평각상장로 230 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,청주,·,ro869,초정행궁,초정행궁,herit,문화유산·전통체험,36.72123,127.60217,60,1h,,,,N,N,Y,N,N,N,Y,충북 청주시 청원구 내수읍 초정약수로 851 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -1203,13 +1617,11 @@ nation,전국,대구,·,ro872,수성아트피아,수성아트피아,activity,테
 nation,전국,전주,·,ro873,한국소리문화의전당,한국소리문화의전당,activity,테마파크·액티비티,35.85615,127.13817,90,1h 30m,,,,N,N,Y,N,N,N,Y,전북특별자치도 전주시 덕진구 소리로 31 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,인천,·,ro874,남동소래아트홀,남동소래아트홀,activity,테마파크·액티비티,37.3875,126.72475,90,1h 30m,,,,N,N,Y,N,N,N,Y,인천 남동구 아암대로1437번길 32 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,진안,·,ro875,마이산,마이산,sea,해양·자연경관,35.76055,127.4115,40,40m,,,,N,N,Y,N,N,N,Y,전북특별자치도 진안군 마령면 동촌리 산 18 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,인천,·,ro876,CGV 주안역,CGV 주안역,activity,테마파크·액티비티,37.46555,126.68051,90,1h 30m,,,,N,N,Y,N,N,N,Y,인천 미추홀구 염창로 58 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,진안,·,ro877,운일암반일암계곡,운일암반일암계곡,sea,해양·자연경관,35.97928,127.3968,40,40m,,,,N,N,Y,N,N,N,Y,전북특별자치도 진안군 주천면 대불리 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,인천,·,ro878,남동물빛놀이터,남동물빛놀이터,activity,테마파크·액티비티,37.40294,126.70628,90,1h 30m,,,,N,N,Y,N,N,N,Y,인천 남동구 논현동 644-1 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,순천,·,ro879,중앙시장,중앙시장,food,로컬상권·먹거리,34.95345,127.48411,50,50m,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 순천시 남내동 125-1 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,청송,·,ro880,신촌약수터,신촌약수터,sea,해양·자연경관,36.50573,129.12039,40,40m,,,,N,N,Y,N,N,N,Y,경북 청송군 진보면 신촌리 41-6 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,청송,·,ro882,백석탄 포트홀,백석탄 포트홀,sea,해양·자연경관,36.357,128.97635,40,40m,,,,N,N,Y,N,N,N,Y,경북 청송군 안덕면 고와리 648 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,인천,·,ro883,CGV 인천도화,CGV 인천도화,activity,테마파크·액티비티,37.46954,126.66454,90,1h 30m,,,,N,N,Y,N,N,N,Y,인천 미추홀구 숙골로88번길 12 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,하동,·,ro884,정금정,정금정,herit,문화유산·전통체험,35.2151,127.64346,60,1h,,,,N,N,Y,N,N,N,Y,경남 하동군 화개면 정금리 산 167 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,거창,·,ro886,오도산전망대,오도산전망대,activity,테마파크·액티비티,35.67398,128.07501,90,1h 30m,,,,N,N,Y,N,N,N,Y,경남 거창군 가조면 도리 산 61-2 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,합천,·,ro887,황계폭포,황계폭포,sea,해양·자연경관,35.51141,128.06972,40,40m,,,,N,N,Y,N,N,N,Y,경남 합천군 용주면 황계리 산 156 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -1220,7 +1632,6 @@ nation,전국,천안,·,ro891,천안축구센터 본관동,천안축구센터 �
 nation,전국,창원,·,ro892,성흥사,성흥사,herit,문화유산·전통체험,35.14777,128.77934,60,1h,,,,N,N,Y,N,N,N,Y,경남 창원시 진해구 대장로 273 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,익산,·,ro893,북부시장,북부시장,food,로컬상권·먹거리,35.95187,126.95789,50,50m,,,,N,N,Y,N,N,N,Y,전북특별자치도 익산시 인북로 259 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,용인,·,ro894,용담저수지,용담저수지,sea,해양·자연경관,37.18727,127.3074,40,40m,,,,N,N,Y,N,N,N,Y,경기 용인시 처인구 원삼면 사암리 55 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,용인,·,ro895,CGV 용인,CGV 용인,activity,테마파크·액티비티,37.23509,127.2057,90,1h 30m,,,,N,N,Y,N,N,N,Y,경기 용인시 처인구 금령로 86 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,정읍,·,ro896,백제가요 정읍사문화공원,백제가요 정읍사문화공원,heal,힐링·생태·체험,35.55126,126.86201,60,1h,,,,N,N,Y,N,N,N,Y,전북특별자치도 정읍시 정읍사로 541 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,보은,·,ro897,국립속리산말티재자연휴양림,국립속리산말티재자연휴양림,heal,힐링·생태·체험,36.4903,127.78194,60,1h,,,,N,N,Y,N,N,N,Y,충북 보은군 장안면 속리산로 256 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,경기광주,·,ro898,경안천습지생태공원,경안천습지생태공원,heal,힐링·생태·체험,37.45749,127.3031,60,1h,,,,N,N,Y,N,N,N,Y,경기 광주시 퇴촌면 정지리 571-2 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -1236,7 +1647,6 @@ nation,전국,예산,·,ro907,스플라스 스파&워터파크,스플라스 스�
 nation,전국,양주,·,ro908,가나아트파크,가나아트파크,herit,문화유산·전통체험,37.72557,126.94966,60,1h,,,,N,N,Y,N,N,N,Y,경기 양주시 장흥면 권율로 117 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,청송,·,ro909,청송자연휴양림,청송자연휴양림,heal,힐링·생태·체험,36.3179,129.05376,60,1h,,,,N,N,Y,N,N,N,Y,경북 청송군 부남면 청송로 3478-96 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro910,영화사,영화사,herit,문화유산·전통체험,37.55417,127.09796,60,1h,,,,N,N,Y,N,N,N,Y,서울 광진구 영화사로 107 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,서울,·,ro911,롯데시네마 영등포,롯데시네마 영등포,activity,테마파크·액티비티,37.51627,126.90785,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 영등포구 경인로 846 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro912,대한불교조계종 연화사,대한불교조계종 연화사,herit,문화유산·전통체험,37.59435,127.05047,60,1h,,,,N,N,Y,N,N,N,Y,서울 동대문구 경희대로3길 56 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro913,뚝도시장,뚝도시장,food,로컬상권·먹거리,37.5378,127.05483,50,50m,,,,N,N,Y,N,N,N,Y,서울 성동구 성수이로 32-15 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro914,마곡실내배드민턴장,마곡실내배드민턴장,activity,테마파크·액티비티,37.57325,126.83122,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 강서구 양천로 251 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -1244,7 +1654,6 @@ nation,전국,서울,·,ro915,흥천사,흥천사,herit,문화유산·전통체�
 nation,전국,서울,·,ro916,서울함공원,서울함공원,heal,힐링·생태·체험,37.55316,126.8979,60,1h,,,,N,N,Y,N,N,N,Y,서울 마포구 마포나루길 407 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro917,부산콘서트홀,부산콘서트홀,activity,테마파크·액티비티,35.16943,129.0544,90,1h 30m,,,,N,N,Y,N,N,N,Y,부산 부산진구 동평로 250 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro918,연동시장,연동시장,food,로컬상권·먹거리,35.18886,129.09254,50,50m,,,,N,N,Y,N,N,N,Y,부산 연제구 연동로8번길 22 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,서울,·,ro919,CGV 고덕강일점,CGV 고덕강일점,activity,테마파크·액티비티,37.56645,127.15777,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 강동구 고덕비즈밸리로 51 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,부산,·,ro920,수영팔도상가시장,수영팔도상가시장,food,로컬상권·먹거리,35.1699,129.11692,50,50m,,,,N,N,Y,N,N,N,Y,부산 수영구 수영성로27번길 15 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,거창,·,ro921,거창사과테마파크,거창사과테마파크,activity,테마파크·액티비티,35.67401,127.92197,90,1h 30m,,,,N,N,Y,N,N,N,Y,경남 거창군 거창읍 거함대로 3372-60 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,보성,·,ro922,보성열화정,보성열화정,herit,문화유산·전통체험,34.76377,127.18788,60,1h,,,,N,N,Y,N,N,N,Y,전남광주통합특별시 보성군 득량면 오봉리 230 · 한국관광공사 연관 관광지 · 카카오 좌표
@@ -1276,11 +1685,9 @@ nation,전국,세종,·,ro947,고복저수지,고복저수지,sea,해양·자연
 nation,전국,세종,·,ro948,세종전통시장,세종전통시장,food,로컬상권·먹거리,36.60128,127.29956,50,50m,,,,N,N,Y,N,N,N,Y,세종특별자치시 조치원읍 조치원로 26 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro949,성대전통시장,성대전통시장,food,로컬상권·먹거리,37.49921,126.93086,50,50m,,,,N,N,Y,N,N,N,Y,서울 동작구 국사봉1길 41 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro950,대신시장,대신시장,food,로컬상권·먹거리,37.51093,126.9175,50,50m,,,,N,N,Y,N,N,N,Y,서울 영등포구 도신로60길 7 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,서울,·,ro951,CGV 건대입구,CGV 건대입구,activity,테마파크·액티비티,37.5397,127.06702,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 광진구 아차산로30길 26 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro952,상계중앙시장,상계중앙시장,food,로컬상권·먹거리,37.65965,127.07028,50,50m,,,,N,N,Y,N,N,N,Y,서울 노원구 상계로23나길 33 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro953,서울로봇인공지능과학관,서울로봇인공지능과학관,herit,문화유산·전통체험,37.65558,127.04951,60,1h,,,,N,N,Y,N,N,N,Y,서울 도봉구 마들로13길 56 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro954,점프,점프,activity,테마파크·액티비티,37.63747,127.07342,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 노원구 한글비석로 102 · 한국관광공사 연관 관광지 · 카카오 좌표
-nation,전국,서울,·,ro955,CGV 왕십리,CGV 왕십리,activity,테마파크·액티비티,37.56178,127.03795,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 성동구 왕십리광장로 17 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro956,삼성동시장,삼성동시장,food,로컬상권·먹거리,37.47002,126.93211,50,50m,,,,N,N,Y,N,N,N,Y,서울 관악구 원신2길 55 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro957,서울연극창작센터,서울연극창작센터,activity,테마파크·액티비티,37.5892,127.0061,90,1h 30m,,,,N,N,Y,N,N,N,Y,서울 성북구 성북로 8 · 한국관광공사 연관 관광지 · 카카오 좌표
 nation,전국,서울,·,ro958,서울시립 서서울미술관,서울시립 서서울미술관,herit,문화유산·전통체험,37.45775,126.89554,60,1h,,,,N,N,Y,N,N,N,Y,서울 금천구 시흥대로79길 65 · 한국관광공사 연관 관광지 · 카카오 좌표

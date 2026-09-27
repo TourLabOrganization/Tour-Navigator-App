@@ -7,7 +7,7 @@
 - [ ] 장소 사진 출처 일괄 검수
 - [ ] 제주 브랜드 콘텐츠 이미지 주소가 `http://` 라 HTTPS 배포에서 차단됨 — HTTPS 주소 확인 또는 이미지 사본 호스팅
 - [ ] 숙소 후보(`STAYS`)가 샘플 데이터 — 실제 숙소 목록으로 교체하거나 화면에 샘플임을 표시
-- [ ] 플래너 장소 데이터(약 860KB) 를 화면 밖 파일로 분리 — `Tour Planner.dc.html` 이 2.0MB
+- [ ] 플래너 장소 데이터(약 860KB) 를 화면 밖 파일로 분리 — `Tour Planner.dc.html` 이 2.2MB. 시티투어 · 관광안내소처럼 `data/` 의 JSON 으로 빼면 됨
 
 ## 교통
 - [ ] 프록시(Cloudflare Workers 또는 Vercel Function) 배치

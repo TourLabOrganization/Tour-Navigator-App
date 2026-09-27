@@ -58,7 +58,7 @@ const children = [
   new Paragraph({ children: [run('Tour Navigator', { size: 22, color: 'B8431C', bold: true })], spacing: { before: 1200, after: 120 } }),
   new Paragraph({ children: [run('관광지 체류 시간 · 일정 시간 산정 로직', { size: 40, bold: true, color: '153B3D' })], spacing: { after: 200 } }),
   p('투어 플래너(Tour Planner.dc.html)가 장소마다 머무는 시간을 정하고, 이동 시간과 운영시간을 더해 하루 일정을 만드는 방법을 설명합니다. 함께 제공하는 CSV 는 이 문서의 규칙을 전 장소에 적용한 결과이고, JS 코드는 화면에서 로직만 분리해 옮긴 것입니다.', { size: 20 }),
-  p('작성일 2026-09-27 · 기준 브랜치 claude/brave-dirac-zmdr4p (09-27 내보내기본 · 장소 2,711곳)', { size: 18, color: '666666' }),
+  p('작성일 2026-09-27 · 기준 브랜치 claude/brave-dirac-zmdr4p (09-27 2차 내보내기본 · 장소 3,118곳)', { size: 18, color: '666666' }),
   gap(),
   table(['파일', '내용'], [
     ['체류시간_장소별.csv', `장소 ${nPlaces.toLocaleString()}곳의 권장 체류 분, 운영시간 파싱 결과, 배지, 자동 코스 후보 여부`],
