@@ -41,7 +41,7 @@ svg{position:absolute;left:0;top:0;width:1600px;height:1225px}
 </head>
 <body>
 <div id="c">
-<div class="title">Tour Navigator App · 시스템 구성도<small>2026-09-27 · 브랜치 claude/brave-dirac-zmdr4p (09-27 내보내기본 통합, 478f749 이후) 기준 · 빌드 과정 없는 정적 웹 앱 + 오프라인 Python 파이프라인</small></div>
+<div class="title">Tour Navigator App · 시스템 구성도<small>2026-09-27 · 브랜치 claude/brave-dirac-zmdr4p (09-27 2차 내보내기본 통합, 4383e9b 이후) 기준 · 빌드 과정 없는 정적 웹 앱 + 오프라인 Python 파이프라인</small></div>
 <div class="legend"><span><b class="ink"></b>런타임·핵심</span><span><b></b>구성 요소</span><span><b class="data"></b>데이터·파일</span><span><b class="orange"></b>외부 서비스(키 필요)</span><span><b class="plan"></b>계획</span><span><i></i>호출·로드</span><span><i class="o"></i>키 사용 호출</span><span><i class="d"></i>계획·수동 단계</span></div>
 <svg id="arrows"></svg>
 <div id="boxes"></div>
@@ -59,7 +59,7 @@ const B = [
  {id:'shared', x:360,y:385,w:290,h:142, t:'config.js → shared.js', s:'APP_CONFIG 키 6개 (googleMaps · youtube · kakao · dataGoKr · exRoad · tmdb) · 공용 상수·함수 · 조회: getWeather(Open-Meteo + 기상청) · getAirQuality · getFestivals · getRelatedSpots · getTitleMeta'},
  {id:'css', x:670,y:290,w:280,h:80, t:'shared.css', s:'7개 화면 공통 스타일 — 리셋 · 스크롤바 · Leaflet · 공용 애니메이션'},
  {id:'assets', x:670,y:385,w:280,h:142, cls:'data', t:'assets/ · data/', s:'tour-places.csv(장소 마스터 1,197곳 · 테마 추천 입력) · open-tour-unmatched.csv · 이미지 · data/ 시티투어 280코스 · 관광안내소 725곳 JSON(플래너 fetch) — 장소는 화면 내장 DATA'},
- {id:'flow', x:60,y:540,w:890,h:190, cls:'data', t:'화면 안 처리 흐름 (브라우저에서 전부 실행)', s:'① 도시·카테고리 필터 → 지도 마커·클러스터 (첫 화면 40곳 + 더 보기) &nbsp;&nbsp; ② 장소 상세: 좌표 기준 한국관광공사 DB 조회 → 다국어 표기·운영시간·요금·사진·오디오·스토리 + 날씨(기상청) · 미세먼지(에어코리아) · 함께 많이 가는 관광지(연관 관광지) · 관광특구·관광단지 배지<br>③ 코스 계산: 날짜 범위 → 일자 창(720분/일) → 도시 단위 묶기 → 광역교통 체인(출발지 → 환승 관문 → 도착 관문 · TAGO 시각표 · 공항 수속 소요시간) → 도시 안 최근접 순회(자동차는 카카오모빌리티 실측) → 일자별 카드 + 예매 버튼 · 내 플랜 저장<br>④ 숙박: 동선 25km 내 STAYS 추천 → 날짜 채운 OTA 링크 &nbsp;&nbsp; ⑤ 교통: 국내선 편성 요약(하드코딩 · KAC_ENDPOINT 입력 시 실시간) · 지하철 호선·역 165개 + 실시간 도착 &nbsp;&nbsp; ⑥ 영상: YouTube 조회수 하루 1회 · TMDB 작품 카드 &nbsp;&nbsp; ⑦ 여행 기간 축제·행사 (도시별 · 코스 30km 안)'},
+ {id:'flow', x:60,y:540,w:890,h:190, cls:'data', t:'화면 안 처리 흐름 (브라우저에서 전부 실행)', s:'① 도시·카테고리 필터 → 지도 마커·클러스터 (첫 화면 40곳 + 더 보기) &nbsp;&nbsp; ② 장소 상세: 좌표 기준 한국관광공사 DB 조회 → 다국어 표기·운영시간·요금·사진·오디오·스토리 + 날씨(기상청) · 미세먼지(에어코리아) · 함께 많이 가는 관광지(연관 관광지) · 관광특구·관광단지 배지<br>③ 코스 계산: 날짜 범위 → 일자 창(720분/일) → 도시 단위 묶기 → 광역교통 체인(출발지 → 환승 관문 → 도착 관문 · TAGO 시각표 · 공항 수속 소요시간) → 도시 안 최근접 순회(자동차는 카카오모빌리티 실측) → 일자별 카드 + 예매 버튼 · 내 플랜 저장<br>④ 숙박: 동선 25km 내 STAYS 추천 → 날짜 채운 OTA 링크 &nbsp;&nbsp; ⑤ 교통: 국내선 편성 요약(하드코딩 · KAC_ENDPOINT 입력 시 실시간) · 지하철 호선·역 165개 + 실시간 도착 &nbsp;&nbsp; ⑥ 영상: YouTube 조회수 하루 1회 · TMDB 작품 카드 &nbsp;&nbsp; ⑦ 여행 정보: 도시별 행사·축제 (30km 안) · 시티투어 280코스 · 관광안내소 725곳'},
 
  // 외부 서비스
  {id:'gExt', x:1090,y:110,w:470,h:685, cls:'group', g:'외부 서비스'},

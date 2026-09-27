@@ -32,7 +32,7 @@ npx prettier --write "Tour Planner.dc.html"
 
 **장소 추가 · 수정** — 해당 화면의 `DATA` 에서 도시 배열을 찾아 레코드를 넣습니다. 필드는 [DATA.md](DATA.md) 의 장소 레코드 절을 따르고, `id` 는 도시 접두사 + 번호로 겹치지 않게 합니다. 플래너와 테마 화면에 같은 장소가 있으면 두 곳 모두 고칩니다. 끝나면 `체류시간 산정/export_stay_csv.js` 로 CSV 를 다시 만듭니다.
 
-**문구 추가** — 화면의 `T` 또는 `I18N` 에 `{ko, en, zh, ja, es, fr}` 을 모두 채웁니다. 임시로 영어를 넣었다면 [I18N-TODO.md](I18N-TODO.md) 에 줄 번호와 함께 적습니다.
+**문구 추가** — 화면의 `T` 또는 `I18N` 에 `{ko, en, zh, ja, es}` 다섯 개를 모두 채웁니다. 임시로 영어를 넣었다면 [I18N-TODO.md](I18N-TODO.md) 에 줄 번호와 함께 적습니다.
 
 **공용 함수 수정** — `shared.js` 한 곳만 고칩니다. 6개 화면이 모두 영향을 받으므로 플래너 하나와 테마 화면 하나를 열어 확인합니다.
 
@@ -72,4 +72,4 @@ git diff --cached --name-only | grep -x config.js
 
 ## 다국어
 
-문구를 추가할 때는 `{ko, en, zh, ja, es, fr}` 여섯 개를 모두 채우세요. 임시로 영어를 넣었다면 [I18N-TODO.md](I18N-TODO.md) 에 줄 번호와 함께 남깁니다.
+문구를 추가할 때는 `{ko, en, zh, ja, es}` 다섯 개를 모두 채우세요. 임시로 영어를 넣었다면 [I18N-TODO.md](I18N-TODO.md) 에 줄 번호와 함께 남깁니다.

@@ -279,7 +279,7 @@ async function getFestivals(lat,lng,fromYmd,toYmd,svc,radiusKm){
 // 영화(type 'movie')·드라마(type 'tv') 제목으로 검색해 첫 결과를 돌려준다. 7일간 localStorage 캐시
 async function getTitleMeta(query,type,lang){
   if(!TMDB_KEY)return null;
-  const lg={ko:'ko-KR',en:'en-US',zh:'zh-CN',ja:'ja-JP',es:'es-ES',fr:'fr-FR'}[lang]||'ko-KR';
+  const lg={ko:'ko-KR',en:'en-US',zh:'zh-CN',ja:'ja-JP',es:'es-ES'}[lang]||'ko-KR';
   const ck='rs_tmdb:'+lg+':'+type+':'+query;
   try{const c=JSON.parse(localStorage.getItem(ck)||'null');if(c&&Date.now()-c.t<7*864e5)return c.v;}catch(e){}
   const u='https://api.themoviedb.org/3/search/'+type+'?api_key='+encodeURIComponent(TMDB_KEY)+'&language='+lg+'&query='+encodeURIComponent(query);
