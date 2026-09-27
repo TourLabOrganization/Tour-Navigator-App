@@ -69,7 +69,3 @@ git diff --cached --name-only | grep -x config.js
 ## 브랜치
 
 작업은 기능 브랜치에서 하고 PR 로 `main` 에 합칩니다. 다른 사람의 브랜치에는 force-push · rebase 를 하지 않고 merge 커밋으로 맞춥니다. GitHub 웹의 "Add files via upload" 로 zip 이나 폴더를 올리지 않습니다.
-
-## 다국어
-
-문구를 추가할 때는 `{ko, en, zh, ja, es}` 다섯 개를 모두 채우세요. 임시로 영어를 넣었다면 [I18N-TODO.md](I18N-TODO.md) 에 줄 번호와 함께 남깁니다.

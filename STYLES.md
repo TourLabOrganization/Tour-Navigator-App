@@ -23,6 +23,7 @@
 - **수평 스크롤** `.rs-xbar` — 카테고리 칩 줄. 얇은 주황색 스크롤바
 - **수직 스크롤** `.rs-scroll` — 목록 · 영상 패널. 얇은 주황색 스크롤바
 - **애니메이션** — `rsUp` (아래에서 떠오르기), 책갈피 드롭다운 `.rs-bkw` / `.rs-bk` / `.rs-bk-open`
+- **세로 목록** `.rs-col` — 자식 요소가 줄어들지 않게 고정 (플래너 · 테마 5종)
 
 색 값은 [DESIGN.md](DESIGN.md) 의 팔레트를 따릅니다.
 
@@ -30,9 +31,11 @@
 
 | 화면 | 남아 있는 규칙 |
 | --- | --- |
-| `Tour Navigator Home.dc.html` | `rsFloat` · `rsHour` · `rsMin` · `rsSplashOut` · `rsProgress` (스플래시 · 배너) |
-| `Tour Planner.dc.html` | `tpHour` · `tpMin` · `tpOut` (로딩 시계) |
-| Route 5종 | 없음 (`shared.css` 만 사용) |
+| `Tour Navigator Home.dc.html` | 중국어 글꼴(`html[data-lang="zh"]`), `rsFloat` · `rsHour` · `rsMin` · `rsSplashOut` · `rsProgress` (스플래시 · 배너) |
+| `Tour Planner.dc.html` | 중국어 글꼴(`html[data-lang="zh"]`), `tpHour` · `tpMin` · `tpOut` (로딩 시계) |
+| Route 5종 | 없음 — `shared.css` 만 사용 |
+
+중국어를 고르면 화면이 `<html data-lang="zh">` 로 바뀌고, 홈과 플래너는 이 속성으로 중국어 글꼴(Noto Sans SC 등)을 씁니다.
 
 ## 규칙
 

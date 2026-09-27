@@ -34,3 +34,6 @@ button, span, div { font-variant-emoji: normal; }
 .rs-bkw{position:relative}
 .rs-bk{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:40;flex-wrap:wrap;gap:4px;width:210px;padding:6px;background:#f2ece0;border:2px solid #153b3d;box-shadow:0 6px 18px rgba(21,59,61,.25)}
 .rs-bkw:hover .rs-bk,.rs-bk-open{display:flex}
+
+/* 세로 목록(.rs-col)의 자식이 줄어들지 않게 — 플래너 · 테마 5종 */
+.rs-col>*{flex-shrink:0}

@@ -10,7 +10,7 @@
 | 내보내기본 사본 | `Mobile app design request.zip`, `Mobile app design request/` (49개), `Mobile app design request/github-upload/` (11개) | GitHub 웹 업로드로 폴더째 들어간 것. 내용은 루트 화면에 통합됨 | `0f2e384`(main) 이전 |
 | 동기화 메모 | `github/md` | 옛 소유자 저장소와 삭제된 standalone 을 가리키던 Claude Design 메모 | `a02da69` 이전 |
 | 원자료 | `assets/story-db.csv` (2.1MB), `assets/story-matched.json`, `assets/open-tour.csv` | 코드가 읽지 않음. 배지 · 스토리 매칭은 오프라인에서 끝내 화면 DATA 에 들어 있음 | `0298fe1` |
-| 화면 안 복제 코드 | 화면 7개에 복제돼 있던 `shared.js` 상수·함수 (처음 16개 → 09-26 40개 → 09-27 42개) 와 `window.APP_CONFIG` 직접 참조 | 공용 코드는 `shared.js` 한 곳에서만 | 각 화면 이력 |
+| 화면 안 복제 코드 | 화면 7개에 복제돼 있던 `shared.js` 상수·함수 (처음 16개 → 09-26 40개 → 09-27 46개), `window.APP_CONFIG` 직접 참조, 두 번째 `<style>` 블록으로 다시 들어온 공통 스타일 | 공용 코드는 `shared.js` 한 곳에서만 | 각 화면 이력 |
 | 키 문자열 | Google · Kakao · 공공데이터포털 · 한국도로공사 · KRIC 키 | 전부 `config.js` 로 이동. 이력에 남은 키는 재발급 필요 | `0572f24`~`a02da69` |
 | 낡은 문서 | README 의 데이터 · 구조 · 디자인 절, STYLES 이력 절, APIS 옛 키 설명, standalone 참조, `테마 추천 알고리즘/CLAUDE.md` 의 GitHub 절 | 다른 문서와 중복이거나 사실과 다름 | — |
 | 중복 행 | `체류시간 산정/체류시간_장소별.csv` 262행 | 도시 화면과 전국 목록에 같은 장소가 두 번 실림 → id 당 한 행 | `ccdd88d` 이전 |
