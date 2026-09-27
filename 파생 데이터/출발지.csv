@@ -1,0 +1,62 @@
+﻿키,출발지,출발지(영문),위도,경도,수단
+seoul,서울역 (KTX),Seoul Stn (KTX),37.5559,126.9723,ktx|metro
+suseo,수서역 (SRT),Suseo Stn (SRT),37.487,127.1013,srt|metro
+yongsan,용산역 (KTX),Yongsan Stn (KTX),37.5299,126.9648,ktx|metro
+cheongnyangni,청량리역 (KTX),Cheongnyangni Stn (KTX),37.58,127.0466,ktx|metro
+gwangmyeong,광명역 (KTX),Gwangmyeong Stn (KTX),37.4161,126.8845,ktx|metro
+suwonStn,수원역 (KTX),Suwon Stn (KTX),37.266,127.0008,ktx|metro
+centralcity,센트럴시티터미널 (고속버스),Central City Terminal (bus),37.505,127.0044,bus|metro
+nambu,서울남부터미널 (시외버스),Seoul Nambu Terminal (bus),37.4847,127.0166,bus|metro
+dongseoul,동서울터미널 (고속버스),East Seoul Terminal (bus),37.5347,127.0947,bus|metro
+sangbong,상봉터미널 (시외버스),Sangbong Terminal (bus),37.5966,127.0855,bus|metro
+incheonBus,인천종합터미널 (고속버스),Incheon Bus Terminal,37.4419,126.7008,bus|metro
+suwonBus,수원종합터미널 (고속버스),Suwon Bus Terminal,37.2455,127.0086,bus|metro
+seongnam,성남종합터미널 (고속버스),Seongnam Bus Terminal,37.4086,127.1289,bus|metro
+incheonAir,인천공항 (리무진),Incheon Airport (limousine),37.4602,126.4407,bus
+gimpoAir,김포공항 (리무진),Gimpo Airport (limousine),37.5583,126.7906,bus
+gimhaeAir,김해공항 (리무진),Gimhae Airport (limousine),35.1795,128.9382,bus
+osong,오송역 (KTX·SRT),Osong Stn (KTX/SRT),36.62,127.3277,ktx|srt
+cheonan,천안아산역 (KTX·SRT),Cheonan-Asan Stn (KTX/SRT),36.7943,127.1043,ktx|srt
+daejeonStn,대전역 (KTX·SRT),Daejeon Stn (KTX/SRT),36.3315,127.4347,ktx|srt
+daejeonBus,대전복합터미널 (고속버스),Daejeon Terminal Complex,36.3506,127.4349,bus
+cheongjuBus,청주고속버스터미널,Cheongju Express Bus Terminal,36.6284,127.429,bus
+chungjuBus,충주공용버스터미널,Chungju Bus Terminal,36.97,127.931,bus
+daeguStn,동대구역 (KTX·SRT),Dongdaegu Stn (KTX/SRT),35.8797,128.6286,ktx|srt
+daeguBus,동대구터미널 (고속버스),Dongdaegu Bus Terminal,35.8776,128.6288,bus
+busanStn,부산역 (KTX·SRT),Busan Stn (KTX/SRT),35.1151,129.0415,ktx|srt
+busanBus,부산종합버스터미널 (노포),Busan Central Bus Terminal,35.2565,129.0925,bus
+sasangBus,부산서부터미널 (사상),Busan West Bus Terminal (Sasang),35.1607,128.98,bus
+ulsanStn,울산역 (KTX·SRT),Ulsan Stn (KTX/SRT),35.5513,129.1373,ktx|srt
+ulsanBus,울산고속버스터미널,Ulsan Express Bus Terminal,35.5384,129.3325,bus
+pohangStn,포항역 (KTX),Pohang Stn (KTX),36.0453,129.339,ktx
+gyeongjuStn,신경주역 (KTX·SRT),Singyeongju Stn (KTX/SRT),35.8746,129.1756,ktx|srt
+jinjuStn,진주역 (KTX),Jinju Stn (KTX),35.1602,128.1359,ktx
+changwonStn,창원중앙역 (KTX),Changwon Jungang Stn (KTX),35.2405,128.689,ktx
+tongyeongBus,통영종합버스터미널,Tongyeong Bus Terminal,34.8556,128.4286,bus
+gwangjuStn,광주송정역 (KTX·SRT),Gwangju-Songjeong Stn (KTX/SRT),35.1394,126.7913,ktx|srt
+gwangjuBus,광주 유·스퀘어 (고속버스),Gwangju U-Square (bus),35.1601,126.8783,bus
+jeonjuStn,전주역 (KTX),Jeonju Stn (KTX),35.8492,127.16,ktx
+mokpoStn,목포역 (KTX·SRT),Mokpo Stn (KTX/SRT),34.791,126.3866,ktx|srt
+yeosuStn,여수엑스포역 (KTX),Yeosu-Expo Stn (KTX),34.7519,127.7513,ktx
+gangneungStn,강릉역 (KTX),Gangneung Stn (KTX),37.7637,128.8986,ktx
+wonjuStn,원주역 (KTX),Wonju Stn (KTX),37.3182,127.9633,ktx
+donghaeStn,동해역 (KTX),Donghae Stn (KTX),37.4897,129.1289,ktx
+gimpoAirF,김포공항 (항공),Gimpo Airport (flight),37.5583,126.7906,air
+incheonAirF,인천공항 (항공),Incheon Airport (flight),37.4602,126.4407,air
+gimhaeAirF,김해공항 (항공),Gimhae Airport (flight),35.1795,128.9382,air
+cheongjuAirF,청주공항 (항공),Cheongju Airport (flight),36.7166,127.4991,air
+daeguAirF,대구공항 (항공),Daegu Airport (flight),35.8941,128.6588,air
+gwangjuAirF,광주공항 (항공),Gwangju Airport (flight),35.1264,126.8089,air
+yeosuAirF,여수공항 (항공),Yeosu Airport (flight),34.8423,127.6169,air
+ulsanAirF,울산공항 (항공),Ulsan Airport (flight),35.5936,129.3517,air
+wandoPort,완도항 (여객선),Wando Port (ferry),34.3159,126.755,ship
+mokpoPort,목포연안여객터미널 (여객선),Mokpo Ferry Terminal,34.7847,126.382,ship
+nokdongPort,녹동항 (여객선),Nokdong Port (ferry),34.5283,127.13,ship
+yeosuPort,여수연안여객터미널 (여객선),Yeosu Ferry Terminal,34.7405,127.743,ship
+busanPort,부산항 연안여객터미널 (여객선),Busan Coastal Ferry Terminal,35.1015,129.0405,ship
+pohangPort,포항여객선터미널 (울릉 항로),Pohang Ferry Terminal (Ulleung),36.0417,129.3853,ship
+mukhoPort,묵호항 여객선터미널 (울릉 항로),Mukho Ferry Terminal (Ulleung),37.55,129.1156,ship
+hupoPort,후포항 여객터미널 (울릉 항로),Hupo Ferry Terminal (Ulleung),36.68,129.453,ship
+gangneungPort,강릉항 여객터미널 (울릉 항로),Gangneung Ferry Terminal (Ulleung),37.7728,128.9503,ship
+masanStn,마산역 (KTX),Masan Stn (KTX),35.2246,128.5789,ktx
+gimcheonStn,김천구미역 (KTX),Gimcheon-Gumi Stn (KTX),36.1097,128.1936,ktx

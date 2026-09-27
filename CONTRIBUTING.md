@@ -30,7 +30,7 @@ npx prettier --write "Tour Planner.dc.html"
 
 ## 자주 하는 작업
 
-**장소 추가 · 수정** — 해당 화면의 `DATA` 에서 도시 배열을 찾아 레코드를 넣습니다. 필드는 [DATA.md](DATA.md) 의 장소 레코드 절을 따르고, `id` 는 도시 접두사 + 번호로 겹치지 않게 합니다. 플래너와 테마 화면에 같은 장소가 있으면 두 곳 모두 고칩니다. 끝나면 `체류시간 산정/export_stay_csv.js` 로 CSV 를 다시 만듭니다.
+**장소 추가 · 수정** — 해당 화면의 `DATA` 에서 도시 배열을 찾아 레코드를 넣습니다. 필드는 [DATA.md](DATA.md) 의 장소 레코드 절을 따르고, `id` 는 도시 접두사 + 번호로 겹치지 않게 합니다. 플래너와 테마 화면에 같은 장소가 있으면 두 곳 모두 고칩니다. 끝나면 `체류시간 산정/export_stay_csv.js` 와 `파생 데이터/export_csv.js` 로 CSV 를 다시 만듭니다. CSV 칼럼을 더하거나 바꿀 때는 [파생 데이터/README.md](파생%20데이터/README.md) 의 칼럼 규칙(첫 칼럼 `id`, 같은 뜻은 같은 이름, `Y`/`N`, 빈칸)을 따릅니다.
 
 **문구 추가** — 화면의 `T` 또는 `I18N` 에 `{ko, en, zh, ja, es}` 다섯 개를 모두 채웁니다. 임시로 영어를 넣었다면 [I18N-TODO.md](I18N-TODO.md) 에 줄 번호와 함께 적습니다.
 
@@ -44,7 +44,20 @@ npx prettier --write "Tour Planner.dc.html"
 2. 화면 안에 다시 생긴 `shared.js` 상수 · 함수와 키 문자열 · `window.APP_CONFIG` 직접 참조를 지웁니다.
 3. 내보내기본의 공용 함수 본문이 달라졌으면 바뀐 부분만 `shared.js` 로 옮깁니다.
 4. 헤드리스 브라우저로 7개 화면을 열어 스크립트 오류가 없는지 봅니다.
-5. 체류 CSV, I18N-TODO 줄 번호, 구성도 · 명세서, CHANGELOG 를 갱신합니다.
+5. 체류 CSV · 파생 CSV(`node "파생 데이터/export_csv.js"`), I18N-TODO 줄 번호, 구성도 · 명세서, CHANGELOG 를 갱신합니다.
+
+**서버 데이터 맞추기** — 플래너나 테마 화면의 장소를 추가 · 삭제하거나 `id` · 좌표 · 분류를 바꿨다면, 앱 PR 이 머지된 뒤 data-server 에서 다시 만들어 PR 을 올립니다. 이 레포와 data-server 를 같은 상위 폴더에 받아 두었다고 가정합니다.
+
+```bash
+cd ../data-server
+git checkout -b chore/sync-app-<요약> origin/develop
+python -m pipeline.places     # 장소 수 · 지역 수가 앱과 같은지 확인
+python -m pipeline.courses    # 코스 5개 · 마스터 연결 100%
+# 추천 재분류에 쓰는 assets/tour-places.csv 나 테마 화면을 바꿨다면
+(cd recommend && APP_REPO=../../Tour-Navigator-App python run_all.py)
+```
+
+data-server 규칙(커밋 메시지 `<타입>: <한국어 요약>`, 베이스 `develop`, 푸시 전 확인)은 그 레포의 `CLAUDE.md` 를 따릅니다. `develop` 머지가 곧 운영 배포입니다. 레코드 형식 자체(따옴표 · 들여쓰기 · 중첩 객체)를 바꾸면 파싱이 깨지므로, 그 경우 [ARCHITECTURE.md](ARCHITECTURE.md) 의 "data-server 가 읽는 부분"을 먼저 확인합니다.
 
 ## 커밋 전 확인
 

@@ -20,6 +20,17 @@
 - [ ] 에어코리아를 시도 평균이 아닌 가까운 측정소 값으로 (Kakao transcoord → 근접 측정소)
 - [ ] 브이월드 관광지 지정구역(LT_C_UO601) 실시간 대조 — 지금은 미리 계산한 `vz` 필드만 씀. 브이월드 키는 등록한 도메인에서만 응답하므로 배포 도메인 등록 뒤 `config.js` 항목 추가
 
+## 서버 연계 (data-server · backend)
+- [x] data-server 장소 마스터를 앱과 같은 3,118곳으로 갱신, 추천 산출물 재계산 (data-server PR #8)
+- [ ] 새 장소 1,947곳 TourAPI 재분류 — `TOURAPI_KEY` 필요, 며칠에 나눠 실행
+- [ ] 데이터랩 산출물(`datalab` · `staytime`) 재생성 — 데이터랩 원본 CSV 보유자
+- [ ] 장소 마스터에 중 · 일 명칭 · 설명 · 배지 · 사진 필드 추가 (backend `PlaceResponse` 동시 수정)
+- [ ] 시티투어 · 관광안내소(`data/*.json`)를 서버 엔드포인트로 제공
+- [ ] 서버 일정 계산에 `REGION_HUB` · `METRO_NET` 반영 — 지금은 시군을 넘는 구간이 모두 고속버스로 계산됨
+- [ ] 추천 코드 단일화 — 이 레포 `테마 추천 알고리즘/` 과 data-server `recommend/` 중 하나를 원본으로
+- [ ] 추천 재분류 입력을 옛 `assets/tour-places.csv`(1,197행, `id` 없음)에서 `파생 데이터/장소.csv`(3,118곳)로 바꾸고 결과 재계산 — data-server `recommend/` 도 같이
+- [ ] 앱 화면이 자기 `DATA` 대신 backend API 를 쓰도록 전환할지 결정
+
 ## 화면
 - [ ] 코스 결과 인쇄 / PDF 저장
 - [ ] 저장한 코스 공유 링크

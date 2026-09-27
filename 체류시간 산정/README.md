@@ -20,7 +20,7 @@ node export_stay_csv.js          # CSV 3개 재생성 (화면 데이터가 바�
 npm i docx && node build_doc.js  # 설명서 재생성
 ```
 
-CSV 는 UTF-8 BOM 으로 저장돼 엑셀에서 바로 열립니다.
+CSV 는 UTF-8 BOM 으로 저장돼 엑셀에서 바로 열립니다. 칼럼 이름 · `Y`/`N` · 빈칸 규칙은 [파생 데이터/README.md](../파생%20데이터/README.md) 의 칼럼 규칙과 같습니다. `체류시간_장소별.csv` 의 `id` · 장소명 · 배지 칼럼은 `파생 데이터/장소.csv` 와 같은 값이라 `id` 로 이어 붙일 수 있습니다.
 
 ## 핵심 규칙
 

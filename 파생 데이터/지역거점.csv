@@ -1,0 +1,111 @@
+﻿시군,관문,관문(영문),위도,경도,버스터미널,버스터미널(영문),버스위도,버스경도,수단,전철권
+경주,신경주역 (KTX·SRT),Singyeongju Stn (KTX/SRT),35.8746,129.1756,경주고속버스터미널,Gyeongju Express Bus Terminal,35.8467,129.2118,ktx|srt|bus,N
+거제,고현버스터미널,Gohyeon Bus Terminal,34.8863,128.6239,고현버스터미널,Gohyeon Bus Terminal,,,bus,N
+수원,수원역 (KTX),Suwon Stn (KTX),37.266,127.0008,수원버스터미널,Suwon Bus Terminal,,,metro|ktx|bus,Y
+정선,민둥산역,Mindungsan Stn,37.2055,128.8377,정선버스터미널,Jeongseon Bus Terminal,,,ktx|bus,N
+대전,대전역 (KTX·SRT),Daejeon Stn (KTX/SRT),36.3315,127.4347,대전복합터미널,Daejeon Terminal Complex,36.3506,127.4344,ktx|srt|bus,N
+충주,충주역,Chungju Stn,36.97,127.931,충주공용버스터미널,Chungju Bus Terminal,,,ktx|bus,N
+동해,동해역,Donghae Stn,37.4897,129.1289,동해종합버스터미널,Donghae Bus Terminal,,,ktx|bus,N
+서울,서울역 (KTX),Seoul Stn (KTX),37.5559,126.9723,센트럴시티터미널,Central City Terminal,37.5049,127.0045,metro|ktx|srt|bus,Y
+부산,부산역 (KTX·SRT),Busan Stn (KTX/SRT),35.1151,129.0415,부산종합버스터미널,Busan Central Bus Terminal,35.2841,129.094,ktx|srt|bus|air,N
+영월,영월역,Yeongwol Stn,37.1828,128.4682,영월시외버스터미널,Yeongwol Bus Terminal,,,ktx|bus,N
+대구,동대구역 (KTX·SRT),Dongdaegu Stn (KTX/SRT),35.8797,128.6286,동대구터미널,Dongdaegu Bus Terminal,35.8793,128.63,ktx|srt|bus|air,N
+전주,전주역 (KTX),Jeonju Stn (KTX),35.8497,127.1608,전주고속버스터미널,Jeonju Express Bus Terminal,35.829,127.133,ktx|bus,N
+강릉,강릉역 (KTX),Gangneung Stn (KTX),37.7637,128.8986,강릉시외버스터미널,Gangneung Bus Terminal,37.763,128.8785,ktx|bus,N
+여수,여수엑스포역 (KTX),Yeosu-Expo Stn (KTX),34.7541,127.7503,여수종합버스터미널,Yeosu Bus Terminal,34.7615,127.672,ktx|bus|air,N
+통영,통영종합버스터미널,Tongyeong Bus Terminal,34.857,128.429,통영종합버스터미널,Tongyeong Bus Terminal,34.857,128.429,bus,N
+속초,속초고속버스터미널,Sokcho Express Bus Terminal,38.207,128.593,속초고속버스터미널,Sokcho Express Bus Terminal,38.207,128.593,bus,N
+철원,동송터미널,Dongsong Bus Terminal,38.1462,127.313,동송터미널,Dongsong Bus Terminal,38.1462,127.313,bus,N
+안동,안동역 (KTX-이음),Andong Stn (KTX-Eum),36.5427,128.5946,안동터미널,Andong Bus Terminal,36.5427,128.5946,ktx|bus,N
+인천,인천역 (수도권 전철),Incheon Stn,37.4762,126.6165,인천종합터미널,Incheon Bus Terminal,37.4419,126.7008,metro|bus|air,Y
+진주,진주역 (KTX),Jinju Stn (KTX),35.1637,128.1174,진주시외버스터미널,Jinju Bus Terminal,35.19,128.074,ktx|bus|air,N
+순천,순천역 (KTX),Suncheon Stn (KTX),34.9464,127.4903,순천종합버스터미널,Suncheon Bus Terminal,34.9508,127.4886,ktx|bus,N
+목포,목포역 (KTX·SRT),Mokpo Stn (KTX/SRT),34.7913,126.3865,목포종합버스터미널,Mokpo Bus Terminal,34.808,126.4134,ktx|srt|bus,N
+영주,영주역 (KTX-이음),Yeongju Stn (KTX-Eum),36.834,128.627,영주종합터미널,Yeongju Bus Terminal,36.832,128.623,ktx|bus,N
+포항,포항역 (KTX),Pohang Stn (KTX),36.0453,129.339,포항시외버스터미널,Pohang Bus Terminal,36.0203,129.3437,ktx|bus|air,N
+춘천,춘천역 (ITX-청춘),Chuncheon Stn (ITX),37.885,127.718,춘천시외버스터미널,Chuncheon Bus Terminal,37.873,127.723,metro|ktx|bus,Y
+울릉,도동항 (여객선),Dodong Port (ferry),37.4812,130.9099,,,,,ship,N
+남원,남원역 (KTX),Namwon Stn (KTX),35.4114,127.39,남원공용버스터미널,Namwon Bus Terminal,35.409,127.386,ktx|bus,N
+남해,남해공용터미널,Namhae Bus Terminal,34.837,127.893,남해공용터미널,Namhae Bus Terminal,34.837,127.893,bus,N
+합천,합천버스터미널,Hapcheon Bus Terminal,35.5666,128.166,합천버스터미널,Hapcheon Bus Terminal,35.5666,128.166,bus,N
+광주,광주송정역 (KTX·SRT),Gwangju-Songjeong Stn (KTX/SRT),35.1376,126.7917,유·스퀘어 광주종합버스터미널,U-Square Gwangju Bus Terminal,35.1601,126.8783,ktx|srt|bus|air,N
+천안,천안아산역 (KTX·SRT),Cheonan-Asan Stn (KTX/SRT),36.7945,127.1043,천안종합버스터미널,Cheonan Bus Terminal,36.8199,127.156,metro|ktx|srt|bus,Y
+공주,공주역 (KTX),Gongju Stn (KTX),36.413,127.133,공주종합버스터미널,Gongju Bus Terminal,36.456,127.123,ktx|bus,N
+부여,부여시외버스터미널,Buyeo Bus Terminal,36.276,126.913,부여시외버스터미널,Buyeo Bus Terminal,36.276,126.913,bus,N
+군산,군산역 (장항선),Gunsan Stn,35.984,126.737,군산시외버스터미널,Gunsan Bus Terminal,35.966,126.737,ktx|bus,N
+용인,기흥역 (수인분당·에버라인),Giheung Stn,37.241,127.178,용인공용버스터미널,Yongin Bus Terminal,37.234,127.201,metro|bus,Y
+창원,창원중앙역 (KTX),Changwon-Jungang Stn (KTX),35.2226,128.6787,마산시외버스터미널,Masan Bus Terminal,35.223,128.581,ktx|bus|air,N
+울산,울산역 (KTX·SRT),Ulsan Stn (KTX/SRT),35.5514,129.139,울산고속버스터미널,Ulsan Express Bus Terminal,35.539,129.332,ktx|srt|bus,N
+태안,태안공영버스터미널,Taean Bus Terminal,36.745,126.298,태안공영버스터미널,Taean Bus Terminal,36.745,126.298,bus,N
+양평,양평역 (경의중앙선),Yangpyeong Stn,37.493,127.488,양평시외버스터미널,Yangpyeong Bus Terminal,37.49,127.489,metro|bus,Y
+여주,여주역 (경강선),Yeoju Stn,37.301,127.631,여주종합터미널,Yeoju Bus Terminal,37.298,127.637,metro|bus,Y
+가평,가평역 (ITX-청춘),Gapyeong Stn (ITX),37.814,127.51,가평버스터미널,Gapyeong Bus Terminal,37.83,127.51,metro|ktx|bus,Y
+양산,양산종합버스터미널,Yangsan Bus Terminal,35.339,129.037,양산종합버스터미널,Yangsan Bus Terminal,35.339,129.037,bus,N
+보은,보은시외버스터미널,Boeun Bus Terminal,36.489,127.729,보은시외버스터미널,Boeun Bus Terminal,36.489,127.729,bus,N
+해남,해남종합버스터미널,Haenam Bus Terminal,34.573,126.599,해남종합버스터미널,Haenam Bus Terminal,34.573,126.599,bus,N
+함양,함양시외버스터미널,Hamyang Bus Terminal,35.52,127.725,함양시외버스터미널,Hamyang Bus Terminal,35.52,127.725,bus,N
+장성,장성역 (KTX),Jangseong Stn (KTX),35.302,126.788,장성공용버스터미널,Jangseong Bus Terminal,35.302,126.788,ktx|bus,N
+정읍,정읍역 (KTX),Jeongeup Stn (KTX),35.569,126.851,정읍시외버스터미널,Jeongeup Bus Terminal,35.57,126.856,ktx|bus,N
+논산,논산역 (호남선),Nonsan Stn,36.173,127.093,논산시외버스터미널,Nonsan Bus Terminal,36.202,127.085,ktx|bus,N
+경기광주,경기광주역 (경강선),Gwangju Stn (Gyeonggang),37.396,127.257,광주(경기)공영버스터미널,Gwangju-si Bus Terminal,37.409,127.257,metro|bus,Y
+익산,익산역 (KTX·SRT),Iksan Stn (KTX/SRT),35.9619,126.954,익산시외버스터미널,Iksan Bus Terminal,35.943,126.959,ktx|srt|bus,N
+고창,고창버스터미널,Gochang Bus Terminal,35.434,126.703,고창버스터미널,Gochang Bus Terminal,35.434,126.703,bus,N
+화순,화순교통 버스터미널,Hwasun Bus Terminal,35.062,126.986,화순교통 버스터미널,Hwasun Bus Terminal,35.062,126.986,bus,N
+김해,김해여객터미널,Gimhae Bus Terminal,35.228,128.889,김해여객터미널,Gimhae Bus Terminal,35.228,128.889,bus|air,N
+시흥,시흥 오이도역 (수인분당),Oido Stn,37.38,126.803,시흥 시외버스정류장,Siheung Bus Stop,37.38,126.803,metro|bus,Y
+완주,전주역 (완주 인근),Jeonju Stn,35.845,127.147,전주시외버스터미널,Jeonju Bus Terminal,35.845,127.147,ktx|bus,N
+진안,진안시외버스터미널,Jinan Bus Terminal,35.791,127.425,진안시외버스터미널,Jinan Bus Terminal,35.791,127.425,bus,N
+장수,장수시외버스터미널,Jangsu Bus Terminal,35.647,127.521,장수시외버스터미널,Jangsu Bus Terminal,35.647,127.521,bus,N
+순창,순창시외버스터미널,Sunchang Bus Terminal,35.374,127.137,순창시외버스터미널,Sunchang Bus Terminal,35.374,127.137,bus,N
+장흥,장흥시외버스터미널,Jangheung Bus Terminal,34.681,126.907,장흥시외버스터미널,Jangheung Bus Terminal,34.681,126.907,bus,N
+곡성,곡성역 (전라선),Gokseong Stn,35.282,127.292,곡성시외버스터미널,Gokseong Bus Terminal,35.282,127.292,ktx|bus,N
+산청,산청시외버스터미널,Sancheong Bus Terminal,35.415,127.873,산청시외버스터미널,Sancheong Bus Terminal,35.415,127.873,bus,N
+횡성,횡성시외버스터미널,Hoengseong Bus Terminal,37.489,127.986,횡성시외버스터미널,Hoengseong Bus Terminal,37.489,127.986,bus,N
+임실,임실역 (전라선),Imsil Stn,35.618,127.289,임실공용버스터미널,Imsil Bus Terminal,35.618,127.289,bus,N
+봉화,봉화역 (영동선),Bonghwa Stn,36.893,128.732,봉화시외버스터미널,Bonghwa Bus Terminal,36.893,128.732,bus,N
+광양,광양역 (경전선),Gwangyang Stn,34.94,127.696,광양터미널,Gwangyang Bus Terminal,34.94,127.696,ktx|bus,N
+하동,하동역 (경전선),Hadong Stn,35.0672,127.7514,하동시외버스터미널,Hadong Bus Terminal,35.0672,127.7514,bus,N
+함안,함안역 (경전선),Haman Stn,35.272,128.406,가야시외버스터미널,Gaya Bus Terminal,35.272,128.406,bus,N
+창녕,창녕시외버스터미널,Changnyeong Bus Terminal,35.545,128.492,창녕시외버스터미널,Changnyeong Bus Terminal,35.545,128.492,bus,N
+고령,고령시외버스터미널,Goryeong Bus Terminal,35.726,128.263,고령시외버스터미널,Goryeong Bus Terminal,35.726,128.263,bus,N
+고성,고성시외버스터미널,Goseong Bus Terminal,34.976,128.324,고성시외버스터미널,Goseong Bus Terminal,34.976,128.324,bus,N
+서천,서천역 (장항선),Seocheon Stn,36.08,126.691,서천공영버스터미널,Seocheon Bus Terminal,36.08,126.691,bus,N
+신안,목포여객선터미널 (신안 항로),Mokpo Ferry Terminal,34.831,126.351,,,34.808,126.4134,ship|bus,N
+보성,보성역 (경전선),Boseong Stn,34.771,127.08,보성공용버스터미널,Boseong Bus Terminal,34.771,127.08,bus,N
+사천,사천공항,Sacheon Airport,35.0885,128.0709,삼천포시외버스터미널,Samcheonpo Bus Terminal,34.929,128.07,bus|air,N
+문경,문경종합터미널,Mungyeong Bus Terminal,36.594,128.197,문경종합터미널,Mungyeong Bus Terminal,36.594,128.197,bus,N
+울진,울진종합버스터미널,Uljin Bus Terminal,36.993,129.4,울진종합버스터미널,Uljin Bus Terminal,36.993,129.4,bus,N
+원주,원주역 (KTX),Wonju Stn (KTX),37.316,127.97,원주시외버스터미널,Wonju Bus Terminal,37.342,127.926,ktx|bus,N
+평창,진부역 (KTX),Jinbu Stn (KTX),37.658,128.687,평창시외버스터미널,Pyeongchang Bus Terminal,37.37,128.39,ktx|bus,N
+파주,파주 문산역 (경의중앙선),Munsan Stn,37.76,126.774,파주 문산시외버스터미널,Munsan Bus Terminal,37.76,126.774,metro|bus,Y
+고양,행신역 (KTX),Haengsin Stn (KTX),37.658,126.832,고양종합터미널,Goyang Bus Terminal,37.658,126.832,metro|ktx|bus,Y
+양주,양주역 (1호선),Yangju Stn,37.7855,127.0458,양주 시외버스정류장,Yangju Bus Stop,37.7855,127.0458,metro|bus,Y
+포천,포천시외버스터미널,Pocheon Bus Terminal,37.895,127.2,포천시외버스터미널,Pocheon Bus Terminal,37.895,127.2,bus,N
+이천,이천역 (경강선),Icheon Stn,37.266,127.443,이천종합터미널,Icheon Bus Terminal,37.279,127.443,metro|bus,Y
+남양주,평내호평역 (경춘선),Pyeongnae-Hopyeong Stn,37.636,127.216,남양주 시외버스정류장,Namyangju Bus Stop,37.636,127.216,metro|bus,Y
+양양,양양시외버스터미널,Yangyang Bus Terminal,38.075,128.619,양양시외버스터미널,Yangyang Bus Terminal,38.075,128.619,bus|air,N
+삼척,삼척역 (동해선),Samcheok Stn,37.44,129.166,삼척종합버스터미널,Samcheok Bus Terminal,37.44,129.166,ktx|bus,N
+인제,인제시외버스터미널,Inje Bus Terminal,38.069,128.17,인제시외버스터미널,Inje Bus Terminal,38.069,128.17,bus,N
+태백,태백역 (태백선),Taebaek Stn,37.171,128.99,태백고속버스터미널,Taebaek Bus Terminal,37.165,128.988,ktx|bus,N
+청주,오송역 (KTX·SRT),Osong Stn (KTX/SRT),36.62,127.33,청주고속버스터미널,Cheongju Express Bus Terminal,36.639,127.425,ktx|srt|bus|air,N
+제천,제천역 (중앙선),Jecheon Stn,37.14,128.193,제천시외버스터미널,Jecheon Bus Terminal,37.138,128.192,ktx|bus,N
+단양,단양역 (중앙선 KTX-이음),Danyang Stn (KTX-Eum),36.982,128.369,단양시외버스터미널,Danyang Bus Terminal,36.982,128.369,ktx|bus,N
+보령,대천역 (장항선),Daecheon Stn,36.333,126.604,보령종합터미널,Boryeong Bus Terminal,36.348,126.596,ktx|bus,N
+아산,천안아산역 (KTX·SRT),Cheonan-Asan Stn (KTX/SRT),36.7945,127.1043,온양온천역 시외버스,Onyang Bus Stop,36.79,127.004,metro|ktx|srt|bus,Y
+담양,담양공용버스터미널,Damyang Bus Terminal,35.321,126.988,담양공용버스터미널,Damyang Bus Terminal,35.321,126.988,bus,N
+무주,무주공용버스터미널,Muju Bus Terminal,36.007,127.66,무주공용버스터미널,Muju Bus Terminal,36.007,127.66,bus,N
+부안,부안공용버스터미널,Buan Bus Terminal,35.731,126.733,부안공용버스터미널,Buan Bus Terminal,35.731,126.733,bus,N
+완도,완도공용버스터미널,Wando Bus Terminal,34.311,126.755,완도공용버스터미널,Wando Bus Terminal,34.311,126.755,bus|ship,N
+밀양,밀양역 (KTX),Miryang Stn (KTX),35.497,128.74,밀양시외버스터미널,Miryang Bus Terminal,35.493,128.746,ktx|bus,N
+청송,청송시외버스터미널,Cheongsong Bus Terminal,36.436,129.057,청송시외버스터미널,Cheongsong Bus Terminal,36.436,129.057,bus,N
+영덕,영덕역 (동해선),Yeongdeok Stn,36.415,129.366,영덕시외버스터미널,Yeongdeok Bus Terminal,36.415,129.366,ktx|bus,N
+구미,구미역 (경부선),Gumi Stn,36.129,128.33,구미종합터미널,Gumi Bus Terminal,36.12,128.343,ktx|bus,N
+세종,오송역 (KTX·SRT),Osong Stn (KTX/SRT),36.521,127.298,세종고속시외버스터미널,Sejong Bus Terminal,36.48,127.262,ktx|srt|bus,N
+거창,거창시외버스터미널,Geochang Bus Terminal,35.687,127.91,거창시외버스터미널,Geochang Bus Terminal,35.687,127.91,bus,N
+상주,상주역 (경북선),Sangju Stn,36.415,128.159,상주종합버스터미널,Sangju Bus Terminal,36.415,128.159,bus,N
+당진,당진종합버스터미널,Dangjin Bus Terminal,36.893,126.628,당진종합버스터미널,Dangjin Bus Terminal,36.893,126.628,bus,N
+서산,서산공용버스터미널,Seosan Bus Terminal,36.784,126.45,서산공용버스터미널,Seosan Bus Terminal,36.784,126.45,bus,N
+홍성,홍성역 (장항선),Hongseong Stn,36.601,126.664,홍성종합터미널,Hongseong Bus Terminal,36.601,126.664,ktx|bus,N
+예산,예산역 (장항선),Yesan Stn,36.682,126.848,예산공용버스터미널,Yesan Bus Terminal,36.682,126.848,bus,N
+고성(강원),간성시외버스터미널,Ganseong Bus Terminal,38.38,128.468,간성시외버스터미널,Ganseong Bus Terminal,38.38,128.468,bus,N
+제주,제주국제공항,Jeju Intl Airport,33.5104,126.4914,제주국제공항,Jeju Intl Airport,,,air|ship,N

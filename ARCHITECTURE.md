@@ -6,7 +6,7 @@
 
 ```
 Tour Navigator Home.dc.html     홈 · 배너 · 테마 진입 · 테마 추천 · ME
-Tour Planner.dc.html            전국 통합 플래너 (10,095줄 · 2.2MB, 장소 데이터 포함)
+Tour Planner.dc.html            전국 통합 플래너 (10,060줄 · 2.2MB, 장소 데이터 포함)
 RESCENE Route.dc.html           테마 5종
 Kings Warden Route.dc.html
 KPop Demon Hunters Route.dc.html
@@ -20,6 +20,7 @@ assets/                         원본 데이터 · 이미지
 data/                           시티투어 · 관광안내소 JSON (플래너 여행 정보 탭이 처음 열 때 fetch)
 테마 추천 알고리즘/              선호 문항 → 군집 → 추천 테마 계산 코드 · 근거 데이터 · 설계 문서 (Python)
 체류시간 산정/                  체류 · 일정 시간 산정 로직 모듈, 장소별 체류 CSV, 설명서
+파생 데이터/                    화면 데이터에서 뽑은 CSV 6종과 내보내기 스크립트 (화면은 읽지 않음)
 시스템 구성도/                  시스템 구성도 PNG · 구성 명세서 docx · 생성 스크립트
 ```
 
@@ -52,7 +53,7 @@ unpkg 가 막히면 화면이 뜨지 않습니다. 오프라인 배포가 필요
 
 ## shared.js
 
-플래너와 테마 5종이 함께 쓰는 것만 둡니다. 홈은 키만 읽습니다.
+플래너와 테마 5종이 함께 쓰는 것만 둡니다. 홈도 로드 순서를 맞추려고 불러오지만 여기 정의는 쓰지 않습니다.
 
 | 구분 | 이름 | 내용 |
 | --- | --- | --- |
@@ -80,6 +81,8 @@ unpkg 가 막히면 화면이 뜨지 않습니다. 오프라인 배포가 필요
 | `tp_metro_user_v1` | 이름 검색으로 추가한 지하철역 |
 | `tago_bus_v1` · `tago_sttn_v1` · `tago_sub_v1` | TAGO 시각표 · 역 코드 캐시 |
 | `tp_ytstats` · `rs_ytstats` | YouTube 조회수 · 게시일 캐시 (하루 1회 갱신) |
+| `rs_tmdb:<언어>:<유형>:<제목>` | TMDB 작품 정보 캐시 (7일) |
+| `bthm_v2_<서비스>` | 부산테마여행정보 캐시 (3일, 플래너 · 부산 화면) |
 
 저장 · 스탬프 · 선택 도시 같은 화면 상태도 같은 방식으로 남습니다. 초기화하려면 브라우저 개발자 도구에서 해당 사이트의 저장소를 지웁니다.
 
@@ -121,3 +124,16 @@ unpkg 가 막히면 화면이 뜨지 않습니다. 오프라인 배포가 필요
 ```
 
 좌표 기준으로 공사 DB를 조회하므로, 장소명이 달라도 같은 지점이면 공식 표기를 씁니다. 지원 언어는 한국어 · 영어 · 중국어 · 일본어 · 스페인어 5개이며, 공사 DB 에 다섯 언어 서비스가 모두 있습니다. UI 문구는 각 화면의 `T` · `I18N` 에, 템플릿에 박혀 있던 고정 문구는 `TX_DICT` 에 다섯 언어로 들어 있고(템플릿은 `{{ tx.* }}` 로 읽음), 번역이 비어 임시로 영어를 넣은 문구는 [I18N-TODO.md](I18N-TODO.md) 에 적습니다. 프랑스어는 2026-09-27 에 뺐습니다.
+
+## data-server 가 읽는 부분
+
+조직의 [data-server](https://github.com/TourLabOrganization/data-server) 는 이 레포를 옆에 받아 두고(`APP_REPO=../Tour-Navigator-App`) 화면 파일을 **정규식으로** 읽습니다. 앱 실행에는 상관없지만, 아래 형식이 바뀌면 서버 파이프라인이 멈추거나 장소가 빠집니다.
+
+| data-server 파일 | 읽는 곳 | 기대하는 형식 |
+| --- | --- | --- |
+| `pipeline/places.py` | `Tour Planner.dc.html` 의 `const DATA` 뒤 | 지역 블록이 줄 머리 공백 2칸 + `키: {ko:'…'` 로 시작. 장소 레코드는 중괄호가 중첩되지 않은 `{…}` 한 개. 문자열 필드는 작은따옴표(`id:'gj1'`), 숫자 필드는 따옴표 없이(`lat:34.8`). 읽는 필드: `id` · `ko` · `en` · `locKo` · `cat` · `lat` · `lng` · `min` · `hrs` · `yt` · `srcKo` · `off:true`. 1,000곳보다 적게 잡히면 포맷이 깨졌다고 보고 멈춤 |
+| `pipeline/courses.py` | 테마 화면 5개의 `DATA` (파일 이름이 코스 단위) | 같은 레코드 형식에 순번 `n:` 이 있는 장소만 코스로 봄. 영상 정보 `chan` · `vt` 도 읽음. 테마 화면 id(`jd1` 등)는 플래너 id 와 달라서 이름 · 좌표로 장소 마스터에 이음. 코스당 3곳 미만이면 멈춤 |
+| `pipeline/verify.py` | `places.py` 와 같은 추출 결과 | 데이터랩 장소명과 앱 장소의 매칭률 검증 |
+| `recommend/src/classify.py` | `assets/tour-places.csv` · `*.dc.html` | 장소 재분류 · 테마 구성비. 이 레포 `테마 추천 알고리즘/` 과 같은 코드 |
+
+만든 결과(`data/derived/places.json` 등)는 data-server 에 커밋되고, `develop` 머지 때 배포 이미지에 들어갑니다. backend(Spring Boot)는 이 결과를 data-server API 로 받아 `/api/v1/places` · `courses` · `tfi` · `staytime` · `itinerary` · `personas` · `recommend` 로 중계합니다. 앱 화면은 아직 이 API 를 부르지 않고 자기 `DATA` 를 씁니다.

@@ -19,8 +19,8 @@
 | 장소 | 플래너 3,118곳 · 124개 시군. 유네스코 69 · 한국관광 100선 99 · 열린관광지 99 · 관광특구 등 210곳에 배지 |
 | 언어 | 한국어 · English · 中文 · 日本語 · Español (7개 화면 공통) |
 | 외부 데이터 | 한국관광공사 · 기상청 · 에어코리아 · 국토부 TAGO · 한국공항공사 · 부산시 · 카카오 · Google Maps · YouTube · TMDB |
-| 구성 | 정적 HTML 7개 + 공용 JS · CSS. 서버 · DB · 빌드 없음. 사용자 데이터는 브라우저에만 저장 |
-| 오프라인 도구 | 테마 추천 계산(Python), 체류 시간 산정(Node), 시스템 구성도 · 명세서 생성 |
+| 구성 | 정적 HTML 7개 + 공용 JS · CSS. 앱 자체는 서버 · DB · 빌드 없음. 사용자 데이터는 브라우저에만 저장. 서버 쪽은 조직의 data-server · backend 레포 |
+| 오프라인 도구 | 파생 CSV 내보내기(Node), 테마 추천 계산(Python), 체류 시간 산정(Node), 시스템 구성도 · 명세서 생성 |
 
 ## 빠른 시작
 
@@ -208,6 +208,28 @@ python3 -m http.server 8000
 
 구조와 로드 순서는 [ARCHITECTURE.md](ARCHITECTURE.md), 시스템 전체 그림은 [시스템 구성도](시스템%20구성도/README.md) 에 있습니다.
 
+## 조직의 다른 저장소
+
+이 앱은 혼자서도 동작하지만, TourLabOrganization 의 두 저장소가 이 레포를 **입력**으로 읽어 서버 쪽 데이터를 만듭니다.
+
+| 저장소 | 역할 | 이 레포에서 읽는 것 |
+| --- | --- | --- |
+| **Tour-Navigator-App** (이 레포) | 정적 웹 앱. 장소 · 코스 데이터의 원본 | — |
+| [data-server](https://github.com/TourLabOrganization/data-server) | Python 배치(`pipeline/`)가 데이터랩 · TourAPI · 앱 데이터를 JSON 으로 만들고, FastAPI(`api/`)가 그 JSON 과 추천 · 일정 계산을 내줌. `develop` 에 머지되면 이미지를 만들어 EC2 에 배포 | `Tour Planner.dc.html` 의 `DATA` → 장소 마스터, 테마 화면 5개 → 코스 순서, `assets/tour-places.csv` → 추천 재분류 |
+| [backend](https://github.com/TourLabOrganization/backend) | Spring Boot. 회원 · 인증과 DB 를 맡고, data-server 의 7개 엔드포인트를 `/api/v1/...` 로 중계 | 직접 읽지 않음 (data-server 경유) |
+
+```
+Tour-Navigator-App ──(HTML · CSV 를 읽음)──▶ data-server pipeline ──▶ data/derived/*.json
+                                                    │
+                                          data-server api (FastAPI)
+                                                    │  사설망
+                                                    ▼
+                                    backend (Spring Boot) /api/v1/places · courses · tfi · staytime
+                                                          · itinerary · personas · recommend
+```
+
+2026-09-27 data-server `develop` 기준으로 장소 마스터는 이 레포와 같은 3,118곳이고, 추천 산출물도 같습니다. 그래서 **플래너 `DATA` 의 레코드 형식이나 `id` 를 바꾸면 data-server 도 다시 돌려야 합니다.** 절차는 [CONTRIBUTING.md](CONTRIBUTING.md) 의 "서버 데이터 맞추기"에 있습니다.
+
 ## 알려진 제약
 
 - **숙소는 샘플 데이터입니다.** 후보로 OTA 검색 링크를 만들 뿐, 가격이나 빈 방을 보장하지 않습니다.
@@ -230,6 +252,7 @@ assets/                   장소 마스터 CSV · 배지 이미지 · README 캡
 uploads/                  홈 배너 · 테마 타일 이미지
 테마 추천 알고리즘/         선호 문항 → 군집 → 추천 테마 계산 (Python)
 체류시간 산정/             체류 · 일정 로직 모듈, 장소별 체류 CSV, 설명서
+파생 데이터/               화면 데이터에서 뽑은 CSV 6종 (장소 · 테마코스 · 시티투어 · 관광안내소 · 지역거점 · 출발지)
 시스템 구성도/             구성도 PNG · 구성 명세서 docx · 생성 스크립트
 ```
 
@@ -245,9 +268,9 @@ uploads/                  홈 배너 · 테마 타일 이미지
 
 | 문서 | 내용 |
 | --- | --- |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | 파일 구성, 화면 내부 구조, 플래너 데이터 모델, 코스 계산 흐름 |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | 파일 구성, 화면 내부 구조, 플래너 데이터 모델, 코스 계산 흐름, data-server 가 읽는 부분 |
 | [DATA.md](DATA.md) | 장소 데이터 규모 · 원본 파일 · 레코드 형식 · 배지 기준 |
-| [APIS.md](APIS.md) | 외부 API 목록, 키 설정, CORS 제약 |
+| [APIS.md](APIS.md) | 외부 API 목록, 키 설정, CORS 제약, 조직 저장소별 키 · 비밀값 |
 | [DESIGN.md](DESIGN.md) · [STYLES.md](STYLES.md) | Modernist 디자인 규칙과 CSS 구성 |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | 실행 방법, 키 설정, 코드 규칙 |
 | [ROADMAP.md](ROADMAP.md) · [CHANGELOG.md](CHANGELOG.md) | 남은 일과 변경 기록 |
@@ -255,3 +278,4 @@ uploads/                  홈 배너 · 테마 타일 이미지
 | [테마 추천 알고리즘/README.md](테마%20추천%20알고리즘/README.md) | 선호 문항 → 군집 → 추천 테마 계산 (Python) |
 | [시스템 구성도/README.md](시스템%20구성도/README.md) | 시스템 구성도 PNG · 구성 명세서 docx · 생성 스크립트 |
 | [체류시간 산정/README.md](체류시간%20산정/README.md) | 체류 · 일정 시간 산정 로직, 장소별 체류 CSV, 설명서 |
+| [파생 데이터/README.md](파생%20데이터/README.md) | 화면 데이터에서 뽑은 CSV 6종, 칼럼 사전과 CSV 공통 칼럼 규칙 |

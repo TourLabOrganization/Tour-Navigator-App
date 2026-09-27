@@ -61,6 +61,23 @@
 
 `shared.js` 가 이 값을 `GMAPS_KEY` · `YT_KEY` · `KAKAO_KEY` · `DATA_GO_KR_KEY` · `EXROAD_KEY` · `TMDB_KEY` 로 읽어 각 화면에 넘깁니다. 키가 비어 있으면 해당 기능만 조용히 비활성화되고 나머지는 정상 동작합니다.
 
+## 조직의 다른 저장소 키 · 비밀값
+
+이 앱의 키는 위의 `config.js` 6개뿐입니다. 서버 쪽 레포는 각자 따로 키를 둡니다. 값은 어느 레포에도 커밋하지 않고, 아래 위치에만 둡니다.
+
+| 레포 | 넣는 곳 | 이름 | 내용 |
+| --- | --- | --- | --- |
+| data-server | `.env` (틀 `.env.example`) | `APP_REPO` | 이 레포 경로. 기본 `../Tour-Navigator-App` |
+| data-server | `.env` | `TOURAPI_KEY` | 공공데이터포털 **디코딩** 키. 「한국관광공사_국문 관광정보 서비스_GW」(`KorService2`) 활용신청 필요. 앱의 `dataGoKr` 와 같은 계정이면 같은 키. `make tourapi`(장소 재분류)에만 쓰고, 없으면 그 단계만 건너뜀 |
+| backend | `.env` (틀 `.env.example`) | `DB_URL` · `DB_USERNAME` · `DB_PASSWORD` | PostgreSQL. 운영은 같은 VPC 의 사설 IP |
+| backend | `.env` | `JWT_SECRET` | 32바이트 이상 (`openssl rand -base64 48`) |
+| backend | `.env` | `CORS_ALLOWED_ORIGINS` | 프론트 주소, 쉼표 구분 |
+| backend | `.env` | `DATA_SERVER_URL` | data-server 주소. 로컬 `http://localhost:8000`, 운영은 사설 IP |
+| backend | EC2 의 `app.env` | `DOMAIN` · `IMAGE` | 배포 스크립트용 |
+| data-server · backend | GitHub 레포 Settings → Secrets → Actions | `EC2_HOST` · `EC2_USER` · `EC2_SSH_KEY` | CD 가 EC2 에 SSH 로 배포할 때 씀 |
+
+`TOURAPI_KEY` 는 CD 에서 쓰지 않으므로 GitHub Secrets 에 넣지 않습니다. 재분류는 사람이 한 번 돌리고 결과 JSON 만 커밋합니다. 공공데이터포털 개발계정은 하루 1,000회라 3,118곳을 다 돌리려면 며칠이 걸리고, 받은 결과는 `data/cache/` 에 남아 다음 날 이어받습니다. 클라우드 세션은 컨테이너가 사라지면 캐시도 사라지므로 담당자 PC 에서 돌리는 것이 낫습니다. 클라우드 세션에서 쓸 때는 환경 설정의 환경 변수에 `TOURAPI_KEY` 를 넣고, 등록한 뒤에 만든 세션부터 적용됩니다.
+
 ## CORS 제약
 
 브라우저에서 직접 호출할 수 없는 것들입니다.
