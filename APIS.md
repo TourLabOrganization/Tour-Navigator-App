@@ -22,6 +22,7 @@
 | 기상청 단기예보 | 오늘·내일 최고기온 · 강수 · 하늘 (Open-Meteo 값을 덮어씀) | 연동 · 공공데이터포털 활용신청 필요 |
 | 한국환경공단 에어코리아 (`ArpltnInforInqireSvc`) | 시도별 미세먼지 PM10 · PM2.5 · 등급 | 연동 · 공공데이터포털 활용신청 필요 |
 | TMDB | 테마 화면 작품 정보 (포스터 · 줄거리 · 평점) | 연동 · 키 필요 |
+| 제주 브랜드 콘텐츠 이미지 (`api.brandcontents.or.kr`) | 플래너 · 제주 화면의 장소 사진 (620곳) | 연동 · 키 없음 · **HTTP 주소** — HTTPS 로 배포하면 브라우저가 차단 |
 | 한국도로공사 | 휴게소 목록 (`exRoad` 키) | 연동 |
 | 한국공항공사 국내선 운항 | 국내선 편성 | `KAC_ENDPOINT` 미설정 — 제주 · 부산 편성 요약을 하드코딩. 공공데이터포털 GW 요청주소를 넣으면 실시간 |
 
@@ -37,6 +38,25 @@
 | `dataGoKr` | 공공데이터포털 서비스키 — 한국관광공사 TourAPI(장소 · 축제 · 연관 관광지 · 집중률) · 기상청 단기예보 · 에어코리아 · 국토부 TAGO · 한국공항공사 · 부산시 · 부산교통공사 공용. 마이페이지에서 각 서비스를 활용신청해야 같은 키로 호출된다 |
 | `exRoad` | 한국도로공사 공공데이터 (휴게소 목록) |
 | `tmdb` | TMDB API v3 — 테마 화면 작품 정보 카드 |
+
+### 키 발급
+
+| 항목 | 발급처 | 할 일 |
+| --- | --- | --- |
+| `googleMaps` · `youtube` | [Google Cloud 콘솔](https://console.cloud.google.com/apis/credentials) | Maps JavaScript API · YouTube Data API v3 사용 설정 → API 키 생성 → HTTP 리퍼러를 배포 도메인으로 제한 |
+| `kakao` | [Kakao Developers](https://developers.kakao.com/console/app) | 앱 생성 → REST API 키 복사 → 플랫폼에 사이트 도메인 등록. 카카오모빌리티 길찾기도 같은 키 |
+| `dataGoKr` | [공공데이터포털](https://www.data.go.kr) | 마이페이지 → 일반 인증키(Decoding). 아래 서비스를 각각 활용신청 |
+| `exRoad` | [한국도로공사 공공데이터](https://data.ex.co.kr) | 회원가입 → 인증키 신청 |
+| `tmdb` | [TMDB 설정](https://www.themoviedb.org/settings/api) | API 키(v3) 신청 |
+
+공공데이터포털에서 활용신청할 서비스는 다음과 같습니다. 신청하지 않은 서비스는 같은 키로도 오류가 나고 해당 기능만 비어 보입니다.
+
+- 한국관광공사: 국문 · 영문 · 중문 · 일문 · 서문 관광정보(`KorService2` 등), 관광사진 정보, 오디오 가이드(Odii), 관광지별 연관 관광지(`TarRlteTarService1`), 관광지 집중률 방문자 추이 예측(`TatsCnctrRateService`)
+- 기상청 단기예보(`VilageFcstInfoService_2.0`), 한국환경공단 에어코리아 대기오염정보(`ArpltnInforInqireSvc`)
+- 국토교통부 TAGO 열차 · 지하철 · 고속버스 정보, 한국공항공사 공항 소요시간, 한국공항공사 국내선 운항(선택)
+- 부산광역시 부산테마여행정보, 부산교통공사 열차시각표
+
+키는 `config.js` 에만 적습니다. 화면 파일 · 문서 · 커밋 메시지 · 채팅에 적지 않습니다. 2026-09-24 이전 커밋에는 키가 화면에 하드코딩되어 있었으므로, 그때 쓰던 키는 재발급합니다.
 
 `shared.js` 가 이 값을 `GMAPS_KEY` · `YT_KEY` · `KAKAO_KEY` · `DATA_GO_KR_KEY` · `EXROAD_KEY` · `TMDB_KEY` 로 읽어 각 화면에 넘깁니다. 키가 비어 있으면 해당 기능만 조용히 비활성화되고 나머지는 정상 동작합니다.
 
@@ -72,3 +92,14 @@ export default {
 - 영상 채널은 지연 로드하며, 플래너에서는 조회수 등 통계를 부르지 않습니다.
 - 기상청 예보는 격자별 1시간, 에어코리아는 30분, 카카오모빌리티는 구간별, TMDB 는 7일 캐시. 연관 관광지는 시군구 · 검색어별로 캐시합니다.
 - 서울 지하철 실시간 도착은 샘플 키 URL 이라 하루 호출 제한이 있습니다.
+- 공공데이터포털 개발계정은 서비스마다 하루 호출 한도(보통 1,000~10,000건)가 있습니다. 운영 배포 전에 운영계정으로 전환합니다.
+
+## 오류가 날 때
+
+| 증상 | 원인 | 확인 |
+| --- | --- | --- |
+| 지도에 "Google 지도를 제대로 로드할 수 없습니다" | `googleMaps` 키가 없거나 리퍼러 제한에 현재 도메인이 없음 | 콘솔의 `InvalidKey` · `RefererNotAllowedMapError` |
+| 날씨 · 미세먼지 · 행사 · 연관 관광지가 비어 있음 | `dataGoKr` 없음, 또는 해당 서비스 미신청 | 네트워크 탭의 `apis.data.go.kr` 응답 `resultCode` |
+| 택시 요금 · 자동차 시간이 추정값(≈) | `kakao` 키 없음 또는 도메인 미등록 | `apis-navi.kakaomobility.com` 401 |
+| 작품 카드가 안 보임 | `tmdb` 없음 | `api.themoviedb.org` 401 |
+| 파일을 더블클릭해 열었더니 API 가 전부 실패 | `file://` 에서는 CORS 가 막힘 | `python3 -m http.server` 로 열기 |

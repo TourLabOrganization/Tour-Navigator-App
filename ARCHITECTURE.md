@@ -33,6 +33,55 @@ class Component extends DCLogic
   renderVals()  템플릿에 넘길 평면 값 · 핸들러
 ```
 
+## 로드 순서와 런타임
+
+각 화면의 `<head>` 는 다음 순서로 스크립트를 읽습니다. 순서가 바뀌면 `shared.js` 가 키를 못 읽거나 화면 로직이 공용 함수를 못 찾습니다.
+
+```
+support.js   →  config.js (window.APP_CONFIG)  →  shared.js (키 상수 · 공용 함수)
+```
+
+`support.js` 가 하는 일은 네 가지입니다.
+
+1. unpkg CDN 에서 React 18.3.1 · ReactDOM 18.3.1 · Babel standalone 7.29.0 을 받습니다.
+2. `<x-dc>` 안의 템플릿을 React 컴포넌트로 컴파일합니다. `{{ }}` 는 값 홀, `<sc-for>` · `<sc-if>` 는 반복 · 조건입니다.
+3. `<helmet>` 안의 `<link>` · `<style>` · `<meta>` 를 문서 `<head>` 로 옮깁니다. `shared.css` 가 이 경로로 적용됩니다.
+4. `data-dc-script` 블록의 `class Component extends DCLogic` 을 `new Function` 으로 실행합니다. 이 함수의 스코프는 전역이라 `shared.js` 의 상수 · 함수를 그대로 부를 수 있습니다.
+
+unpkg 가 막히면 화면이 뜨지 않습니다. 오프라인 배포가 필요하면 세 파일을 저장소에 두고 `support.js` 의 주소를 바꿉니다.
+
+## shared.js
+
+플래너와 테마 5종이 함께 쓰는 것만 둡니다. 홈은 키만 읽습니다.
+
+| 구분 | 이름 | 내용 |
+| --- | --- | --- |
+| 키 | `GMAPS_KEY` · `YT_KEY` · `KAKAO_KEY` · `DATA_GO_KR_KEY` · `EXROAD_KEY` · `TMDB_KEY` | `config.js` 의 6개 항목. 비어 있으면 `''` |
+| 표시 | `PALETTE` · `ACCENTS` · `MAP_SKINS` · `CAT_COLORS` · `CAT_SHORT` · `CATS_ES` · `CAL_MONTH` · `CAL_WD` · `OFFL` | 색 · 지도 스킨 · 분류 라벨 · 달력 문자열 |
+| 유틸 | `cityName` · `vNum` · `vDate` · `stayPrice` · `stayQuery` · `hav` | 도시명 · 숫자 · 날짜 파싱, 숙소 가격대 · 검색어, 대권거리(km) |
+| 날씨 | `getWeather` → `_openMeteo` + `getKmaForecast` (`kmaGrid` · `kmaBase`) | Open-Meteo 로 어제 · 오늘 · 내일을 받고, 기상청 단기예보가 있으면 오늘 · 내일을 덮어씀. 격자별 1시간 캐시 |
+| 미세먼지 | `getAirQuality` (`nearestSido` · `AIR_LABEL` · `AIR_COLOR`) | 좌표 → 가장 가까운 시도 → 에어코리아 시도별 값. 4단계 등급 |
+| 행사 | `getFestivals` | 기간 · 반경(기본 30km) 안의 한국관광공사 행사, 거리순 최대 12건 |
+| 작품 | `getTitleMeta` | TMDB 검색 → 포스터 · 연도 · 평점 · 줄거리. 7일 캐시 |
+| 연관 관광지 | `getRelatedSpots` (`getSignguCd` · `SIGNGU_FALLBACK` · `SIDO_AREA_CD`) | Kakao 좌표 → 시군구 코드, 없으면 예비 표. 2~4개월 전 기준월 순으로 조회해 상위 8곳 |
+
+## 브라우저 저장소
+
+서버가 없으므로 사용자 상태는 `localStorage` 에 둡니다. 기기와 브라우저를 바꾸면 따라가지 않습니다.
+
+| 키 | 내용 |
+| --- | --- |
+| `dc_plans:<화면>` | 내 플랜 (이름 붙여 저장한 코스) |
+| `tn_theme_rec_v3` | 홈 테마 추천 응답과 결과 |
+| `tp_trip_leg` · `rs_trip_leg` | 광역 이동 선택 (플래너 · 테마 화면) |
+| `tp_rentcar` · `rs_rentcar` | 현지 이동 수단 선택 |
+| `tp_custom_origins` | 사용자가 추가한 출발지 |
+| `tp_metro_user_v1` | 이름 검색으로 추가한 지하철역 |
+| `tago_bus_v1` · `tago_sttn_v1` · `tago_sub_v1` | TAGO 시각표 · 역 코드 캐시 |
+| `tp_ytstats` · `rs_ytstats` | YouTube 조회수 · 게시일 캐시 (하루 1회 갱신) |
+
+저장 · 스탬프 · 선택 도시 같은 화면 상태도 같은 방식으로 남습니다. 초기화하려면 브라우저 개발자 도구에서 해당 사이트의 저장소를 지웁니다.
+
 ## 플래너 데이터 모델
 
 | 상수 | 내용 |
@@ -44,6 +93,11 @@ class Component extends DCLogic
 | `METRO` | 도시철도 노선·역(수도권 165개 역 + 사용자가 검색으로 추가한 역은 기기에 저장), 수도권 전철권 17개 도시 간 경로 |
 | `STAYS` | 동선 25km 내 숙소 후보 |
 | `I18N` | 한국어 · 영어 원본 위에 얹는 언어별 레이블 레이어. 카테고리 · 버튼 · 안내문 |
+| `GATEWAY` · `ORIGIN_ALT` | 광역 관문 좌표와 대체 출발지 |
+| `JEJU_SCHED` · `BUSAN_SCHED` · `FERRY_ROUTES` | 항공 · 여객선 편성 요약 (하드코딩) |
+| `VMETA` · `STORY_DB` | 영상 메타데이터, 스토리텔링 요약 |
+
+필드와 수치는 [DATA.md](DATA.md) 에 있습니다.
 
 ## 코스 계산 흐름
 

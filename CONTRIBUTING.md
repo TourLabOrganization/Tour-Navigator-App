@@ -28,11 +28,47 @@ npx prettier --write "Tour Planner.dc.html"
 
 스페이스 2칸, UTF-8, LF.
 
+## 자주 하는 작업
+
+**장소 추가 · 수정** — 해당 화면의 `DATA` 에서 도시 배열을 찾아 레코드를 넣습니다. 필드는 [DATA.md](DATA.md) 의 장소 레코드 절을 따르고, `id` 는 도시 접두사 + 번호로 겹치지 않게 합니다. 플래너와 테마 화면에 같은 장소가 있으면 두 곳 모두 고칩니다. 끝나면 `체류시간 산정/export_stay_csv.js` 로 CSV 를 다시 만듭니다.
+
+**문구 추가** — 화면의 `T` 또는 `I18N` 에 `{ko, en, zh, ja, es, fr}` 을 모두 채웁니다. 임시로 영어를 넣었다면 [I18N-TODO.md](I18N-TODO.md) 에 줄 번호와 함께 적습니다.
+
+**공용 함수 수정** — `shared.js` 한 곳만 고칩니다. 6개 화면이 모두 영향을 받으므로 플래너 하나와 테마 화면 하나를 열어 확인합니다.
+
+**새 외부 API** — 키가 필요하면 `config.example.js` 에 항목을 추가하고 `shared.js` 에서 상수로 읽습니다. 화면은 그 상수만 씁니다. [APIS.md](APIS.md) 의 표와 [시스템 구성도/](시스템%20구성도/README.md) 를 함께 갱신합니다.
+
+**Claude Design 내보내기본 반영** — zip 을 작업 세션에 첨부합니다. 통합 순서는 다음과 같습니다.
+
+1. 화면 7개를 루트에 덮어쓴 뒤 `<head>` 에 `config.js` · `shared.js`, `<helmet>` 에 `shared.css` 링크를 다시 넣습니다.
+2. 화면 안에 다시 생긴 `shared.js` 상수 · 함수와 키 문자열 · `window.APP_CONFIG` 직접 참조를 지웁니다.
+3. 내보내기본의 공용 함수 본문이 달라졌으면 바뀐 부분만 `shared.js` 로 옮깁니다.
+4. 헤드리스 브라우저로 7개 화면을 열어 스크립트 오류가 없는지 봅니다.
+5. 체류 CSV, I18N-TODO 줄 번호, 구성도 · 명세서, CHANGELOG 를 갱신합니다.
+
 ## 커밋 전 확인
 
+```bash
+# 키 문자열이 화면 · 공용 파일에 없는지 (출력이 없어야 함)
+grep -nE "AIza[0-9A-Za-z_-]{30,}|key=[0-9]{8,}|\$2a\$10\$" *.dc.html shared.js config.example.js
+
+# 화면이 window.APP_CONFIG 를 직접 읽지 않는지 (출력이 없어야 함)
+grep -n "APP_CONFIG" *.dc.html
+
+# shared.js 문법
+node -e "new Function(require('fs').readFileSync('shared.js','utf8'))"
+
+# config.js 가 스테이징되지 않았는지 (출력이 없어야 함)
+git diff --cached --name-only | grep -x config.js
+```
+
 - 브라우저 콘솔에 오류 없음. 키를 넣지 않아 나오는 Google Maps 경고는 제외
-- `config.js` 가 커밋에 포함되지 않았는지 확인
 - 데이터 추가 시 좌표 근거를 `srcKo`/`srcEn` 에 기록
+- 저장소 정리 규칙은 [CLEANUP.md](CLEANUP.md) 의 규칙 절을 따름
+
+## 브랜치
+
+작업은 기능 브랜치에서 하고 PR 로 `main` 에 합칩니다. 다른 사람의 브랜치에는 force-push · rebase 를 하지 않고 merge 커밋으로 맞춥니다. GitHub 웹의 "Add files via upload" 로 zip 이나 폴더를 올리지 않습니다.
 
 ## 다국어
 
